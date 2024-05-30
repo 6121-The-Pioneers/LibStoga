@@ -6,6 +6,7 @@
 #define ODOM_ABSTRACT_LS_H
 
 #include <initializer_list>
+#include "api.h"
 
 namespace ls {
 	class AbstractOdom {
@@ -14,7 +15,7 @@ namespace ls {
 		double Y;
 		double angle;
 
-		AbstractOdom(): X(0), Y(0), angle(0) {};
+		explicit AbstractOdom(): X(0), Y(0), angle(0) {};
 	public:
 		/*
 		* Initialize this AbstractOdom with a list of pins. 
@@ -81,7 +82,7 @@ namespace ls {
 		* Reset the positioning and angles of the robot.
 		* makes the current position (0, 0) and the current angle = 0;
 		*/
-		virtual void resetAll() = 0;
+		virtual void resetAll();
 		/*
 		* Gets the change in X since the previous call of this method.
 		* Does not call resetX() or reset the coordinates in any way.
@@ -112,6 +113,43 @@ namespace ls {
 		* @throws std::bad_function_call if object is not initialized properly.
 		*/
 		virtual double getDeltaAngle() = 0;
+	};
+
+	class ThreeWheelOdom: public AbstractOdom {
+	private:
+		double prevR;
+		double prevL;
+		double prevC;
+
+		pros::Rotation right;
+		pros::Rotation left;
+		pros::Rotation center;
+	public:
+		explicit ThreeWheelOdom();
+
+		explicit ThreeWheelOdom(std::initializer_list<int8_t> ports);
+
+		void initialize(std::initializer_list<int8_t> ports) override;
+
+		void compute() override;
+
+		double getX() override;
+
+		double getY() override;
+
+		double getAngle() override;
+
+		void resetX() override;
+
+		void resetY() override;
+		
+		void resetAngle() override;
+
+		double getDeltaX() override;
+		
+		double getDeltaY() override;
+		
+		double getDeltaAngle() override;
 	};
 };
 

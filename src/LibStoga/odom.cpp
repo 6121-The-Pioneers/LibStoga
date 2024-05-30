@@ -14,3 +14,11 @@ double ls::AbstractOdom::getAngle()
 {
 	return angle;
 }
+
+
+void ls::AbstractOdom::resetAll()
+{
+	resetX();
+	resetY();
+	resetAngle();
+}
