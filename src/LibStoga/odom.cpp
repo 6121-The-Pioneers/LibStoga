@@ -26,7 +26,7 @@ void ls::AbstractOdom::resetAll()
 
 ls::PositionTracker::PositionTracker()
 {
-	wheels = std::vector<TrackingWheel>();
+	wheels = std::vector<ls::TrackingWheel>();
 }
 
 void ls::PositionTracker::addTrackingWheel(TrackingWheel& wheel)
