@@ -6,9 +6,60 @@
 #define ODOM_ABSTRACT_LS_H
 
 #include <initializer_list>
+#include <exception>
+#include <vector>
+#include "tracking.h"
 #include "api.h"
 
 namespace ls {
+	/*
+	* Contains direct references to hardware as objects for Odom.
+	* Needed for AbstractOdom for getting data from rotational sensors.
+	*/
+	class PositionTracker {
+	private:
+		std::vector<TrackingWheel> wheels;
+	public:
+		/*
+		* Constructs a PositionTracker object.
+		*/
+		PositionTracker();
+		/*
+		* Adds TrackingWheel objects to this tracker.
+		* Can be accessed later via getWheelByIndex()
+		* 
+		* @param wheel the wheel to add.
+		*/
+		void addTrackingWheel(TrackingWheel& wheel);
+		/*
+		* Resets this PositionTracker.
+		* This will remove all existing configurations and TrackingWheel objects.
+		*/
+		void reset();
+		/*
+		* Gets a TrackingWheel by index added.
+		* Will throw an invalid argument exception if index is negative or >size()
+		* 
+		* @param index the desired index
+		* @returns reference to the TrackingWheel
+		* @throws std::invalid argument exception if index is invalid.
+		*/
+		TrackingWheel& getWheelByIndex(size_t index);
+		/*
+		* Gets a TrackingWheel by index added.
+		* Functionally equivalent to getWheelByIndex.
+		* 
+		* @param index the desired index
+		* @returns reference to the TrackingWheel
+		* @throws std::invalid argument exception if index is invalid.
+		*/
+		TrackingWheel& operator[](size_t i);
+		/*
+		* Gets the amount of TrackingWheel objects in this PositionTracker.
+		*/
+		size_t size();
+	};
+
 	class AbstractOdom {
 	protected:
 		double X;
@@ -113,43 +164,6 @@ namespace ls {
 		* @throws std::bad_function_call if object is not initialized properly.
 		*/
 		virtual double getDeltaAngle() = 0;
-	};
-
-	class ThreeWheelOdom: public AbstractOdom {
-	private:
-		double prevR;
-		double prevL;
-		double prevC;
-
-		pros::Rotation right;
-		pros::Rotation left;
-		pros::Rotation center;
-	public:
-		explicit ThreeWheelOdom();
-
-		explicit ThreeWheelOdom(std::initializer_list<int8_t> ports);
-
-		void initialize(std::initializer_list<int8_t> ports) override;
-
-		void compute() override;
-
-		double getX() override;
-
-		double getY() override;
-
-		double getAngle() override;
-
-		void resetX() override;
-
-		void resetY() override;
-		
-		void resetAngle() override;
-
-		double getDeltaX() override;
-		
-		double getDeltaY() override;
-		
-		double getDeltaAngle() override;
 	};
 };
 
