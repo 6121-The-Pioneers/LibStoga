@@ -53,7 +53,6 @@ ls::TrackingWheel& ls::PositionTracker::operator[](size_t i)
 }
 
 size_t ls::PositionTracker::size()
-
 {
 	return wheels.size();
 }
