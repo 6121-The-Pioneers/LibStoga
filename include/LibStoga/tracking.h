@@ -10,7 +10,7 @@
 namespace ls {
     /*
     * Wrapper class for pros::Rotation.
-    * Used extensively for Odom configurations.
+    * Used extensively for Odom wheels.
     */
     class TrackingWheel {
     private:
@@ -50,6 +50,14 @@ namespace ls {
         double getLinearDistance();
 
         /*
+        * Gets the change in distance of this tracking wheel since the last call of this function.
+        * Will change depending on radius.
+        * 
+        * @returns change in distance in '(in)
+        */
+        double getLinearDeltaDistance();
+
+        /*
         * Set the radius of this TrackingWheel object.
         * 
         * @param wheel_radius new radius in '(in)
@@ -60,6 +68,8 @@ namespace ls {
         * Destroyes this TrackingWheel object.
         */
         ~TrackingWheel();
+    private:
+        double prev_distance = 0;
     };
 }
 

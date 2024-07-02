@@ -24,6 +24,14 @@ double ls::TrackingWheel::getLinearDistance()
     return wheel->get_position() * conversion_factor;
 }
 
+double ls::TrackingWheel::getLinearDeltaDistance()
+{
+    const double latest = getLinearDistance();
+    double tor = latest - prev_distance;
+    prev_distance = latest;
+    return tor;
+}
+
 void ls::TrackingWheel::setRadius(double wr)
 {
     radius = wr;
