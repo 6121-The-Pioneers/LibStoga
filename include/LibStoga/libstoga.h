@@ -6,6 +6,8 @@
 
 
 #include "odom.h"
+#include "geometry.h"
+#include "tracking.h"
 
 
 #endif // !LIBSTOGA_LS_H

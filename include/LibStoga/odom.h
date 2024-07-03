@@ -85,7 +85,6 @@ namespace ls {
 	class AbstractOdom {
 	protected:
 		Position pos;
-
 		explicit AbstractOdom(): pos(Position()) {};
 	public:
 		/**

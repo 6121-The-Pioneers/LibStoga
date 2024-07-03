@@ -16,6 +16,11 @@ double ls::AbstractOdom::getAngle()
 	return pos.theta.getAngle();
 }
 
+ls::Position ls::AbstractOdom::getPosition()
+{
+    return pos;
+}
+
 void ls::AbstractOdom::resetAll()
 {
 	resetX();
