@@ -3,19 +3,18 @@
 
 double ls::AbstractOdom::getX()
 {
-	return X;
+	return pos.X;
 }
 
 double ls::AbstractOdom::getY()
 {
-	return Y;
+	return pos.Y;
 }
 
 double ls::AbstractOdom::getAngle()
 {
-	return angle;
+	return pos.theta.getAngle();
 }
-
 
 void ls::AbstractOdom::resetAll()
 {
@@ -24,37 +23,43 @@ void ls::AbstractOdom::resetAll()
 	resetAngle();
 }
 
-ls::PositionTracker::PositionTracker()
+double ls::Position::distanceFromPoint(Position &pos) const
 {
-	wheels = std::vector<ls::TrackingWheel>();
+	const double dx = pos.X - X;
+	const double dy = pos.Y - Y;
+	return sqrt(dx*dx + dy*dy);
 }
 
-void ls::PositionTracker::addTrackingWheel(TrackingWheel& wheel)
+double ls::Position::distanceFromPointSigned(Position &pos) const
 {
-	wheels.push_back(wheel);
+	return isBehind(pos) * distanceFromPoint(pos);
 }
 
-void ls::PositionTracker::reset()
+int ls::Position::isBehind(Position &pos) const
 {
-	wheels.clear();
-}
+	Angle a = angleToPosition(pos);
+	const Angle lower_bound = theta.getAngle() - 90;
+	const Angle upper_bound = theta.getAngle() + 90;
 
-ls::TrackingWheel& ls::PositionTracker::getWheelByIndex(size_t index)
-{
-	if (index < 0 || index >= size()) {
-		throw std::invalid_argument("Please give a valid index.");
+	if (a.getAngle() == infinity()) {
+		return 0;
 	}
-	return wheels[index];
+	else if (a.getAngle() > lower_bound.normalize() && a.getAngle() < upper_bound.normalize()) {
+		return 1;
+	} 
+	else {
+		return -1;
+	}
 }
 
-ls::TrackingWheel& ls::PositionTracker::operator[](size_t i)
+ls::Angle ls::Position::angleToPosition(Position &pos) const
 {
-	return getWheelByIndex(i);
+    Angle tor = (90 - atan2(pos.Y-Y, pos.X-X) * 57.2957795131);
+	tor = tor.normalize();
+	return tor;
 }
 
-size_t ls::PositionTracker::size()
+ls::Angle ls::Position::angleToPositionSigned(Position &pos) const
 {
-	return wheels.size();
+	return (90 - atan2(pos.Y-Y, pos.X-X) * 57.2957795131);
 }
-
-

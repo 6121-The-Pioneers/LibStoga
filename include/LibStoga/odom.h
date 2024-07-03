@@ -9,66 +9,86 @@
 #include <exception>
 #include <vector>
 #include "tracking.h"
+#include "geometry.h"
 #include "api.h"
 
 namespace ls {
 	/*
-	* Contains direct references to hardware as objects for Odom.
-	* Needed for AbstractOdom for getting data from rotational sensors.
+	* A compact representation for x, y, and theta.
+	* contains coordinates and helper methods accordingly.
 	*/
-	class PositionTracker {
-	private:
-		std::vector<TrackingWheel> wheels;
-	public:
+	struct Position {
+		double X;
+		double Y;
+		Angle theta; // by default in bearing mode (North is angle when robot starts).
 		/*
-		* Constructs a PositionTracker object.
+		* Default constructor.
 		*/
-		PositionTracker();
-		/*
-		* Adds TrackingWheel objects to this tracker.
-		* Can be accessed later via getWheelByIndex()
+		explicit Position(): X(0), Y(0), theta(Angle(0)) {}
+		/**
+		* Constructs a position object in terms x, y, z.
 		* 
-		* @param wheel the wheel to add.
+		* @param x the x value.
+		* @param y the y value.
+		* @param theta the theta value (degrees & bearing).
 		*/
-		void addTrackingWheel(TrackingWheel& wheel);
-		/*
-		* Resets this PositionTracker.
-		* This will remove all existing configurations and TrackingWheel objects.
+		explicit Position(double x, double y, double t): X(x), Y(y), theta(t) {}
+		/**
+		* Returns the distance from this point to the given point.
+		* Only returns a positive value.
+		*
+		* @param pos second point to compare to.
+		* @return distance from point
 		*/
-		void reset();
-		/*
-		* Gets a TrackingWheel by index added.
-		* Will throw an invalid argument exception if index is negative or >size()
+		double distanceFromPoint(Position& pos) const;
+		/**
+		* Returns a signed value from this point to the other point.
 		* 
-		* @param index the desired index
-		* @returns reference to the TrackingWheel
-		* @throws std::invalid argument exception if index is invalid.
+		* will return a negative value if point is behind the robot.
+		* check isbehind() for info about 'behind'
+		*
+		* @param pos second point to compare to.
+		* @return signed distance from point.
 		*/
-		TrackingWheel& getWheelByIndex(size_t index);
-		/*
-		* Gets a TrackingWheel by index added.
-		* Functionally equivalent to getWheelByIndex.
+		double distanceFromPointSigned(Position& pos) const;
+		/**
+		* returns if a point is behind (-1), in front of (1), or niether (0) in terms of the robot.
+		* behind and front of check if a give point is in front of the robot or behind it.
 		* 
-		* @param index the desired index
-		* @returns reference to the TrackingWheel
-		* @throws std::invalid argument exception if index is invalid.
+		* determined by getting angle to point and comparing.
+		* niether implies thats points are too close to eachother to determine. 
+		* 
+		* @param pos second point to compare to.
+		* @returns behind (-1), in front of (1), or niether (0)
 		*/
-		TrackingWheel& operator[](size_t i);
-		/*
-		* Gets the amount of TrackingWheel objects in this PositionTracker.
-		*/
-		size_t size();
+		int isBehind(Position& pos) const;
+		/**
+		 * @brief Gets the of the resulting line of this position to the other given position.
+		 * Will return in terms of a bearing.
+		 * Will return inf if the positions are way to close or equal to be calculated properly.
+		 * 
+		 * @param pos the other position.
+		 * @return Angle in [0, 360)
+		 */
+		Angle angleToPosition(Position& pos) const;
+		/**
+		 * @brief Gets the of the resulting line of this position to the other given position.
+		 * Will return in terms of a bearing, but will not be bounded from [0, 360)
+		 * Will return inf if the positions are way to close or equal to be calculated properly.
+		 * 
+		 * @param pos the other position.
+		 * @return Angle not bounded to [0, 360)
+		 */
+		Angle angleToPositionSigned(Position& pos) const;
 	};
 
 	class AbstractOdom {
 	protected:
-		double X;
-		double Y;
-		double angle;
+		Position pos;
 
-		explicit AbstractOdom(): X(0), Y(0), angle(0) {};
+		explicit AbstractOdom(): pos(Position()) {};
 	public:
-		/*
+		/**
 		* Initialize this AbstractOdom with a list of pins. 
 		* Depending on the specific subclass, the meaning of this and the specific order of the pins may be different.
 		* 
@@ -80,7 +100,7 @@ namespace ls {
 		* @param ports the ports that this Odom object uses
 		*/
 		virtual void initialize(std::initializer_list<int8_t> ports) = 0;
-		/*
+		/**
 		* Computes the new coordinations and angle of the robot since the program has started.
 		* Assumes that (0, 0) is where the robot starts at reboot.
 		* Also assumes that initial posture is 0 degrees (bearing)
@@ -90,7 +110,7 @@ namespace ls {
 		* @throws std::bad_function_call if object has not been initialized properly.
 		*/
 		virtual void compute() = 0;
-		/*
+		/**
 		* Gets the x-coordinate value of the robot since program started.
 		* Assumes (0, 0) is when the robot started.
 		* 
@@ -98,7 +118,7 @@ namespace ls {
 		* @throws std::bad_function_call if object is not initialized properly.
 		*/
 		virtual double getX();
-		/*
+		/**
 		* Gets the y-coordinate value of the robot since program started.
 		* Assumes (0, 0) is when the robot started.
 		*
@@ -106,35 +126,39 @@ namespace ls {
 		* @throws std::bad_function_call if object is not initialized properly.
 		*/
 		virtual double getY();
-		/*
+		/**
 		* Gets the bearing angle of the robot since program started.
-		* Assumes 0 degrees is initial orientation where .
+		* Assumes 0 degrees is initial orientation when program starts.
 		*
 		* @returns the x-coordinate value
 		* @throws std::bad_function_call if object is not initialized properly.
 		*/
 		virtual double getAngle();
-		/*
+		/**
+		* Gets the Position of this odom object in terms of the Position object.
+		*/
+		virtual Position getPosition();
+		/**
 		* Reset the X coordinate of the robot.
 		* Make the current position X = 0
 		*/
 		virtual void resetX() = 0;
-		/*
+		/**
 		* Reset the Y coordinate of the robot.
 		* Make the current position Y = 0
 		*/
 		virtual void resetY() = 0;
-		/*
+		/**
 		* Reset the angle of the robot.
 		* Make the current angle = 0
 		*/
 		virtual void resetAngle() = 0;
-		/*
+		/**
 		* Reset the positioning and angles of the robot.
 		* makes the current position (0, 0) and the current angle = 0;
 		*/
 		virtual void resetAll();
-		/*
+		/**
 		* Gets the change in X since the previous call of this method.
 		* Does not call resetX() or reset the coordinates in any way.
 		* 
@@ -144,7 +168,7 @@ namespace ls {
 		* @throws std::bad_function_call if object is not initialized properly.
 		*/
 		virtual double getDeltaX() = 0;
-		/*
+		/**
 		* Gets the change in Y since the previous call of this method.
 		* Does not call resetY() or reset the coordinates in any way.
 		*
@@ -154,7 +178,7 @@ namespace ls {
 		* @throws std::bad_function_call if object is not initialized properly.
 		*/
 		virtual double getDeltaY() = 0;
-		/*
+		/**
 		* Gets the change in angle since the previous call of this method.
 		* Does not call resetAngle() or reset the angle in any way.
 		*
