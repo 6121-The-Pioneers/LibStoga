@@ -6,6 +6,7 @@
 
 
 #include "odom.h"
+#include "pid.h"
 #include "geometry.h"
 #include "tracking.h"
 
