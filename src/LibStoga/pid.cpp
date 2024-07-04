@@ -2,7 +2,7 @@
 #include <algorithm> 
 #include <stdexcept> 
 
-namespace LibStoga {
+namespace ls {
     PID::PID(float kP, float kI, float kD, float windupRange, bool signFlipReset)
         : kP(kP),
         kI(kI),
