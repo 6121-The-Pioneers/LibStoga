@@ -1,27 +1,62 @@
 #include "tracking.h"
+#include <stdexcept>
 
-ls::TrackingWheel::TrackingWheel(int8_t port, double wr, bool reverse)
+ls::TrackingWheel::TrackingWheel(std::uint8_t port, double radius, bool reversed)
 {
-    wheel = new pros::Rotation(port);
-    if (reverse) wheel->reverse();
-    wheel->set_data_rate(5);
-    radius = wr;
-    conversion_factor = radius / 360000.0;
+    if (port < 0 || port > 24) {
+        std::invalid_argument("Port must be in the range of [0, 24].");
+    }
+    rotation = std::make_unique<pros::Rotation>(port);
+    if (reversed) rotation->reverse();
+    rotation->set_data_rate(5);
+    encoder = nullptr;
+    setRadius(radius);
+}
+
+ls::TrackingWheel::TrackingWheel(std::uint8_t portUpper, std::uint8_t portLower, double radius, bool Reversed)
+{
+    port_upper = portUpper; // how do you check these?
+    port_lower = portLower; // how do you check these?
+    reversed = Reversed;
+    encoder = std::make_unique<pros::ADIEncoder>(port_upper, port_lower, reversed);
+    rotation = nullptr;
+    setRadius(radius);
 }
 
 void ls::TrackingWheel::reverse()
 {
-    wheel->reverse();
+    if (encoder == nullptr) {
+        rotation->reverse();
+    } else {
+        reversed = !reversed;
+        encoder.reset(new pros::ADIEncoder(port_upper, port_lower, reversed));
+    }
 }
 
 double ls::TrackingWheel::getLinearSpeed()
 {
-    return wheel->get_velocity() * conversion_factor;
+    if (encoder == nullptr) {
+        return rotation->get_velocity() * conversion_factor;
+    } else {
+        // Having to calculate change in distance per time manually.
+        long double current_time = pros::millis() / 1000.0;
+        const long double dt = current_time - prev_time;
+        prev_time = current_time;
+
+        const double tor = encoder->get_value() - prev_distance;
+        prev_distance = encoder->get_value();
+        
+        return (tor * conversion_factor) / dt;
+    }
 }
 
 double ls::TrackingWheel::getLinearDistance()
 {
-    return wheel->get_position() * conversion_factor;
+    if (encoder == nullptr) {
+        return rotation->get_position() * conversion_factor;
+    } else {
+        return encoder->get_value() * conversion_factor;
+    }
 }
 
 double ls::TrackingWheel::getLinearDeltaDistance()
@@ -35,10 +70,10 @@ double ls::TrackingWheel::getLinearDeltaDistance()
 void ls::TrackingWheel::setRadius(double wr)
 {
     radius = wr;
-    conversion_factor = radius / 360000.0;
-}
-
-ls::TrackingWheel::~TrackingWheel()
-{
-    delete wheel;
+    if (encoder == nullptr) {
+        conversion_factor = radius / 360000.0;
+    }
+    else {
+        conversion_factor = radius / 360.0;
+    }
 }
