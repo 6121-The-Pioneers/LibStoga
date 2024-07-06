@@ -41,6 +41,11 @@ void ls::Angle::operator=(double x)
     setAngle(x);
 }
 
+void ls::Angle::operator+=(Angle other)
+{
+    angle += other.angle;
+}
+
 double ls::degreesToRadians(double degrees)
 {
     return degrees * 0.0174533;

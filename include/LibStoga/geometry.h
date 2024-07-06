@@ -62,6 +62,13 @@ namespace ls {
              * @param x the new value of this angle.
              */
             void operator=(double x);
+            
+            /**
+             * @brief increemnts this angle by 'other' angle numricaly.
+             * 
+             * @param other the other angle to increment by.
+             */
+            void operator+=(Angle other);
     };
 
     /**

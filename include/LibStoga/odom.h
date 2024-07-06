@@ -88,7 +88,7 @@ namespace ls {
 		explicit AbstractOdom(): pos(Position()) {};
 	public:
 		/**
-		* Initialize this AbstractOdom with a list of pins. 
+		* @brief Initialize this AbstractOdom with a list of pins. 
 		* Depending on the specific subclass, the meaning of this and the specific order of the pins may be different.
 		* 
 		* Ex. The 3 Wheel Odom class can have an instance where the 1st one is center, 2nd is right, 3rd is left
@@ -98,9 +98,9 @@ namespace ls {
 		* 
 		* @param ports the ports that this Odom object uses
 		*/
-		virtual void initialize(std::initializer_list<int8_t> ports) = 0;
+		virtual void initialize(std::initializer_list<uint8_t> ports) = 0;
 		/**
-		* Computes the new coordinations and angle of the robot since the program has started.
+		* @brief Computes the new coordinations and angle of the robot since the program has started.
 		* Assumes that (0, 0) is where the robot starts at reboot.
 		* Also assumes that initial posture is 0 degrees (bearing)
 		* 
@@ -108,7 +108,7 @@ namespace ls {
 		* 
 		* @throws std::bad_function_call if object has not been initialized properly.
 		*/
-		virtual void compute() = 0;
+		virtual void compute();
 		/**
 		* Gets the x-coordinate value of the robot since program started.
 		* Assumes (0, 0) is when the robot started.
@@ -141,17 +141,17 @@ namespace ls {
 		* Reset the X coordinate of the robot.
 		* Make the current position X = 0
 		*/
-		virtual void resetX() = 0;
+		virtual void resetX();
 		/**
 		* Reset the Y coordinate of the robot.
 		* Make the current position Y = 0
 		*/
-		virtual void resetY() = 0;
+		virtual void resetY();
 		/**
 		* Reset the angle of the robot.
 		* Make the current angle = 0
 		*/
-		virtual void resetAngle() = 0;
+		virtual void resetAngle();
 		/**
 		* Reset the positioning and angles of the robot.
 		* makes the current position (0, 0) and the current angle = 0;
@@ -186,7 +186,89 @@ namespace ls {
 		* @returns the delta in the angle
 		* @throws std::bad_function_call if object is not initialized properly.
 		*/
-		virtual double getDeltaAngle() = 0;
+		virtual Angle getDeltaAngle() = 0;
+	protected:
+		Position prev_pos;
+	};
+
+	/**
+	 * @brief Represents all the calculations for 3 wheel odom.
+	 * 
+	 * Note that this object does not use an IMU for its calculations.
+	 */
+	class ThreeWheelOdom: public AbstractOdom {
+	private:
+		std::unique_ptr<TrackingWheel> right = nullptr;
+		std::unique_ptr<TrackingWheel> left = nullptr;
+		std::unique_ptr<TrackingWheel> back = nullptr;
+
+		double centerToRight; // in inches
+		double centerToLeft; // in inches
+		double centerToBack; // in inches
+	public:
+		/**
+		 * @brief Construct a new Three Wheel Odom object
+		 * 
+		 * @param center_to_right distance from right tracking wheel to center in inches.
+		 * @param center_to_left distance from left tracking wheel to center in inches.
+		 * @param center_to_back distance from back tracking wheel to center in inches.
+		 */
+		ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back);
+
+		/**
+		 * @brief Construct a new Three Wheel Odom object
+		 * 
+		 * @param center_to_right distance from right tracking wheel to center in inches.
+		 * @param center_to_left distance from left tracking wheel to center in inches.
+		 * @param center_to_back distance from back tracking wheel to center in inches.
+		 * @param right right tracking wheel as an object.
+		 * @param left left tracking wheel as an object.
+		 * @param back back tracking wheel as an object.
+		 */
+		ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back, TrackingWheel& right, TrackingWheel& left, TrackingWheel& back);
+
+		/**
+		 * @brief Initializes the following object with the given ports.
+		 * Constructions default pros::Rotation objects on these ports.
+		 * 1st represents right, 2nd represents left, 3rd represents back.
+		 * If the list does not contain 3 valid ports, an std::invalid_argument exception will be thrown.
+		 * 
+		 * @param ports list of ports in the following order: right, left, sensor.
+		 */
+		void initialize(std::initializer_list<uint8_t> ports) override;
+
+		/**
+		* Gets the change in X since the previous call of this method.
+		* Does not call resetX() or reset the coordinates in any way.
+		* 
+		* Will return 0 on first call.
+		* 
+		* @returns the delta in the x-coordinate value
+		* @throws std::bad_function_call if object is not initialized properly.
+		*/
+		double getDeltaX() override;
+
+		/**
+		* Gets the change in Y since the previous call of this method.
+		* Does not call resetY() or reset the coordinates in any way.
+		*
+		* Will return 0 on first call.
+		*
+		* @returns the delta in the y-coordinate value
+		* @throws std::bad_function_call if object is not initialized properly.
+		*/
+		double getDeltaY() override;
+
+		/**
+		* Gets the change in angle since the previous call of this method.
+		* Does not call resetAngle() or reset the angle in any way.
+		*
+		* Will return 0 on first call.
+		*
+		* @returns the delta in the angle
+		* @throws std::bad_function_call if object is not initialized properly.
+		*/
+		Angle getDeltaAngle() override;
 	};
 };
 

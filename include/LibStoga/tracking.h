@@ -46,6 +46,15 @@ namespace ls {
         explicit TrackingWheel(std::uint8_t port_upper, std::uint8_t port_lower, double radius=2.75, bool reversed=false);
 
         /**
+         * @brief Construct a new Tracking Wheel object
+         * Takes the configurations from the 'other' tracking wheel and puts them into this.
+         * Will erase all configurations from 'other' in the proccess.
+         * 
+         * @param other the other to pull configurations from.
+         */
+        explicit TrackingWheel(TrackingWheel& other);
+
+        /**
         * @brief reverses the wheel direction.
         */
         virtual void reverse();
