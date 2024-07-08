@@ -10,7 +10,7 @@ namespace ls {
     void AbstractOdom::compute()
     {
 		pos.X += getDeltaX();
-		pos.Y += getDeltaX();
+		pos.Y += getDeltaY();
 		pos.theta += getDeltaAngle();
     }
 
