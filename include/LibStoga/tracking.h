@@ -18,7 +18,7 @@ namespace ls {
         double radius;
         double conversion_factor;
 
-        std::unique_ptr<pros::ADIEncoder> encoder;
+        std::unique_ptr<pros::adi::Encoder> encoder;
         std::unique_ptr<pros::Rotation> rotation;
 
         std::int8_t port_upper = 0, port_lower = 0;

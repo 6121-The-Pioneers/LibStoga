@@ -18,7 +18,7 @@ ls::TrackingWheel::TrackingWheel(std::uint8_t portUpper, std::uint8_t portLower,
     port_upper = portUpper; // how do you check these?
     port_lower = portLower; // how do you check these?
     reversed = Reversed;
-    encoder = std::make_unique<pros::ADIEncoder>(port_upper, port_lower, reversed);
+    encoder = std::make_unique<pros::adi::Encoder>(port_upper, port_lower, reversed);
     rotation = nullptr;
     setRadius(radius);
 }
@@ -53,7 +53,7 @@ void ls::TrackingWheel::reverse()
         rotation->reverse();
     } else {
         reversed = !reversed;
-        encoder.reset(new pros::ADIEncoder(port_upper, port_lower, reversed));
+        encoder.reset(new pros::adi::Encoder(port_upper, port_lower, reversed));
     }
 }
 

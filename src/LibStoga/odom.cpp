@@ -112,8 +112,10 @@ namespace ls {
 		right = std::make_unique<TrackingWheel>(r);
 		left = std::make_unique<TrackingWheel>(l);
 		back = std::make_unique<TrackingWheel>(b);
+		deltaB = 0;
+		deltaL = 0;
+		deltaR = 0;
     }
-    
 	void ThreeWheelOdom::initialize(std::initializer_list<uint8_t> ports)
     {
 		if (ports.size() != 3) {
@@ -141,28 +143,29 @@ namespace ls {
 	
 	double ThreeWheelOdom::getDeltaX()
     {
-		return 2 * sin(deltaRadians / 2) * ((deltaB / deltaRadians) + center_to_back);
+		return 2 * sin(getDeltaAngle().convertToRadians() / 2) * ((deltaB / getDeltaAngle().convertToRadians()) + centerToBack);
         // return 0.0;
     }
 
     double ThreeWheelOdom::getDeltaY()
     {
-		return 2 * sin(deltaRadians / 2) * ((deltaR / deltaRadians) + center_to_right);
+		return 2 * sin(getDeltaAngle().convertToRadians() / 2) * ((deltaR / getDeltaAngle().convertToRadians()) + centerToRight);
         // return 0.0;
     }
 
     Angle ThreeWheelOdom::getDeltaAngle()
     {
-		double angleRadian = (deltaL - deltaR) / (center_to_right + center_to_left);
+		double angleRadian = (deltaL - deltaR) / (centerToRight + centerToLeft);
 		double angleDegrees = angleRadian * 57.2958;
+		
         return Angle(angleDegrees);
     }
 
-	voic compute() {
-		double deltaL = left.getLinearDeltaDistance();
-		double deltaR = right.getLinearDeltaDistance();
-		double deltaB = back.getLinearDeltaDistance();
+    void ThreeWheelOdom::compute()
+    {
+		deltaL = left.get()->getLinearDeltaDistance();
+		deltaR = right.get()->getLinearDeltaDistance();
+		deltaB = back.get()->getLinearDeltaDistance();
 		AbstractOdom::compute();
-
-	}
+    }
 };

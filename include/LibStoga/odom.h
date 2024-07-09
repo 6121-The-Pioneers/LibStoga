@@ -207,9 +207,9 @@ namespace ls {
 		double centerToLeft; // in inches
 		double centerToBack; // in inches
 
-		double deltaL; // in inches
-		double doubleR; // in inches
-		double deltaB; // in inches
+		double deltaL = 0; // in inches
+		double deltaR = 0; // in inches
+		double deltaB = 0; // in inches
 		
 	public:
 		/**
@@ -275,7 +275,6 @@ namespace ls {
 		* @throws std::bad_function_call if object is not initialized properly.
 		*/
 		Angle getDeltaAngle() override;
-
 
 		void compute() override;
 	};
