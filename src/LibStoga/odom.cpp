@@ -141,16 +141,28 @@ namespace ls {
 	
 	double ThreeWheelOdom::getDeltaX()
     {
-        return 0.0;
+		return 2 * sin(deltaRadians / 2) * ((deltaB / deltaRadians) + center_to_back);
+        // return 0.0;
     }
 
     double ThreeWheelOdom::getDeltaY()
     {
-        return 0.0;
+		return 2 * sin(deltaRadians / 2) * ((deltaR / deltaRadians) + center_to_right);
+        // return 0.0;
     }
 
     Angle ThreeWheelOdom::getDeltaAngle()
     {
-        return Angle();
+		double angleRadian = (deltaL - deltaR) / (center_to_right + center_to_left);
+		double angleDegrees = angleRadian * 57.2958;
+        return Angle(angleDegrees);
     }
+
+	voic compute() {
+		double deltaL = left.getLinearDeltaDistance();
+		double deltaR = right.getLinearDeltaDistance();
+		double deltaB = back.getLinearDeltaDistance();
+		AbstractOdom::compute();
+
+	}
 };

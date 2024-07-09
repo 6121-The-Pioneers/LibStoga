@@ -11,6 +11,7 @@
 #include "tracking.h"
 #include "geometry.h"
 #include "api.h"
+#include <cmath>
 
 namespace ls {
 	/*
@@ -205,6 +206,11 @@ namespace ls {
 		double centerToRight; // in inches
 		double centerToLeft; // in inches
 		double centerToBack; // in inches
+
+		double deltaL; // in inches
+		double doubleR; // in inches
+		double deltaB; // in inches
+		
 	public:
 		/**
 		 * @brief Construct a new Three Wheel Odom object
@@ -269,6 +275,9 @@ namespace ls {
 		* @throws std::bad_function_call if object is not initialized properly.
 		*/
 		Angle getDeltaAngle() override;
+
+
+		void compute() override;
 	};
 };
 
