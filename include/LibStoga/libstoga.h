@@ -9,6 +9,7 @@
 #include "pid.h"
 #include "geometry.h"
 #include "tracking.h"
+#include "Time.hpp"
 
 
 #endif // !LIBSTOGA_LS_H
