@@ -1,5 +1,6 @@
 #include "Timer.hpp"
 
+//credit to LemLib 
 namespace LibStoga {
 
     Timer::Timer(uint32_t time)
