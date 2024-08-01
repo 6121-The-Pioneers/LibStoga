@@ -3,7 +3,7 @@
 
 #include "pros/rtos.hpp"
 
-namespace LibStoga {
+namespace ls {
 
     class Timer {
     public:

@@ -1,7 +1,7 @@
 #include "Timer.hpp"
 
-//credit to LemLib 
-namespace LibStoga {
+// credit to LemLib 
+namespace ls {
 
     Timer::Timer(uint32_t time)
         : period(time), lastTime(pros::millis()) {}
