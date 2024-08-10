@@ -278,6 +278,90 @@ namespace ls {
 
 		void compute() override;
 	};
+
+	/**
+	 * @brief Represents all the calculations for 2 wheel and IMU odometry.
+	 * 
+	 * 
+	 */
+	class ImuOdom: public AbstractOdom {
+	private:
+		std::unique_ptr<TrackingWheel> horiz = nullptr;
+		std::unique_ptr<TrackingWheel> vert = nullptr;
+		std::unique_ptr<pros::Imu> IMU = nullptr;
+
+		double centerToVert; // in inches
+		double centerToHoriz; // in inches
+		double prevRotation; // in inches
+
+		double deltaH = 0; // in inches
+		double deltaV = 0; // in inches
+		
+	public:
+		/**
+		 * @brief Construct a new Imu Odom object
+		 * 
+		 * @param center_to_horiz distance from horizontal tracking wheel to center in inches.
+		 * @param center_to_vert distance from vertical tracking wheel to center in inches.
+		 */
+		ImuOdom(double center_to_horiz, double center_to_vert); // TODO: should this be deprecated
+
+		/**
+		 * @brief Construct a new Imu Odom object
+		 * 
+		 * @param center_to_horiz distance from horiz tracking wheel to center in inches.
+		 * @param center_to_vert distance from vert tracking wheel to center in inches.
+		 * @param horiz horizontal tracking wheel as an object.
+		 * @param vert vertical tracking wheel as an object.
+		 * @param IMU Imu sensor
+		 */
+		ImuOdom(double center_to_horiz, double center_to_vert, TrackingWheel& horiz, TrackingWheel& vert, pros::Imu& IMU);
+
+		/**
+		 * @brief Initializes the following object with the given ports.
+		 * Constructions default pros::Rotation objects for wheels.
+		 * 1st represents horiz, 2nd represents vert, 3rd represents IMU.
+		 * If the list does not contain 3 valid ports, an std::invalid_argument exception will be thrown.
+		 * 
+		 * @param ports list of ports in the following order: right, left, sensor.
+		 */
+		void initialize(std::initializer_list<uint8_t> ports) override;
+
+		/**
+		* Gets the change in X since the previous call of this method.
+		* Does not call resetX() or reset the coordinates in any way.
+		* 
+		* Will return 0 on first call.
+		* 
+		* @returns the delta in the x-coordinate value
+		* @throws std::bad_function_call if object is not initialized properly.
+		*/
+		double getDeltaX() override;
+
+		/**
+		* Gets the change in Y since the previous call of this method.
+		* Does not call resetY() or reset the coordinates in any way.
+		*
+		* Will return 0 on first call.
+		*
+		* @returns the delta in the y-coordinate value
+		* @throws std::bad_function_call if object is not initialized properly.
+		*/
+		double getDeltaY() override;
+
+		/**
+		* Gets the change in angle since the previous call of this method.
+		* Does not call resetAngle() or reset the angle in any way.
+		*
+		* Will return 0 on first call.
+		*
+		* @returns the delta in the angle
+		* @throws std::bad_function_call if object is not initialized properly.
+		*/
+		Angle getDeltaAngle() override;
+
+		void compute() override;
+	};
 };
 
 #endif // !ODOM_ABSTRACT_LS_H

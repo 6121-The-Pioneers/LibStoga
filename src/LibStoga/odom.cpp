@@ -138,26 +138,22 @@ namespace ls {
 		
     }
 
-	//// ========================================= TODO: =========================================
-    // for Gavin to implement:
-	
 	double ThreeWheelOdom::getDeltaX()
     {
 		return 2 * sin(getDeltaAngle().convertToRadians() / 2) * ((deltaB / getDeltaAngle().convertToRadians()) + centerToBack);
-        // return 0.0;
+        // return 0.0 if no movement
     }
 
     double ThreeWheelOdom::getDeltaY()
     {
 		return 2 * sin(getDeltaAngle().convertToRadians() / 2) * ((deltaR / getDeltaAngle().convertToRadians()) + centerToRight);
-        // return 0.0;
+        // return 0.0 if no movement
     }
 
     Angle ThreeWheelOdom::getDeltaAngle()
     {
 		double angleRadian = (deltaL - deltaR) / (centerToRight + centerToLeft);
-		double angleDegrees = angleRadian * 57.2958;
-		
+		double angleDegrees = angleRadian * 57.2958; // convert to degrees
         return Angle(angleDegrees);
     }
 
@@ -168,4 +164,73 @@ namespace ls {
 		deltaB = back.get()->getLinearDeltaDistance();
 		AbstractOdom::compute();
     }
+	
+};
+
+/**
+ * @brief Code for ImuOdom class.
+ * 
+ */
+namespace ls {
+	ImuOdom::ImuOdom(double center_to_horiz, double center_to_vert)
+		: centerToHoriz(center_to_horiz), centerToVert(center_to_vert) {}
+
+    ImuOdom::ImuOdom(double center_to_horiz, double center_to_vert, TrackingWheel &h, TrackingWheel &v, pros::Imu &i)
+		: centerToHoriz(center_to_horiz), centerToVert(center_to_vert)
+    {
+		horiz = std::make_unique<TrackingWheel>(h);
+		vert = std::make_unique<TrackingWheel>(v);
+		IMU = std::make_unique<pros::Imu>(i);
+		deltaH = 0;
+		deltaV = 0;
+		prevRotation = 0;
+    }
+	void ImuOdom::initialize(std::initializer_list<uint8_t> ports)
+    {
+		if (ports.size() != 3) {
+			throw std::invalid_argument("initializer list must only have 3 elements (horiz, vert, IMU).");
+		}
+		////TODO: does this still work with IMU?
+		int index = 0;
+		for (uint8_t i : ports) {
+			if (abs(i) > 24) {
+				throw std::invalid_argument("ports must be in between [-24, 0) U (0, 24].");
+			}
+
+			if (index == 0) {
+				horiz = std::make_unique<TrackingWheel>(i);
+			} else if (index == 1) {
+				vert = std::make_unique<TrackingWheel>(i);
+			} else {
+				IMU = std::make_unique<pros::Imu>(i);
+			}
+		}	
+    } 
+
+
+	double ImuOdom::getDeltaX()
+    {
+    	return 0.0;
+    }
+
+    double ImuOdom::getDeltaY()
+    {
+        return 0.0;
+    }
+
+    Angle ImuOdom::getDeltaAngle()
+    {
+		double curRotation = IMU.get()->get_rotation();
+		double deltaRotation = curRotation - prevRotation;
+		Angle angleDegrees = Angle(deltaRotation) ; // convert to Angle
+        return angleDegrees;
+    }
+
+    void ImuOdom::compute()
+    {
+		deltaH = horiz.get()->getLinearDeltaDistance();
+		deltaV = vert.get()->getLinearDeltaDistance();
+		AbstractOdom::compute();
+    }
+	
 };
