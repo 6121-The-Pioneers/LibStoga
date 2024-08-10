@@ -285,8 +285,8 @@ namespace ls {
 	 */
 	class ImuOdom: public AbstractOdom {
 	private:
-		std::unique_ptr<TrackingWheel> horiz = nullptr;
-		std::unique_ptr<TrackingWheel> vert = nullptr;
+		std::unique_ptr<TrackingWheel> horiz = nullptr; // synonomous to back wheel in 3 wheel odom
+		std::unique_ptr<TrackingWheel> vert = nullptr; // synonomous to left/right wheel in 3 wheel odom
 		std::unique_ptr<pros::Imu> IMU = nullptr;
 
 		double centerToVert; // in inches
@@ -303,7 +303,7 @@ namespace ls {
 		 * @param center_to_horiz distance from horizontal tracking wheel to center in inches.
 		 * @param center_to_vert distance from vertical tracking wheel to center in inches.
 		 */
-		ImuOdom(double center_to_horiz, double center_to_vert); // TODO: should this be deprecated
+		ImuOdom(double center_to_horiz, double center_to_vert);
 
 		/**
 		 * @brief Construct a new Imu Odom object

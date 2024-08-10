@@ -191,7 +191,6 @@ namespace ls {
 		if (ports.size() != 3) {
 			throw std::invalid_argument("initializer list must only have 3 elements (horiz, vert, IMU).");
 		}
-		////TODO: does this still work with IMU? - Yes it does
 		int index = 0;
 		for (uint8_t i : ports) {
 			if (abs(i) > 24) {
@@ -210,18 +209,20 @@ namespace ls {
 
 	double ImuOdom::getDeltaX()
     {
-    	return 0.0;
+    	return 2 * sin(getDeltaAngle().convertToRadians() / 2) * ((deltaH / getDeltaAngle().convertToRadians()) + centerToHoriz);
     }
 
     double ImuOdom::getDeltaY()
     {
-        return 0.0;
+		return 2 * sin(getDeltaAngle().convertToRadians() / 2) * ((deltaV / getDeltaAngle().convertToRadians()) + centerToVert);
     }
 
     Angle ImuOdom::getDeltaAngle()
     {
 		double curRotation = IMU.get()->get_rotation();
 		double deltaRotation = curRotation - prevRotation;
+		Angle angleDegrees = Angle(deltaRotation) ; // convert to Angle
+		prevRotation = curRotation;
         return Angle(deltaRotation);
     }
 
