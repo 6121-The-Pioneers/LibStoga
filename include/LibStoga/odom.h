@@ -282,7 +282,6 @@ namespace ls {
 	/**
 	 * @brief Represents all the calculations for 2 wheel and IMU odometry.
 	 * 
-	 * 
 	 */
 	class ImuOdom: public AbstractOdom {
 	private:
