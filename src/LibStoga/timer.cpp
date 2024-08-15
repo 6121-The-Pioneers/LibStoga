@@ -1,4 +1,4 @@
-#include "Timer.hpp"
+#include "timer.hpp"
 
 // credit to LemLib 
 namespace ls {
