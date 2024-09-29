@@ -116,6 +116,17 @@ namespace ls {
 		deltaL = 0;
 		deltaR = 0;
     }
+
+	ThreeWheelOdom::ThreeWheelOdom(threewheel_odom_parameters_t& param) 
+	{
+		right = std::make_unique<TrackingWheel>(param.right.port, param.right.radius, param.right.reversed);
+		left = std::make_unique<TrackingWheel>(param.left.port, param.left.radius, param.left.reversed);
+		back = std::make_unique<TrackingWheel>(param.back.port, param.back.radius, param.back.reversed);
+		deltaB = param.center_to_back;
+		deltaL = param.center_to_left;
+		deltaR = param.center_to_right;
+	}
+	
 	void ThreeWheelOdom::initialize(std::initializer_list<uint8_t> ports)
     {
 		if (ports.size() != 3) {
@@ -185,6 +196,16 @@ namespace ls {
 		deltaV = 0;
 		prevRotation = 0;
     }
+
+	ImuOdom::ImuOdom(imu_odom_parameters_t& param) 
+	{
+		horiz = std::make_unique<TrackingWheel>(param.perpendicular.port, param.perpendicular.radius, param.perpendicular.reversed);
+		vert = std::make_unique<TrackingWheel>(param.parallel.port, param.parallel.radius, param.parallel.reversed);
+		IMU = std::make_unique<pros::Imu>(param.imu_port);
+		deltaH = param.center_to_perpendicular;
+		deltaV = param.center_to_parallel;
+		prevRotation = 0;
+	}
 
 	void ImuOdom::initialize(std::initializer_list<uint8_t> ports)
     {

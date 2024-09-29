@@ -193,6 +193,46 @@ namespace ls {
 	};
 
 	/**
+	 * @brief The parameters for rotational tracking wheels.
+	 * 
+	 * Order: port (1-21), radius (inches), reversed (true/false)
+	 */
+	struct tracking_rotation_parameters_t {
+		int16_t port;
+		double radius = 2.75;
+		bool reversed = false;
+	};
+	
+	/**
+	 * @brief The parameters for the ImuOdom.
+	 * 
+	 * Order: parallel (tracking_rotation_parameters_t), center_to_parallel (inches), perpendicular (tracking_rotation_parameters_t), center_to_perpendicular (inches)
+	 * note that this is only for a FULLY rotational sensor system.
+	 */
+	struct imu_odom_parameters_t {
+		tracking_rotation_parameters_t parallel;
+		double center_to_parallel;
+		tracking_rotation_parameters_t perpendicular;
+		double center_to_perpendicular;
+		int16_t imu_port;
+	};
+
+	/**
+	 * @brief The parameters for the ThreeWheelOdom.
+	 * 
+	 * Order: right (tracking_rotation_parameters_t), center_to_right (inches), left (tracking_rotation_parameters_t), center_to_left (inches), back (tracking_rotation_parameters_t), center_to_back (inches)
+	 * note that this is only for a FULLY rotational sensor system.
+	 */
+	struct threewheel_odom_parameters_t {
+		tracking_rotation_parameters_t right;
+		double center_to_right;
+		tracking_rotation_parameters_t left;
+		double center_to_left;
+		tracking_rotation_parameters_t back;
+		double center_to_back;
+	};
+
+	/**
 	 * @brief Represents all the calculations for 3 wheel odom.
 	 * 
 	 * Note that this object does not use an IMU for its calculations.
@@ -232,6 +272,15 @@ namespace ls {
 		 * @param back back tracking wheel as an object.
 		 */
 		ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back, TrackingWheel& right, TrackingWheel& left, TrackingWheel& back);
+
+		/**
+		 * @brief Construct a new Three Wheel Odom object
+		 * 
+		 * using the threewheel_odom_parameters_t structure.
+		 * 
+		 * @param param the threewheel_odom_parameters_t structure
+		 */
+		ThreeWheelOdom(threewheel_odom_parameters_t& param);
 
 		/**
 		 * @brief Initializes the following object with the given ports.
@@ -317,6 +366,15 @@ namespace ls {
 		ImuOdom(double center_to_horiz, double center_to_vert, TrackingWheel& horiz, TrackingWheel& vert, pros::Imu& IMU);
 
 		/**
+		 * @brief Construct a new Imu Odom object
+		 * 
+		 * using the imu_odom_parameters_t structure.
+		 * 
+		 * @param param structure to use
+		 */
+		ImuOdom(imu_odom_parameters_t& param);
+
+		/**
 		 * @brief Initializes the following object with the given ports.
 		 * Constructions default pros::Rotation objects for wheels.
 		 * 1st represents horiz, 2nd represents vert, 3rd represents IMU.
@@ -361,6 +419,7 @@ namespace ls {
 
 		void compute() override;
 	};
+
 };
 
 #endif // !ODOM_ABSTRACT_LS_H

@@ -1,4 +1,23 @@
 #include "main.h"
+#include "LibStoga/libstoga.h"
+
+ls::imu_odom_parameters_t odom_params = {
+	{
+		1,
+		2.75,
+		false
+	},
+	0.2,
+	{
+		2,
+		2.75,
+		false
+	},
+	0.3,
+	3
+};
+
+ls::ImuOdom odom(odom_params);
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
