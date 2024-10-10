@@ -26,7 +26,7 @@ namespace ls {
              * @param error the error from target
              * @return the value from PID
              */
-            float update(const float error);
+            double update(const double error);
             /**
              * @brief Resets the integral and other variables to reset PID state to original. 
              */

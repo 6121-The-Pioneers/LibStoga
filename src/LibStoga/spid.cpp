@@ -1,0 +1,61 @@
+#include "spid.h"
+
+static inline double abs(double val) {
+    if (val < 0) return -val;
+    return val;
+}
+
+namespace ls {
+    SmartPID::SmartPID(double cc, double w, double lc, double max)
+        : kp(0), ki(0), kd(0), P(0), I(0), D(0), prev_val(0), correction_constant(cc), windup(w), learning_constant(lc), max_value(max) {}
+
+    double SmartPID::update(const double e) {
+        P = e;
+        update_components(e);
+        update_constants(e);
+        
+        return kp * P + ki * I + kd * D;
+    }
+
+    void SmartPID::reset()
+    {
+        P = 0;
+        I = 0;
+        D = 0;
+        prev_val = 0;
+    }
+
+    void SmartPID::update_components(const double e) {
+        P = e;
+        if (abs(I) > windup || abs(I) < 0.5) {
+            I = 0;
+        }
+        I += e;
+        D = (e - prev_val);
+        prev_val = e;
+    }
+
+    void SmartPID::update_constants(const double e) {
+        double theta = kp * P + ki * I + kd * D;
+        double Y = get_expected(e);
+        double constant = learning_constant * 2 * (theta - Y);
+                
+        double CKp = constant * P;
+        double CKi = constant * I;
+        double CKd = constant * D;
+                
+        kp -= CKp > max_value ? max_value : CKp;
+        ki -= CKi > max_value ? max_value : CKi;
+        kd -= CKd > max_value ? max_value : CKd;
+    }
+
+    double SmartPID::get_expected(const double e) { 
+        double Y = correction_constant * e;
+        if (abs(Y) > max_value) {
+            Y = max_value;
+        }
+        return Y;
+    }
+
+}
+

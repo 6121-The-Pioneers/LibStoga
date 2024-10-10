@@ -24,7 +24,7 @@ namespace ls {
         return (0 < val) - (val < 0);
     }
 
-    float PID::update(const float error) {
+    double PID::update(const double error) {
         
         integral += error;
         integral = std::clamp(integral, -windupRange, windupRange);
