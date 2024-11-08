@@ -58,7 +58,12 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() {
+	///// TODO: MAKE THIS FORMAT WORK:
+	// chassis.moveTo(0, 0, 5000);
+	// chassis.moveTo(38.109, -32.738, 5000);
+
+}
 
 /**
  * Runs the operator control code. This function will be started in its own task
