@@ -250,6 +250,7 @@ namespace ls {
 		double deltaL = 0; // in inches
 		double deltaR = 0; // in inches
 		double deltaB = 0; // in inches
+		double deltaT = 0; // in degrees
 		
 	public:
 		/**
@@ -344,6 +345,7 @@ namespace ls {
 
 		double deltaH = 0; // in inches
 		double deltaV = 0; // in inches
+		double deltaT = 0; // in degrees
 		
 	public:
 		/**

@@ -3,20 +3,21 @@
 
 ls::imu_odom_parameters_t odom_params = {
 	{
+		10,
+		2.75,
+		false
+	},
+	2,
+	{
 		1,
 		2.75,
 		false
 	},
-	0.2,
-	{
-		2,
-		2.75,
-		false
-	},
-	0.3,
-	3
+	1.5,
+	15
 };
 
+pros::Imu imu(15);
 ls::ImuOdom odom(odom_params);
 
 /**
@@ -27,6 +28,7 @@ ls::ImuOdom odom(odom_params);
  */
 void initialize() {
 	pros::lcd::initialize();
+	imu.reset(true);
 }
 
 /**
@@ -79,59 +81,66 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	unsigned long jam_time = 0;
-	bool is_jammed = false;
-	const unsigned long JAM_LIMIT = 100;
+	// unsigned long jam_time = 0;
+	// bool is_jammed = false;
+	// const unsigned long JAM_LIMIT = 100;
 
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	pros::MotorGroup right({1, 2, 3});
-	pros::MotorGroup left({-18, -19, -20});
-	pros::ADIDigitalOut mogo('A');
-	pros::Motor intake(4);
+	// pros::MotorGroup right({18, 19, 20});
+	// pros::MotorGroup left({-11, -12, -13});
+	// pros::ADIDigitalOut mogo('A');
+	// pros::Motor intake(4);
 	
-	master.clear();
+	// master.clear();
 
-	right.set_brake_mode_all(MOTOR_BRAKE_COAST);
-	left.set_brake_mode_all(MOTOR_BRAKE_COAST);
-	intake.set_brake_mode(MOTOR_BRAKE_COAST);
+	// right.set_brake_mode_all(MOTOR_BRAKE_COAST);
+	// left.set_brake_mode_all(MOTOR_BRAKE_COAST);
+	// intake.set_brake_mode(MOTOR_BRAKE_COAST);
+
+	// while (true) {
+	// 	odom.compute();
+	// 	int angle = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
+	// 	int power = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+
+	// 	right.move(power - angle);
+	// 	left.move(power + angle);
+
+	// 	mogo.set_value(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1));
+	// 	// intake unjaming procedure as time state machine
+	// 	if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+	// 		if (!is_jammed) {
+	// 			intake.move(127);
+				
+	// 			if (intake.is_over_current()) {
+	// 				jam_time++;
+	// 			} else {
+	// 				jam_time = 0;
+	// 			}
+
+	// 			if (jam_time > JAM_LIMIT) {
+	// 				is_jammed = true;
+	// 			}
+	// 		}
+	// 		else {
+	// 			intake.move(-127);
+	// 			jam_time--;
+
+	// 			if (jam_time <= 0) {
+	// 				is_jammed = false;
+	// 			}
+	// 		}
+	// 	}
+
+	// 	master.print(0, 0, "(%f, %f), %f", odom.getX(), odom.getY(), odom.getAngle());
+
+	// 	pros::delay(20);
+	// }
 
 	while (true) {
 		odom.compute();
-		int angle = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
-		int power = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+		master.print(0, 0, "%f", odom.getDeltaAngle().convertToRadians());
 
-		right.move(power - angle);
-		left.move(power + angle);
-
-		mogo.set_value(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1));
-		// intake unjaming procedure as time state machine
-		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-			if (!is_jammed) {
-				intake.move(127);
-				
-				if (intake.is_over_current()) {
-					jam_time++;
-				} else {
-					jam_time = 0;
-				}
-
-				if (jam_time > JAM_LIMIT) {
-					is_jammed = true;
-				}
-			}
-			else {
-				intake.move(-127);
-				jam_time--;
-
-				if (jam_time <= 0) {
-					is_jammed = false;
-				}
-			}
-		}
-
-		pros::lcd::print(1, "(%f, %f), %f", odom.getX(), odom.getY(), odom.getAngle());
-
-		pros::delay(10);
+		pros::delay(20);
 	}
 	
 }

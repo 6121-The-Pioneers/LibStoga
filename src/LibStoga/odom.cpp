@@ -9,9 +9,10 @@
 namespace ls {
     void AbstractOdom::compute()
     {
+		Angle angle = getDeltaAngle();
 		pos.X += getDeltaX();
 		pos.Y += getDeltaY();
-		pos.theta += getDeltaAngle();
+		pos.theta += angle;
     }
 
     double AbstractOdom::getX()
@@ -151,21 +152,28 @@ namespace ls {
 
 	double ThreeWheelOdom::getDeltaX()
     {
-		return 2 * sin(getDeltaAngle().convertToRadians() / 2) * ((deltaB / getDeltaAngle().convertToRadians()) + centerToBack);
-        // return 0.0 if no movement
+		if (deltaT == 0) {
+			return 0;
+		} else {
+			return 2 * sin(degreesToRadians(deltaT) / 2) * ((deltaB / degreesToRadians(deltaT)) + centerToBack);
+		}
     }
 
     double ThreeWheelOdom::getDeltaY()
     {
-		return 2 * sin(getDeltaAngle().convertToRadians() / 2) * ((deltaR / getDeltaAngle().convertToRadians()) + centerToRight);
-        // return 0.0 if no movement
-    }
+		if (deltaT == 0) {
+			return 0;
+		}
+		else {
+			return 2 * sin(degreesToRadians(deltaT) / 2) * ((deltaR / degreesToRadians(deltaT)) + centerToRight);
+		}
+	}
 
     Angle ThreeWheelOdom::getDeltaAngle()
     {
 		double angleRadian = (deltaL - deltaR) / (centerToRight + centerToLeft);
-		double angleDegrees = angleRadian * 57.2958; // convert to degrees
-        return Angle(angleDegrees);
+		deltaT = angleRadian * 57.2958; // convert to degrees
+        return Angle(deltaT);
     }
 
     void ThreeWheelOdom::compute()
@@ -227,24 +235,32 @@ namespace ls {
 			}
 		}	
     } 
-
+	
 	double ImuOdom::getDeltaX()
     {
-    	return 2 * sin(getDeltaAngle().convertToRadians() / 2) * ((deltaH / getDeltaAngle().convertToRadians()) + centerToHoriz);
+		if (deltaT == 0) {
+			return 0;	
+		}
+		else {
+			return 2 * sin(degreesToRadians(deltaT) / 2) * ((deltaH / degreesToRadians(deltaT)) + centerToHoriz);
+		}
     }
 
     double ImuOdom::getDeltaY()
     {
-		return 2 * sin(getDeltaAngle().convertToRadians() / 2) * ((deltaV / getDeltaAngle().convertToRadians()) + centerToVert);
+		if (deltaT == 0) {
+			return 0;
+		} else {
+			return 2 * sin(degreesToRadians(deltaT) / 2) * ((deltaV / degreesToRadians(deltaT)) + centerToVert);
+		}
     }
 
     Angle ImuOdom::getDeltaAngle()
     {
-		double curRotation = IMU.get()->get_rotation();
-		double deltaRotation = curRotation - prevRotation;
-		Angle angleDegrees = Angle(deltaRotation) ; // convert to Angle
+		double curRotation = IMU->get_heading();
+		deltaT = curRotation - prevRotation;
 		prevRotation = curRotation;
-        return Angle(deltaRotation);
+        return Angle(deltaT);
     }
 
     void ImuOdom::compute()
