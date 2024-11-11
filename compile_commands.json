@@ -71,11 +71,11 @@
             "-funwind-tables",
             "--std=gnu++20",
             "-o",
-            "bin/LibStoga/odom.cpp.o",
-            "src\\LibStoga\\odom.cpp"
+            "bin/LibStoga/pid.cpp.o",
+            "src\\LibStoga\\pid.cpp"
         ],
         "directory": "C:\\Users\\varsh\\OneDrive - Tredyffrin Easttown School District\\Extra folder\\6121d robotics\\LibStoga",
-        "file": "src\\LibStoga\\odom.cpp"
+        "file": "src\\LibStoga\\pid.cpp"
     },
     {
         "arguments": [
@@ -110,11 +110,11 @@
             "-funwind-tables",
             "--std=gnu++20",
             "-o",
-            "bin/LibStoga/pid.cpp.o",
-            "src\\LibStoga\\pid.cpp"
+            "bin/LibStoga/odom.cpp.o",
+            "src\\LibStoga\\odom.cpp"
         ],
         "directory": "C:\\Users\\varsh\\OneDrive - Tredyffrin Easttown School District\\Extra folder\\6121d robotics\\LibStoga",
-        "file": "src\\LibStoga\\pid.cpp"
+        "file": "src\\LibStoga\\odom.cpp"
     },
     {
         "arguments": [
