@@ -107,7 +107,7 @@ void opcontrol() {
 		left.move(power + angle);
 
 		mogo.set_value(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1));
-		// intake unjaming procedure as time state machine
+		//// intake unjaming procedure as time state machine
 		// if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
 		// 	if (!is_jammed) {
 		// 		intake.move(127);

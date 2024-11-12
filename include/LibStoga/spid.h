@@ -1,8 +1,6 @@
 #ifndef LS_SPID_H
 #define LS_SPID_H
 
-#include "pid.h"
-
 namespace ls {
 
     /**
