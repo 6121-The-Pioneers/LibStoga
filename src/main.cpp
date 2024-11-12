@@ -1,5 +1,6 @@
 #include "main.h"
 #include "LibStoga/libstoga.h"
+#include "pros/motors.hpp"
 
 ls::imu_odom_parameters_t odom_params = {
 	{
@@ -75,5 +76,4 @@ void autonomous() {}
  */
 void opcontrol() {
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	
 }
