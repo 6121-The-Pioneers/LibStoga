@@ -95,9 +95,18 @@ void ls::TrackingWheel::setRadius(double wr)
 {
     radius = wr;
     if (encoder == nullptr) {
-        conversion_factor = radius / 360000.0;
+        conversion_factor = (6.28318531 * radius) / 36000.0;
     }
     else {
-        conversion_factor = radius / 360.0;
+        conversion_factor = (6.28318531 * radius) / 360.0;
+    }
+}
+
+void ls::TrackingWheel::reset()
+{
+    if (encoder == nullptr) {
+        rotation->reset_position();
+    } else {
+        encoder->reset();
     }
 }

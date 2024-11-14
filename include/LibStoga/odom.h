@@ -420,6 +420,8 @@ namespace ls {
 		Angle getDeltaAngle() override;
 
 		void compute() override;
+
+		void resetAll() override;
 	};
 
 };

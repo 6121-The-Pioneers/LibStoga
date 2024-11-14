@@ -269,5 +269,11 @@ namespace ls {
 		deltaV = vert.get()->getLinearDeltaDistance();
 		AbstractOdom::compute();
     }
-	
+
+    void ImuOdom::resetAll()
+    {
+		horiz->reset();
+		vert->reset();
+		AbstractOdom::resetAll();
+    }
 };
