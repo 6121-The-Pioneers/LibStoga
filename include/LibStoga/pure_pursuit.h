@@ -1,27 +1,55 @@
-#include <array>
-#include "LibStoga/spid.h"
+/**
+ * @file pure_pursuit.h
+ * @author Lord Nick
+ * @brief the file that contains all the code for the pure-persuit algorithm.
+ * @version 0.1
+ * @date 2024-11-12
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+#ifndef PURE_PURSUIT_LS_H
+#define PURE_PURSUIT_LS_H
+
+#include <vector>
+#include "odom.h"
 
 namespace ls {
-    class purePursuit {
+    class PurePursuit {
     public:
-        purePursuit(std::array<double, 10> targx, std::array<double, 10> targy); //constructor        
-        void move();//moves the bot
-    protected:
-        double x;//bot x position
-        double y;//bot y position
-        double spd;//bot speed
-        double hdg;//bot heading
-        int wp;//current waypoint target, indexer for target arrays
-        double dist;//distance between bot and waypoint
+        /**
+         * @brief Construct a new Pure Pursuit object
+         * 
+         * @param target_x the array of x coordinates of the targets
+         * @param target_y the array of y coordinates of the targets
+         * @param error_tolerance the error tolerance it should have to get to a point.
+         */
+        PurePursuit(std::vector<double>& target_x, std::vector<double>& target_y, ls::AbstractOdom& odom, double speed, double error_tolerance = 1);
 
-        SmartPID spidMove;//spid values for moving the bot
-        SmartPID spidTurn;//spid values for turning the bot
+        /**
+         * @brief Given the points and other required parameters, move the robot.
+         * This function will block excecution until robot is done with all required movements.
+         * 
+         */
+        void move();
 
-        std::array<double, 10> targx;//the x coords of all the target waypoints
-        std::array<double, 10> targy;//the y coords of aa the target waypoints
+    private:
+        double error_tolerance;
+        double speed;
 
-        double rx;//the x position of the current target waypoint reletive to the bot
-        double ry;//the y position of the current target waypoint reletive to the bot
-        double rh;//the direction the bot needs to be facing to be moving strait towards the target
+        double x;
+        double y;
+        double heading;
+        int waypoint;
+
+        std::vector<double> target_x;
+        std::vector<double> target_y;
+        ls::AbstractOdom* odom;
+
+        double rx;
+        double ry;
+        double rh;
     }; 
 }
+
+#endif // PURE_PURSUIT_LS_H
