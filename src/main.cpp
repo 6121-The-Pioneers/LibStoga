@@ -6,22 +6,27 @@
 
 ls::imu_odom_parameters_t odom_params = {
 	{
-		10,
-		2.75,
+		20,
+		1.375,
 		false
 	},
-	0.49,
+	99999999,
 	{
 		1,
-		2.75,
+		1.375,
 		false
 	},
-	2.5,
+	100000,
 	15
 };
 
 pros::Imu imu(15);
 ls::ImuOdom odom(odom_params);
+pros::MotorGroup right({10, 17, 18});
+pros::MotorGroup left({-14, -13, -12});
+pros::Controller master(pros::E_CONTROLLER_MASTER);
+pros::ADIDigitalOut mogo('B');
+pros::MotorGroup intake({19, -11});
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -32,6 +37,7 @@ ls::ImuOdom odom(odom_params);
 void initialize() {
 	pros::lcd::initialize();
 	imu.reset(true);
+	odom.resetAll();
 }
 
 /**
@@ -64,9 +70,27 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	///// TODO: MAKE THIS FORMAT WORK:
-	// chassis.moveTo(0, 0, 5000);
-	// chassis.moveTo(38.109, -32.738, 5000);
+	// ///// TODO: MAKE THIS FORMAT WORK:
+	// // chassis.moveTo(0, 0, 5000);
+	// // chassis.moveTo(38.109, -32.738, 5000);
+	ls::Angle goal(90);
+	ls::SmartPID spid(0.5, 90, 1, 127);
+
+	right.set_brake_mode_all(MOTOR_BRAKE_COAST);
+	left.set_brake_mode_all(MOTOR_BRAKE_COAST);
+	intake.set_brake_mode(MOTOR_BRAKE_COAST);
+	
+	while (true)
+	{
+		odom.compute();
+		ls::Angle current(odom.getAngle());
+		ls::Angle difference = goal.minimumAngleDifference(current);
+
+		double output = spid.update(difference.getAngle());
+
+		right.move(-output);
+		left.move(output);
+	}	
 
 }
 
@@ -84,16 +108,12 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+	autonomous();
+
 	unsigned long jam_time = 0;
 	bool is_jammed = false;
 	const unsigned long JAM_LIMIT = 100;
-	
-	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	pros::MotorGroup right({18, 19, 20});
-	pros::MotorGroup left({-11, -12, -13});
-	pros::ADIDigitalOut mogo('A');
-	pros::Motor intake(16);
-	
+	bool is_intake_on = false;	
 
 	right.set_brake_mode_all(MOTOR_BRAKE_COAST);
 	left.set_brake_mode_all(MOTOR_BRAKE_COAST);
@@ -104,39 +124,20 @@ void opcontrol() {
 		int angle = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
 		int power = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
-		right.move(power - angle);
-		left.move(power + angle);
+		right.move(power - 0.85 * angle);
+		left.move(power + 0.85 * angle);
 
-		mogo.set_value(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1));
-		//// intake unjaming procedure as time state machine
-		// if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-		// 	if (!is_jammed) {
-		// 		intake.move(127);
-				
-		// 		if (intake.is_over_current()) {
-		// 			jam_time++;
-		// 		} else {
-		// 			jam_time = 0;
-		// 		}
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
+			is_intake_on = !is_intake_on;
+		}
+		mogo.set_value(is_intake_on);
 
-		// 		if (jam_time > JAM_LIMIT) {
-		// 			is_jammed = true;
-		// 		}
-		// 	}
-		// 	else {
-		// 		intake.move(-127);
-		// 		jam_time--;
-
-		// 		if (jam_time <= 0) {
-		// 			is_jammed = false;
-		// 		}
-		// 	}
-		// }
 		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
 			intake.move(-127);
-		}
-		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+		} else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
 			intake.move(127);
+		} else {
+			intake.move(0);
 		}
 
 		pros::lcd::print(0, "(%f, %f), %f", odom.getX(), odom.getY(), odom.getAngle());

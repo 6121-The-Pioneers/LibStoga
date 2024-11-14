@@ -43,7 +43,7 @@ namespace ls {
          * @param radius radius of the wheel attached
          * @param reversed if is reversed by default
          */
-        explicit TrackingWheel(std::uint8_t port_upper, std::uint8_t port_lower, double radius=2.75, bool reversed=false);
+        explicit TrackingWheel(std::uint8_t port_upper, std::uint8_t port_lower, double radius=1.375, bool reversed=false);
 
         /**
          * @brief Construct a new Tracking Wheel object
@@ -89,6 +89,12 @@ namespace ls {
         * @param wheel_radius new radius in '(in)
         */
         virtual void setRadius(double wheel_radius);
+
+        /**
+         * @brief reset this tracking wheel.
+         * 
+         */
+        virtual void reset();
     private:
         double prev_distance = 0;
         long double prev_time = 0;

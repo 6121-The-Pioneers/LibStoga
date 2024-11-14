@@ -1,4 +1,7 @@
 #include "spid.h"
+#include <cmath>
+
+static double max_val = 1.7976931348623157E+308;
 
 static inline double abs(double val) {
     if (val < 0) return -val;
@@ -47,6 +50,15 @@ namespace ls {
         kp -= CKp > max_value ? max_value : CKp;
         ki -= CKi > max_value ? max_value : CKi;
         kd -= CKd > max_value ? max_value : CKd;
+
+        if (abs(kp) >= max_val || abs(ki) >= max_val || abs(kd) >= max_val) {
+            kp = 0;
+            ki = 0;
+            kd = 0;
+            reset();
+        } else if (iskp) {
+
+        }
     }
 
     double SmartPID::get_expected(const double e) { 
