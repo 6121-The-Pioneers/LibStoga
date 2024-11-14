@@ -6,7 +6,7 @@
 
 ls::imu_odom_parameters_t odom_params = {
 	{
-		10,
+		20,
 		2.75,
 		false
 	},
@@ -22,6 +22,12 @@ ls::imu_odom_parameters_t odom_params = {
 
 pros::Imu imu(15);
 ls::ImuOdom odom(odom_params);
+
+pros::MotorGroup right({10, 17, 18});
+pros::MotorGroup left({-14, -13, -12});
+pros::Controller master(pros::E_CONTROLLER_MASTER);
+pros::ADIDigitalOut mogo('A');
+pros::MotorGroup intake({19, -11});
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -67,6 +73,23 @@ void autonomous() {
 	///// TODO: MAKE THIS FORMAT WORK:
 	// chassis.moveTo(0, 0, 5000);
 	// chassis.moveTo(38.109, -32.738, 5000);
+	ls::Angle goal(90);
+	ls::SmartPID spid(0.1, 90, 0.1, 127);
+
+	right.set_brake_mode_all(MOTOR_BRAKE_COAST);
+	left.set_brake_mode_all(MOTOR_BRAKE_COAST);
+	intake.set_brake_mode(MOTOR_BRAKE_COAST);
+	
+	while (true)
+	{
+		odom.compute();
+		ls::Angle current(odom.getAngle());
+		ls::Angle difference = goal.minimumAngleDifference(current);
+
+		double output = spid.update(difference.getAngle());
+		right.move(-output);
+		left.move(output);
+	}
 
 }
 
@@ -86,14 +109,7 @@ void autonomous() {
 void opcontrol() {
 	unsigned long jam_time = 0;
 	bool is_jammed = false;
-	const unsigned long JAM_LIMIT = 100;
-	
-	pros::Controller master(pros::E_CONTROLLER_MASTER);
-	pros::MotorGroup right({18, 19, 20});
-	pros::MotorGroup left({-11, -12, -13});
-	pros::ADIDigitalOut mogo('A');
-	pros::Motor intake(16);
-	
+	const unsigned long JAM_LIMIT = 100;	
 
 	right.set_brake_mode_all(MOTOR_BRAKE_COAST);
 	left.set_brake_mode_all(MOTOR_BRAKE_COAST);
@@ -108,35 +124,12 @@ void opcontrol() {
 		left.move(power + angle);
 
 		mogo.set_value(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1));
-		//// intake unjaming procedure as time state machine
-		// if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-		// 	if (!is_jammed) {
-		// 		intake.move(127);
-				
-		// 		if (intake.is_over_current()) {
-		// 			jam_time++;
-		// 		} else {
-		// 			jam_time = 0;
-		// 		}
-
-		// 		if (jam_time > JAM_LIMIT) {
-		// 			is_jammed = true;
-		// 		}
-		// 	}
-		// 	else {
-		// 		intake.move(-127);
-		// 		jam_time--;
-
-		// 		if (jam_time <= 0) {
-		// 			is_jammed = false;
-		// 		}
-		// 	}
-		// }
 		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
 			intake.move(-127);
-		}
-		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+		} else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
 			intake.move(127);
+		} else {
+			intake.move(0);
 		}
 
 		pros::lcd::print(0, "(%f, %f), %f", odom.getX(), odom.getY(), odom.getAngle());
