@@ -74,12 +74,12 @@ void autonomous() {
 	// // chassis.moveTo(0, 0, 5000);
 	// // chassis.moveTo(38.109, -32.738, 5000);
 	ls::Angle goal(90);
-	ls::SmartPID spid(0.5, 90, 1, 127);
+	ls::SmartPID spid(0.01, 4, 0.0024, 40);
 
 	right.set_brake_mode_all(MOTOR_BRAKE_COAST);
 	left.set_brake_mode_all(MOTOR_BRAKE_COAST);
 	intake.set_brake_mode(MOTOR_BRAKE_COAST);
-	
+
 	while (true)
 	{
 		odom.compute();
@@ -88,8 +88,11 @@ void autonomous() {
 
 		double output = spid.update(difference.getAngle());
 
+		master.print(0, 0, "%f", odom.getAngle());
 		right.move(-output);
 		left.move(output);
+		pros::delay(1);
+
 	}	
 
 }
