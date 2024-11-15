@@ -11,8 +11,7 @@ namespace ls {
         if (target_x.size() != target_y.size()) {
             THROW_ERROR("X and Y target arrays are unequal in length, please double check your points.");
         }
-        target_x = _target_x;
-        target_y = _target_y;
+        path = _path;
         error_tolerance = _error_tolerance;
         odom = &_odom;
         speed = _speed;
@@ -36,7 +35,9 @@ namespace ls {
             odom->compute();
 
             //// define useful variables:
-            ls::Position current_waypoint(target_x[waypoint], target_y[waypoint], 0);
+            ls::Position current_waypoint(path[waypoint].x, path[waypoint].y, 0);
+            rx = path[waypoint].x-x;
+            ry = path[waypoint].y-y;
             ls::Angle rel_heading(radiansToDegrees(atan2(rx, ry)));
             //// get power ratio - how much power needs to be proportionally decreased based on turn.
             double power_ratio;
@@ -47,12 +48,12 @@ namespace ls {
             }
             
             //// check to see if we can advance:
-            if (abs(rx) <= error_tolerance && abs(ry) <= error_tolerance && waypoint < target_x.size() - 1) {
+            if (abs(rx) <= error_tolerance && abs(ry) <= error_tolerance && waypoint < path.size() - 1) {
                 forward.reset();
                 turn.reset();
                 waypoint++;
                 continue;
-            } else if (waypoint >= target_x.size() - 1) {
+            } else if (waypoint >= path.size() - 1) {
                 break;
             }
             
@@ -64,6 +65,12 @@ namespace ls {
             // delay to make sure brain safe from overheating:
             pros::delay(5);
         }
+    }
+
+    point::point(double x, double y, bool fowards) {
+        this.x = x;
+        this.y = y;
+        this.fowards = fowards;
     }
 
 

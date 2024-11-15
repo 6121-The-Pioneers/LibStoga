@@ -3,6 +3,7 @@
 #include "pros/motors.hpp"
 #include "pros/llemu.hpp"
 #include <cmath>
+#include "LibStoga/pure_pursuit.h"
 
 ls::imu_odom_parameters_t odom_params = {
 	{
@@ -27,6 +28,8 @@ pros::MotorGroup left({-14, -13, -12});
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 pros::ADIDigitalOut mogo('B');
 pros::MotorGroup intake({19, -11});
+
+vector<point> path = {new point(32, 64, true), new point(98, 32, false), new point(105, 93, true)};
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
