@@ -29,16 +29,24 @@ namespace ls {
         /**
          * @brief Construct a new Pure Pursuit object
          * 
-         * @param target_x the array of x coordinates of the targets
-         * @param target_y the array of y coordinates of the targets
+         * @param path the path the bot will follow
          * @param error_tolerance the error tolerance it should have to get to a point.
          */
-        PurePursuit(std::vector<double>& target_x, std::vector<double>& target_y, ls::AbstractOdom& odom, double lookahead, double error_tolerance = 1, double turn_sensitivity = 1, double speed = 127);
+        PurePursuit(std::pmr::vector<point> path, ls::AbstractOdom& odom, double lookahead, double error_tolerance = 1, double turn_sensitivity = 1, double speed = 127);
 
+        PurePursuit(double error_tolerance, double speed, double lookahead,
+                    double turn_sensitivity, double x, double y, double heading,
+                    int waypoint, int target_x, int target_y,
+                    ls::AbstractOdom *odom, double rx, double ry, double rh)
+            : error_tolerance(error_tolerance), speed(speed),
+              lookahead(lookahead), turn_sensitivity(turn_sensitivity), x(x),
+              y(y), heading(heading), waypoint(waypoint), target_x(target_x),
+              target_y(target_y), odom(odom), rx(rx), ry(ry), rh(rh) {}
         /**
-         * @brief Given the points and other required parameters, move the robot.
-         * This function will block excecution until robot is done with all required movements.
-         * 
+         * @brief Given the points and other required parameters, move the
+         * robot. This function will block excecution until robot is done with
+         * all required movements.
+         *
          */
         void move();
 
@@ -47,19 +55,22 @@ namespace ls {
         double speed;
         double lookahead;
         double turn_sensitivity;
-
         double x;
         double y;
         double heading;
         int waypoint;
-
-        std::vector<double> target_x;
-        std::vector<double> target_y;
         ls::AbstractOdom* odom;
 
         double rx;
         double ry;
         double rh;
+    };
+
+    struct point {
+            point(double x, double y, bool foward);
+            double x;
+            double y;
+            bool foward;
     };
 
     /**
