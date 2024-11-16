@@ -3,6 +3,7 @@
 #include "pros/adi.hpp"
 #include "pros/motors.hpp"
 #include "pros/llemu.hpp"
+#include "pros/rtos.hpp"
 #include <cmath>
 // #include "LibStoga/pure_pursuit.h"
 
@@ -31,13 +32,13 @@ pros::adi::DigitalOut mogo('B');
 pros::adi::DigitalOut mogo2('A');
 pros::MotorGroup intake({1, -2});
 pros::MotorGroup wallstake({69});
-ls::HighStakesRobot robot(right, left, intake, wallstake, mogo);
+// ls::HighStakesRobot robot(right, left, intake, wallstake, mogo);
 
-std::vector<ls::Point> path = {
+// std::vector<ls::Point> path = {
 
-};
+// };
 
-ls::PurePursuit persuit(path, odom, robot, 10, 2, 1, 127);
+// ls::PurePursuit persuit(path, odom, robot, 10, 2, 1, 127);
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -104,8 +105,13 @@ void autonomous() {
 	// 	left.move(output);
 	// 	pros::delay(1);
 	// }
-	persuit.move();
-
+	// persuit.move();
+	right.move(-127/2);
+	left.move(-127/2);
+	pros::delay(2000);
+	
+	right.move(0);
+	left.move(0);
 }
 
 /**
