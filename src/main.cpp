@@ -28,8 +28,14 @@ pros::MotorGroup left({-14, -13, -12});
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 pros::ADIDigitalOut mogo('B');
 pros::MotorGroup intake({19, -11});
+pros::MotorGroup wallstake({69});
+ls::HighStakesRobot robot(right, left, intake, wallstake, mogo);
 
-vector<point> path = {new point(32, 64, true), new point(98, 32, false), new point(105, 93, true)};
+std::vector<ls::Point> path = {
+
+};
+
+ls::PurePursuit persuit(path, odom, robot, 10, 2, 1, 127);
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -76,27 +82,27 @@ void autonomous() {
 	// ///// TODO: MAKE THIS FORMAT WORK:
 	// // chassis.moveTo(0, 0, 5000);
 	// // chassis.moveTo(38.109, -32.738, 5000);
-	ls::Angle goal(90);
-	ls::SmartPID spid(0.01, 4, 0.0024, 40);
+	// ls::Angle goal(90);
+	// ls::SmartPID spid(0.01, 4, 0.0024, 40);
 
-	right.set_brake_mode_all(MOTOR_BRAKE_COAST);
-	left.set_brake_mode_all(MOTOR_BRAKE_COAST);
-	intake.set_brake_mode(MOTOR_BRAKE_COAST);
+	// right.set_brake_mode_all(MOTOR_BRAKE_COAST);
+	// left.set_brake_mode_all(MOTOR_BRAKE_COAST);
+	// intake.set_brake_mode(MOTOR_BRAKE_COAST);
 
-	while (true)
-	{
-		odom.compute();
-		ls::Angle current(odom.getAngle());
-		ls::Angle difference = goal.minimumAngleDifference(current);
+	// while (true)
+	// {
+	// 	odom.compute();
+	// 	ls::Angle current(odom.getAngle());
+	// 	ls::Angle difference = goal.minimumAngleDifference(current);
 
-		double output = spid.update(difference.getAngle());
+	// 	double output = spid.update(difference.getAngle());
 
-		master.print(0, 0, "%f", odom.getAngle());
-		right.move(-output);
-		left.move(output);
-		pros::delay(1);
-
-	}	
+	// 	master.print(0, 0, "%f", odom.getAngle());
+	// 	right.move(-output);
+	// 	left.move(output);
+	// 	pros::delay(1);
+	// }
+	persuit.move();
 
 }
 
@@ -114,8 +120,6 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	autonomous();
-
 	unsigned long jam_time = 0;
 	bool is_jammed = false;
 	const unsigned long JAM_LIMIT = 100;

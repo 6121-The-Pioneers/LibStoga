@@ -16,8 +16,23 @@
 #include "odom.h"
 
 namespace ls {
+    /**
+     * @brief The struct that represents all moving motors and parts of 6121D
+     * 
+     */
+    struct HighStakesRobot {
+        bool mogo_state = false;
+        pros::MotorGroup* right;
+        pros::MotorGroup* left;
+        pros::MotorGroup* intake;
+        pros::MotorGroup* wallstake;
+        pros::ADIDigitalOut* mogo;
+
+        HighStakesRobot(pros::MotorGroup& right, pros::MotorGroup& left, pros::MotorGroup& intake, pros::MotorGroup& wallstake, pros::ADIDigitalOut& mogo);
+    };
+
     struct pure_persuit_parameters_t {
-        std::vector<std::array<double, 2>> waypoints;
+        std::vector<Point> waypoints;
         double lookahead;
         double error_tolerance = 1;
         double turn_sensitivity = 1;
@@ -32,16 +47,8 @@ namespace ls {
          * @param path the path the bot will follow
          * @param error_tolerance the error tolerance it should have to get to a point.
          */
-        PurePursuit(std::pmr::vector<point> path, ls::AbstractOdom& odom, double lookahead, double error_tolerance = 1, double turn_sensitivity = 1, double speed = 127);
+        PurePursuit(std::vector<Point>& path, ls::AbstractOdom& odom, ls::HighStakesRobot& robot, double lookahead, double error_tolerance = 1, double turn_sensitivity = 1, double speed = 127);
 
-        PurePursuit(double error_tolerance, double speed, double lookahead,
-                    double turn_sensitivity, double x, double y, double heading,
-                    int waypoint, int target_x, int target_y,
-                    ls::AbstractOdom *odom, double rx, double ry, double rh)
-            : error_tolerance(error_tolerance), speed(speed),
-              lookahead(lookahead), turn_sensitivity(turn_sensitivity), x(x),
-              y(y), heading(heading), waypoint(waypoint), target_x(target_x),
-              target_y(target_y), odom(odom), rx(rx), ry(ry), rh(rh) {}
         /**
          * @brief Given the points and other required parameters, move the
          * robot. This function will block excecution until robot is done with
@@ -50,27 +57,51 @@ namespace ls {
          */
         void move();
 
+        /**
+         * @brief performs an action that is not relating to moving on the field.
+         * 
+         * @param action action to be performed.
+         */
+        void performAction(Actions action);
+
     private:
         double error_tolerance;
         double speed;
         double lookahead;
         double turn_sensitivity;
-        double x;
-        double y;
-        double heading;
         int waypoint;
+
         ls::AbstractOdom* odom;
+        std::vector<Point> path;
+        ls::HighStakesRobot* robot;
 
         double rx;
         double ry;
         double rh;
     };
 
-    struct point {
-            point(double x, double y, bool foward);
-            double x;
-            double y;
-            bool foward;
+    enum class Actions {
+        NONE = 0,
+        INTAKE_STOP = 1,
+        INTAKE = 2,
+        OUTTAKE = 3,
+        MOGO_UP = 4,
+        MOGO_DOWN = 5,
+        MOGO_TOGGLE = 6,
+        WALLSTAKE_INACTIVE = 7,
+        WALLSTAKE_ACTIVE = 8,
+        WALLSTAKE_SCORE = 9,
+    };
+
+    struct Point {
+        Point(double x, double y, bool foward, unsigned int delayAfterPoint = 5);
+        double x;
+        double y;
+        bool fowards;
+        unsigned int delayAfterPoint = 5; // delay starts after moving to point
+        Actions action = Actions::NONE; // action starts before moving to point
+
+        void operator=(Point other);
     };
 
     /**
