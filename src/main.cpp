@@ -1,9 +1,10 @@
 #include "main.h"
 #include "LibStoga/libstoga.h"
+#include "pros/adi.hpp"
 #include "pros/motors.hpp"
 #include "pros/llemu.hpp"
 #include <cmath>
-#include "LibStoga/pure_pursuit.h"
+// #include "LibStoga/pure_pursuit.h"
 
 ls::imu_odom_parameters_t odom_params = {
 	{
@@ -23,11 +24,12 @@ ls::imu_odom_parameters_t odom_params = {
 
 pros::Imu imu(15);
 ls::ImuOdom odom(odom_params);
-pros::MotorGroup right({10, 17, 18});
-pros::MotorGroup left({-14, -13, -12});
+pros::MotorGroup right({6, 7, 8});
+pros::MotorGroup left({-20, -10, -9});
 pros::Controller master(pros::E_CONTROLLER_MASTER);
-pros::ADIDigitalOut mogo('B');
-pros::MotorGroup intake({19, -11});
+pros::adi::DigitalOut mogo('B');
+pros::adi::DigitalOut mogo2('A');
+pros::MotorGroup intake({1, -2});
 pros::MotorGroup wallstake({69});
 ls::HighStakesRobot robot(right, left, intake, wallstake, mogo);
 
