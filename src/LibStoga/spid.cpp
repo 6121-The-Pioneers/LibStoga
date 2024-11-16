@@ -51,13 +51,11 @@ namespace ls {
         ki -= CKi > max_value ? max_value : CKi;
         kd -= CKd > max_value ? max_value : CKd;
 
-        if (abs(kp) >= max_val || abs(ki) >= max_val || abs(kd) >= max_val) {
+        if (isnanf(kp) || isnanf(ki) || isnanf(kd) || isinff(kp) || isinff(ki) || isinff(kd)) {
             kp = 0;
             ki = 0;
             kd = 0;
             reset();
-        } else if (iskp) {
-
         }
     }
 
