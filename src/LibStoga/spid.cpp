@@ -9,15 +9,19 @@ static inline double abs(double val) {
 }
 
 namespace ls {
-    SmartPID::SmartPID(double cc, double w, double lc, double max)
-        : kp(0), ki(0), kd(0), P(0), I(0), D(0), prev_val(0), correction_constant(cc), windup(w), learning_constant(lc), max_value(max) {}
+    SmartPID::SmartPID(double cc, double w, double lc, double max, double damp)
+        : kp(0), ki(0), kd(0), P(0), I(0), D(0), prev_val(0), correction_constant(cc), windup(w), learning_constant(lc), max_value(max), damp(damp) {}
 
     double SmartPID::update(const double e) {
         P = e;
         update_components(e);
         update_constants(e);
+
+        double tor = kp * P + ki * I + kd * D;
+        tor -= damp * velocity;
+        velocity = tor + prev_velocity;
         
-        return kp * P + ki * I + kd * D;
+        return tor;
     }
 
     void SmartPID::reset()

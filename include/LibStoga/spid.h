@@ -17,7 +17,7 @@ namespace ls {
              * @param lc the learning constant. the rate at which it should learn
              * @param max the maximum value of the PID output.
              */
-            SmartPID(double cc, double w, double lc, double max);
+            SmartPID(double cc, double w, double lc, double max, double damp);
 
             /**
              * @brief Calculate the new PID value given the error.
@@ -37,11 +37,14 @@ namespace ls {
             double kp;
             double ki;
             double kd;
+            double damp;
             
             double P;
             double I;
             double D;
             double prev_val;
+            double prev_velocity = 0;
+            double velocity = 0;
             
             double correction_constant;
             double windup;

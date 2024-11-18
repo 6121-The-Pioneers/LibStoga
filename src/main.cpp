@@ -7,35 +7,34 @@
 
 ls::imu_odom_parameters_t odom_params = {
 	{
-		20,
+		13,
 		1.375,
 		false
 	},
-	99999999,
+	0,
 	{
-		1,
+		12,
 		1.375,
 		false
 	},
-	100000,
-	15
+	2,
+	5
 };
 
-pros::Imu imu(15);
+pros::Imu imu(5);
 ls::ImuOdom odom(odom_params);
-pros::MotorGroup right({10, 17, 18});
-pros::MotorGroup left({-14, -13, -12});
+pros::MotorGroup right({6, 7, 8});
+pros::MotorGroup left({-20, -10, -9});
 pros::Controller master(pros::E_CONTROLLER_MASTER);
-pros::ADIDigitalOut mogo('B');
-pros::MotorGroup intake({19, -11});
+pros::ADIDigitalOut mogo('A');
+pros::MotorGroup intake({1, -2});
 pros::MotorGroup wallstake({69});
-ls::HighStakesRobot robot(right, left, intake, wallstake, mogo);
+// ls::HighStakesRobot robot(right, left, intake, wallstake, mogo);
 
-std::vector<ls::Point> path = {
+// std::vector<ls::Point> path = {
+// };
 
-};
-
-ls::PurePursuit persuit(path, odom, robot, 10, 2, 1, 127);
+// ls::PurePursuit persuit(path, odom, robot, 10, 2, 1, 127);
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -83,7 +82,7 @@ void autonomous() {
 	// // chassis.moveTo(0, 0, 5000);
 	// // chassis.moveTo(38.109, -32.738, 5000);
 	// ls::Angle goal(90);
-	// ls::SmartPID spid(0.01, 4, 0.0024, 40);
+	// ls::SmartPID spid(0.01, 4, 0.0024, 40, 0);
 
 	// right.set_brake_mode_all(MOTOR_BRAKE_COAST);
 	// left.set_brake_mode_all(MOTOR_BRAKE_COAST);
@@ -102,8 +101,13 @@ void autonomous() {
 	// 	left.move(output);
 	// 	pros::delay(1);
 	// }
-	persuit.move();
+	// persuit.move();
 
+	right.move(-127/2);
+	left.move(-127/2);
+	pros::delay(1000);
+	right.move(0);
+	left.move(0);
 }
 
 /**
@@ -130,7 +134,6 @@ void opcontrol() {
 	intake.set_brake_mode(MOTOR_BRAKE_COAST);
 
 	while (true) {
-		odom.compute();
 		int angle = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
 		int power = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
@@ -143,14 +146,12 @@ void opcontrol() {
 		mogo.set_value(is_intake_on);
 
 		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-			intake.move(-127);
+			intake.move(-100);
 		} else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-			intake.move(127);
+			intake.move(100);
 		} else {
 			intake.move(0);
 		}
-
-		pros::lcd::print(0, "(%f, %f), %f", odom.getX(), odom.getY(), odom.getAngle());
 
 		pros::delay(20);
 	}
