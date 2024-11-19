@@ -26,7 +26,7 @@ namespace ls {
     struct fast_pure_persuit_parameters_t {
         ls::AbstractOdom* odom;
         ls::Chassis chassis;
-        ls::Components components;
+        // ls::Components components;
         ls::smart_pid_parameters_t turn;
         
         double turn_sensitivity;
@@ -41,7 +41,7 @@ namespace ls {
     private:
         ls::AbstractOdom* odom;
         ls::Chassis chassis;
-        ls::Components components;
+        // ls::Components components;
         ls::smart_pid_parameters_t turn;
         
         double turn_sensitivity;
