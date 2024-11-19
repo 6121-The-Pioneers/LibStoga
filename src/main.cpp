@@ -28,8 +28,7 @@ ls::ImuOdom odom(odom_params);
 pros::MotorGroup right({6, 7, 8});
 pros::MotorGroup left({-20, -10, -9});
 pros::Controller master(pros::E_CONTROLLER_MASTER);
-pros::adi::DigitalOut mogo('B');
-pros::adi::DigitalOut mogo2('A');
+pros::adi::DigitalOut mogo('A');
 pros::MotorGroup intake({1, -2});
 pros::MotorGroup wallstake({69});
 // ls::HighStakesRobot robot(right, left, intake, wallstake, mogo);
@@ -109,7 +108,6 @@ void autonomous() {
 	right.move(-127/2);
 	left.move(-127/2);
 	pros::delay(2000);
-	
 	right.move(0);
 	left.move(0);
 }
@@ -131,7 +129,7 @@ void opcontrol() {
 	unsigned long jam_time = 0;
 	bool is_jammed = false;
 	const unsigned long JAM_LIMIT = 100;
-	bool is_intake_on = false;	
+	bool is_mogo_on = false;	
 
 	right.set_brake_mode_all(MOTOR_BRAKE_COAST);
 	left.set_brake_mode_all(MOTOR_BRAKE_COAST);
@@ -145,10 +143,11 @@ void opcontrol() {
 		right.move(power - 0.85 * angle);
 		left.move(power + 0.85 * angle);
 
-		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
-			is_intake_on = !is_intake_on;
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
+			is_mogo_on = !is_mogo_on;
 		}
-		mogo.set_value(is_intake_on);
+		mogo.set_value(is_mogo_on);
+
 
 		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
 			intake.move(-127);
@@ -158,7 +157,7 @@ void opcontrol() {
 			intake.move(0);
 		}
 
-		pros::lcd::print(0, "(%f, %f), %f", odom.getX(), odom.getY(), odom.getAngle());
+		pros::lcd::print(0, "%i", (int)is_mogo_on);
 
 		pros::delay(20);
 	}
