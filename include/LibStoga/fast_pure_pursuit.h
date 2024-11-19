@@ -42,7 +42,7 @@ namespace ls {
         ls::AbstractOdom* odom;
         ls::Chassis chassis;
         ls::Components components;
-        ls::spid_parameters_t turn;
+        ls::smart_pid_parameters_t turn;
         
         double turn_sensitivity;
         double inertia_radius;
