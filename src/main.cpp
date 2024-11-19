@@ -1,9 +1,11 @@
 #include "main.h"
 #include "LibStoga/libstoga.h"
+#include "pros/adi.hpp"
 #include "pros/motors.hpp"
 #include "pros/llemu.hpp"
+#include "pros/rtos.hpp"
 #include <cmath>
-#include "LibStoga/pure_pursuit.h"
+// #include "LibStoga/pure_pursuit.h"
 
 ls::imu_odom_parameters_t odom_params = {
 	{

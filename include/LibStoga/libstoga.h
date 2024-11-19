@@ -11,7 +11,7 @@
 #include "tracking.h"
 #include "timer.hpp"
 #include "spid.h"
-#include "pure_pursuit.h"
+// #include "pure_pursuit.h"
 
 
 #endif // !LIBSTOGA_LS_H

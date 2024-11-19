@@ -89,4 +89,5 @@ namespace ls {
         this->fowards = other.fowards;
         this->delayAfterPoint = other.delayAfterPoint;
     }
-}
+};
+
