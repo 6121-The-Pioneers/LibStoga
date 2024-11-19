@@ -24,7 +24,7 @@ ls::imu_odom_parameters_t odom_params = {
 };
 
 pros::Imu imu(5);
-
+pros::Optical racism(3);
 ls::ImuOdom odom(odom_params);
 pros::MotorGroup right({6, 7, 8});
 pros::MotorGroup left({-20, -10, -9});
@@ -45,6 +45,7 @@ pros::ADIDigitalOut mogo('A');
  */
 void initialize() {
 	pros::lcd::initialize();
+	racism.set_led_pwm(100);
 	imu.reset(true);
 	odom.resetAll();
 }
@@ -65,7 +66,9 @@ void disabled() {}
  * This task will exit when the robot is enabled and autonomous or opcontrol
  * starts.
  */
-void competition_initialize() {}
+void competition_initialize() {
+
+}
 
 /**
  * @brief If all else fails, this auton will move straight to the ladder.
@@ -130,6 +133,12 @@ void opcontrol() {
 
 		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
 			intake.move(-SECOND_STAGE_SPEED);
+			if(racism.getHue() >=200 && racism.getHue <= 220) {
+				pros::delay(250);
+				intake.move(0);
+				pros::delay(10);
+				intake.move(-SECOND_STAGE_SPEED);
+			}
 		} else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
 			intake.move(SECOND_STAGE_SPEED);
 		} else {
