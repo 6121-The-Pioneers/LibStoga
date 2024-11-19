@@ -3,6 +3,14 @@
 
 namespace ls {
 
+    struct smart_pid_parameters_t {
+        double correction_constant;
+        double windup;
+        double learning_constant;
+        double max_value;
+        double damp;
+    };
+
     /**
      * @brief The Smart PID class... an extension of the PID class that will adapt based on error. No need to provide constants.
      * 
@@ -18,6 +26,13 @@ namespace ls {
              * @param max the maximum value of the PID output.
              */
             SmartPID(double cc, double w, double lc, double max, double damp);
+
+            /**
+             * @brief Construct a new SmartPID object
+             * 
+             * @param parameters parameter that contains all values given by struct.
+             */
+            SmartPID(smart_pid_parameters_t& parameters);
 
             /**
              * @brief Calculate the new PID value given the error.

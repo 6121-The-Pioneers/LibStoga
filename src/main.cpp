@@ -22,19 +22,18 @@ ls::imu_odom_parameters_t odom_params = {
 };
 
 pros::Imu imu(5);
+
 ls::ImuOdom odom(odom_params);
 pros::MotorGroup right({6, 7, 8});
 pros::MotorGroup left({-20, -10, -9});
 pros::Controller master(pros::E_CONTROLLER_MASTER);
-pros::ADIDigitalOut mogo('A');
 pros::MotorGroup intake({1, -2});
 pros::MotorGroup wallstake({69});
-// ls::HighStakesRobot robot(right, left, intake, wallstake, mogo);
+
+pros::ADIDigitalOut mogo('A');
 
 // std::vector<ls::Point> path = {
 // };
-
-// ls::PurePursuit persuit(path, odom, robot, 10, 2, 1, 127);
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -67,6 +66,17 @@ void disabled() {}
 void competition_initialize() {}
 
 /**
+ * @brief If all else fails, this auton will move straight to the ladder.
+ * 
+ */
+void backup_autonomous_ladder_touch() {
+	right.move(-127/2);
+	left.move(-127/2);
+	pros::delay(1500);
+	right.move(0);
+	left.move(0);
+}
+/**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
  * the Field Management System or the VEX Competition Switch in the autonomous
@@ -78,36 +88,8 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	// ///// TODO: MAKE THIS FORMAT WORK:
-	// // chassis.moveTo(0, 0, 5000);
-	// // chassis.moveTo(38.109, -32.738, 5000);
-	// ls::Angle goal(90);
-	// ls::SmartPID spid(0.01, 4, 0.0024, 40, 0);
-
-	// right.set_brake_mode_all(MOTOR_BRAKE_COAST);
-	// left.set_brake_mode_all(MOTOR_BRAKE_COAST);
-	// intake.set_brake_mode(MOTOR_BRAKE_COAST);
-
-	// while (true)
-	// {
-	// 	odom.compute();
-	// 	ls::Angle current(odom.getAngle());
-	// 	ls::Angle difference = goal.minimumAngleDifference(current);
-
-	// 	double output = spid.update(difference.getAngle());
-
-	// 	master.print(0, 0, "%f", odom.getAngle());
-	// 	right.move(-output);
-	// 	left.move(output);
-	// 	pros::delay(1);
-	// }
-	// persuit.move();
-
-	right.move(-127/2);
-	left.move(-127/2);
-	pros::delay(1000);
-	right.move(0);
-	left.move(0);
+	// touch ladder and call it a match.
+	backup_autonomous_ladder_touch();
 }
 
 /**
@@ -124,10 +106,9 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	unsigned long jam_time = 0;
-	bool is_jammed = false;
-	const unsigned long JAM_LIMIT = 100;
-	bool is_intake_on = false;	
+	bool is_mogo_on = false;
+	constexpr double TURN_SENSITIVITY = 0.85;
+	constexpr int  SECOND_STAGE_SPEED = 100;
 
 	right.set_brake_mode_all(MOTOR_BRAKE_COAST);
 	left.set_brake_mode_all(MOTOR_BRAKE_COAST);
@@ -141,14 +122,14 @@ void opcontrol() {
 		left.move(power + 0.85 * angle);
 
 		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
-			is_intake_on = !is_intake_on;
+			is_mogo_on = !is_mogo_on;
 		}
-		mogo.set_value(is_intake_on);
+		mogo.set_value(is_mogo_on);
 
 		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-			intake.move(-100);
+			intake.move(-SECOND_STAGE_SPEED);
 		} else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-			intake.move(100);
+			intake.move(SECOND_STAGE_SPEED);
 		} else {
 			intake.move(0);
 		}

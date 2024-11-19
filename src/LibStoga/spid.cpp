@@ -12,6 +12,15 @@ namespace ls {
     SmartPID::SmartPID(double cc, double w, double lc, double max, double damp)
         : kp(0), ki(0), kd(0), P(0), I(0), D(0), prev_val(0), correction_constant(cc), windup(w), learning_constant(lc), max_value(max), damp(damp) {}
 
+    SmartPID::SmartPID(smart_pid_parameters_t &parameters): kp(0), ki(0), kd(0), P(0), I(0), D(0), prev_val(0)
+    {
+        correction_constant = parameters.correction_constant;
+        windup = parameters.windup;
+        learning_constant = parameters.learning_constant;
+        max_value = parameters.max_value;
+        damp = parameters.damp;
+    }
+
     double SmartPID::update(const double e) {
         P = e;
         update_components(e);
