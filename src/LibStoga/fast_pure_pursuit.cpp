@@ -6,17 +6,17 @@ ls::Chassis::Chassis(pros::MotorGroup& _right, pros::MotorGroup& _left)
     left = &_left;
 }
 
-ls::FastPurePursuit::FastPurePursuit(fast_pure_persuit_parameters_t &parameters)
-{
-    odom = parameters.odom;
-    chassis = parameters.chassis;
-    // ls::Components components;
-    // turn;
+// ls::FastPurePursuit::FastPurePursuit(fast_pure_persuit_parameters_t &parameters)
+// {
+//     odom = parameters.odom;
+//     chassis = parameters.chassis;
+//     // ls::Components components;
+//     // turn;
         
-    // turn_sensitivity;
-    // inertia_radius;
-    // acceptable_goal_error;
-    // max_speed;
+//     // turn_sensitivity;
+//     // inertia_radius;
+//     // acceptable_goal_error;
+//     // max_speed;
 
-    // path;
-}
+//     // path;
+// }
