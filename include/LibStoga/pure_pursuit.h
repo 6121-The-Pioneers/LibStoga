@@ -16,6 +16,16 @@
 #include "odom.h"
 
 namespace ls {
+    struct Point {
+        Point(double x, double y, bool foward, unsigned int delayAfterPoint = 5);
+        double x;
+        double y;
+        bool fowards;
+        unsigned int delayAfterPoint = 5; // delay starts after moving to point
+
+        void operator=(Point other);
+    };
+
     struct pure_persuit_parameters_t {
         std::vector<Point> waypoints;
         double lookahead;
@@ -57,16 +67,7 @@ namespace ls {
         double rh;
     };
 
-    struct Point {
-        Point(double x, double y, bool foward, unsigned int delayAfterPoint = 5);
-        double x;
-        double y;
-        bool fowards;
-        unsigned int delayAfterPoint = 5; // delay starts after moving to point
-
-        void operator=(Point other);
-    };
-
+    
     /**
      * @brief A better implementation of pure persuit, comparable to lemlib's version:
      * 

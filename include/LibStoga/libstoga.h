@@ -11,6 +11,8 @@
 #include "tracking.h"
 #include "timer.hpp"
 #include "spid.h"
+#include "pure_pursuit.h"
+#include "fast_pure_pursuit.h"
 // #include "pure_pursuit.h"
 
 

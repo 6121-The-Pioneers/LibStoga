@@ -113,7 +113,7 @@ void autonomous() {
 void opcontrol() {
 	bool is_mogo_on = false;
 	constexpr double TURN_SENSITIVITY = 0.85;
-	constexpr int  SECOND_STAGE_SPEED = 100;
+	constexpr int  SECOND_STAGE_SPEED = 105;
 
 	right.set_brake_mode_all(MOTOR_BRAKE_COAST);
 	left.set_brake_mode_all(MOTOR_BRAKE_COAST);
@@ -133,19 +133,19 @@ void opcontrol() {
 
 		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
 			intake.move(-SECOND_STAGE_SPEED);
-			if(racism.getHue() >=200 && racism.getHue <= 220) {
-				pros::delay(250);
-				intake.move(0);
-				pros::delay(10);
-				intake.move(-SECOND_STAGE_SPEED);
-			}
 		} else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
 			intake.move(SECOND_STAGE_SPEED);
 		} else {
 			intake.move(0);
 		}
 
-		pros::delay(20);
+		if (racism.get_hue() >= 200.0 && racism.get_hue() <= 220.0) {
+			pros::delay(100);
+			intake.move(0);
+			pros::delay(500);
+		}
+
+		pros::delay(1);
 	}
 	
 }
