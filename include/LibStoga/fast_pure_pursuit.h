@@ -43,7 +43,7 @@ namespace ls {
         ls::AbstractOdom* odom;
         ls::Chassis* chassis;
         // ls::Components components;
-        ls::SmartPID turn;
+        std::unique_ptr<ls::SmartPID> turn;
         
         double turn_sensitivity;
         double inertia_radius;
