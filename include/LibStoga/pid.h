@@ -1,6 +1,13 @@
-/*
-* Contains all PID related classes and methods.
-*/
+/**
+ * @file pid.h
+ * @author Asish Nakka
+ * @brief Contains all PID related classes and methods.
+ * @version 0.1
+ * @date 2024-11-29
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #ifndef PID_H
 #define PID_H
 
@@ -19,7 +26,7 @@ namespace ls {
              * @param windupRange desired windup range
              * @param signFlipReset if signed is fliped already.
              */
-            PID(float kP, float kI, float kD, float windupRange, bool signFlipReset);
+            explicit PID(float kP, float kI, float kD, float windupRange, bool signFlipReset);
             /**
              * @brief calculate the new PID value given the error.
              * 

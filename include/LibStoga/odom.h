@@ -1,6 +1,13 @@
-/*
-* Contains the Abstract Odom class for the Odometry hierarchy
-*/
+/**
+ * @file odom.h
+ * @author Rishit Varshney
+ * @brief Contains all code related to odometry and the different types of odometry as classes
+ * @version 0.1
+ * @date 2024-11-29
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 
 #ifndef ODOM_ABSTRACT_LS_H
 #define ODOM_ABSTRACT_LS_H
@@ -14,9 +21,10 @@
 #include <cmath>
 
 namespace ls {
-	/*
-	* A compact representation for x, y, and theta.
-	* contains coordinates and helper methods accordingly.
+	/**
+	* @brief A compact representation for x, y, and theta.
+	* 
+	contains coordinates and helper methods accordingly.
 	*/
 	struct Position {
 		double X;
@@ -83,6 +91,11 @@ namespace ls {
 		Angle angleToPositionSigned(Position& pos) const;
 	};
 
+	/**
+	 * @brief Represents all odometry classes in one abstract term.
+	 * 
+	 * must be used as a pure abstract class
+	 */
 	class AbstractOdom {
 	protected:
 		Position pos;
@@ -260,7 +273,7 @@ namespace ls {
 		 * @param center_to_left distance from left tracking wheel to center in inches.
 		 * @param center_to_back distance from back tracking wheel to center in inches.
 		 */
-		ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back);
+		explicit ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back);
 
 		/**
 		 * @brief Construct a new Three Wheel Odom object
@@ -272,7 +285,7 @@ namespace ls {
 		 * @param left left tracking wheel as an object.
 		 * @param back back tracking wheel as an object.
 		 */
-		ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back, TrackingWheel& right, TrackingWheel& left, TrackingWheel& back);
+		explicit ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back, TrackingWheel& right, TrackingWheel& left, TrackingWheel& back);
 
 		/**
 		 * @brief Construct a new Three Wheel Odom object
@@ -281,7 +294,7 @@ namespace ls {
 		 * 
 		 * @param param the threewheel_odom_parameters_t structure
 		 */
-		ThreeWheelOdom(threewheel_odom_parameters_t& param);
+		explicit ThreeWheelOdom(threewheel_odom_parameters_t& param);
 
 		/**
 		 * @brief Initializes the following object with the given ports.
@@ -354,7 +367,7 @@ namespace ls {
 		 * @param center_to_horiz distance from horizontal tracking wheel to center in inches.
 		 * @param center_to_vert distance from vertical tracking wheel to center in inches.
 		 */
-		ImuOdom(double center_to_horiz, double center_to_vert);
+		explicit ImuOdom(double center_to_horiz, double center_to_vert);
 
 		/**
 		 * @brief Construct a new Imu Odom object
@@ -365,7 +378,7 @@ namespace ls {
 		 * @param vert vertical tracking wheel as an object.
 		 * @param IMU Imu sensor
 		 */
-		ImuOdom(double center_to_horiz, double center_to_vert, TrackingWheel& horiz, TrackingWheel& vert, pros::Imu& IMU);
+		explicit ImuOdom(double center_to_horiz, double center_to_vert, TrackingWheel& horiz, TrackingWheel& vert, pros::Imu& IMU);
 
 		/**
 		 * @brief Construct a new Imu Odom object
@@ -374,7 +387,7 @@ namespace ls {
 		 * 
 		 * @param param structure to use
 		 */
-		ImuOdom(imu_odom_parameters_t& param);
+		explicit ImuOdom(imu_odom_parameters_t& param);
 
 		/**
 		 * @brief Initializes the following object with the given ports.

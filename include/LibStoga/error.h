@@ -1,3 +1,14 @@
+/**
+ * @file error.h
+ * @author Rishit Varshney
+ * @brief Includes all form of error handling specific to this library.
+ * @version 0.1
+ * @date 2024-11-29
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #ifndef ERROR_LS_H
 #define ERROR_LS_H
 

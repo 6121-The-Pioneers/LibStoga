@@ -1,6 +1,16 @@
+/**
+ * @file geometry.h
+ * @author Rishit Varshney
+ * @brief Contains all code for geometrical constructions (like Angles) and other such helpful stuff
+ * @version 0.1
+ * @date 2024-11-29
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #ifndef GEOMETRY_LS_H
 #define GEOMETRY_LS_H
-
 
 namespace ls {
     /**

@@ -1,3 +1,15 @@
+/**
+ * @file timer.hpp
+ * @author Asish Nakka
+ * @brief file that contains all code related to timing. Mostly for user convienience.
+ * @version 0.1
+ * @date 2024-11-29
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
+//// TODO ============================================================================================= Rishit Varshney: get further explainations
 #ifndef TIMER_HPP
 #define TIMER_HPP
 

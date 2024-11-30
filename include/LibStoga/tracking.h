@@ -1,7 +1,13 @@
-/*
-* This file contains all classes for Tracking movements
-* Used extensively in odom.h
-*/
+/**
+ * @file tracking.h
+ * @author Rishit Varshney
+ * @brief This file contains all classes for Tracking movements. Used extensively in odom.h
+ * @version 0.1
+ * @date 2024-11-29
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #ifndef TRACKING_H
 #define TRACKING_H
 

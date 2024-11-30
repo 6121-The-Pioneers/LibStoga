@@ -8,6 +8,9 @@
  * @copyright Copyright (c) 2024
  * 
  */
+
+//// TODO ================================================================================================================= (Lord Nick)
+
 #ifndef PURE_PURSUIT_LS_H
 #define PURE_PURSUIT_LS_H
 
@@ -16,24 +19,24 @@
 #include "odom.h"
 
 namespace ls {
-    struct Point {
-        Point(double x, double y, bool foward, unsigned int delayAfterPoint = 5);
-        double x;
-        double y;
-        bool fowards;
-        unsigned int delayAfterPoint = 5; // delay starts after moving to point
-
-        void operator=(Point other);
-    };
-
+    /**
+     * @brief Structure that represents all parameters for PurePursuit.
+     * 
+     * Order: waypoints (vector<Position>), lookahead (double), error_tolerance (double), turn_sensitivity (double), speed (int)
+     */
     struct pure_persuit_parameters_t {
-        std::vector<Point> waypoints;
+        std::vector<Position> waypoints;
         double lookahead;
         double error_tolerance = 1;
         double turn_sensitivity = 1;
-        double speed = 127;
+        int speed = 127;
     };
 
+    /**
+     * @brief Class that contains all Pure Pursuit related stuff
+     * 
+     * Keep in mind that this is not the real pure pursuit algorithm.
+     */
     class PurePursuit {
     public:
         /**
@@ -42,7 +45,7 @@ namespace ls {
          * @param path the path the bot will follow
          * @param error_tolerance the error tolerance it should have to get to a point.
          */
-        PurePursuit(std::vector<Point>& path, ls::AbstractOdom& odom, double lookahead, double error_tolerance = 1, double turn_sensitivity = 1, double speed = 127);
+        explicit PurePursuit(std::vector<Position>& path, ls::AbstractOdom& odom, double lookahead, double error_tolerance = 1, double turn_sensitivity = 1, int speed = 127);
 
         /**
          * @brief Given the points and other required parameters, move the
@@ -60,7 +63,7 @@ namespace ls {
         int waypoint;
 
         ls::AbstractOdom* odom;
-        std::vector<Point> path;
+        std::vector<Position> path;
 
         double rx;
         double ry;

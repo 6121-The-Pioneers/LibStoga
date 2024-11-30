@@ -1,8 +1,23 @@
+/**
+ * @file spid.h
+ * @author Rishit Varshney
+ * @brief Contains all code for the SPID (Smart PID) Algorithm
+ * @version 0.1
+ * @date 2024-11-29
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #ifndef LS_SPID_H
 #define LS_SPID_H
 
 namespace ls {
-
+    /**
+     * @brief A structure that contains all parameters of the SmartPID class.
+     * 
+     * Order: correction_constant, windup, learning_constant, max_value, damp
+     */
     struct smart_pid_parameters_t {
         double correction_constant;
         double windup;
@@ -25,14 +40,14 @@ namespace ls {
              * @param lc the learning constant. the rate at which it should learn
              * @param max the maximum value of the PID output.
              */
-            SmartPID(double cc, double w, double lc, double max, double damp);
+            explicit SmartPID(double cc, double w, double lc, double max, double damp);
 
             /**
              * @brief Construct a new SmartPID object
              * 
              * @param parameters parameter that contains all values given by struct.
              */
-            SmartPID(smart_pid_parameters_t& parameters);
+            explicit SmartPID(smart_pid_parameters_t& parameters);
 
             /**
              * @brief Calculate the new PID value given the error.
