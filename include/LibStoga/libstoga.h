@@ -13,6 +13,8 @@
 #include "spid.h"
 #include "pure_pursuit.h"
 #include "fast_pure_pursuit.h"
+#include "chassis.h"
+#include "error.h"
 // #include "pure_pursuit.h"
 
 

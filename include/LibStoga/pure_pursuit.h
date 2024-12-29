@@ -17,6 +17,8 @@
 #include <vector>
 #include <array>
 #include "odom.h"
+#include "spid.h"
+#include "chassis.h"
 
 namespace ls {
     /**
@@ -40,7 +42,7 @@ namespace ls {
         double error_tolerance;
         
         explicit Point(Position pos, bool fowards, unsigned int delayAfterPoint, double error_tolerance);
-        void Point::operator=(Point other);
+        void operator=(Point other);
     };
     
 
