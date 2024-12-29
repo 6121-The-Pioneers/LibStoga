@@ -25,11 +25,11 @@ namespace ls {
      * Order: waypoints (vector<Position>), lookahead (double), error_tolerance (double), turn_sensitivity (double), speed (int)
      */
     struct pure_persuit_parameters_t {
-        std::vector<Position> waypoints;
-        double lookahead;
-        double error_tolerance = 1;
+        ls::AbstractOdom& odom;
+        ls::SmartPID& forward;
+        ls::SmartPID& turn;
+        ls::Chassis& chassis;
         double turn_sensitivity = 1;
-        int speed = 127;
     };
 
     struct Point
