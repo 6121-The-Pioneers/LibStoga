@@ -39,6 +39,6 @@ namespace ls {
         bool paused = false;
     };
 
-} // namespace LibStoga
+} // namespace ls
 
 #endif // TIMER_HPP

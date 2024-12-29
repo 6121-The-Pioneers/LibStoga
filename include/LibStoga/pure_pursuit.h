@@ -32,6 +32,18 @@ namespace ls {
         int speed = 127;
     };
 
+    struct Point
+    {
+        Position position;
+        bool forwards;
+        unsigned int delayAfterPoint;
+        double error_tolerance;
+        
+        explicit Point(Position pos, bool fowards, unsigned int delayAfterPoint, double error_tolerance);
+        void Point::operator=(Point other);
+    };
+    
+
     /**
      * @brief Class that contains all Pure Pursuit related stuff
      * 
@@ -45,15 +57,18 @@ namespace ls {
          * @param path the path the bot will follow
          * @param error_tolerance the error tolerance it should have to get to a point.
          */
-        explicit PurePursuit(std::vector<Position>& path, ls::AbstractOdom& odom, double lookahead, double error_tolerance = 1, double turn_sensitivity = 1, int speed = 127);
+        explicit PurePursuit(std::vector<Point>& path, ls::AbstractOdom& odom, double lookahead, double error_tolerance = 1, double turn_sensitivity = 1, double speed = 127);
 
         /**
          * @brief Given the points and other required parameters, move the
          * robot. This function will block excecution until robot is done with
          * all required movements.
          *
+         * @param forward the SPID instance for the forward part of drive PID
+         * @param turn the SPID instance for the turn part of drive PID
+         * @param chassis chassis object containing left and right drivetrain
          */
-        void move();
+        void move(ls::SmartPID& forward, ls::SmartPID& turn, ls::Chassis& chassis);
 
     private:
         double error_tolerance;
@@ -63,7 +78,7 @@ namespace ls {
         int waypoint;
 
         ls::AbstractOdom* odom;
-        std::vector<Position> path;
+        std::vector<Point> path;
 
         double rx;
         double ry;
