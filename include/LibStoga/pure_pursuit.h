@@ -54,31 +54,46 @@ namespace ls {
         /**
          * @brief Construct a new Pure Pursuit object
          * 
-         * @param path the path the bot will follow
-         * @param error_tolerance the error tolerance it should have to get to a point.
+         * @param _odom the odom object for tracking position
+         * @param _forward the SPID instance for the forward part of drive PID
+         * @param _turn the SPID instance for the turn part of drive PID
+         * @param _chassis chassis object containing left and right drivetrain
+         * @param _turn_sensitivity the sensity the robot should have for accurate turns.
          */
-        explicit PurePursuit(std::vector<Point>& path, ls::AbstractOdom& odom, double lookahead, double error_tolerance = 1, double turn_sensitivity = 1, double speed = 127);
+        explicit PurePursuit(ls::AbstractOdom& _odom, ls::SmartPID& _forward, ls::SmartPID& _turn, ls::Chassis& _chassis, double _turn_sensitivity = 1);
 
         /**
-         * @brief Given the points and other required parameters, move the
-         * robot. This function will block excecution until robot is done with
-         * all required movements.
+         * @brief Given the point to go to, moves the robot to that point.
+         * This function will block excecution until robot is done with movement.
          *
-         * @param forward the SPID instance for the forward part of drive PID
-         * @param turn the SPID instance for the turn part of drive PID
-         * @param chassis chassis object containing left and right drivetrain
+         * @param _point the point to move to
          */
-        void move(ls::SmartPID& forward, ls::SmartPID& turn, ls::Chassis& chassis);
+        void moveToPoint(Point& _point);
+
+        /**
+         * @brief Given the path to follow, moves the robot throughout the path.
+         * This function will block excecution until robot is done with all movements.
+         *
+         * @param _path the path to follow
+         */
+        void followPath(std::vector<Point>& path);
+
+        /**
+         * @brief Given the point to turn to, turns the robot to that point.
+         * This function will block excecution until robot is done with movement.
+         *
+         * @param _point the point to turn to
+         */
+        void turnToPoint(Point& _point);
 
     private:
-        double error_tolerance;
-        double speed;
-        double lookahead;
         double turn_sensitivity;
         int waypoint;
 
         ls::AbstractOdom* odom;
-        std::vector<Point> path;
+        ls::SmartPID* forward;
+        ls::SmartPID* turn;
+        ls::Chassis* chassis;
 
         double rx;
         double ry;
