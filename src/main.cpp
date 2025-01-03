@@ -7,31 +7,31 @@
 #include <cmath>
 // #include "LibStoga/pure_pursuit.h"
 
+ls::PID wallstakePID(1, 0, 0, 10, 0); // change numbers later
 ls::imu_odom_parameters_t odom_params = {
 	{
-		13,
+		7,
 		1.375,
 		false
 	},
 	0,
 	{
-		12,
+		17,
 		1.375,
 		false
 	},
-	2,
-	5
+	3.5,
+	15
 };
 
 pros::Imu imu(5);
 pros::Optical racism(3);
 ls::ImuOdom odom(odom_params);
-pros::MotorGroup right({6, 7, 8});
-pros::MotorGroup left({-20, -10, -9});
+pros::MotorGroup right({19, 9, 20});
+pros::MotorGroup left({-8, -14, -10});
 pros::Controller master(pros::E_CONTROLLER_MASTER);
-pros::MotorGroup intake({1, -2});
-pros::MotorGroup wallstake({69});
-
+pros::MotorGroup intake({18, -6});
+pros::MotorGroup wallstake({-16});
 pros::adi::DigitalOut mogo('A');
 
 // std::vector<ls::Point> path = {
@@ -94,7 +94,7 @@ void backup_autonomous_ladder_touch() {
  */
 void autonomous() {
 	// touch ladder and call it a match.
-	backup_autonomous_ladder_touch();
+	// backup_autonomous_ladder_touch();
 }
 
 /**
@@ -111,6 +111,7 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+	pros::lcd::print(0, "Loading...");
 	bool is_mogo_on = false;
 	constexpr double TURN_SENSITIVITY = 0.85;
 	constexpr int  SECOND_STAGE_SPEED = 105;
@@ -119,12 +120,16 @@ void opcontrol() {
 	left.set_brake_mode_all(MOTOR_BRAKE_COAST);
 	intake.set_brake_mode(MOTOR_BRAKE_COAST);
 
+	int goal_wallstake_angle = 0;
+	wallstake.set_encoder_units_all(pros::MotorEncoderUnits::degrees);
+
 	while (true) {
+		odom.compute();
 		int angle = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
 		int power = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
-		right.move(power - 0.85 * angle);
-		left.move(power + 0.85 * angle);
+		right.move(power - angle);
+		left.move(power + angle);
 
 		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
 			is_mogo_on = !is_mogo_on;
@@ -145,7 +150,23 @@ void opcontrol() {
 			pros::delay(500);
 		}
 
-		pros::delay(1);
+		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+			goal_wallstake_angle = 0;
+		} else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+			goal_wallstake_angle = 60;
+		} else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
+			goal_wallstake_angle = 400;
+		}
+
+		// set PID for wallstake
+		int wallstake_pid_output = wallstakePID.update(goal_wallstake_angle - wallstake.get_position(0));
+		wallstake.move(wallstake_pid_output);
+
+		pros::lcd::print(0, "%f", odom.getX());
+		pros::lcd::print(1, "%f", odom.getY());
+		pros::lcd::print(2, "%f", odom.getAngle());
+
+		pros::delay(5);
 	}
 	
 }

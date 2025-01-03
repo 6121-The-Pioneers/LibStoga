@@ -242,7 +242,7 @@ namespace ls {
 			return 0;	
 		}
 		else {
-			return 2 * sin(degreesToRadians(deltaT) / 2) * ((deltaH / degreesToRadians(deltaT)) + centerToHoriz);
+			return 2 * sin(degreesToRadians(deltaT) / 2.0) * ((deltaH / degreesToRadians(deltaT)) + centerToHoriz);
 		}
     }
 
@@ -251,7 +251,7 @@ namespace ls {
 		if (deltaT == 0) {
 			return 0;
 		} else {
-			return 2 * sin(degreesToRadians(deltaT) / 2) * ((deltaV / degreesToRadians(deltaT)) + centerToVert);
+			return 2 * sin(degreesToRadians(deltaT) / 2.0) * ((deltaV / degreesToRadians(deltaT)) + centerToVert);
 		}
     }
 
@@ -274,6 +274,7 @@ namespace ls {
     {
 		horiz->reset();
 		vert->reset();
+		IMU->reset(true);
 		AbstractOdom::resetAll();
     }
 };
