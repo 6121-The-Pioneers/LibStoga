@@ -44,8 +44,8 @@ namespace ls {
          * @brief Construct a new Tracking Wheel object
          * This will construct as a pros::ADIEncoder object.
          * 
-         * @param port_upper the upper port
-         * @param port_lower the lower port
+         * @param port_upper the upper port (only A-H allowed)
+         * @param port_lower the lower port (only A-H allowed)
          * @param radius radius of the wheel attached
          * @param reversed if is reversed by default
          */

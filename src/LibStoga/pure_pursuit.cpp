@@ -26,8 +26,8 @@ namespace ls {
 
             //// define useful variables:
             ls::Position current_waypoint(point.position.X, point.position.Y, 0);
-            rx = point.position.X-odom->getX();
-            ry = point.position.Y-odom->getY();
+            rx = point.position.X - odom->getX();
+            ry = point.position.Y - odom->getY();
             ls::Angle rel_heading(radiansToDegrees(atan2(rx, ry)));
             
             //// get power ratio - how much power needs to be proportionally decreased based on turn.
@@ -52,10 +52,12 @@ namespace ls {
             double power_output;
             if (point.forwards) {
                 distance = odom->getPosition().distanceFromPointSigned(current_waypoint);
+                turn_output = turn->update(rel_heading.getAngle());
             } else {
                 distance = -odom->getPosition().distanceFromPointSigned(current_waypoint);
+                turn_output = turn->update(rel_heading.getAngle() + 180);
             }
-            turn_output = turn->update(rel_heading.getAngle());
+
             power_output = power_ratio * forward->update(distance);
 
             chassis->right->move(power_output - turn_output);

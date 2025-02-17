@@ -32,7 +32,7 @@ pros::MotorGroup left({-8, -14, -10});
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 pros::MotorGroup intake({18, -6});
 pros::MotorGroup wallstake({-16});
-pros::adi::DigitalOut mogo('A');
+pros::adi::DigitalOut mogo('H');
 
 // std::vector<ls::Point> path = {
 // };

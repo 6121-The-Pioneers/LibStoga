@@ -27,7 +27,7 @@ namespace ls {
         update_constants(e);
 
         double tor = kp * P + ki * I + kd * D;
-        tor -= damp * velocity;
+        tor -= damp * velocity; ///// TODO Fix flawed logic here
         velocity = tor + prev_velocity;
         
         return tor;
@@ -43,7 +43,7 @@ namespace ls {
 
     void SmartPID::update_components(const double e) {
         P = e;
-        if (abs(I) > windup || abs(I) < 0.5) {
+        if (abs(I) > windup) {
             I = 0;
         }
         I += e;
@@ -51,7 +51,7 @@ namespace ls {
         prev_val = e;
     }
 
-    void SmartPID::update_constants(const double e) {
+    void SmartPID::update_constants(const double e) { // TODO: Rework how this function works. 
         double theta = kp * P + ki * I + kd * D;
         double Y = get_expected(e);
         double constant = learning_constant * 2 * (theta - Y);
