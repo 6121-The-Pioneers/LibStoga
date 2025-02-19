@@ -7,7 +7,12 @@
 #include <cmath>
 // #include "LibStoga/pure_pursuit.h"
 
-ls::PID wallstakePID(1, 0, 0, 10, 0); // change numbers later
+pros::Controller master(pros::E_CONTROLLER_MASTER);
+
+pros::MotorGroup right({19, 9, 20});
+pros::MotorGroup left({-8, -14, -10});
+ls::Chassis chassis {right, left};
+
 ls::imu_odom_parameters_t odom_params = {
 	{
 		7,
@@ -23,15 +28,31 @@ ls::imu_odom_parameters_t odom_params = {
 	3.5,
 	15
 };
+ls::ImuOdom odom(odom_params);
+
+ls::PID lateral_control (
+	1,
+	0,
+	0,
+	10,
+	0
+);
+
+ls::PID turn_control (
+	1,
+	0,
+	0,
+	10,
+	0
+);
+
+ls::PurePursuit pure_persuit(odom, &lateral_control, &turn_control, &chassis, 1);
 
 pros::Imu imu(5);
 pros::Optical racism(3);
-ls::ImuOdom odom(odom_params);
-pros::MotorGroup right({19, 9, 20});
-pros::MotorGroup left({-8, -14, -10});
-pros::Controller master(pros::E_CONTROLLER_MASTER);
 pros::MotorGroup intake({18, -6});
 pros::MotorGroup wallstake({-16});
+ls::PID wallstakePID(1, 0, 0, 10, 0); // change numbers later
 pros::adi::DigitalOut mogo('H');
 
 // std::vector<ls::Point> path = {
@@ -95,6 +116,8 @@ void backup_autonomous_ladder_touch() {
 void autonomous() {
 	// touch ladder and call it a match.
 	// backup_autonomous_ladder_touch();
+	pure_persuit.moveToPoint({{1, 1, 0}});
+	pure_persuit.turnToPoint({{1, 1, 0}});
 }
 
 /**

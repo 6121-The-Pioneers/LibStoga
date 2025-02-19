@@ -236,26 +236,28 @@ namespace ls {
 		}	
     } 
 	
-	double ImuOdom::getDeltaX()
+	double ImuOdom::getDeltaX() // rework
     {
-		if (deltaT == 0) {
-			return 0;	
-		}
-		else {
-			return 2 * sin(degreesToRadians(deltaT) / 2.0) * ((deltaH / degreesToRadians(deltaT)) + centerToHoriz);
-		}
+		// if (deltaT == 0) {
+		// 	return 0;	
+		// }
+		// else {
+		// 	return 2 * sin(degreesToRadians(deltaT) / 2.0) * ((deltaH / degreesToRadians(deltaT)) + centerToHoriz);
+		// }
+		return horiz->getLinearDeltaDistance() * sin(degreesToRadians(IMU->get_heading())) - centerToHoriz * deltaT;
     }
 
-    double ImuOdom::getDeltaY()
+    double ImuOdom::getDeltaY() // rework
     {
-		if (deltaT == 0) {
-			return 0;
-		} else {
-			return 2 * sin(degreesToRadians(deltaT) / 2.0) * ((deltaV / degreesToRadians(deltaT)) + centerToVert);
-		}
+		// if (deltaT == 0) {
+		// 	return 0;
+		// } else {
+		// 	return 2 * sin(degreesToRadians(deltaT) / 2.0) * ((deltaV / degreesToRadians(deltaT)) + centerToVert);
+		// }
+		return vert->getLinearDeltaDistance() * cos(degreesToRadians(IMU->get_heading())) - centerToVert * deltaT;
     }
 
-    Angle ImuOdom::getDeltaAngle()
+    Angle ImuOdom::getDeltaAngle() // good
     {
 		double curRotation = IMU->get_heading();
 		deltaT = curRotation - prevRotation;
@@ -263,11 +265,15 @@ namespace ls {
         return Angle(deltaT);
     }
 
-    void ImuOdom::compute()
+    void ImuOdom::compute() // rework
     {
-		deltaH = horiz.get()->getLinearDeltaDistance();
-		deltaV = vert.get()->getLinearDeltaDistance();
-		AbstractOdom::compute();
+		// deltaH = horiz.get()->getLinearDeltaDistance();
+		// deltaV = vert.get()->getLinearDeltaDistance();
+		// AbstractOdom::compute();
+		pos.theta += getDeltaAngle();
+		pos.X += getDeltaX();
+		pos.Y += getDeltaY();
+		
     }
 
     void ImuOdom::resetAll()

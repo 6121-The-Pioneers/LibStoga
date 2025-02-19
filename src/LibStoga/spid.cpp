@@ -8,6 +8,7 @@ static inline double abs(double val) {
     return val;
 }
 
+// instead of getting output, get realtime vector magnitude from odom.
 namespace ls {
     SmartPID::SmartPID(double cc, double w, double lc, double max, double damp)
         : kp(0), ki(0), kd(0), P(0), I(0), D(0), prev_val(0), correction_constant(cc), windup(w), learning_constant(lc), max_value(max), damp(damp) {}

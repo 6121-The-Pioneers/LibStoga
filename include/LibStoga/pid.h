@@ -17,6 +17,8 @@ namespace ls {
      */
     class PID {
         public:
+            // just to make c++ happy. Do not use this constructor for functionality
+            explicit PID() {}
             /**
              * @brief Construct a new PID object
              * 

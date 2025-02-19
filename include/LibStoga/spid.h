@@ -12,6 +12,8 @@
 #ifndef LS_SPID_H
 #define LS_SPID_H
 
+#include "pid.h"
+
 namespace ls {
     /**
      * @brief A structure that contains all parameters of the SmartPID class.
@@ -30,7 +32,7 @@ namespace ls {
      * @brief The Smart PID class... an extension of the PID class that will adapt based on error. No need to provide constants.
      * 
      */
-    class SmartPID {
+    class SmartPID : public ls::PID {
         public:
             /**
              * @brief Construct a new SmartPID object
@@ -63,7 +65,7 @@ namespace ls {
              */
             void reset();
 
-        protected:
+        private:
             double kp;
             double ki;
             double kd;

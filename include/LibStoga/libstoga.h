@@ -15,7 +15,7 @@
 #include "fast_pure_pursuit.h"
 #include "chassis.h"
 #include "error.h"
-// #include "pure_pursuit.h"
+#include "pure_pursuit.h"
 
 
 #endif // !LIBSTOGA_LS_H

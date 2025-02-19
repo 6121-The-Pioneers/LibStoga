@@ -33,7 +33,7 @@ namespace ls {
 		/*
 		* Default constructor.
 		*/
-		explicit Position(): X(0), Y(0), theta(Angle(0)) {}
+		Position(): X(0), Y(0), theta(Angle(0)) {}
 		/**
 		* Constructs a position object in terms x, y, z.
 		* 
@@ -41,7 +41,7 @@ namespace ls {
 		* @param y the y value.
 		* @param theta the theta value (degrees & bearing).
 		*/
-		explicit Position(double x, double y, double t): X(x), Y(y), theta(t) {}
+		Position(double x, double y, double t): X(x), Y(y), theta(t) {}
 		/**
 		* Returns the distance from this point to the given point.
 		* Only returns a positive value.
@@ -372,8 +372,8 @@ namespace ls {
 		/**
 		 * @brief Construct a new Imu Odom object
 		 * 
-		 * @param center_to_horiz distance from horiz tracking wheel to center in inches.
-		 * @param center_to_vert distance from vert tracking wheel to center in inches.
+		 * @param center_to_horiz distance from horiz tracking wheel to center in inches. (only positive number allowed)
+		 * @param center_to_vert distance from vert tracking wheel to center in inches. (only positive number allowed)
 		 * @param horiz horizontal tracking wheel as an object.
 		 * @param vert vertical tracking wheel as an object.
 		 * @param IMU Imu sensor

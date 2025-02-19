@@ -27,10 +27,10 @@ namespace ls {
      * Order: waypoints (vector<Position>), lookahead (double), error_tolerance (double), turn_sensitivity (double), speed (int)
      */
     struct pure_persuit_parameters_t {
-        ls::AbstractOdom& odom;
-        ls::SmartPID& forward;
-        ls::SmartPID& turn;
-        ls::Chassis& chassis;
+        ls::AbstractOdom& odom; // only reference can be passed here
+        ls::PID forward;
+        ls::PID turn;
+        ls::Chassis chassis;
         double turn_sensitivity = 1;
     };
 
@@ -39,9 +39,9 @@ namespace ls {
         Position position;
         bool forwards;
         unsigned int delayAfterPoint;
-        double error_tolerance;
+        double error_tolerance = 1;
         
-        explicit Point(Position pos, bool fowards, unsigned int delayAfterPoint, double error_tolerance);
+        Point(Position pos, bool fowards=true, unsigned int delayAfterPoint=0, double error_tolerance=1);
         void operator=(Point other);
     };
     
@@ -62,7 +62,7 @@ namespace ls {
          * @param _chassis chassis object containing left and right drivetrain
          * @param _turn_sensitivity the sensity the robot should have for accurate turns.
          */
-        explicit PurePursuit(ls::AbstractOdom& _odom, ls::SmartPID& _forward, ls::SmartPID& _turn, ls::Chassis& _chassis, double _turn_sensitivity = 1);
+        explicit PurePursuit(ls::AbstractOdom& _odom, ls::PID* _forward, ls::PID* _turn, ls::Chassis* _chassis, double _turn_sensitivity = 1);
 
         /**
          * @brief Given the point to go to, moves the robot to that point.
@@ -70,7 +70,7 @@ namespace ls {
          *
          * @param _point the point to move to
          */
-        void moveToPoint(Point& _point);
+        void moveToPoint(Point _point);
 
         /**
          * @brief Given the path to follow, moves the robot throughout the path.
@@ -86,15 +86,15 @@ namespace ls {
          *
          * @param _point the point to turn to
          */
-        void turnToPoint(Point& _point);
+        void turnToPoint(Point _point);
 
     private:
         double turn_sensitivity;
         int waypoint;
 
         ls::AbstractOdom* odom;
-        ls::SmartPID* forward;
-        ls::SmartPID* turn;
+        ls::PID* forward;
+        ls::PID* turn;
         ls::Chassis* chassis;
 
         double rx;

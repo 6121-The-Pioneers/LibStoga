@@ -9,16 +9,15 @@
 #include "api.h"
 
 namespace ls {
-
-    PurePursuit::PurePursuit(ls::AbstractOdom& _odom, ls::SmartPID& forward, ls::SmartPID& turn, ls::Chassis& chassis, double _turn_sensitivity) {
+    PurePursuit::PurePursuit(ls::AbstractOdom& _odom, ls::PID* _forward, ls::PID* _turn, ls::Chassis* _chassis, double _turn_sensitivity) {
         odom = &_odom;
         turn_sensitivity = _turn_sensitivity;
-        this->forward = &forward;
-        this->turn = &turn;
-        this->chassis = &chassis;
+        this->forward = forward;
+        this->turn = turn;
+        this->chassis = chassis;
     }
 
-    void PurePursuit::moveToPoint(Point &point)
+    void PurePursuit::moveToPoint(Point point)
     {
         while (true) {
             //// update odom:
@@ -68,7 +67,7 @@ namespace ls {
         }
     }
 
-    void PurePursuit::turnToPoint(Point &point)
+    void PurePursuit::turnToPoint(Point point)
     {
         while (true) {
             //// update odom:
@@ -133,10 +132,12 @@ namespace ls {
             double power_output;
             if (path[waypoint].forwards) {
                 distance = odom->getPosition().distanceFromPointSigned(current_waypoint);
+                turn_output = turn->update(rel_heading.getAngle());
             } else {
                 distance = -odom->getPosition().distanceFromPointSigned(current_waypoint);
+                turn_output = turn->update(rel_heading.getAngle() + 180);
             }
-            turn_output = turn->update(rel_heading.getAngle());
+
             power_output = power_ratio * forward->update(distance);
 
             chassis->right->move(power_output - turn_output);
