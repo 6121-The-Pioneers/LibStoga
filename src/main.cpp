@@ -130,7 +130,7 @@ void opcontrol() {
 
 
 
-	///// CLAWBOT SHIEZA (Dont worry about this)
+	// ///// CLAWBOT SHIEZA (Dont worry about this)
 	// pros::Motor left(1);
 	// pros::Motor right(-2);
 	// pros::Motor lift(3);
@@ -138,28 +138,37 @@ void opcontrol() {
 
 	// lift.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
 	// claw.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
+	// right.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
+	// left.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
+
 	// claw.move(127);
 	// pros::delay(1000);
 	// claw.move(0);
 	// lift.move_absolute(300, 50);
 
 	// for (int i = 0; i < 50; i++) {
-	// 	left.move(i - 1);
+	// 	left.move(i - 3);
 	// 	right.move(i);
-	// 	pros::delay(75);
+	// 	pros::delay(150);
 	// }
 
 	// // left.move(127/1 - 1);
 	// // right.move(127/1);
 	// // pros::delay(500);
-	// pros::delay(22000);
+	// pros::delay(1000);
+	// left.move(50 - 4);
+	// right.move(50);
+	// pros::delay(6000);
+	// left.move(50 - 2);
+	// right.move(50);
+	// pros::delay(21000 - 1000 - 6000);
 
 	// left.move(0);
 	// right.move(0);
 
 	// claw.move(-127);
 	// pros::delay(1000);
-	// claw.move(0);
+	// // claw.move(0);
 
 	// lift.move(127);
 	// pros::delay(2000);
@@ -170,6 +179,12 @@ void opcontrol() {
 	// pros::delay(500);
 	// right.move(0);
 	// left.move(0);
+	
+	// right.move(50);
+	// left.move(50);
+	// pros::delay(500);
+	// left.move(0);
+	// right.move(0);
 	
 }
 
