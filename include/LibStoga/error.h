@@ -1,4 +1,4 @@
-/**
+/** ✅
  * @file error.h
  * @author Rishit Varshney
  * @brief Includes all form of error handling specific to this library.

@@ -5,13 +5,13 @@
 #include "pros/llemu.hpp"
 #include "pros/rtos.hpp"
 #include <cmath>
-// #include "LibStoga/pure_pursuit.h"
+#include <map>
 
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 
 pros::MotorGroup right({19, 9, 20});
 pros::MotorGroup left({-8, -14, -10});
-ls::Chassis chassis {right, left};
+ls::Chassis chassis{right, left};
 
 ls::imu_odom_parameters_t odom_params = {
 	{
@@ -37,7 +37,6 @@ ls::PID lateral_control (
 	10,
 	0
 );
-
 ls::PID turn_control (
 	1,
 	0,
@@ -46,17 +45,7 @@ ls::PID turn_control (
 	0
 );
 
-ls::PurePursuit pure_persuit(odom, &lateral_control, &turn_control, &chassis, 1);
-
-pros::Imu imu(5);
-pros::Optical racism(3);
-pros::MotorGroup intake({18, -6});
-pros::MotorGroup wallstake({-16});
-ls::PID wallstakePID(1, 0, 0, 10, 0); // change numbers later
-pros::adi::DigitalOut mogo('H');
-
-// std::vector<ls::Point> path = {
-// };
+ls::BMA movement(odom, &lateral_control, &turn_control, &chassis, 1);
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -66,8 +55,6 @@ pros::adi::DigitalOut mogo('H');
  */
 void initialize() {
 	pros::lcd::initialize();
-	racism.set_led_pwm(100);
-	imu.reset(true);
 	odom.resetAll();
 }
 
@@ -92,17 +79,6 @@ void competition_initialize() {
 }
 
 /**
- * @brief If all else fails, this auton will move straight to the ladder.
- * 
- */
-void backup_autonomous_ladder_touch() {
-	right.move(-127/2);
-	left.move(-127/2);
-	pros::delay(1500);
-	right.move(0);
-	left.move(0);
-}
-/**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
  * the Field Management System or the VEX Competition Switch in the autonomous
@@ -115,9 +91,6 @@ void backup_autonomous_ladder_touch() {
  */
 void autonomous() {
 	// touch ladder and call it a match.
-	// backup_autonomous_ladder_touch();
-	pure_persuit.moveToPoint({{1, 1, 0}});
-	pure_persuit.turnToPoint({{1, 1, 0}});
 }
 
 /**
@@ -133,63 +106,71 @@ void autonomous() {
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
+
 void opcontrol() {
-	pros::lcd::print(0, "Loading...");
-	bool is_mogo_on = false;
-	constexpr double TURN_SENSITIVITY = 0.85;
-	constexpr int  SECOND_STAGE_SPEED = 105;
 
-	right.set_brake_mode_all(MOTOR_BRAKE_COAST);
-	left.set_brake_mode_all(MOTOR_BRAKE_COAST);
-	intake.set_brake_mode(MOTOR_BRAKE_COAST);
 
-	int goal_wallstake_angle = 0;
-	wallstake.set_encoder_units_all(pros::MotorEncoderUnits::degrees);
 
-	while (true) {
-		odom.compute();
-		int angle = master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
-		int power = master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
 
-		right.move(power - angle);
-		left.move(power + angle);
 
-		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
-			is_mogo_on = !is_mogo_on;
-		}
-		mogo.set_value(is_mogo_on);
 
-		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-			intake.move(-SECOND_STAGE_SPEED);
-		} else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-			intake.move(SECOND_STAGE_SPEED);
-		} else {
-			intake.move(0);
-		}
 
-		if (racism.get_hue() >= 200.0 && racism.get_hue() <= 220.0) {
-			pros::delay(100);
-			intake.move(0);
-			pros::delay(500);
-		}
 
-		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-			goal_wallstake_angle = 0;
-		} else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
-			goal_wallstake_angle = 60;
-		} else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) {
-			goal_wallstake_angle = 400;
-		}
 
-		// set PID for wallstake
-		int wallstake_pid_output = wallstakePID.update(goal_wallstake_angle - wallstake.get_position(0));
-		wallstake.move(wallstake_pid_output);
 
-		pros::lcd::print(0, "%f", odom.getX());
-		pros::lcd::print(1, "%f", odom.getY());
-		pros::lcd::print(2, "%f", odom.getAngle());
 
-		pros::delay(5);
-	}
+
+
+
+
+
+
+
+
+
+
+
+	///// CLAWBOT SHIEZA (Dont worry about this)
+	// pros::Motor left(1);
+	// pros::Motor right(-2);
+	// pros::Motor lift(3);
+	// pros::Motor claw(8);
+
+	// lift.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
+	// claw.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
+	// claw.move(127);
+	// pros::delay(1000);
+	// claw.move(0);
+	// lift.move_absolute(300, 50);
+
+	// for (int i = 0; i < 50; i++) {
+	// 	left.move(i - 1);
+	// 	right.move(i);
+	// 	pros::delay(75);
+	// }
+
+	// // left.move(127/1 - 1);
+	// // right.move(127/1);
+	// // pros::delay(500);
+	// pros::delay(22000);
+
+	// left.move(0);
+	// right.move(0);
+
+	// claw.move(-127);
+	// pros::delay(1000);
+	// claw.move(0);
+
+	// lift.move(127);
+	// pros::delay(2000);
+	// lift.move(0);
+
+	// right.move(-50);
+	// left.move(50);
+	// pros::delay(500);
+	// right.move(0);
+	// left.move(0);
 	
 }
+
+

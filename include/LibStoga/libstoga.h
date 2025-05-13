@@ -1,4 +1,4 @@
-/*
+/* ✅
 * This file includes all relevant files in the library into one file.
 */
 #ifndef LIBSTOGA_LS_H
@@ -11,11 +11,9 @@
 #include "tracking.h"
 #include "timer.hpp"
 #include "spid.h"
-#include "pure_pursuit.h"
-#include "fast_pure_pursuit.h"
+#include "bma.h"
 #include "chassis.h"
 #include "error.h"
-#include "pure_pursuit.h"
 
 
 #endif // !LIBSTOGA_LS_H

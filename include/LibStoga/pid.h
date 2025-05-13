@@ -1,6 +1,6 @@
-/**
+/** ✅
  * @file pid.h
- * @author Asish Nakka
+ * @author Rishit Varshney
  * @brief Contains all PID related classes and methods.
  * @version 0.1
  * @date 2024-11-29

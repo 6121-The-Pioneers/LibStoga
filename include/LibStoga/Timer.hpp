@@ -1,4 +1,4 @@
-/**
+/** ✅
  * @file timer.hpp
  * @author Asish Nakka
  * @brief file that contains all code related to timing. Mostly for user convienience.

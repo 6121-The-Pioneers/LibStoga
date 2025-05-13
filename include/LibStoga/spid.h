@@ -1,4 +1,4 @@
-/**
+/** ❌ - rework algorithm
  * @file spid.h
  * @author Rishit Varshney
  * @brief Contains all code for the SPID (Smart PID) Algorithm

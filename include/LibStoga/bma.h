@@ -1,7 +1,7 @@
 /**
- * @file pure_pursuit.h
- * @author Lord Nick
- * @brief the file that contains all the code for the pure-persuit algorithm.
+ * @file bma.h
+ * @author Rishit Varshney
+ * @brief the file that contains all the code for the Basic Movement Algorithm. BMA is meant for simple movements that dont require advanced movements such as curves.
  * @version 0.1
  * @date 2024-11-12
  * 
@@ -11,8 +11,8 @@
 
 //// TODO ================================================================================================================= (Lord Nick)
 
-#ifndef PURE_PURSUIT_LS_H
-#define PURE_PURSUIT_LS_H
+#ifndef bma_LS_H
+#define bma_LS_H
 
 #include <vector>
 #include <array>
@@ -22,11 +22,11 @@
 
 namespace ls {
     /**
-     * @brief Structure that represents all parameters for PurePursuit.
+     * @brief Structure that represents all parameters for bma.
      * 
      * Order: waypoints (vector<Position>), lookahead (double), error_tolerance (double), turn_sensitivity (double), speed (int)
      */
-    struct pure_persuit_parameters_t {
+    struct bma_parameters_t {
         ls::AbstractOdom& odom; // only reference can be passed here
         ls::PID forward;
         ls::PID turn;
@@ -51,7 +51,7 @@ namespace ls {
      * 
      * Keep in mind that this is not the real pure pursuit algorithm.
      */
-    class PurePursuit {
+    class BMA {
     public:
         /**
          * @brief Construct a new Pure Pursuit object
@@ -62,7 +62,7 @@ namespace ls {
          * @param _chassis chassis object containing left and right drivetrain
          * @param _turn_sensitivity the sensity the robot should have for accurate turns.
          */
-        explicit PurePursuit(ls::AbstractOdom& _odom, ls::PID* _forward, ls::PID* _turn, ls::Chassis* _chassis, double _turn_sensitivity = 1);
+        explicit BMA(ls::AbstractOdom& _odom, ls::PID* _forward, ls::PID* _turn, ls::Chassis* _chassis, double _turn_sensitivity = 1);
 
         /**
          * @brief Given the point to go to, moves the robot to that point.
@@ -115,4 +115,4 @@ namespace ls {
      */
 };
 
-#endif // PURE_PURSUIT_LS_H
+#endif // bma_LS_H

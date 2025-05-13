@@ -1,15 +1,14 @@
-#include "LibStoga/pure_pursuit.h"
+#include "LibStoga/bma.h"
 #include "LibStoga/pid.h"
 #include "LibStoga/spid.h"
 #include "LibStoga/geometry.h"
 #include "LibStoga/error.h"
 #include "LibStoga/chassis.h"
 #include <math.h>
-#include "pure_pursuit.h"
 #include "api.h"
 
 namespace ls {
-    PurePursuit::PurePursuit(ls::AbstractOdom& _odom, ls::PID* _forward, ls::PID* _turn, ls::Chassis* _chassis, double _turn_sensitivity) {
+    BMA::BMA(ls::AbstractOdom& _odom, ls::PID* _forward, ls::PID* _turn, ls::Chassis* _chassis, double _turn_sensitivity) {
         odom = &_odom;
         turn_sensitivity = _turn_sensitivity;
         this->forward = forward;
@@ -17,7 +16,7 @@ namespace ls {
         this->chassis = chassis;
     }
 
-    void PurePursuit::moveToPoint(Point point)
+    void BMA::moveToPoint(Point point)
     {
         while (true) {
             //// update odom:
@@ -67,7 +66,7 @@ namespace ls {
         }
     }
 
-    void PurePursuit::turnToPoint(Point point)
+    void BMA::turnToPoint(Point point)
     {
         while (true) {
             //// update odom:
@@ -96,7 +95,7 @@ namespace ls {
         }
     }
 
-    void PurePursuit::followPath(std::vector<Point>& path) {
+    void BMA::followPath(std::vector<Point>& path) {
         while (true) {
             //// update odom:
             odom->compute();
