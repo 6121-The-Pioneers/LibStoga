@@ -9,24 +9,24 @@
 
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 
-pros::MotorGroup right({19, 9, 20});
-pros::MotorGroup left({-8, -14, -10});
+pros::MotorGroup right({8, 9});
+pros::MotorGroup left({-1, -6});
 ls::Chassis chassis{right, left};
 
 ls::imu_odom_parameters_t odom_params = {
 	{
-		7,
+		13,
 		1.375,
-		false
+		true
 	},
 	0,
 	{
-		17,
+		3,
 		1.375,
 		false
 	},
 	3.5,
-	15
+	12
 };
 ls::ImuOdom odom(odom_params);
 
@@ -108,84 +108,18 @@ void autonomous() {
  */
 
 void opcontrol() {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// ///// CLAWBOT SHIEZA (Dont worry about this)
-	// pros::Motor left(1);
-	// pros::Motor right(-2);
-	// pros::Motor lift(3);
-	// pros::Motor claw(8);
-
-	// lift.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
-	// claw.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
-	// right.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
-	// left.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
-
-	// claw.move(127);
-	// pros::delay(1000);
-	// claw.move(0);
-	// lift.move_absolute(300, 50);
-
-	// for (int i = 0; i < 50; i++) {
-	// 	left.move(i - 3);
-	// 	right.move(i);
-	// 	pros::delay(150);
-	// }
-
-	// // left.move(127/1 - 1);
-	// // right.move(127/1);
-	// // pros::delay(500);
-	// pros::delay(1000);
-	// left.move(50 - 4);
-	// right.move(50);
-	// pros::delay(6000);
-	// left.move(50 - 2);
-	// right.move(50);
-	// pros::delay(21000 - 1000 - 6000);
-
-	// left.move(0);
-	// right.move(0);
-
-	// claw.move(-127);
-	// pros::delay(1000);
-	// // claw.move(0);
-
-	// lift.move(127);
-	// pros::delay(2000);
-	// lift.move(0);
-
-	// right.move(-50);
-	// left.move(50);
-	// pros::delay(500);
-	// right.move(0);
-	// left.move(0);
+	ls::SmartPID pid(1, 0, 0.001, 127);
 	
-	// right.move(50);
-	// left.move(50);
-	// pros::delay(500);
-	// left.move(0);
-	// right.move(0);
-	
+	while (true) {
+		odom.compute();
+
+		double output = pid.update(20 - odom.getY());
+		right.move(output);
+		left.move(output);
+
+		pros::lcd::print(0, "X: %f Y: %f angle: %f", odom.getX(), odom.getY(), odom.getAngle());
+		pros::delay(100);
+	}
 }
 
 

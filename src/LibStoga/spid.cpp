@@ -1,37 +1,28 @@
 #include "spid.h"
 #include <cmath>
 
-static double max_val = 1.7976931348623157E+308;
-
-static inline double abs(double val) {
-    if (val < 0) return -val;
-    return val;
+static inline double learn_sigmoid(double x) {
+	return 1.0 / (1.0 + std::exp(-1.5 * x));
 }
 
 // instead of getting output, get realtime vector magnitude from odom.
 namespace ls {
-    SmartPID::SmartPID(double cc, double w, double lc, double max, double damp)
-        : kp(0), ki(0), kd(0), P(0), I(0), D(0), prev_val(0), correction_constant(cc), windup(w), learning_constant(lc), max_value(max), damp(damp) {}
+    SmartPID::SmartPID(double cc, double w, double lc, double max)
+        : kp(0), ki(0), kd(0), P(0), I(0), D(0), prev_val(0), correction_constant(fabs(cc)), windup(fabs(w)), learning_constant(fabs(lc)), max_value(fabs(max)) {}
 
     SmartPID::SmartPID(smart_pid_parameters_t &parameters): kp(0), ki(0), kd(0), P(0), I(0), D(0), prev_val(0)
     {
-        correction_constant = parameters.correction_constant;
-        windup = parameters.windup;
-        learning_constant = parameters.learning_constant;
-        max_value = parameters.max_value;
-        damp = parameters.damp;
+        correction_constant = fabs(parameters.correction_constant);
+        windup = fabs(parameters.windup);
+        learning_constant = fabs(parameters.learning_constant);
+        max_value = fabs(parameters.max_value);
     }
 
     double SmartPID::update(const double e) {
         P = e;
         update_components(e);
-        update_constants(e);
-
-        double tor = kp * P + ki * I + kd * D;
-        tor -= damp * velocity; ///// TODO Fix flawed logic here
-        velocity = tor + prev_velocity;
-        
-        return tor;
+        update_constants(e);        
+        return kp * P + ki * I + kd * D;
     }
 
     void SmartPID::reset()
@@ -44,7 +35,7 @@ namespace ls {
 
     void SmartPID::update_components(const double e) {
         P = e;
-        if (abs(I) > windup) {
+        if (fabs(I) > windup || fabs(I) < 0.1) {
             I = 0;
         }
         I += e;
@@ -52,18 +43,18 @@ namespace ls {
         prev_val = e;
     }
 
-    void SmartPID::update_constants(const double e) { // TODO: Rework how this function works. 
+	// uses sigmoid function to stop learning when close to target.
+    void SmartPID::update_constants(const double e) {
         double theta = kp * P + ki * I + kd * D;
         double Y = get_expected(e);
         double constant = learning_constant * 2 * (theta - Y);
-                
         double CKp = constant * P;
         double CKi = constant * I;
         double CKd = constant * D;
                 
-        kp -= CKp > max_value ? max_value : CKp;
-        ki -= CKi > max_value ? max_value : CKi;
-        kd -= CKd > max_value ? max_value : CKd;
+        kp -= CKp * learn_sigmoid(e);
+        ki -= CKi * learn_sigmoid(e);
+        kd -= CKd * learn_sigmoid(e);
 
         if (isnanf(kp) || isnanf(ki) || isnanf(kd) || isinff(kp) || isinff(ki) || isinff(kd)) {
             kp = 0;
@@ -73,12 +64,9 @@ namespace ls {
         }
     }
 
-    double SmartPID::get_expected(const double e) { 
-        double Y = correction_constant * e;
-        if (abs(Y) > max_value) {
-            Y = max_value;
-        }
-        return Y;
+    // uses logistic growth over ReLU for smooth motion.
+    double SmartPID::get_expected(const double e) const {
+        return (double)max_value / (1 + exp(-correction_constant * e)) - (double)max_value / 2;
     }
 
 }

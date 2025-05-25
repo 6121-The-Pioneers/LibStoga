@@ -1,4 +1,4 @@
-/** ❌ - rework algorithm
+/** ✅
  * @file spid.h
  * @author Rishit Varshney
  * @brief Contains all code for the SPID (Smart PID) Algorithm
@@ -21,28 +21,32 @@ namespace ls {
      * Order: correction_constant, windup, learning_constant, max_value, damp
      */
     struct smart_pid_parameters_t {
-        double correction_constant;
-        double windup;
-        double learning_constant;
-        double max_value;
-        double damp;
+        double correction_constant = 1;
+        double windup = 1;
+        double learning_constant = 0.001;
+        double max_value = 127;
     };
 
     /**
-     * @brief The Smart PID class... an extension of the PID class that will adapt based on error. No need to provide constants.
+     * @brief The Smart PID class... an extension of the PID class that uses the Smart PID Algorithm.
+     * More about SPID can be looked up in the LibStoga documentation.
      * 
      */
     class SmartPID : public ls::PID {
         public:
             /**
+			 * *Attention* - This algorithm creates really fast changes in output which can be dangerous to the robot if correct parameters are not provided. change the settings with seperate warnings only if you know what you are doing.
+			 * More about SPID can be looked up in the LibStoga documentation.
+             * 
              * @brief Construct a new SmartPID object
              * 
-             * @param cc the correction constant. the rate at which it should ascend and decend to max/min power
-             * @param w windup value for integral.
-             * @param lc the learning constant. the rate at which it should learn
+             * @param cc the correction constant. determins the speed of the overall motion.
+			 * @param w windup value for integral. will also determine how much the integral will be dominant in the motion. USE ONLY IF YOU KNOW WHAT YOU ARE DOING.
+			 * @param lc the learning constant. the rate at which it should learn. CHANGE ONLY IF YOU KNOW WHAT YOU ARE DOING.
              * @param max the maximum value of the PID output.
+             * 
              */
-            explicit SmartPID(double cc, double w, double lc, double max, double damp);
+            explicit SmartPID(double cc, double w, double lc, double max);
 
             /**
              * @brief Construct a new SmartPID object
@@ -69,14 +73,11 @@ namespace ls {
             double kp;
             double ki;
             double kd;
-            double damp;
             
             double P;
             double I;
             double D;
             double prev_val;
-            double prev_velocity = 0;
-            double velocity = 0;
             
             double correction_constant;
             double windup;
@@ -103,7 +104,7 @@ namespace ls {
              * @param e new error
              * @return double expected value
              */
-            double get_expected(const double e);
+            double get_expected(const double e) const;
     };
 }
 

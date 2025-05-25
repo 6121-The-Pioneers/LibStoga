@@ -1,0 +1,88 @@
+double constant = 200 / 127.0;
+	///// CLAWBOT SHIEZA (Dont worry about this)
+	pros::Motor left(1);
+	pros::Motor right(-2);
+	pros::Motor lift(3);
+	pros::Motor claw(8);	
+
+	lift.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
+	lift.set_encoder_units(pros::MotorEncoderUnits::degrees);
+	claw.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
+	right.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
+	left.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_HOLD);
+
+	claw.move(127);
+	pros::delay(1000);
+	claw.move(0);
+	lift.move_absolute(100, 50);
+
+	for (int i = 0; i < 50; i++) {
+		left.move_velocity(constant * (i));
+		right.move_velocity(constant * i);
+		pros::delay(100);
+	}
+
+	// left.move(127/1 - 1);
+	// right.move(127/1);
+	// pros::delay(500);
+	pros::delay(1000);
+	left.move_velocity(constant * (50));
+	right.move_velocity(constant * (50));
+	pros::delay(10000);
+	claw.move(-127);
+	pros::delay(500);
+	lift.move_absolute(200, 50);
+	// left.move_velocity(constant * (50));
+	// right.move_velocity(constant * (50));
+	pros::delay(21000 - 1000 - 10000);
+
+	left.move_velocity(constant * (0));
+	right.move_velocity(constant * (0));
+
+	claw.move(-127);
+	pros::delay(1000);
+	// claw.move(0);
+
+	lift.move(127);
+	pros::delay(2000);
+	lift.move(0);
+
+	right.move_velocity(constant * (-50));
+	left.move_velocity(constant * (50));
+	pros::delay(450);
+	right.move_velocity(constant * (0));
+	left.move_velocity(constant * (0));
+	
+	right.move_velocity(constant * (50));
+	left.move_velocity(constant * (50));
+	pros::delay(1500);
+	left.move_velocity(constant * (0));
+	right.move_velocity(constant * (0));
+	
+	// score
+	lift.set_brake_mode(pros::motor_brake_mode_e::E_MOTOR_BRAKE_COAST);
+	pros::delay(1000);
+	claw.move(127);
+	pros::delay(500);
+
+	right.move_velocity(constant * (-50));
+	left.move_velocity(constant * (-50));
+	pros::delay(750);
+	left.move_velocity(constant * (0));
+	right.move_velocity(constant * (0));
+
+	// victory dance:
+	right.move_velocity(constant * (50));
+	left.move_velocity(constant * (-50));
+	while (true) {
+		for (int i = 0; i < 608; i++) {
+			lift.move_absolute(i, 200);
+			pros::delay(100);
+		}
+
+		for (int i = 608; i >= 0; i--) {
+			lift.move_absolute(i, 200);
+			pros::delay(100);
+		}
+	}
+	
