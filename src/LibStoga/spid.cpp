@@ -17,7 +17,7 @@ namespace ls {
     double SmartPID::update(const double e) {
         P = e;
         update_components(e);
-        update_constants(e);        
+        update_constants(e);
         return kp * P + kd * D;
     }
 

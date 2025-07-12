@@ -60,6 +60,10 @@ namespace ls {
 		* @return signed distance from point.
 		*/
 		double distanceFromPointSigned(Position& pos) const;
+
+
+		///////////////////////////////////////////////////////////////////// REDO THESE 3 FUNCTIONS
+
 		/**
 		* returns if a point is behind (-1), in front of (1), or niether (0) in terms of the robot.
 		* behind and front of check if a give point is in front of the robot or behind it.
