@@ -71,11 +71,9 @@ namespace ls {
 
         private:
             double kp;
-            double ki;
             double kd;
             
             double P;
-            double I;
             double D;
             double prev_val;
             
@@ -105,6 +103,14 @@ namespace ls {
              * @return double expected value
              */
             double get_expected(const double e) const;
+
+            /**
+             * @brief Special sigmoid function used to reduce learning constants when they get closer 0
+             * 
+             * @param x value to operate on
+             * @return double sigmoid-ed value
+            */
+            double learn_sigmoid(double x) const;
     };
 }
 

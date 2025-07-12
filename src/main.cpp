@@ -26,7 +26,7 @@ ls::imu_odom_parameters_t odom_params = {
 		false
 	},
 	3.5,
-	12
+	20
 };
 ls::ImuOdom odom(odom_params);
 
@@ -44,8 +44,6 @@ ls::PID turn_control (
 	10,
 	0
 );
-
-ls::BMA movement(odom, &lateral_control, &turn_control, &chassis, 1);
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -108,7 +106,7 @@ void autonomous() {
  */
 
 void opcontrol() {
-	ls::SmartPID pid(1, 0, 0.001, 127);
+	ls::SmartPID pid(1, 5, 0.001, 127);
 	
 	while (true) {
 		odom.compute();
@@ -118,7 +116,7 @@ void opcontrol() {
 		left.move(output);
 
 		pros::lcd::print(0, "X: %f Y: %f angle: %f", odom.getX(), odom.getY(), odom.getAngle());
-		pros::delay(100);
+		pros::delay(10);
 	}
 }
 
