@@ -7,7 +7,7 @@
 #define LOOP_DELAY 5
 
 namespace ls {
-    Chassis::Chassis(pros::MotorGroup& _right, pros::MotorGroup& _left, ls::AbstractOdom& _odom, ls::PID& _lateral_control, ls::PID& _angular_control, double _turn_sensitivity, double _threshold_lateral, double _threshold_angular, double double _threshold_timeout) {
+    Chassis::Chassis(pros::MotorGroup& _right, pros::MotorGroup& _left, ls::AbstractOdom& _odom, ls::PID& _lateral_control, ls::PID& _angular_control, double _turn_sensitivity, double _threshold_lateral, double _threshold_angular, unsigned int _threshold_timeout) {
         right = &_right;
         left = &_left;
         odom = &_odom;
@@ -34,7 +34,7 @@ namespace ls {
 
         while (!timer.isDone()) {
             odom->compute();
-            ls::Position& current_position = odom->getPosition();
+            ls::Position current_position = odom->getPosition();
             
             // calculate amount of change:
             double distance = current_position.distanceFromPointSigned(goal);
@@ -51,13 +51,11 @@ namespace ls {
             double power = lateral_control->update(distance) * move_priority(d_theta);
             double turn = angular_control->update(d_theta.getAngle());
 
-            if (distance <= threshold_lateral) {
+            if (fabs(distance) <= threshold_lateral) {
                 exit_timer += LOOP_DELAY;
             }
 
             if (exit_timer > threshold_timeout) {
-                right->move(0);
-                left->move(0);
                 break;
             }
 
@@ -67,11 +65,16 @@ namespace ls {
 
             pros::delay(LOOP_DELAY);
         }
+
+        right->move(0);
+        left->move(0);
     }
 
     void Chassis::turnToPoint(double X, double Y, unsigned int timeout, bool reverse) {
         ls::Timer timer(timeout);
-        Angle theta_final = current_position.angleToPosition(goal);
+        ls::Position goal(X, Y, 0);
+        odom->compute();
+        Angle theta_final = odom->getPosition().angleToPosition(goal);
 
         if (reverse) {
             theta_final += Angle(180);
@@ -81,22 +84,17 @@ namespace ls {
         unsigned int exit_timer = 0;
 
         while (!timer.isDone()) {
-            odom->compute();
-            ls::Position& current_position = odom->getPosition();
-
             // calculate amount of change:
-            Angle d_theta = current_position.theta.minimumAngleDifference(theta_final); // order might be subject to change
+            Angle d_theta = odom->getPosition().theta.minimumAngleDifference(theta_final); // order might be subject to change
 
             // calculate power and PID outputs:
             double turn = angular_control->update(d_theta.getAngle());
 
-            if (d_theta.getAngle() <= threshold_angular) {
+            if (fabs(d_theta.getAngle()) <= threshold_angular) {
                 exit_timer += LOOP_DELAY;
             }
 
             if (exit_timer > threshold_timeout) {
-                right->move(0);
-                left->move(0);
                 break;
             }
 
@@ -104,8 +102,12 @@ namespace ls {
             right->move(-turn); // order might be subject to change
             left->move(turn); // order might be subject to change
 
+            odom->compute();
             pros::delay(LOOP_DELAY);
         }
+
+        right->move(0);
+        left->move(0);
     }
 
     double Chassis::move_priority(Angle& angle) const {

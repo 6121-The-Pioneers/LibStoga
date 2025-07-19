@@ -11,7 +11,6 @@ pros::Controller master(pros::E_CONTROLLER_MASTER);
 
 pros::MotorGroup right({8, 9});
 pros::MotorGroup left({-1, -6});
-ls::Chassis chassis{right, left};
 
 ls::imu_odom_parameters_t odom_params = {
 	{
@@ -30,20 +29,10 @@ ls::imu_odom_parameters_t odom_params = {
 };
 ls::ImuOdom odom(odom_params);
 
-ls::PID lateral_control (
-	1,
-	0,
-	0,
-	10,
-	0
-);
-ls::PID turn_control (
-	1,
-	0,
-	0,
-	10,
-	0
-);
+ls::SmartPID lateral_control(1); // increase to make movement faster and vice versa
+ls::SmartPID angular_control(1); // increase to make movement faster and vice versa
+
+ls::Chassis chassis(right, left, odom, lateral_control, angular_control);
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -106,7 +95,8 @@ void autonomous() {
  */
 
 void opcontrol() {
-	ls::SmartPID pid;
+	// relative coordinate PID testing (reverse parrallel odom to fix jittering if any)
+	/*ls::SmartPID pid;
 	
 	while (true) {
 		odom.compute();
@@ -117,7 +107,13 @@ void opcontrol() {
 
 		pros::lcd::print(0, "X: %f Y: %f angle: %f", odom.getX(), odom.getY(), odom.getAngle());
 		pros::delay(10);
-	}
+	}*/
+
+	chassis.moveToPointLinear(0, 10, 2000, false); // should move 10 (whatever unit it is doesnt matter with untuned odom)s forward
+	
+	pros::lcd::print(0, "X: %f Y: %f angle: %f", odom.getX(), odom.getY(), odom.getAngle());
+	pros::lcd::print(1, "Done!");
+
 }
 
 
