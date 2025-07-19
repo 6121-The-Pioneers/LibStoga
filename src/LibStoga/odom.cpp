@@ -72,13 +72,15 @@ namespace ls {
 	int Position::isBehind(Position &pos) const
 	{
 		Angle a = angleToPosition(pos);
-		const Angle lower_bound = theta.getAngle() - 90;
-		const Angle upper_bound = theta.getAngle() + 90;
 
 		if (a.getAngle() == infinity()) {
 			return 0;
 		}
-		else if (a.getAngle() > lower_bound.normalize() && a.getAngle() < upper_bound.normalize()) {
+
+		const Angle lower_bound = theta.getAngle() - 90;
+		const Angle upper_bound = theta.getAngle() + 90;
+		
+		if (a.getAngle() > lower_bound.normalize() && a.getAngle() < upper_bound.normalize()) {
 			return 1;
 		} 
 		else {
@@ -88,14 +90,8 @@ namespace ls {
 
 	Angle Position::angleToPosition(Position &pos) const
 	{
-		Angle tor = (90 - atan2(pos.Y-Y, pos.X-X) * 57.2957795131);
-		tor = tor.normalize();
-		return tor;
-	}
-
-	Angle Position::angleToPositionSigned(Position &pos) const
-	{
-		return (90 - atan2(pos.Y-Y, pos.X-X) * 57.2957795131);
+		double raw_angle = atan2(pos.Y - Y, pos.X - X);
+		return Angle(90 - (raw_angle > 0 ? raw_angle : (6.28318530718 + raw_angle)) * 57.2957795131);
 	}
 };
 

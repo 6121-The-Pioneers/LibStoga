@@ -24,7 +24,7 @@ namespace ls {
 	/**
 	* @brief A compact representation for x, y, and theta.
 	* 
-	contains coordinates and helper methods accordingly.
+	* contains coordinates and helper methods accordingly.
 	*/
 	struct Position {
 		double X;
@@ -75,24 +75,16 @@ namespace ls {
 		* @returns behind (-1), in front of (1), or niether (0)
 		*/
 		int isBehind(Position& pos) const;
+
 		/**
-		 * @brief Gets the of the resulting line of this position to the other given position.
+		 * @brief Gets the angle to the position provided relative to current position in the cartesian plane.
 		 * Will return in terms of a bearing.
-		 * Will return inf if the positions are way to close or equal to be calculated properly.
+		 * Will return infinity() if the positions are way to close or equal to be calculated properly.
 		 * 
 		 * @param pos the other position.
 		 * @return Angle in [0, 360)
 		 */
 		Angle angleToPosition(Position& pos) const;
-		/**
-		 * @brief Gets the of the resulting line of this position to the other given position.
-		 * Will return in terms of a bearing, but will not be bounded from [0, 360)
-		 * Will return inf if the positions are way to close or equal to be calculated properly.
-		 * 
-		 * @param pos the other position.
-		 * @return Angle not bounded to [0, 360)
-		 */
-		Angle angleToPositionSigned(Position& pos) const;
 	};
 
 	/**

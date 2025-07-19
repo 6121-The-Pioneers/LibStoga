@@ -14,8 +14,9 @@
 
 namespace ls {
     /**
-     * @class Angle
      * @brief A class to represent and manipulate angles.
+     * 
+     * TODO implement radians constructor as well
      */
     class Angle {
         private:
@@ -74,7 +75,7 @@ namespace ls {
             void operator=(double x);
             
             /**
-             * @brief increemnts this angle by 'other' angle numricaly.
+             * @brief increments this angle by 'other' angle numerically.
              * 
              * @param other the other angle to increment by.
              */

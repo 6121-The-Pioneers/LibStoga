@@ -1,10 +1,10 @@
 #include "tracking.h"
-#include <stdexcept>
+#include "error.h"
 
 ls::TrackingWheel::TrackingWheel(std::uint8_t port, double radius, bool reversed)
 {
     if (port < 0 || port > 24) {
-        throw std::invalid_argument("Port must be in the range of [0, 24].");
+        THROW_ERROR("Port must be in the range of [0, 24].");
     }
     rotation = std::make_unique<pros::Rotation>(port);
     if (reversed) rotation->reverse();
@@ -16,9 +16,9 @@ ls::TrackingWheel::TrackingWheel(std::uint8_t port, double radius, bool reversed
 ls::TrackingWheel::TrackingWheel(std::uint8_t portUpper, std::uint8_t portLower, double radius, bool Reversed)
 {
     if (portUpper < 'A' || portUpper > 'H') {
-        throw std::invalid_argument("Upper port must be in the range of [A-H]");
+        THROW_ERROR("Upper port must be in the range of [A-H]");
     } else if (portLower < 'A' || portLower > 'H') {
-        throw std::invalid_argument("Lower port must be in the range of [A-H]");
+        THROW_ERROR("Lower port must be in the range of [A-H]");
     }
     port_upper = portUpper; // how do you check these?
     port_lower = portLower; // how do you check these?

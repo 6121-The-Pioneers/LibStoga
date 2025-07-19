@@ -11,6 +11,8 @@
 #ifndef PID_H
 #define PID_H
 
+#include "error.h"
+
 namespace ls {
     /**
      * @brief The PID object, calculates PID outputs given an error.
@@ -18,7 +20,7 @@ namespace ls {
     class PID {
         public:
             // just to make c++ happy. Do not use this constructor for functionality
-            explicit PID() {}
+            explicit PID() { THROW_ERROR("PID Contructor requires paramters"); }
             /**
              * @brief Construct a new PID object
              * 
@@ -29,6 +31,7 @@ namespace ls {
              * @param signFlipReset if signed is fliped already.
              */
             explicit PID(float kP, float kI, float kD, float windupRange, bool signFlipReset);
+            
             /**
              * @brief calculate the new PID value given the error.
              * 
@@ -36,6 +39,7 @@ namespace ls {
              * @return the value from PID
              */
             double update(const double error);
+            
             /**
              * @brief Resets the integral and other variables to reset PID state to original. 
              */

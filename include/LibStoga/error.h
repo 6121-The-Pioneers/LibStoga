@@ -17,10 +17,10 @@
 #define THROW_ERROR(error) __throw_error(error, __LINE__, __FILE__)
 
 namespace ls {
-    inline void __throw_error(char* error, unsigned long line, char* file) {
+    inline void __throw_error(const char* error, unsigned long line, const char* file) {
         pros::lcd::clear_line(0);
-        pros::lcd::print(0, "at line %lu, file %s", line, file);
         pros::lcd::clear_line(1);
+        pros::lcd::print(0, "at line %lu, file %s", line, file);
         pros::lcd::print(1, error);
         while (true) pros::delay(1000);
     }

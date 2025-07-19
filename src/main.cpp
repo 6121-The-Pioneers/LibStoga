@@ -106,7 +106,7 @@ void autonomous() {
  */
 
 void opcontrol() {
-	ls::SmartPID pid(1, 5, 0.001, 127);
+	ls::SmartPID pid;
 	
 	while (true) {
 		odom.compute();
