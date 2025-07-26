@@ -14,10 +14,28 @@
 #include "error.h"
 
 namespace ls {
+
+    /*
+    * @brief abstract class for PID
+    */
+    class AbstractPID {
+    public:
+        /*
+        * @brief abstract
+        */
+        virtual double update(const double error) = 0;
+        
+        /*
+        * @brief abstract
+        */
+        virtual void reset() = 0;
+    };
+
+
     /**
      * @brief The PID object, calculates PID outputs given an error.
      */
-    class PID {
+    class PID : public AbstractPID {
         public:
             // just to make c++ happy. Do not use this constructor for functionality
             explicit PID() { THROW_ERROR("PID Contructor requires paramters"); }
@@ -38,12 +56,12 @@ namespace ls {
              * @param error the error from target
              * @return the value from PID
              */
-            double update(const double error);
+            double update(const double error) override;
             
             /**
              * @brief Resets the integral and other variables to reset PID state to original. 
              */
-            void reset();
+            void reset() override;
 
         protected:
             float kP;

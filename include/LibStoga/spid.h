@@ -32,7 +32,7 @@ namespace ls {
      * More about SPID can be looked up in the LibStoga documentation.
      * 
      */
-    class SmartPID : public ls::PID {
+    class SmartPID : public ls::AbstractPID {
         public:
             /**
 			 * *Attention* - This algorithm creates really fast changes in output which can be dangerous to the robot if correct parameters are not provided. change the settings with seperate warnings only if you know what you are doing.
@@ -61,13 +61,13 @@ namespace ls {
              * @param error the error from target
              * @return the value from PID
              */
-            double update(const double e);
+            double update(const double e) override;
 
             /**
              * @brief Reset the speed, integral, and derivatives. Constants are not reset.
              * 
              */
-            void reset();
+            void reset() override;
 
         private:
             double kp;

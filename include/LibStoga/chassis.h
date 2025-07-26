@@ -28,8 +28,8 @@ namespace ls {
         pros::MotorGroup* left;
         ls::AbstractOdom* odom;
 
-        ls::PID* lateral_control;
-        ls::PID* angular_control;
+        ls::AbstractPID* lateral_control;
+        ls::AbstractPID* angular_control;
         
         double turn_sensitivity;
         double threshold_lateral;
@@ -42,7 +42,7 @@ namespace ls {
          * @param _right the right motors
          * @param _left the left motors
          */
-        explicit Chassis(pros::MotorGroup& _right, pros::MotorGroup& _left, ls::AbstractOdom& _odom, ls::PID& _lateral_control, ls::PID& _angular_control, double _turn_sensitivity = 1, double _threshold_lateral = 1, double _threshold_angular = 5, unsigned int _threshold_timeout = 500);
+        explicit Chassis(pros::MotorGroup& _right, pros::MotorGroup& _left, ls::AbstractOdom& _odom, ls::AbstractPID& _lateral_control, ls::AbstractPID& _angular_control, double _turn_sensitivity = 1, double _threshold_lateral = 1, double _threshold_angular = 5, unsigned int _threshold_timeout = 500);
         
         /**
          * @brief equates this chassis structure to another one, by using the same motors.

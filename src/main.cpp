@@ -11,7 +11,6 @@ pros::Controller master(pros::E_CONTROLLER_MASTER);
 
 pros::MotorGroup right({8, 9});
 pros::MotorGroup left({-1, -6});
-ls::Chassis chassis{right, left};
 
 ls::imu_odom_parameters_t odom_params = {
 	{
@@ -30,20 +29,10 @@ ls::imu_odom_parameters_t odom_params = {
 };
 ls::ImuOdom odom(odom_params);
 
-ls::PID lateral_control (
-	1,
-	0,
-	0,
-	10,
-	0
-);
-ls::PID turn_control (
-	1,
-	0,
-	0,
-	10,
-	0
-);
+ls::SmartPID lateral_control{};
+ls::SmartPID turn_control{};
+
+ls::Chassis chassis(right, left, odom, lateral_control, turn_control);
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.

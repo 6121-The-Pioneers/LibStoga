@@ -2,12 +2,13 @@
 #include "timer.hpp"
 #include "geometry.h"
 #include "odom.h"
+#include "spid.h"
 #include <algorithm>
 
 #define LOOP_DELAY 5
 
 namespace ls {
-    Chassis::Chassis(pros::MotorGroup& _right, pros::MotorGroup& _left, ls::AbstractOdom& _odom, ls::PID& _lateral_control, ls::PID& _angular_control, double _turn_sensitivity, double _threshold_lateral, double _threshold_angular, double double _threshold_timeout) {
+    Chassis::Chassis(pros::MotorGroup& _right, pros::MotorGroup& _left, ls::AbstractOdom& _odom, ls::AbstractPID& _lateral_control, ls::AbstractPID& _angular_control, double _turn_sensitivity, double _threshold_lateral, double _threshold_angular, unsigned int _threshold_timeout) {
         right = &_right;
         left = &_left;
         odom = &_odom;
@@ -34,7 +35,7 @@ namespace ls {
 
         while (!timer.isDone()) {
             odom->compute();
-            ls::Position& current_position = odom->getPosition();
+            ls::Position current_position = odom->getPosition();
             
             // calculate amount of change:
             double distance = current_position.distanceFromPointSigned(goal);
@@ -71,7 +72,10 @@ namespace ls {
 
     void Chassis::turnToPoint(double X, double Y, unsigned int timeout, bool reverse) {
         ls::Timer timer(timeout);
-        Angle theta_final = current_position.angleToPosition(goal);
+        ls::Position goal(X, Y, 0); // IGNORE THETA
+        odom->compute();
+        Angle theta_final = odom->getPosition().angleToPosition(goal);
+
 
         if (reverse) {
             theta_final += Angle(180);
@@ -82,7 +86,7 @@ namespace ls {
 
         while (!timer.isDone()) {
             odom->compute();
-            ls::Position& current_position = odom->getPosition();
+            ls::Position current_position = odom->getPosition();
 
             // calculate amount of change:
             Angle d_theta = current_position.theta.minimumAngleDifference(theta_final); // order might be subject to change
