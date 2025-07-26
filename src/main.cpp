@@ -29,9 +29,20 @@ ls::imu_odom_parameters_t odom_params = {
 };
 ls::ImuOdom odom(odom_params);
 
-ls::SmartPID lateral_control{};
-ls::SmartPID turn_control{};
-
+ls::PID lateral_control (
+	1,
+	0,
+	0,
+	10,
+	0
+);
+ls::PID turn_control (
+	1,
+	0,
+	0,
+	10,
+	0
+);
 ls::Chassis chassis(right, left, odom, lateral_control, turn_control);
 
 /**
@@ -95,7 +106,8 @@ void autonomous() {
  */
 
 void opcontrol() {
-	ls::SmartPID pid;
+	// relative coordinate PID testing (reverse parrallel odom to fix jittering if any)
+	/*ls::SmartPID pid;
 	
 	while (true) {
 		odom.compute();
@@ -106,7 +118,13 @@ void opcontrol() {
 
 		pros::lcd::print(0, "X: %f Y: %f angle: %f", odom.getX(), odom.getY(), odom.getAngle());
 		pros::delay(10);
-	}
+	}*/
+
+	chassis.moveToPointLinear(0, 10, 2000, false); // should move 10 (whatever unit it is doesnt matter with untuned odom)s forward
+	
+	pros::lcd::print(0, "X: %f Y: %f angle: %f", odom.getX(), odom.getY(), odom.getAngle());
+	pros::lcd::print(1, "Done!");
+
 }
 
 

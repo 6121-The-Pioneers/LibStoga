@@ -52,13 +52,11 @@ namespace ls {
             double power = lateral_control->update(distance) * move_priority(d_theta);
             double turn = angular_control->update(d_theta.getAngle());
 
-            if (distance <= threshold_lateral) {
+            if (fabs(distance) <= threshold_lateral) {
                 exit_timer += LOOP_DELAY;
             }
 
             if (exit_timer > threshold_timeout) {
-                right->move(0);
-                left->move(0);
                 break;
             }
 
@@ -68,6 +66,9 @@ namespace ls {
 
             pros::delay(LOOP_DELAY);
         }
+
+        right->move(0);
+        left->move(0);
     }
 
     void Chassis::turnToPoint(double X, double Y, unsigned int timeout, bool reverse) {
@@ -75,7 +76,6 @@ namespace ls {
         ls::Position goal(X, Y, 0); // IGNORE THETA
         odom->compute();
         Angle theta_final = odom->getPosition().angleToPosition(goal);
-
 
         if (reverse) {
             theta_final += Angle(180);
@@ -89,18 +89,16 @@ namespace ls {
             ls::Position current_position = odom->getPosition();
 
             // calculate amount of change:
-            Angle d_theta = current_position.theta.minimumAngleDifference(theta_final); // order might be subject to change
+            Angle d_theta = odom->getPosition().theta.minimumAngleDifference(theta_final); // order might be subject to change
 
             // calculate power and PID outputs:
             double turn = angular_control->update(d_theta.getAngle());
 
-            if (d_theta.getAngle() <= threshold_angular) {
+            if (fabs(d_theta.getAngle()) <= threshold_angular) {
                 exit_timer += LOOP_DELAY;
             }
 
             if (exit_timer > threshold_timeout) {
-                right->move(0);
-                left->move(0);
                 break;
             }
 
@@ -108,8 +106,12 @@ namespace ls {
             right->move(-turn); // order might be subject to change
             left->move(turn); // order might be subject to change
 
+            odom->compute();
             pros::delay(LOOP_DELAY);
         }
+
+        right->move(0);
+        left->move(0);
     }
 
     double Chassis::move_priority(Angle& angle) const {

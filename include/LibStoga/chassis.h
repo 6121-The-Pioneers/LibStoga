@@ -41,6 +41,13 @@ namespace ls {
          * 
          * @param _right the right motors
          * @param _left the left motors
+         * @param _odom odom of the chassis
+         * @param _lateral_control PID class denoting forward motion
+         * @param _angular_control PID class denoting turn motion
+         * @param _turn_sensitivity how much turns should be prioritized (1 is default, >1 is prioritize turn by magnitude, <1 is prioritize movement by magnitude (NOT RECOMMENDED), negatives do not matter, 0 is no lateral movement)
+         * @param _threshold_lateral threshold at which if sitting for _threshold_timeout ms moveTo functions can exit
+         * @param _threshold_angular threshold at which if sitting for _threshold_timeout ms turnTo functions can exit
+         * @param _threshold_timeout amount of time time that must be spent within threshold to exit
          */
         explicit Chassis(pros::MotorGroup& _right, pros::MotorGroup& _left, ls::AbstractOdom& _odom, ls::AbstractPID& _lateral_control, ls::AbstractPID& _angular_control, double _turn_sensitivity = 1, double _threshold_lateral = 1, double _threshold_angular = 5, unsigned int _threshold_timeout = 500);
         
