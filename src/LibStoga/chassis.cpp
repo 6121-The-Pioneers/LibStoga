@@ -40,6 +40,9 @@ namespace ls {
             // calculate amount of change:
             double distance = current_position.distanceFromPointSigned(goal);
             Angle theta_final = current_position.angleToPosition(goal);
+
+            pros::lcd::print(0, "d to target: %f", distance);
+            pros::lcd::print(2, "th to target: %f", theta_final);
             
             if (reverse) {
                 theta_final += Angle(180);
@@ -47,10 +50,12 @@ namespace ls {
             }
 
             Angle d_theta = current_position.theta.minimumAngleDifference(theta_final); // order might be subject to change
+            pros::lcd::print(3, "dth to target: %f", d_theta);
 
             // calculate power and PID outputs:
             double power = lateral_control->update(distance) * move_priority(d_theta);
             double turn = angular_control->update(d_theta.getAngle());
+            pros::lcd::print(5, "move_priority: %f", move_priority(d_theta))
 
             if (fabs(distance) <= threshold_lateral) {
                 exit_timer += LOOP_DELAY;
@@ -60,9 +65,9 @@ namespace ls {
                 break;
             }
 
-            // set power:
-            right->move(power - turn); // order might be subject to change
-            left->move(power + turn); // order might be subject to change
+            // set power: (UNCOMMENT WHEN CONFIDENT IT WORKS)
+            //right->move(power - turn); // order might be subject to change
+            //left->move(power + turn); // order might be subject to change
 
             pros::delay(LOOP_DELAY);
         }

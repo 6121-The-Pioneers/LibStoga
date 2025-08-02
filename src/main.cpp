@@ -120,10 +120,9 @@ void opcontrol() {
 		pros::delay(10);
 	}*/
 
-	chassis.moveToPointLinear(0, 10, 2000, false); // should move 10 (whatever unit it is doesnt matter with untuned odom)s forward
-	
-	pros::lcd::print(0, "X: %f Y: %f angle: %f", odom.getX(), odom.getY(), odom.getAngle());
-	pros::lcd::print(1, "Done!");
+	chassis.moveToPointLinear(0, 10, 10000, false); // should move 10 (whatever unit it is doesnt matter with untuned odom)s forward (increase timeout as needed to observe numbers)
+
+	master.print(0, 0, "DONE");
 
 }
 
