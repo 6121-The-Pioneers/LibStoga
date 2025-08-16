@@ -72,10 +72,13 @@ namespace ls {
         private:
             double kp;
             double kd;
+            double ki;
             
             double P;
+            double I;
             double D;
             double prev_val;
+            bool signFlipReset = false;
             
             double correction_constant;
             double windup;
