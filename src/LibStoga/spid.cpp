@@ -59,7 +59,7 @@ namespace ls {
             ki -= CKi * learn_sigmoid(e);
         }
 
-        if (isnanf(kp) || isnanf(kd) || isinff(kp) || isinff(kd) || isinff(ki) || isinff(ki)) {
+        if (isnanf(kp) || isnanf(kd) || isinff(kp) || isinff(kd) || isnanf(ki) || isinff(ki)) {
             kp = 0;
             kd = 0;
             ki = 0;
