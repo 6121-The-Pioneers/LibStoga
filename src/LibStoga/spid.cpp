@@ -4,9 +4,9 @@
 // instead of getting output, get realtime vector magnitude from odom.
 namespace ls {
     SmartPID::SmartPID(double cc, double w, double lc, double max)
-        : kp(0), kd(0), P(0), D(0), prev_val(0), correction_constant(fabs(cc)), windup(fabs(w)), learning_constant(fabs(lc)), max_value(fabs(max)) {}
+        : kp(0), kd(0), ki(0), P(0), D(0), I(0), prev_val(0), correction_constant(fabs(cc)), windup(fabs(w)), learning_constant(fabs(lc)), max_value(fabs(max)) {}
 
-    SmartPID::SmartPID(smart_pid_parameters_t &parameters): kp(0), kd(0), P(0), D(0), prev_val(0)
+    SmartPID::SmartPID(smart_pid_parameters_t &parameters): kp(0), kd(0), ki(0), P(0), D(0), I(0), prev_val(0)
     {
         correction_constant = fabs(parameters.correction_constant);
         windup = fabs(parameters.windup);
@@ -15,15 +15,15 @@ namespace ls {
     }
 
     double SmartPID::update(const double e) {
-        P = e;
         update_components(e);
         update_constants(e);
-        return kp * P + kd * D;
+        return kp * P + kd * D + ki * I;
     }
 
     void SmartPID::reset()
     {
         P = 0;
+        I = 0;
         D = 0;
         prev_val = 0;
     }
@@ -31,26 +31,38 @@ namespace ls {
     void SmartPID::update_components(const double e) {
         P = e;
         D = (e - prev_val);
+        
+        if (fabs(e) <= windup) {
+            I += e;
+            I = std::clamp(integral, -windupRange*2, windupRange*2);
+            if (sgn(e) != sgn(prev_val) && signFlipReset) integral = 0;
+        }
+        else {
+            I = 0;
+        }
+        
         prev_val = e;
     }
 
 	// uses sigmoid function to stop learning when close to target.
     void SmartPID::update_constants(const double e) {
-        double theta = kp * P + kd * D;
+        double theta = kp * P + kd * D + ki + I;
         double Y = get_expected(e);
         double constant = learning_constant * 2 * (theta - Y);
         double CKp = constant * P;
         double CKd = constant * D;
+        double CKi = constant * I;
         
         if (fabs(e) > windup) {
             kp -= CKp * learn_sigmoid(e);
             kd -= CKd * learn_sigmoid(e);
+            ki -= CKi * learn_sigmoid(e);
         }
 
-       
-        if (isnanf(kp) || isnanf(kd) || isinff(kp) || isinff(kd)) {
+        if (isnanf(kp) || isnanf(kd) || isinff(kp) || isinff(kd) || isinff(ki) || isinff(ki)) {
             kp = 0;
             kd = 0;
+            ki = 0;
             reset();
         }
     }
