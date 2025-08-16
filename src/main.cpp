@@ -53,7 +53,7 @@ ls::Chassis chassis(right, left, odom, lateral_control, turn_control);
  */
 void initialize() {
 	pros::lcd::initialize();
-	odom.resetAll();
+	odom.resetAll(true);
 }
 
 /**
@@ -120,9 +120,16 @@ void opcontrol() {
 		pros::delay(10);
 	}*/
 
-	chassis.moveToPointLinear(0, 10, 10000, false); // should move 10 (whatever unit it is doesnt matter with untuned odom)s forward (increase timeout as needed to observe numbers)
+	// moveToPoint testing 
+	/*chassis.moveToPointLinear(0, 10, 10000, false); // should move 10 (whatever unit it is doesnt matter with untuned odom)s forward (increase timeout as needed to observe numbers)
+	master.print(0, 0, "DONE");*/
 
-	master.print(0, 0, "DONE");
+	while (true) {
+		odom.compute();
+
+		pros::lcd::print(0, "X: %f Y: %f angle: %f", odom.getX(), odom.getY(), odom.getAngle());
+		pros::delay(10);
+	}
 
 }
 

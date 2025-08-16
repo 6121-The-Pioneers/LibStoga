@@ -55,7 +55,7 @@ namespace ls {
             // calculate power and PID outputs:
             double power = lateral_control->update(distance) * move_priority(d_theta);
             double turn = angular_control->update(d_theta.getAngle());
-            pros::lcd::print(5, "move_priority: %f", move_priority(d_theta))
+            pros::lcd::print(5, "move_priority: %f", move_priority(d_theta));
 
             if (fabs(distance) <= threshold_lateral) {
                 exit_timer += LOOP_DELAY;

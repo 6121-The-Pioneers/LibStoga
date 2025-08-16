@@ -1,9 +1,9 @@
 #include "tracking.h"
 #include "error.h"
 
-ls::TrackingWheel::TrackingWheel(std::uint8_t port, double radius, bool reversed)
+ls::TrackingWheel::TrackingWheel(std::int8_t port, double radius, bool reversed)
 {
-    if (port < 0 || port > 24) {
+    if (port < -24 || port > 24) {
         THROW_ERROR("Port must be in the range of [0, 24].");
     }
     rotation = std::make_unique<pros::Rotation>(port);

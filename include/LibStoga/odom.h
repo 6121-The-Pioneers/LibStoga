@@ -98,18 +98,6 @@ namespace ls {
 		explicit AbstractOdom(): pos(Position()) {};
 	public:
 		/**
-		* @brief Initialize this AbstractOdom with a list of pins. 
-		* Depending on the specific subclass, the meaning of this and the specific order of the pins may be different.
-		* 
-		* Ex. The 3 Wheel Odom class can have an instance where the 1st one is center, 2nd is right, 3rd is left
-		*     But for 2 Wheel Odom + IMU, it might have an instance where 1st one is IMU, 2nd is perpendicular, 3rd is parralel.
-		* 
-		* If items on ports have to be reversed, it can be given as a negative number
-		* 
-		* @param ports the ports that this Odom object uses
-		*/
-		virtual void initialize(std::initializer_list<uint8_t> ports) = 0;
-		/**
 		* @brief Computes the new coordinations and angle of the robot since the program has started.
 		* Assumes that (0, 0) is where the robot starts at reboot.
 		* Also assumes that initial posture is 0 degrees (bearing)
@@ -161,12 +149,12 @@ namespace ls {
 		* Reset the angle of the robot.
 		* Make the current angle = 0
 		*/
-		virtual void resetAngle();
+		virtual void resetAngle(bool block_exec = false);
 		/**
 		* Reset the positioning and angles of the robot.
 		* makes the current position (0, 0) and the current angle = 0;
 		*/
-		virtual void resetAll();
+		virtual void resetAll(bool block_exec=false);
 		/**
 		* Gets the change in X since the previous call of this method.
 		* Does not call resetX() or reset the coordinates in any way.
@@ -282,16 +270,6 @@ namespace ls {
 		explicit ThreeWheelOdom(threewheel_odom_parameters_t& param);
 
 		/**
-		 * @brief Initializes the following object with the given ports.
-		 * Constructions default pros::Rotation objects on these ports.
-		 * 1st represents right, 2nd represents left, 3rd represents back.
-		 * If the list does not contain 3 valid ports, an std::invalid_argument exception will be thrown.
-		 * 
-		 * @param ports list of ports in the following order: right, left, sensor.
-		 */
-		void initialize(std::initializer_list<uint8_t> ports) override;
-
-		/**
 		* Gets the change in X since the previous call of this method.
 		* Does not call resetX() or reset the coordinates in any way.
 		* 
@@ -331,95 +309,41 @@ namespace ls {
 	 * @brief Represents all the calculations for 2 wheel and IMU odometry.
 	 * 
 	 */
-	class ImuOdom: public AbstractOdom {
+	class ImuOdom : public AbstractOdom {
 	private:
-		std::unique_ptr<TrackingWheel> horiz = nullptr; // synonomous to back wheel in 3 wheel odom
-		std::unique_ptr<TrackingWheel> vert = nullptr; // synonomous to left/right wheel in 3 wheel odom
+		std::unique_ptr<TrackingWheel> horiz = nullptr; // horizontal (sideways) tracking wheel
+		std::unique_ptr<TrackingWheel> vert = nullptr; // vertical (forward) tracking wheel
 		std::unique_ptr<pros::Imu> IMU = nullptr;
 
-		double centerToVert; // in inches
-		double centerToHoriz; // in inches
-		double prevRotation; // in inches
+		double centerToVert;   // distance from vertical wheel to robot center (in)
+		double centerToHoriz;  // distance from horizontal wheel to robot center (in)
+		double prevRotation = 0;   // last IMU heading (deg)
 
-		double deltaH = 0; // in inches
-		double deltaV = 0; // in inches
-		double deltaT = 0; // in degrees
-		
+		double deltaH = 0;     // last horizontal delta (in)
+		double deltaV = 0;     // last vertical delta (in)
+		double deltaT = 0;     // last delta angle (deg)
+
+		// unwrap IMU heading [0, 360) into continuous difference
+		double unwrapHeading(double cur, double prev);
+
 	public:
-		/**
-		 * @brief Construct a new Imu Odom object
-		 * 
-		 * @param center_to_horiz distance from horizontal tracking wheel to center in inches.
-		 * @param center_to_vert distance from vertical tracking wheel to center in inches.
-		 */
 		explicit ImuOdom(double center_to_horiz, double center_to_vert);
 
-		/**
-		 * @brief Construct a new Imu Odom object
-		 * 
-		 * @param center_to_horiz distance from horiz tracking wheel to center in inches. (only positive number allowed)
-		 * @param center_to_vert distance from vert tracking wheel to center in inches. (only positive number allowed)
-		 * @param horiz horizontal tracking wheel as an object.
-		 * @param vert vertical tracking wheel as an object.
-		 * @param IMU Imu sensor
-		 */
-		explicit ImuOdom(double center_to_horiz, double center_to_vert, TrackingWheel& horiz, TrackingWheel& vert, pros::Imu& IMU);
+		explicit ImuOdom(double center_to_horiz, double center_to_vert, TrackingWheel& h, TrackingWheel& v, pros::Imu& i);
 
-		/**
-		 * @brief Construct a new Imu Odom object
-		 * 
-		 * using the imu_odom_parameters_t structure.
-		 * 
-		 * @param param structure to use
-		 */
 		explicit ImuOdom(imu_odom_parameters_t& param);
 
-		/**
-		 * @brief Initializes the following object with the given ports.
-		 * Constructions default pros::Rotation objects for wheels.
-		 * 1st represents horiz, 2nd represents vert, 3rd represents IMU.
-		 * If the list does not contain 3 valid ports, an std::invalid_argument exception will be thrown.
-		 * 
-		 * @param ports list of ports in the following order: right, left, sensor.
-		 */
-		void initialize(std::initializer_list<uint8_t> ports) override;
+		Angle getDeltaAngle() override;
 
-		/**
-		* Gets the change in X since the previous call of this method.
-		* Does not call resetX() or reset the coordinates in any way.
-		* 
-		* Will return 0 on first call.
-		* 
-		* @returns the delta in the x-coordinate value
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
 		double getDeltaX() override;
 
-		/**
-		* Gets the change in Y since the previous call of this method.
-		* Does not call resetY() or reset the coordinates in any way.
-		*
-		* Will return 0 on first call.
-		*
-		* @returns the delta in the y-coordinate value
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
 		double getDeltaY() override;
-
-		/**
-		* Gets the change in angle since the previous call of this method.
-		* Does not call resetAngle() or reset the angle in any way.
-		*
-		* Will return 0 on first call.
-		*
-		* @returns the delta in the angle
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
-		Angle getDeltaAngle() override;
 
 		void compute() override;
 
-		void resetAll() override;
+		void resetAll(bool block_exec = false) override;
+
+		void resetAngle(bool block_exec = false) override;
 	};
 
 };
