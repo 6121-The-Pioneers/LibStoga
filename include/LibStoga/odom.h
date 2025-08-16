@@ -200,17 +200,6 @@ namespace ls {
 	protected:
 		Position prev_pos;
 	};
-
-	/**
-	 * @brief The parameters for rotational tracking wheels.
-	 * 
-	 * Order: port (1-21), radius (inches), reversed (true/false)
-	 */
-	struct tracking_rotation_parameters_t {
-		int16_t port;
-		double radius = 2.75;
-		bool reversed = false;
-	};
 	
 	/**
 	 * @brief The parameters for the ImuOdom.

@@ -15,6 +15,19 @@
 #include <cstdint>
 
 namespace ls {
+    /**
+     * @brief The parameters for rotational tracking wheels.
+     *
+     * Order: port (1-21), radius (inches), reversed (true/false)
+     */
+
+    struct tracking_rotation_parameters_t {
+        int8_t port;
+        double radius = 2.75;
+        bool reversed = false;
+    };
+
+
     /*
     * Wrapper class for pros::Rotation.
     * Used extensively for Odom wheels.
@@ -38,7 +51,7 @@ namespace ls {
          * @param radius radius of the wheel attached
          * @param reversed if is reversed by default
          */
-        explicit TrackingWheel(std::uint8_t port, double radius=2.75, bool reversed=false);
+        explicit TrackingWheel(std::int8_t port, double radius=2.75, bool reversed=false);
 
         /**
          * @brief Construct a new Tracking Wheel object
