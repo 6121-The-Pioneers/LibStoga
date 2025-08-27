@@ -38,7 +38,7 @@ namespace ls {
             ls::Position current_position = odom->getPosition();
             
             // calculate amount of change:
-            double distance = current_position.distanceFromPointSigned(goal);
+            double distance = goal.distanceFromPointSigned(current_position);
             Angle theta_final = current_position.angleToPosition(goal);
 
             pros::lcd::print(0, "d to target: %f", distance);
@@ -48,6 +48,9 @@ namespace ls {
                 theta_final += Angle(180);
                 theta_final = theta_final.normalize();
             }
+            else {
+                distance *= -1;
+            }
 
             Angle d_theta = current_position.theta.minimumAngleDifference(theta_final); // order might be subject to change
             pros::lcd::print(3, "dth to target: %f", d_theta);
@@ -55,7 +58,7 @@ namespace ls {
             // calculate power and PID outputs:
             double power = lateral_control->update(distance) * move_priority(d_theta);
             double turn = angular_control->update(d_theta.getAngle());
-            pros::lcd::print(5, "move_priority: %f", move_priority(d_theta))
+            pros::lcd::print(5, "move_priority: %f", move_priority(d_theta));
 
             if (fabs(distance) <= threshold_lateral) {
                 exit_timer += LOOP_DELAY;
@@ -66,10 +69,11 @@ namespace ls {
             }
 
             // set power: (UNCOMMENT WHEN CONFIDENT IT WORKS)
-            //right->move(power - turn); // order might be subject to change
-            //left->move(power + turn); // order might be subject to change
+            right->move(power + turn); // order might be subject to change
+            left->move(power - turn); // order might be subject to change
 
             pros::delay(LOOP_DELAY);
+
         }
 
         right->move(0);
