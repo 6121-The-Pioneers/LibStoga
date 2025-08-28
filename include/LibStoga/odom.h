@@ -350,11 +350,7 @@ namespace ls {
 
 		double centerToVert; // in inches
 		double centerToHoriz; // in inches
-		double prevRotation; // in inches
-
-		double deltaH = 0; // in inches
-		double deltaV = 0; // in inches
-		double deltaT = 0; // in degrees
+		double prevRotation; // previous rotation
 		
 	public:
 		/**

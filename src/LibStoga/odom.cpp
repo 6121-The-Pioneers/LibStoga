@@ -189,8 +189,6 @@ namespace ls {
 namespace ls {
 	ImuOdom::ImuOdom(double center_to_horiz, double center_to_vert)
 		: centerToHoriz(center_to_horiz), centerToVert(center_to_vert) {
-		deltaH = 0;
-		deltaT = 0;
 		prevRotation = 0;
 	}
 
@@ -200,8 +198,6 @@ namespace ls {
 		horiz = std::make_unique<TrackingWheel>(h);
 		vert = std::make_unique<TrackingWheel>(v);
 		IMU = std::make_unique<pros::Imu>(i);
-		deltaH = 0;
-		deltaV = 0;
 		prevRotation = 0;
     }
 
@@ -211,8 +207,6 @@ namespace ls {
 		horiz = std::make_unique<TrackingWheel>(param.perpendicular.port, param.perpendicular.radius, param.perpendicular.reversed);
 		vert = std::make_unique<TrackingWheel>(param.parallel.port, param.parallel.radius, param.parallel.reversed);
 		IMU = std::make_unique<pros::Imu>(param.imu_port);
-		deltaH = 0;
-		deltaV = 0;
 		prevRotation = 0;
 	}
 
@@ -239,62 +233,48 @@ namespace ls {
 	
 	double ImuOdom::getDeltaX() // rework
     {
-		 /*if (deltaT == 0) {
-		 	return 0;	
-		 }
-		 else {
-		 	return 2 * sin(degreesToRadians(deltaT) / 2.0) * ((deltaH / degreesToRadians(deltaT)) + centerToHoriz);
-		 }*/
-		//return horiz->getLinearDeltaDistance() * sin(degreesToRadians(IMU->get_heading())) - centerToHoriz * deltaT;
-		
-		double angle = getDeltaAngle().convertToRadians();
-		if (angle == 0) angle = 1e-6;
-		deltaH = 2 * sin(angle / 2) * ((deltaH / angle) + centerToHoriz);
-		return deltaH;
+		return 0;
     }
 
     double ImuOdom::getDeltaY() // rework
     {
-		 /*if (deltaT == 0) {
-		 	return 0;
-		 } else {
-		 	return 2 * sin(degreesToRadians(deltaT) / 2.0) * ((deltaV / degreesToRadians(deltaT)) + centerToVert);
-		 }*/
-		//return vert->getLinearDeltaDistance() * cos(degreesToRadians(IMU->get_heading())) - centerToVert * deltaT;
-		
-		double angle = getDeltaAngle().convertToRadians();
-		if (angle == 0) angle = 1e-6;
-		deltaV = 2 * sin(angle / 2) * ((deltaV / angle) + centerToVert);
-		return deltaV;
+		return 0;
     }
 
     Angle ImuOdom::getDeltaAngle() // good
     {
 		double curRotation = IMU->get_heading();
-		deltaT = curRotation - prevRotation;
 		prevRotation = curRotation;
-        return Angle(deltaT);
+        return Angle(curRotation == prevRotation ? 1e-6 : (curRotation - prevRotation));
     }
 
     void ImuOdom::compute() // rework
     {
-		// deltaH = horiz.get()->getLinearDeltaDistance();
-		// deltaV = vert.get()->getLinearDeltaDistance();
-		// AbstractOdom::compute();
-		pos.theta += getDeltaAngle();
+		pos.theta = IMU->get_heading();
+		Angle mathAngle = Angle(90 - pos.theta.getAngle()); // use non-polar angle for math
+		Angle deltaAngle = getDeltaAngle();
 
-		pos.X = getDeltaX();
-		pos.Y = getDeltaY();
+		// calculate respective radiuses for odom math
+		double r0 = (vert->getLinearDeltaDistance() - centerToVert * deltaAngle.convertToRadians()) / deltaAngle.convertToRadians();
+		double r1 = (horiz->getLinearDeltaDistance() - centerToHoriz * deltaAngle.convertToRadians()) / deltaAngle.convertToRadians();
+		
+		// calculate relative coordinates:
+		double relX = r0 * sin(deltaAngle.convertToRadians()) - r1 * (1 - cos(deltaAngle.convertToRadians()));
+		double relY = r1 * sin(deltaAngle.convertToRadians()) + r0 * (1 - cos(deltaAngle.convertToRadians()));
+
+		// rotate and increment to global coordinates:
+		pos.X += relX * cos(mathAngle.convertToRadians()) - relY * sin(mathAngle.convertToRadians());
+		pos.Y += relY * cos(mathAngle.convertToRadians()) + relX * sin(mathAngle.convertToRadians());
     }
 
     void ImuOdom::resetAll()
     {
 		horiz->reset();
 		vert->reset();
-		deltaT = 0;
-		deltaH = 0;
-		deltaV = 0;
 		IMU->reset(true);
+		pos.X = 0;
+		pos.Y = 0;
+		pos.theta = 0;
 		AbstractOdom::resetAll();
     }
 };

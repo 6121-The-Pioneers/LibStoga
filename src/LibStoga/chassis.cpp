@@ -62,6 +62,7 @@ namespace ls {
 
             if (fabs(distance) <= threshold_lateral) {
                 exit_timer += LOOP_DELAY;
+                // make SPID stop tuning here
             }
 
             if (exit_timer > threshold_timeout) {
