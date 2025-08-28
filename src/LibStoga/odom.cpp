@@ -231,24 +231,24 @@ namespace ls {
 		}	
     } 
 	
-	double ImuOdom::getDeltaX() // rework
+	double ImuOdom::getDeltaX()
     {
-		return 0;
+		return deltaGlobalX;
     }
 
-    double ImuOdom::getDeltaY() // rework
+    double ImuOdom::getDeltaY()
     {
-		return 0;
+		return deltaGlobalY;
     }
 
-    Angle ImuOdom::getDeltaAngle() // good
+    Angle ImuOdom::getDeltaAngle()
     {
 		double curRotation = IMU->get_heading();
 		prevRotation = curRotation;
         return Angle(curRotation == prevRotation ? 1e-6 : (curRotation - prevRotation));
     }
 
-    void ImuOdom::compute() // rework
+    void ImuOdom::compute()
     {
 		pos.theta = IMU->get_heading();
 		Angle mathAngle = Angle(90 - pos.theta.getAngle()); // use non-polar angle for math
@@ -263,8 +263,10 @@ namespace ls {
 		double relY = r1 * sin(deltaAngle.convertToRadians()) + r0 * (1 - cos(deltaAngle.convertToRadians()));
 
 		// rotate and increment to global coordinates:
-		pos.X += relX * cos(mathAngle.convertToRadians()) - relY * sin(mathAngle.convertToRadians());
-		pos.Y += relY * cos(mathAngle.convertToRadians()) + relX * sin(mathAngle.convertToRadians());
+		deltaGlobalX = relX * cos(mathAngle.convertToRadians()) - relY * sin(mathAngle.convertToRadians());
+		deltaGlobalY = relY * cos(mathAngle.convertToRadians()) + relX * sin(mathAngle.convertToRadians());
+		pos.X += deltaGlobalX;
+		pos.Y += deltaGlobalY;
     }
 
     void ImuOdom::resetAll()

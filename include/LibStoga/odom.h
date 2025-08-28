@@ -351,6 +351,9 @@ namespace ls {
 		double centerToVert; // in inches
 		double centerToHoriz; // in inches
 		double prevRotation; // previous rotation
+
+		double deltaGlobalX = 0;
+		double deltaGlobalY = 0;
 		
 	public:
 		/**
@@ -392,7 +395,7 @@ namespace ls {
 		void initialize(std::initializer_list<uint8_t> ports) override;
 
 		/**
-		* Gets the change in X since the previous call of this method.
+		* Gets the change in X since the previous call of compute().
 		* Does not call resetX() or reset the coordinates in any way.
 		* 
 		* Will return 0 on first call.
@@ -403,7 +406,7 @@ namespace ls {
 		double getDeltaX() override;
 
 		/**
-		* Gets the change in Y since the previous call of this method.
+		* Gets the change in Y since the previous call of compute().
 		* Does not call resetY() or reset the coordinates in any way.
 		*
 		* Will return 0 on first call.

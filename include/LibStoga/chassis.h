@@ -60,11 +60,10 @@ namespace ls {
         
         /** TODO
         * @brief moves chassis to the following point in the cartesian coordinate plane with latest odom reset point as (0, 0)
-        * Linear in movement. Does not support curves.
         * 
         * @param ... (figure it out once done with function)
         */
-        void moveToPointLinear(double X, double Y, unsigned int timeout, bool reverse = false);
+        void moveToPoint(double X, double Y, unsigned int timeout, bool reverse = false);
 
         /** TODO
         * @brief turns chassis to face the following point in the cartesian coordinate plane with latest odom reset point as (0, 0)

@@ -28,7 +28,7 @@ namespace ls {
         angular_control = other.angular_control;
     }
 
-    void Chassis::moveToPointLinear(double X, double Y, unsigned int timeout, bool reverse) { // TODO make curveless toPoint complete on next weekend
+    void Chassis::moveToPoint(double X, double Y, unsigned int timeout, bool reverse) {
         ls::Timer timer(timeout);
         ls::Position goal(X, Y, 0); // IGNORE THETA
         unsigned int exit_timer = 0;
@@ -40,9 +40,6 @@ namespace ls {
             // calculate amount of change:
             double distance = goal.distanceFromPointSigned(current_position);
             Angle theta_final = current_position.angleToPosition(goal);
-
-            pros::lcd::print(0, "d to target: %f", distance);
-            pros::lcd::print(2, "th to target: %f", theta_final);
             
             if (reverse) {
                 theta_final += Angle(180);
@@ -53,12 +50,12 @@ namespace ls {
             }
 
             Angle d_theta = current_position.theta.minimumAngleDifference(theta_final); // order might be subject to change
-            pros::lcd::print(3, "dth to target: %f", d_theta);
 
             // calculate power and PID outputs:
-            double power = lateral_control->update(distance) * move_priority(d_theta);
+            double raw_power = lateral_control->update(distance);
+            double power = raw_power * move_priority(d_theta);
             double turn = angular_control->update(d_theta.getAngle());
-            pros::lcd::print(5, "move_priority: %f", move_priority(d_theta));
+            pros::lcd::print(1, "power: %f", raw_power);
 
             if (fabs(distance) <= threshold_lateral) {
                 exit_timer += LOOP_DELAY;
