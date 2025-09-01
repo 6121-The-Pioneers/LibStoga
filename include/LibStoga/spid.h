@@ -46,7 +46,7 @@ namespace ls {
              * @param max the maximum value of the PID output.
              * 
              */
-            explicit SmartPID(double cc = 1, double w = 1, double lc = 0.001, double max = 127);
+            explicit SmartPID(double cc = 1, double w = 10, double lc = 0.001, double max = 127);
 
             /**
              * @brief Construct a new SmartPID object

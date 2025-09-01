@@ -5,7 +5,7 @@
 #include "spid.h"
 #include <algorithm>
 
-#define LOOP_DELAY 5
+#define LOOP_DELAY 1
 
 namespace ls {
     Chassis::Chassis(pros::MotorGroup& _right, pros::MotorGroup& _left, ls::AbstractOdom& _odom, ls::AbstractPID& _lateral_control, ls::AbstractPID& _angular_control, double _turn_sensitivity, double _threshold_lateral, double _threshold_angular, unsigned int _threshold_timeout) {
@@ -55,18 +55,16 @@ namespace ls {
             double raw_power = lateral_control->update(distance);
             double power = raw_power * move_priority(d_theta);
             double turn = angular_control->update(d_theta.getAngle());
-            pros::lcd::print(1, "power: %f", raw_power);
 
             if (fabs(distance) <= threshold_lateral) {
                 exit_timer += LOOP_DELAY;
-                // make SPID stop tuning here
             }
 
             if (exit_timer > threshold_timeout) {
                 break;
             }
 
-            // set power: (UNCOMMENT WHEN CONFIDENT IT WORKS)
+            // set power:
             right->move(power + turn); // order might be subject to change
             left->move(power - turn); // order might be subject to change
 
@@ -81,14 +79,6 @@ namespace ls {
     void Chassis::turnToPoint(double X, double Y, unsigned int timeout, bool reverse) {
         ls::Timer timer(timeout);
         ls::Position goal(X, Y, 0); // IGNORE THETA
-        odom->compute();
-        Angle theta_final = odom->getPosition().angleToPosition(goal);
-
-        if (reverse) {
-            theta_final += Angle(180);
-            theta_final = theta_final.normalize();
-        }
-
         unsigned int exit_timer = 0;
 
         while (!timer.isDone()) {
@@ -96,12 +86,19 @@ namespace ls {
             ls::Position current_position = odom->getPosition();
 
             // calculate amount of change:
-            Angle d_theta = odom->getPosition().theta.minimumAngleDifference(theta_final); // order might be subject to change
+            Angle theta_final = current_position.angleToPosition(goal);
+
+            if (reverse) {
+                theta_final += Angle(180);
+                theta_final = theta_final.normalize();
+            }
+
+            Angle d_theta = current_position.theta.minimumAngleDifference(theta_final); // order might be subject to change
 
             // calculate power and PID outputs:
             double turn = angular_control->update(d_theta.getAngle());
 
-            if (fabs(d_theta.getAngle()) <= threshold_angular) {
+            if (fabs(current_position.theta.getAngle()) <= threshold_angular) {
                 exit_timer += LOOP_DELAY;
             }
 
@@ -110,11 +107,11 @@ namespace ls {
             }
 
             // set power:
-            right->move(-turn); // order might be subject to change
-            left->move(turn); // order might be subject to change
+            right->move(turn); // order might be subject to change
+            left->move(-turn); // order might be subject to change
 
-            odom->compute();
             pros::delay(LOOP_DELAY);
+
         }
 
         right->move(0);

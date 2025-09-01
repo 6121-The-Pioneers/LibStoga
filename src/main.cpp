@@ -43,8 +43,8 @@ ls::ImuOdom odom(odom_params);
 //	10,
 //	0
 //);
-ls::SmartPID lateral_control(2, 0);
-ls::SmartPID turn_control(1, 0);
+ls::SmartPID lateral_control(1);
+ls::SmartPID turn_control(0.5);
 ls::Chassis chassis(right, left, odom, lateral_control, turn_control, 1);
 
 /**
@@ -121,7 +121,7 @@ void opcontrol() {
 		pros::delay(10);
 	}*/
 
-	chassis.moveToPoint(0, -40, 10000, true); // should move 10 (whatever unit it is doesnt matter with untuned odom)s forward (increase timeout as needed to observe numbers)
+	chassis.moveToPoint(0, -40, 10000, true);
 
 	master.print(0, 0, "DONE");
 
