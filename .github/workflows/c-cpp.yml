@@ -1,0 +1,25 @@
+name: VEX V5 PROS Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install PROS CLI
+      run: |
+        curl -L https://raw.githubusercontent.com/purduesigbots/pros-cli/master/install.sh | sh
+
+    - name: Build PROS project
+      run: pros make
+      working-directory: .
