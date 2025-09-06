@@ -18,7 +18,7 @@ jobs:
 
     - name: Install PROS CLI
       run: |
-        curl -L https://raw.githubusercontent.com/purduesigbots/pros-cli/master/install.sh | sh
+        python3 -m pip install --user pros-cli
 
     - name: Build PROS project
       run: pros make
