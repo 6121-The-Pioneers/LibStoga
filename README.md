@@ -1,52 +1,53 @@
 <div align="center">
 
-# LibStoga
+# 🤖 LibStoga
 
-## 2. Feature Overview
-| Category | Feature | Summary |
-|----------|---------|---------|
-| Geometry | Angle / Point / Pose / Path | Bearings (field-north = 0°), helpers for distance & angle math |
-| Hardware Wrappers | TrackingWheel | Works with smart port Rotation or ADI quadrature encoders |
-| Odometry | ThreeWheelOdom | Pure wheel-based 3-tracker system |
-| Odometry | ImuOdom | 2 wheel + IMU hybrid (heading from IMU) |
-| Localization | MCLTracker | Particle filter (Monte Carlo Localization) skeleton w/ measurement injection |
-| Control | PID | dt-aware, windup clamped, optional zero-cross integral reset |
-| Control | SmartPID | Adaptive proportional/derivative learner with sigmoid dampening |
-| Control | AdaptivePIDController | Battery voltage & surface condition compensation with automatic gain adjustment |
-| Control | Auto-Tuning | Ziegler-Nichols & Tyreus-Luyben methods with safety features |
-| High-Level Motion | Chassis | moveToPoint, turnToPoint, turnToAngle, followPath, tank/arcade drive |
-| Path Following | Pure Pursuit | Lookahead-based curvature control |
-| Autonomous | (Selector removed) | You can implement your own routine picker if needed |
-| Debug & Testing | Debug Output | Comprehensive odometry & movement diagnostics |
-| Debug & Testing | Delta Testing | Individual wheel movement verification |high-performance PROS / C++ robotics framework by **6121D**.
+<img src="LibStoga.png" alt="LibStoga Logo" width="300">
 
-"Minimal friction. Maximum control."  
+## ⚙️ High-Performance PROS / C++ Robotics Framework by **6121D**
+
+*"Minimal friction. Maximum control."*
 
 ---
 </div>
 
-## Table of Contents
-1. Philosophy & Goals  
-2. Feature Overview  
-3. Quick Start  
-4. Core Concepts (Geometry, Angle, Pose, Path)  
-5. Sensors & Tracking (TrackingWheel, Odometry, MCL)  
-6. Controllers (PID, SmartPID)  
-7. Motion Layer (Chassis, Pure Pursuit)  
-8. Autonomous Utilities (Selector)  
-9. Tuning Guides  
-10. Extending the Library  
-11. Troubleshooting  
-12. Roadmap  
-13. License / Attribution  
+## 📋 Table of Contents
+
+<div align="center">
+
+| 📚 **Getting Started** | 🔧 **Core Features** | 🛠️ **Advanced Topics** | 📖 **Resources** |
+|:----------------------:|:--------------------:|:----------------------:|:----------------:|
+| [🧠 Philosophy](#-philosophy--goals) | [⚙️ Feature Overview](#-feature-overview) | [🎛️ Controllers](#6-controllers) | [📚 License](#-license--attribution) |
+| [🚀 Quick Start](#-quick-start) | [📐 Core Concepts](#-core-concepts) | [🤖 Motion Layer](#7-motion-layer) | [🤝 Contributing](#-contributing--development) |
+| [📦 Project Setup](#project-integration) | [🛠️ Sensors & Tracking](#5-sensors--tracking) | [🐛 Troubleshooting](#-troubleshooting) | [📞 Support](#-support--resources) |
+| | | [🗺️ Roadmap](#-roadmap-planned) | [🏆 Acknowledgments](#-acknowledgments) |
+
+</div>
 
 ---
 
-## 1. Philosophy & Goals
+### **📑 Detailed Sections:**
+1. 🧠 [Philosophy & Goals](#-philosophy--goals)
+2. ⚙️ [Feature Overview](#-feature-overview)
+3. 🚀 [Quick Start](#-quick-start)
+4. 📐 [Core Concepts](#-core-concepts)
+5. 🛠️ [Sensors & Tracking](#5-sensors--tracking)
+6. 🎛️ [Controllers](#6-controllers)
+7. 🤖 [Motion Layer](#7-motion-layer)
+8. 🎯 [Autonomous Utilities](#8-autonomous-routine-handling)
+9. 📊 [Tuning Guides](#9-tuning-guides)
+10. 🔧 [Extending the Library](#10-extending-the-library)
+11. 🐛 [Troubleshooting](#-troubleshooting)
+12. 🗺️ [Roadmap](#-roadmap-planned)
+13. 📚 [License / Attribution](#-license--attribution)
+
+---
+
+## 🧠 Philosophy & Goals
 LibStoga is designed for teams who want:
-* Full control of math & motion logic (no black-box abstractions).
-* Modular components (swap tracking backends, controllers, algorithms).
-* Clean, documented code that's easy to extend mid-season.
+* 🔧 **Full control** of math & motion logic (no black-box abstractions).
+* 🧩 **Modular components** (swap tracking backends, controllers, algorithms).
+* 📖 **Clean, documented code** that's easy to extend mid-season.
 
 We intentionally avoid heavy external dependencies to keep behavior predictable and debuggable on the field.
 
@@ -68,17 +69,17 @@ We intentionally avoid heavy external dependencies to keep behavior predictable 
 
 ---
 
-## 3. Quick Start
-### Project Integration
-1. Create / open a PROS project.  
-2. Copy `include/LibStoga` and `src/LibStoga` into your project.  
-3. In `include/main.h` add:  
+## 🚀 Quick Start
+### 📦 Project Integration
+1. 📁 Create / open a PROS project.  
+2. 📋 Copy `include/LibStoga` and `src/LibStoga` into your project.  
+3. 📝 In `include/main.h` add:  
 ```cpp
 #include "LibStoga/libstoga.h"
 ```
-4. Build and deploy with PROS.
+4. 🔨 Build and deploy with PROS.
 
-### Minimal Example (Odometry + PID + Chassis)
+### ⚡ Minimal Example (Odometry + PID + Chassis)
 ```cpp
 // Devices (example ports)
 pros::MotorGroup left({-1, -2});
@@ -100,20 +101,20 @@ void autonomous() {
 
 ---
 
-## 4. Core Concepts
-### Angle
-* Stored in **degrees** (bearing frame: 0° = field north, increases clockwise).  
-* `minimumAngleDifference()` returns the shortest signed delta in [-180,180].  
-* Helper free functions: `degreesToRadians`, `radiansToDegrees`, `angleDiff(a,b)`.
+## 📐 Core Concepts
+### 📏 Angle
+* ⏰ Stored in **degrees** (bearing frame: 0° = field north, increases clockwise).  
+* 🔄 `minimumAngleDifference()` returns the shortest signed delta in [-180,180].  
+* 🧮 Helper free functions: `degreesToRadians`, `radiansToDegrees`, `angleDiff(a,b)`.
 
-### Point / Pose / Path
+### 📍 Point / Pose / Path
 ```cpp
 ls::Point p{10, 24};
 ls::Pose robot{0,0, 0}; // heading = 0° (north)
 ls::Path route = { {0,0}, {12,12}, {24,12}, {36,10} };
 ```
-* `bearingTo(a,b)` returns the field bearing from point a to b.
-* `distance(a,b)` Euclidean distance.
+* 🧭 `bearingTo(a,b)` returns the field bearing from point a to b.
+* 📏 `distance(a,b)` Euclidean distance.
 
 ---
 
@@ -518,20 +519,20 @@ Ideas:
 
 ---
 
-## 11. Troubleshooting
+## 🐛 Troubleshooting
 | Symptom | Likely Cause | Fix |
 |---------|--------------|-----|
-| Robot spirals in `moveToPoint` | Angle math / wheel reversed | Verify motor reversal & bearing frame |
-| Path following wobbles | Lookahead too small | Increase lookahead distance |
-| Turn overshoot | kD too low or kP too high | Rebalance gains |
-| SmartPID outputs explode | Learning constant too large | Reduce `learning_constant` or cap kp/kd |
-| MCL converges slowly | Noise too large | Lower processNoise or add measurements |
-| **Adaptive PID oscillation** | Battery compensation too aggressive | Increase `ADAPTATION_INTERVAL` or reduce `MAX_GAIN_MULTIPLIER` |
-| **Surface detection false positives** | Performance window too small | Increase `PERFORMANCE_WINDOW` or adjust surface thresholds |
-| **Auto-tuning doesn't converge** | Test movements too large | Reduce `DISTANCE`/`ANGLE` parameters or increase `STEP_SIZE` |
-| **Odometry shows minimal Y movement** | Tracking wheel reversed incorrectly | Test with `testTrackingWheelDeltas()` and verify wheel orientation |
-| **Inconsistent odometry readings** | Odometry reset timing | Ensure reset happens **before** capturing initial position in `driveRelative()` |
-| **Debug output flooding terminal** | All debug flags enabled | Comment out unused debug defines to reduce verbosity |
+| 🌀 Robot spirals in `moveToPoint` | Angle math / wheel reversed | Verify motor reversal & bearing frame |
+| 🌊 Path following wobbles | Lookahead too small | Increase lookahead distance |
+| 🎯 Turn overshoot | kD too low or kP too high | Rebalance gains |
+| 📈 SmartPID outputs explode | Learning constant too large | Reduce `learning_constant` or cap kp/kd |
+| 🐌 MCL converges slowly | Noise too large | Lower processNoise or add measurements |
+| ⚡ **Adaptive PID oscillation** | Battery compensation too aggressive | Increase `ADAPTATION_INTERVAL` or reduce `MAX_GAIN_MULTIPLIER` |
+| 🎭 **Surface detection false positives** | Performance window too small | Increase `PERFORMANCE_WINDOW` or adjust surface thresholds |
+| 🎛️ **Auto-tuning doesn't converge** | Test movements too large | Reduce `DISTANCE`/`ANGLE` parameters or increase `STEP_SIZE` |
+| 📍 **Odometry shows minimal Y movement** | Tracking wheel reversed incorrectly | Test with `testTrackingWheelDeltas()` and verify wheel orientation |
+| 🔄 **Inconsistent odometry readings** | Odometry reset timing | Ensure reset happens **before** capturing initial position in `driveRelative()` |
+| 📝 **Debug output flooding terminal** | All debug flags enabled | Comment out unused debug defines to reduce verbosity |
 
 ---
 
@@ -1083,15 +1084,16 @@ chassisConfig.thresholdAngular = 3.0;
 
 ---
 
-## 13. License / Attribution
-Released under the MIT License.  
-Inspired by competitive robotics control theory & openly shared community patterns.  
-Engineered and maintained by **6121D** (Rishit V and Virat P).
+## 📚 License / Attribution
+📄 Released under the MIT License.  
+💡 Inspired by competitive robotics control theory & openly shared community patterns.  
+⚙️ Engineered and maintained by **6121D** (Rishit V and Virat P).
 
 ---
 
 ### Final Notes
 If you ship improvements (better curvature calc, dynamic lookahead, sensor fusion layers), please consider contributing them back. Competitive iteration makes the entire community stronger.
 
-Drive fast. Iterate faster.  
+Drive fast. Iterate faster. ⚡  
 
+---
