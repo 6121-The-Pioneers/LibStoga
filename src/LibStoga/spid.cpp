@@ -1,6 +1,7 @@
 #include "spid.h"
 #include <cmath>
 
+using namespace std;
 // instead of getting output, get realtime vector magnitude from odom.
 namespace ls {
     SmartPID::SmartPID(double cc, double w, double lc, double max)
@@ -47,8 +48,11 @@ namespace ls {
             kd -= CKd * learn_sigmoid(e);
         }
 
-       
-        if (isnanf(kp) || isnanf(kd) || isinff(kp) || isinff(kd)) {
+        // clamp gains to sane bounds
+        kp = std::clamp(kp, -5.0, 5.0);
+        kd = std::clamp(kd, -5.0, 5.0);
+
+        if (isnan(kp) || isnan(kd) || isinf(kp) || isinf(kd)) {
             kp = 0;
             kd = 0;
             reset();

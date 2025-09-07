@@ -5,14 +5,27 @@
 #define LIBSTOGA_LS_H
 
 
-#include "odom.h"
-#include "pid.h"
+// Core components
 #include "geometry.h"
 #include "tracking.h"
-#include "timer.hpp"
+#include "odom.h"
+#include "mcl.h"
+#include "pid.h"
 #include "spid.h"
 #include "chassis.h"
-#include "error.h"
+#include "Timer.hpp"
+
+// Higher level motion utilities
+#include "pure_pursuit.h"
+#include "config.h"
+
+// NEW: Enhanced driver control and monitoring
+#include "driver_control.h"
+#include "data_logger.h"
+#include "enhanced_chassis.h"
+#include "system_health.h"
+
+// (Autonomous selector removed)
 
 
 #endif // !LIBSTOGA_LS_H

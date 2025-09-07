@@ -12,6 +12,7 @@
 #define PID_H
 
 #include "error.h"
+#include "gains.h"
 
 namespace ls {
 
@@ -29,6 +30,20 @@ namespace ls {
         * @brief abstract
         */
         virtual void reset() = 0;
+
+        /**
+         * @brief Set new PID gains.
+         * 
+         * @param gains The new gains to use.
+         */
+        virtual void setGains(const PIDGains& gains) = 0;
+
+        /**
+         * @brief Get current PID gains.
+         * 
+         * @return The current PID gains.
+         */
+        virtual PIDGains getGains() const = 0;
     };
 
 
@@ -48,8 +63,15 @@ namespace ls {
              * @param windupRange desired windup range
              * @param signFlipReset if signed is fliped already.
              */
-            explicit PID(float kP, float kI, float kD, float windupRange, bool signFlipReset);
+            explicit PID(float kP, float kI, float kD, float windupRange, bool signFlipReset, float integralLimit = 1e9);
             
+            /**
+         * @brief Construct a new PID object from a gains struct
+         * 
+         * @param gains The PID gains
+         */
+        explicit PID(const PIDGains& gains);
+
             /**
              * @brief calculate the new PID value given the error.
              * 
@@ -63,6 +85,20 @@ namespace ls {
              */
             void reset() override;
 
+            /**
+             * @brief Sets new gains for the PID controller.
+             * 
+             * @param gains The new PID gains.
+             */
+            void setGains(const PIDGains& gains) override;
+
+            /**
+             * @brief Gets the current PID gains.
+             * 
+             * @return The current PID gains.
+             */
+            PIDGains getGains() const override;
+
         protected:
             float kP;
             float kI;
@@ -71,7 +107,9 @@ namespace ls {
             bool signFlipReset;
             float integral;
             float prevError;
+            float integralLimit;
+            unsigned long lastTimeMs{0};
         };
 } 
 
-#endif 
+#endif

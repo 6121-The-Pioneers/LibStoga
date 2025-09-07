@@ -8,95 +8,51 @@
  * @copyright Copyright (c) 2024
  * 
  */
-
 #ifndef GEOMETRY_LS_H
 #define GEOMETRY_LS_H
+
+#include <vector>
+#include <ostream>
 
 namespace ls {
     /**
      * @brief A class to represent and manipulate angles.
-     * 
-     * TODO implement radians constructor as well
      */
     class Angle {
-        private:
-            double angle;
-        public:
-            /**
-             * @brief Default constructor initializes the angle to 0 degrees.
-             */
-            Angle(): angle(0) {}
-
-            /**
-             * @brief Parameterized constructor initializes the angle to the given value.
-             * @param a The initial value of the angle in degrees.
-             */
-            Angle(double a): angle(a) {}
-
-            /**
-             * @brief Sets the angle to the specified value.
-             * @param val The new value of the angle in degrees.
-             */
-            void setAngle(double val);
-
-            /**
-             * @brief Returns the current value of the angle.
-             * @return The current angle in degrees.
-             */
-            double getAngle() const;
-
-            /**
-             * @brief Converts the angle from degrees to radians.
-             * @return The angle in radians.
-             */
-            double convertToRadians() const;
-
-            /**
-             * @brief Normalizes the angle to be within the range [0, 360) degrees.
-             * @return The normalized angle in degrees.
-             */
-            double normalize() const;
-
-            /**
-             * @brief returns the MINIMUM difference between this angle and the given angle.
-             * this difference will have a range of [-180, 180] and is most useful for finding
-             * the error for turn PID.
-             * 
-             * @param angle the angle to compare
-             * @return the angle difference.
-             */
-            Angle minimumAngleDifference(Angle& angle) const; 
-
-            /**
-             * @brief Another way to use the setAngle() method.
-             * 
-             * @param x the new value of this angle.
-             */
-            void operator=(double x);
-            
-            /**
-             * @brief increments this angle by 'other' angle numerically.
-             * 
-             * @param other the other angle to increment by.
-             */
-            void operator+=(Angle other);
+    private:
+        double angle;
+    public:
+        Angle(): angle(0) {}
+        Angle(double a): angle(a) {}
+        void setAngle(double val);
+        double getAngle() const;
+        double convertToRadians() const;
+        double normalize() const;
+        Angle minimumAngleDifference(const Angle& other) const; 
+        void operator=(double x);
+        void operator+=(Angle other);
     };
 
-    /**
-     * @brief Converts a given angle in degrees to radians.
-     * @param degrees The angle in degrees to be converted.
-     * @return The angle in radians.
-     */
+    struct Point {
+        double x{0};
+        double y{0};
+        Point() = default;
+        Point(double _x, double _y): x(_x), y(_y) {}
+    };
+
+    struct Pose : public Point {
+        Angle heading; // bearing style (0 = field north)
+        Pose(): Point(), heading(0) {}
+        Pose(double _x, double _y, double h): Point(_x,_y), heading(h) {}
+    };
+
+    using Path = std::vector<Point>; // simple waypoint path
+
     double degreesToRadians(double degrees);
-
-    /**
-     * @brief Converts the current angle from radians to degrees.
-     * @param radians The angle in radians to be converted.
-     * @return The angle in degrees.
-     */
     double radiansToDegrees(double radians);
-
+    double distance(const Point& a, const Point& b);
+    Angle bearingTo(const Point& a, const Point& b);
+    double angleDiff(double a, double b);
 }
-
 
 #endif // GEOMETRY_LS_H

@@ -49,7 +49,7 @@ namespace ls {
 		* @param pos second point to compare to.
 		* @return distance from point
 		*/
-		double distanceFromPoint(Position& pos) const;
+		double distanceFromPoint(const Position& pos) const;
 		/**
 		* Returns a signed value from this point to the other point.
 		* 
@@ -59,7 +59,7 @@ namespace ls {
 		* @param pos second point to compare to.
 		* @return signed distance from point.
 		*/
-		double distanceFromPointSigned(Position& pos) const;
+		double distanceFromPointSigned(const Position& pos) const;
 
 
 		///////////////////////////////////////////////////////////////////// REDO THESE 3 FUNCTIONS
@@ -74,7 +74,7 @@ namespace ls {
 		* @param pos second point to compare to.
 		* @returns behind (-1), in front of (1), or niether (0)
 		*/
-		int isBehind(Position& pos) const;
+		int isBehind(const Position& pos) const;
 
 		/**
 		 * @brief Gets the angle to the position provided relative to current position in the cartesian plane.
@@ -84,7 +84,12 @@ namespace ls {
 		 * @param pos the other position.
 		 * @return Angle in [0, 360)
 		 */
-		Angle angleToPosition(Position& pos) const;
+		Angle angleToPosition(const Position& pos) const;
+
+		friend std::ostream& operator<<(std::ostream& os, const Position& pos) {
+			os << "Pos(" << pos.X << ", " << pos.Y << ", " << pos.theta.getAngle() << ")";
+			return os;
+		}
 	};
 
 	/**
@@ -281,7 +286,7 @@ namespace ls {
 		 * @param left left tracking wheel as an object.
 		 * @param back back tracking wheel as an object.
 		 */
-		explicit ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back, TrackingWheel& right, TrackingWheel& left, TrackingWheel& back);
+		explicit ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back, TrackingWheel&& right, TrackingWheel&& left, TrackingWheel&& back);
 
 		/**
 		 * @brief Construct a new Three Wheel Odom object
@@ -373,7 +378,7 @@ namespace ls {
 		 * @param vert vertical tracking wheel as an object.
 		 * @param IMU Imu sensor
 		 */
-		explicit ImuOdom(double center_to_horiz, double center_to_vert, TrackingWheel& horiz, TrackingWheel& vert, pros::Imu& IMU);
+		explicit ImuOdom(double center_to_horiz, double center_to_vert, TrackingWheel&& horiz, TrackingWheel&& vert, pros::Imu& IMU);
 
 		/**
 		 * @brief Construct a new Imu Odom object

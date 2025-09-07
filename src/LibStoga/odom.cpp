@@ -47,7 +47,7 @@ namespace ls {
 
 	void AbstractOdom::resetAngle()
 	{
-		pos.theta = 0;
+		pos.theta = Angle(0);
 	}
 
 	void AbstractOdom::resetAll()
@@ -57,28 +57,28 @@ namespace ls {
 		resetAngle();
 	}
 
-	double Position::distanceFromPoint(Position &pos) const
+	double Position::distanceFromPoint(const Position &pos) const
 	{
 		const double dx = pos.X - X;
 		const double dy = pos.Y - Y;
 		return sqrt(dx*dx + dy*dy);
 	}
 
-	double Position::distanceFromPointSigned(Position &pos) const
+	double Position::distanceFromPointSigned(const Position &pos) const
 	{
 		return isBehind(pos) * distanceFromPoint(pos);
 	}
 
-	int Position::isBehind(Position &pos) const
+	int Position::isBehind(const Position &pos) const
 	{
 		Angle a = angleToPosition(pos);
 
-		if (a.getAngle() == infinity()) {
+		if (a.getAngle() == INFINITY) {
 			return 0;
 		}
 
-		const Angle lower_bound = theta.getAngle() - 90;
-		const Angle upper_bound = theta.getAngle() + 90;
+		const Angle lower_bound = Angle(theta.getAngle() - 90);
+		const Angle upper_bound = Angle(theta.getAngle() + 90);
 		
 		if (a.getAngle() > lower_bound.normalize() && a.getAngle() < upper_bound.normalize()) {
 			return 1;
@@ -88,7 +88,7 @@ namespace ls {
 		}
 	}
 
-	Angle Position::angleToPosition(Position &pos) const
+	Angle Position::angleToPosition(const Position &pos) const
 	{
 		double raw_angle = atan2(pos.Y - Y, pos.X - X);
 		return Angle(90 - (raw_angle > 0 ? raw_angle : (6.28318530718 + raw_angle)) * 57.2957795131);
@@ -103,12 +103,12 @@ namespace ls {
 	ThreeWheelOdom::ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back)
 		: centerToRight(center_to_right), centerToLeft(center_to_left), centerToBack(center_to_back) {}
 
-    ThreeWheelOdom::ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back, TrackingWheel &r, TrackingWheel &l, TrackingWheel &b)
+    ThreeWheelOdom::ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back, TrackingWheel&& r, TrackingWheel&& l, TrackingWheel&& b)
 		: centerToRight(center_to_right), centerToLeft(center_to_left), centerToBack(center_to_back)
     {
-		right = std::make_unique<TrackingWheel>(r);
-		left = std::make_unique<TrackingWheel>(l);
-		back = std::make_unique<TrackingWheel>(b);
+		right = std::make_unique<TrackingWheel>(std::move(r));
+		left = std::make_unique<TrackingWheel>(std::move(l));
+		back = std::make_unique<TrackingWheel>(std::move(b));
 		deltaB = 0;
 		deltaL = 0;
 		deltaR = 0;
@@ -119,9 +119,9 @@ namespace ls {
 		right = std::make_unique<TrackingWheel>(param.right.port, param.right.radius, param.right.reversed);
 		left = std::make_unique<TrackingWheel>(param.left.port, param.left.radius, param.left.reversed);
 		back = std::make_unique<TrackingWheel>(param.back.port, param.back.radius, param.back.reversed);
-		deltaB = param.center_to_back;
-		deltaL = param.center_to_left;
-		deltaR = param.center_to_right;
+		centerToBack = param.center_to_back;
+		centerToLeft = param.center_to_left;
+		centerToRight = param.center_to_right;
 	}
 	
 	void ThreeWheelOdom::initialize(std::initializer_list<uint8_t> ports)
@@ -146,24 +146,24 @@ namespace ls {
 		
     }
 
-	double ThreeWheelOdom::getDeltaX()
+    double ThreeWheelOdom::getDeltaX()
     {
-		if (deltaT == 0) {
-			return 0;
-		} else {
-			return 2 * sin(degreesToRadians(deltaT) / 2) * ((deltaB / degreesToRadians(deltaT)) + centerToBack);
-		}
+        if (deltaT == 0) {
+            return 0;
+        } else {
+            return 2 * sin(degreesToRadians(deltaT) / 2) * ((deltaB / degreesToRadians(deltaT)) + centerToBack);
+        }
     }
 
     double ThreeWheelOdom::getDeltaY()
     {
-		if (deltaT == 0) {
-			return 0;
-		}
-		else {
-			return 2 * sin(degreesToRadians(deltaT) / 2) * ((deltaR / degreesToRadians(deltaT)) + centerToRight);
-		}
-	}
+        if (deltaT == 0) {
+            return 0;
+        }
+        else {
+            return 2 * sin(degreesToRadians(deltaT) / 2) * ((deltaR / degreesToRadians(deltaT)) + centerToRight);
+        }
+    }
 
     Angle ThreeWheelOdom::getDeltaAngle()
     {
@@ -174,12 +174,30 @@ namespace ls {
 
     void ThreeWheelOdom::compute()
     {
-		deltaL = left.get()->getLinearDeltaDistance();
-		deltaR = right.get()->getLinearDeltaDistance();
-		deltaB = back.get()->getLinearDeltaDistance();
-		AbstractOdom::compute();
+		if(left) deltaL = left.get()->getLinearDeltaDistance();
+		if(right) deltaR = right.get()->getLinearDeltaDistance();
+		if(back) deltaB = back.get()->getLinearDeltaDistance();
+
+		Angle deltaAngle = getDeltaAngle();
+		double deltaAngleRad = deltaAngle.convertToRadians();
+
+		double localX = 0;
+		double localY = 0;
+
+		if (fabs(deltaAngleRad) < 1e-6) { // Linear approximation
+			localX = deltaB;
+			localY = deltaR;
+		} else { // Arc approximation
+			localX = 2 * sin(deltaAngleRad / 2.0) * (deltaB / deltaAngleRad + centerToBack);
+			localY = 2 * sin(deltaAngleRad / 2.0) * (deltaR / deltaAngleRad + centerToRight);
+		}
+
+		double avgAngle = this->pos.theta.convertToRadians() + (deltaAngleRad / 2.0);
+
+		this->pos.X += localX * cos(avgAngle) - localY * sin(avgAngle);
+		this->pos.Y += localX * sin(avgAngle) + localY * cos(avgAngle);
+		this->pos.theta += deltaAngle;
     }
-	
 };
 
 /**
@@ -192,11 +210,11 @@ namespace ls {
 		prevRotation = 0;
 	}
 
-    ImuOdom::ImuOdom(double center_to_horiz, double center_to_vert, TrackingWheel &h, TrackingWheel &v, pros::Imu &i)
+    ImuOdom::ImuOdom(double center_to_horiz, double center_to_vert, TrackingWheel&& h, TrackingWheel&& v, pros::Imu &i)
 		: centerToHoriz(center_to_horiz), centerToVert(center_to_vert)
     {
-		horiz = std::make_unique<TrackingWheel>(h);
-		vert = std::make_unique<TrackingWheel>(v);
+		horiz = std::make_unique<TrackingWheel>(std::move(h));
+		vert = std::make_unique<TrackingWheel>(std::move(v));
 		IMU = std::make_unique<pros::Imu>(i);
 		prevRotation = 0;
     }
@@ -241,42 +259,46 @@ namespace ls {
 		return deltaGlobalY;
     }
 
-    Angle ImuOdom::getDeltaAngle()
-    {
+	Angle ImuOdom::getDeltaAngle()
+	{
 		double curRotation = IMU->get_heading();
+		double diff = curRotation - prevRotation;
+		// wrap diff into [-180,180]
+		while (diff > 180) diff -= 360;
+		while (diff <= -180) diff += 360;
 		prevRotation = curRotation;
-        return Angle(curRotation == prevRotation ? 1e-6 : (curRotation - prevRotation));
-    }
+		return Angle(diff);
+	}
 
-    void ImuOdom::compute()
-    {
-		pos.theta = IMU->get_heading();
-		Angle mathAngle = Angle(90 - pos.theta.getAngle()); // use non-polar angle for math
+	void ImuOdom::compute()
+	{
 		Angle deltaAngle = getDeltaAngle();
+		this->pos.theta += deltaAngle; // accumulate heading
+		Angle mathAngle = Angle(90 - this->pos.theta.normalize());
+		double dRad = deltaAngle.convertToRadians();
+		double relY = vert->getLinearDeltaDistance();
+		double relX = horiz->getLinearDeltaDistance();
 
-		// calculate respective radiuses for odom math
-		double r0 = (vert->getLinearDeltaDistance() - centerToVert * deltaAngle.convertToRadians()) / deltaAngle.convertToRadians();
-		double r1 = (horiz->getLinearDeltaDistance() - centerToHoriz * deltaAngle.convertToRadians()) / deltaAngle.convertToRadians();
-		
-		// calculate relative coordinates:
-		double relX = r0 * sin(deltaAngle.convertToRadians()) - r1 * (1 - cos(deltaAngle.convertToRadians()));
-		double relY = r1 * sin(deltaAngle.convertToRadians()) + r0 * (1 - cos(deltaAngle.convertToRadians()));
-
-		// rotate and increment to global coordinates:
-		deltaGlobalX = relX * cos(mathAngle.convertToRadians()) - relY * sin(mathAngle.convertToRadians());
-		deltaGlobalY = relY * cos(mathAngle.convertToRadians()) + relX * sin(mathAngle.convertToRadians());
-		pos.X += deltaGlobalX;
-		pos.Y += deltaGlobalY;
-    }
+		if (fabs(dRad) < 1e-6) {
+			// straight approximation
+			deltaGlobalX = relX * cos(mathAngle.convertToRadians()) - relY * sin(mathAngle.convertToRadians());
+			deltaGlobalY = relY * cos(mathAngle.convertToRadians()) + relX * sin(mathAngle.convertToRadians());
+		} else {
+			// arc approximation
+			double r0 = relY / dRad;
+			double r1 = relX / dRad;
+			deltaGlobalX = r0 * sin(dRad) - r1 * (1 - cos(dRad));
+			deltaGlobalY = r1 * sin(dRad) + r0 * (1 - cos(dRad));
+		}
+		this->pos.X += deltaGlobalX;
+		this->pos.Y += deltaGlobalY;
+	}
 
     void ImuOdom::resetAll()
     {
-		horiz->reset();
-		vert->reset();
-		IMU->reset(true);
-		pos.X = 0;
-		pos.Y = 0;
-		pos.theta = 0;
+		if(horiz) horiz->reset();
+		if(vert) vert->reset();
+		if(IMU) IMU->reset(true);
 		AbstractOdom::resetAll();
     }
 };

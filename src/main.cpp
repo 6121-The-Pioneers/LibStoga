@@ -1,51 +1,59 @@
+// Demonstrates usage of the new unified configuration & builder.
 #include "main.h"
 #include "LibStoga/libstoga.h"
+#include "LibStoga/auton_tuner.h"
 #include "pros/adi.hpp"
 #include "pros/motors.hpp"
 #include "pros/llemu.hpp"
 #include "pros/rtos.hpp"
-#include <cmath>
-#include <map>
 
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 
-pros::MotorGroup right({1, 9});
-pros::MotorGroup left({-2, -6});
+// Global shared pointers produced by the builder
+static std::shared_ptr<ls::Chassis> gChassis;
+static std::shared_ptr<ls::AbstractOdom> gOdom;
 
-ls::imu_odom_parameters_t odom_params = {
-	{
-		13,
-		1.375,
-		true
-	},
-	0,
-	{
-		3,
-		1.375,
-		false
-	},
-	0,
-	20
-};
-ls::ImuOdom odom(odom_params);
+static void configureSystems() {
+    // Drivetrain Configuration
+    ls::DrivetrainConfig drivetrain {
+        .leftMotors = {-2},
+        .rightMotors = {1},
+        .trackWidth = 11.0, // Tune this value
+        .wheelDiameter = 3.25, // Tune this value
+        .rpm = 600
+    };
 
-//ls::PID lateral_control (
-//	4,
-//	0,
-//	0,
-//	10,
-//	0
-//);
-//ls::PID turn_control (
-//	1,
-//	0,
-//	0,
-//	10,
-//	0
-//);
-ls::SmartPID lateral_control(1);
-ls::SmartPID turn_control(0.5);
-ls::Chassis chassis(right, left, odom, lateral_control, turn_control, 1);
+    // Odometry Configuration
+    ls::OdomConfig odom {
+        .useThreeWheel = false,
+        .imuParams = {
+            {13, 2.75, true},   // Vertical tracking wheel - REVERSED
+            5.5,               // Distance from tracking center to vertical wheel
+            {3, 2, true},      // Horizontal tracking wheel - REVERSED
+            5.5,               // Distance from tracking center to horizontal wheel
+            20                 // imu port
+        }
+    };
+
+    // Chassis Controller Configuration
+    ls::ChassisControllerConfig controller {
+        .driveGains = {4.f, 0.f, 0.f, 10.f, true, 1000.f},
+        .turnGains = {1.f, 0.f, 0.f, 10.f, true, 1000.f},
+        .tolerances = {1.0, 5.0, 300},
+        .turnSensitivity = 1.0,
+        .enableAdaptivePID = false  // Set to true to enable adaptive PID that adjusts to battery/surface/load changes
+    };
+
+    // Build the chassis
+    gChassis = ls::ChassisBuilder()
+        .withDrivetrain(drivetrain)
+        .withOdom(odom)
+        .withController(controller)
+        .build();
+
+    // The odom object is now owned by the chassis, but we can get a reference if needed
+    gOdom = gChassis->getOdom();
+}
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -55,7 +63,12 @@ ls::Chassis chassis(right, left, odom, lateral_control, turn_control, 1);
  */
 void initialize() {
 	pros::lcd::initialize();
-	odom.resetAll();
+	configureSystems();
+    gChassis->setController(master);
+	if (gOdom) {
+        gOdom->resetAll();
+        std::cout << "Odometry initialized and reset" << std::endl;
+    }
 }
 
 /**
@@ -90,7 +103,20 @@ void competition_initialize() {
  * from where it left off.
  */
 void autonomous() {
-	// touch ladder and call it a match.
+    if (!gChassis) return;
+
+    // Example autonomous routine with adaptive PID updates
+    // If adaptive PID is enabled, call updateAdaptivePID() periodically during motion
+    std::cout << "Starting autonomous routine..." << std::endl;
+
+    // Example movement with adaptive PID updates (if enabled)
+    gChassis->driveRelative(24, 3000);
+    if (gChassis) gChassis->updateAdaptivePID(); // Update adaptive gains if enabled
+
+    gChassis->turnToAngle(90, 2000);
+    if (gChassis) gChassis->updateAdaptivePID(); // Update adaptive gains if enabled
+
+    std::cout << "Autonomous routine complete." << std::endl;
 }
 
 /**
@@ -108,23 +134,60 @@ void autonomous() {
  */
 
 void opcontrol() {
-	// relative coordinate PID testing (reverse parrallel odom to fix jittering if any)
-	/*ls::SmartPID pid(1);
-	
-	while (true) {
-		odom.compute();
-		double output = pid.update(20 - odom.getY());
-		right.move(output);
-		left.move(output);
-	
-		pros::lcd::print(0, "X: %f Y: %f angle: %f", odom.getX(), odom.getY(), odom.getAngle());
-		pros::delay(10);
-	}*/
+    if (!gChassis) return;
+	while(true) {
+		// Arcade drive using controller inputs
+		gChassis->arcade(master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y),
+		                 master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X));
+		
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
+			ls::autoTune(gChassis);
+		}
 
-	chassis.moveToPoint(0, -40, 10000, true);
+		// Test odometry sensors without moving
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
+			std::cout << "Testing odometry sensors (don't move robot)..." << std::endl;
+			gChassis->getOdom()->resetAll();
+			for (int i = 0; i < 5; i++) {
+				gChassis->getOdom()->compute();
+				std::cout << "Pos: " << gChassis->getOdom()->getPosition() << std::endl;
+				pros::delay(1000);
+			}
+			std::cout << "Odometry test complete - check if values change when stationary" << std::endl;
+		}
 
-	master.print(0, 0, "DONE");
+		// Test tracking wheel deltas
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
+			std::cout << "Testing tracking wheel deltas..." << std::endl;
+			gChassis->getOdom()->resetAll();
+			pros::delay(100); // Let reset complete
+			for (int i = 0; i < 10; i++) {
+				gChassis->getOdom()->compute();
+				std::cout << "Delta X: " << gChassis->getOdom()->getDeltaX() 
+				         << " Delta Y: " << gChassis->getOdom()->getDeltaY() 
+				         << " Delta Angle: " << gChassis->getOdom()->getDeltaAngle().getAngle() << std::endl;
+				pros::delay(200);
+			}
+			std::cout << "Delta test complete" << std::endl;
+		}
 
+		// Example of a chassis movement
+		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
+			std::cout << "Starting driveRelative test 15in" << std::endl;
+			std::cout << "[DEBUG] Before drive: pos=" << gChassis->getOdom()->getPosition() << "\n";
+			
+			// Test odometry by manually driving and checking readings
+			gChassis->getOdom()->resetAll();
+			gChassis->getOdom()->compute();
+			std::cout << "[DEBUG] After reset: pos=" << gChassis->getOdom()->getPosition() << "\n";
+			
+			gChassis->driveRelative(15, 3000);
+			std::cout << "[DEBUG] After drive: pos=" << gChassis->getOdom()->getPosition() << "\n";
+			std::cout << "driveRelative complete" << std::endl;
+		}
+
+		pros::delay(20);
+	}
 }
 
 

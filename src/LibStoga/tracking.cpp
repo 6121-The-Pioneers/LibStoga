@@ -3,8 +3,8 @@
 
 ls::TrackingWheel::TrackingWheel(std::uint8_t port, double radius, bool reversed)
 {
-    if (port < 0 || port > 24) {
-        THROW_ERROR("Port must be in the range of [0, 24].");
+    if (port < 1 || port > 21) {
+        THROW_ERROR("Port must be in the range of [1, 21].");
     }
     rotation = std::make_unique<pros::Rotation>(port);
     if (reversed) rotation->reverse();
@@ -20,36 +20,12 @@ ls::TrackingWheel::TrackingWheel(std::uint8_t portUpper, std::uint8_t portLower,
     } else if (portLower < 'A' || portLower > 'H') {
         THROW_ERROR("Lower port must be in the range of [A-H]");
     }
-    port_upper = portUpper; // how do you check these?
-    port_lower = portLower; // how do you check these?
+    port_upper = portUpper;
+    port_lower = portLower;
     reversed = Reversed;
     encoder = std::make_unique<pros::adi::Encoder>(port_upper, port_lower, reversed);
     rotation = nullptr;
     setRadius(radius);
-}
-
-ls::TrackingWheel::TrackingWheel(TrackingWheel &other)
-{
-    if (other.encoder == nullptr) {
-        other.rotation.swap(rotation);
-    } else {
-        other.encoder.swap(encoder);
-        port_upper = other.port_upper;
-        port_lower = other.port_lower;
-        reversed = other.reversed;
-        prev_distance = other.prev_distance;
-        prev_time = other.prev_time;
-    }
-    radius = other.radius;
-    conversion_factor = other.conversion_factor;
-
-    other.port_upper = 0;
-    other.port_lower = 0;
-    other.reversed = 0;
-    other.prev_distance = 0;
-    other.prev_time = 0;
-    other.radius = 0;
-    other.conversion_factor = 0;
 }
 
 void ls::TrackingWheel::reverse()
