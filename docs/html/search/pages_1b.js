@@ -1,0 +1,15 @@
+var searchData=
+[
+  ['real_20time_20health_20system_0',['&lt;b&gt;Real-time Health System&lt;/b&gt;',['../index.html#autotoc_md86',1,'']]],
+  ['recording_1',['&lt;b&gt;Match Data Recording&lt;/b&gt;',['../index.html#autotoc_md76',1,'']]],
+  ['release_20🎉_2',['&lt;b&gt;v1.0.0 - Initial Release&lt;/b&gt; 🎉',['../index.html#autotoc_md104',1,'']]],
+  ['release_20notes_3',['📋 &lt;b&gt;Version History &amp;amp; Release Notes&lt;/b&gt;',['../index.html#autotoc_md64',1,'']]],
+  ['requirements_4',['&lt;b&gt;Testing Requirements&lt;/b&gt;',['../index.html#autotoc_md134',1,'']]],
+  ['resolved_20issues_5',['&lt;b&gt;Resolved Issues&lt;/b&gt;',['../index.html#autotoc_md119',1,'']]],
+  ['resources_6',['&lt;b&gt;📞 Support &amp;amp; Resources&lt;/b&gt;',['../index.html#autotoc_md136',1,'']]],
+  ['roadmap_20detailed_7',['&lt;b&gt;🗺️ Future Roadmap (Detailed)&lt;/b&gt;',['../index.html#autotoc_md121',1,'']]],
+  ['roadmap_20planned_8',['12. Roadmap (Planned)',['../index.html#autotoc_md61',1,'']]],
+  ['robot_20configuration_9',['&lt;b&gt;Complete Robot Configuration&lt;/b&gt;',['../index.html#autotoc_md128',1,'']]],
+  ['robotics_20framework_20by_206121d_10',['⚙️ High-Performance PROS / C++ Robotics Framework by &lt;b&gt;6121D&lt;/b&gt;',['../index.html#autotoc_md1',1,'']]],
+  ['routine_20handling_11',['8. Autonomous Routine Handling',['../index.html#autotoc_md43',1,'']]]
+];

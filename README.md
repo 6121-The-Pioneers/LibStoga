@@ -43,7 +43,47 @@
 
 ---
 
-## 🧠 Philosophy & Goals
+## 📚 Documentation
+
+### 📖 Online Documentation
+LibStoga documentation is automatically deployed to [GitHub Pages](https://6121-the-pioneers.github.io/LibStoga/) whenever changes are made to the codebase.
+
+### 🏗️ Local Documentation Generation
+To generate documentation locally:
+
+1. **Install Doxygen** (if not already installed):
+   ```bash
+   # Windows (Chocolatey)
+   choco install doxygen.install
+   
+   # Ubuntu/Debian
+   sudo apt-get install doxygen
+   
+   # macOS
+   brew install doxygen
+   ```
+
+2. **Generate Documentation**:
+   ```bash
+   # Using the provided script
+   .\generate_docs.bat
+   
+   # Or directly with Doxygen
+   doxygen Doxyfile
+   ```
+
+3. **View Documentation**:
+   - Open `docs/html/index.html` in your browser
+   - The documentation includes interactive search, class hierarchies, and complete API reference
+
+### 🎨 Documentation Features
+- **Custom LibStoga Theme**: Professional blue-to-purple gradient design
+- **Complete API Reference**: All classes, functions, and methods documented
+- **Interactive Diagrams**: Class inheritance and dependency graphs
+- **Search Functionality**: Find any class or function instantly
+- **Responsive Design**: Works on desktop and mobile devices
+
+---
 LibStoga is designed for teams who want:
 * 🔧 **Full control** of math & motion logic (no black-box abstractions).
 * 🧩 **Modular components** (swap tracking backends, controllers, algorithms).

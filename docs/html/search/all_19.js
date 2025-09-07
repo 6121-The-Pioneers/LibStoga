@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['odom_0',['odom',['../classls_1_1Chassis.html#a95ec91b08daa9b2a86742c970c396571',1,'ls::Chassis::odom'],['../classls_1_1PurePursuit.html#a4f617acbf12acbde2cbf8a624795000b',1,'ls::PurePursuit::odom']]],
+  ['odom_2ecpp_1',['odom.cpp',['../odom_8cpp.html',1,'']]],
+  ['odom_2eh_2',['odom.h',['../odom_8h.html',1,'']]],
+  ['odomconfig_3',['OdomConfig',['../structls_1_1OdomConfig.html',1,'ls']]],
+  ['odomconfig_4',['odomConfig',['../classls_1_1ChassisBuilder.html#a6b04d25d6b532d4594ca328572ff9213',1,'ls::ChassisBuilder']]],
+  ['odometry_20backends_5',['Odometry Backends',['../index.html#autotoc_md21',1,'']]],
+  ['odometry_20diagnostics_6',['Odometry Diagnostics',['../index.html#autotoc_md46',1,'']]],
+  ['odometry_20pid_20chassis_7',['⚡ Minimal Example (Odometry + PID + Chassis)',['../index.html#autotoc_md13',1,'']]],
+  ['odometry_20system_8',['📊 &lt;b&gt;Enhanced Odometry System&lt;/b&gt;',['../index.html#autotoc_md97',1,'']]],
+  ['odometry_5fdrift_9',['ODOMETRY_DRIFT',['../classls_1_1SystemHealthMonitor.html#a89335a36dc720bf53800ddb4f13a2778a790fd76dbf471e6d5fb5a129aae91670',1,'ls::SystemHealthMonitor']]],
+  ['odometrydrift_10',['odometryDrift',['../structls_1_1SystemHealthMonitor_1_1SystemMetrics.html#a119e3fdf4898ae8da7f7d8c1b8e4eef3',1,'ls::SystemHealthMonitor::SystemMetrics']]],
+  ['of_20contents_11',['📋 Table of Contents',['../index.html#autotoc_md3',1,'']]],
+  ['operator_2b_3d_12',['operator+=',['../classls_1_1Angle.html#ae6d39eb44a238b407eb1eb9ead43600f',1,'ls::Angle']]],
+  ['operator_3c_3c_13',['operator&lt;&lt;',['../structls_1_1Position.html#ab7ab267bcecdb85160da8e5a7069a98e',1,'ls::Position::operator&lt;&lt;()'],['../namespacels.html#a5c1b443e8eb727cb1e1c86327d009bb0',1,'ls::operator&lt;&lt;(std::ostream &amp;os, const Angle &amp;a)'],['../namespacels.html#ac7bc7871bd50028568fbf8cc3ecc0acf',1,'ls::operator&lt;&lt;(std::ostream &amp;os, const Position &amp;p)']]],
+  ['operator_3d_14',['operator=',['../classls_1_1Chassis.html#a9b479d5dd50e473cfe1019af02f8c7e6',1,'ls::Chassis::operator=(const Chassis &amp;)=default'],['../classls_1_1Chassis.html#af589511b80f13900cdccfcc8b24e5726',1,'ls::Chassis::operator=(Chassis &amp;&amp;)=default'],['../classls_1_1Angle.html#ad3fe24ae3c7366b7e857fc1585223857',1,'ls::Angle::operator=()'],['../classls_1_1TrackingWheel.html#a2f88c2f84b51da52c31df9f961e2061a',1,'ls::TrackingWheel::operator=(const TrackingWheel &amp;)=delete'],['../classls_1_1TrackingWheel.html#a0d5d296728a8bbfcf8f1d3ff80c51be5',1,'ls::TrackingWheel::operator=(TrackingWheel &amp;&amp;)=default']]],
+  ['optimization_20achievements_15',['&lt;b&gt;Optimization Achievements&lt;/b&gt;',['../index.html#autotoc_md111',1,'']]],
+  ['optional_20architecture_16',['&lt;b&gt;Completely Optional Architecture&lt;/b&gt;',['../index.html#autotoc_md73',1,'']]],
+  ['optional_20sd_20card_20data_20persistence_20new_17',['Optional SD Card Data Persistence (NEW)',['../index.html#autotoc_md33',1,'']]],
+  ['output_20control_18',['Debug Output Control',['../index.html#autotoc_md48',1,'']]],
+  ['overcurrent_19',['OVERCURRENT',['../classls_1_1SystemHealthMonitor.html#a89335a36dc720bf53800ddb4f13a2778ae0e1b90360d9f861544a8878bf978c56',1,'ls::SystemHealthMonitor']]],
+  ['overhaul_20🏗️_20',['&lt;b&gt;v2.0.0 - Core Architecture Overhaul&lt;/b&gt; 🏗️',['../index.html#autotoc_md95',1,'']]],
+  ['overview_21',['2. Feature Overview',['../index.html#autotoc_md9',1,'']]]
+];

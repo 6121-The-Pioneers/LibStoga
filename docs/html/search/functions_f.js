@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['saveadaptivehistory_0',['saveAdaptiveHistory',['../classls_1_1DataLogger.html#a1df384e8a711e2c41f35024ce7f44057',1,'ls::DataLogger']]],
+  ['savematchdata_1',['saveMatchData',['../classls_1_1DataLogger.html#a8272e856cfa31de35186ceaff21cf58c',1,'ls::DataLogger']]],
+  ['savetuningprofile_2',['saveTuningProfile',['../classls_1_1DataLogger.html#af6fabbe7f7b812ef24741402b9c9cb0d',1,'ls::DataLogger']]],
+  ['scale_3',['scale',['../namespacels.html#a7b9412f719bbac96788298da56d1bde0',1,'ls']]],
+  ['set_4',['set',['../classls_1_1Timer.html#ad77f9f56fd8d70470d466243dc1c8e83',1,'ls::Timer']]],
+  ['setangle_5',['setAngle',['../classls_1_1Angle.html#a00dfc0bcd6ff8b6d46f30723387c9cbe',1,'ls::Angle']]],
+  ['setbrakemode_6',['setBrakeMode',['../classls_1_1EnhancedChassis.html#a2f50d66f1cbcf3cc2fd506dbc7833665',1,'ls::EnhancedChassis']]],
+  ['setconfig_7',['setConfig',['../classls_1_1DriverControl.html#a6fea5a84a63dba2b06dbd83f7e547a38',1,'ls::DriverControl']]],
+  ['setcontroller_8',['setController',['../classls_1_1Chassis.html#a752666de9b304729fb6a80249d1bc49b',1,'ls::Chassis']]],
+  ['setenabled_9',['setEnabled',['../classls_1_1SystemHealthMonitor.html#a2624aa7d0e133504fa17179cce922694',1,'ls::SystemHealthMonitor']]],
+  ['setgains_10',['setGains',['../classls_1_1AbstractPID.html#a6f08958633f1524239ce08f6119859e2',1,'ls::AbstractPID::setGains()'],['../classls_1_1PID.html#a8966f203079612a325b2a6a1a6b6b992',1,'ls::PID::setGains()']]],
+  ['sethealthcallback_11',['setHealthCallback',['../classls_1_1SystemHealthMonitor.html#a0e4d049c5577ec74b2db4ed88a8ec513',1,'ls::SystemHealthMonitor']]],
+  ['setlookahead_12',['setLookahead',['../classls_1_1PurePursuit.html#a56e78ec29da5ac8ff62a543c148b70ec',1,'ls::PurePursuit']]],
+  ['setpath_13',['setPath',['../classls_1_1PurePursuit.html#ab0c068607afd87242662b432da6806e4',1,'ls::PurePursuit']]],
+  ['setpose_14',['setPose',['../classls_1_1EnhancedChassis.html#a17fee2a75bc5e57cd99845eb04705639',1,'ls::EnhancedChassis']]],
+  ['setradius_15',['setRadius',['../classls_1_1TrackingWheel.html#a1e7437c7667b49fbba0d6436e58b00eb',1,'ls::TrackingWheel']]],
+  ['sgn_16',['sgn',['../namespacels.html#a5af077dcc05d5386699e9caf5c7302f2',1,'ls']]],
+  ['sigmoidcurve_17',['sigmoidCurve',['../classls_1_1JoystickCurve.html#a90fe3777258fe14afd645d13acf7524d',1,'ls::JoystickCurve']]],
+  ['sign_18',['sign',['../namespacels.html#aac38bc1b6c1d5c8b1cd09dec26e401c3',1,'ls']]],
+  ['smartpid_19',['SmartPID',['../classls_1_1SmartPID.html#a59bad50198b2384b1abc87b09acd93e4',1,'ls::SmartPID::SmartPID(double cc=1, double w=10, double lc=0.001, double max=127)'],['../classls_1_1SmartPID.html#a3361b1251a5c3bc6682f9c69224e74c1',1,'ls::SmartPID::SmartPID(smart_pid_parameters_t &amp;parameters)']]],
+  ['startmonitoring_20',['startMonitoring',['../classls_1_1SystemHealthMonitor.html#a56596dc0dffefb2eadb4359136590135',1,'ls::SystemHealthMonitor']]],
+  ['stopmonitoring_21',['stopMonitoring',['../classls_1_1SystemHealthMonitor.html#a9b40b716e98a5e3f913fae6895576dc8',1,'ls::SystemHealthMonitor']]],
+  ['swingtoheading_22',['swingToHeading',['../classls_1_1EnhancedChassis.html#a5845be612e8d1ffcad663020e2973009',1,'ls::EnhancedChassis']]],
+  ['swingtopoint_23',['swingToPoint',['../classls_1_1EnhancedChassis.html#af7b3493b9b666c2c5e4a7accb9d6b9f2',1,'ls::EnhancedChassis']]],
+  ['systemhealthmonitor_24',['SystemHealthMonitor',['../classls_1_1SystemHealthMonitor.html#a5c121054de9131abb0c7c696de074199',1,'ls::SystemHealthMonitor']]]
+];

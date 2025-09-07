@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['earlyexitrange_0',['earlyExitRange',['../structls_1_1MoveToPointParams.html#a32503ef71d44fb8598934689b0cb9a3d',1,'ls::MoveToPointParams::earlyExitRange'],['../structls_1_1TurnToHeadingParams.html#a1a9599b44e5b0ff00131cdce0c25852a',1,'ls::TurnToHeadingParams::earlyExitRange'],['../structls_1_1MoveToPoseParams.html#a7fdb9797f33cc63aea1fb54bb74a83db',1,'ls::MoveToPoseParams::earlyExitRange'],['../structls_1_1SwingToHeadingParams.html#a31800ca3c39d3f574cfb628e5d07cf20',1,'ls::SwingToHeadingParams::earlyExitRange'],['../structls_1_1SwingToPointParams.html#a30bfe50fbd0e25126461b689de9a0fda',1,'ls::SwingToPointParams::earlyExitRange']]],
+  ['enable_5fadaptive_5fpid_1',['enable_adaptive_pid',['../classls_1_1Chassis.html#a337837dbae07a9d5a08ae6c9c86f305d',1,'ls::Chassis']]],
+  ['enable_5fcancel_2',['enable_cancel',['../classls_1_1Chassis.html#aad7299a403d7818237c0c9c1cb2b9214',1,'ls::Chassis']]],
+  ['enableadaptivepid_3',['enableAdaptivePID',['../structls_1_1ChassisConfig.html#af7dcb2d6b4aa1536557ae41b6a1e1e47',1,'ls::ChassisConfig::enableAdaptivePID'],['../structls_1_1ChassisControllerConfig.html#a176b184c161fbe4ed4ba6d1d2a612b48',1,'ls::ChassisControllerConfig::enableAdaptivePID']]],
+  ['enablecancel_4',['enableCancel',['../structls_1_1ChassisConfig.html#a79ad9de371ac3795c95f704a9880f26a',1,'ls::ChassisConfig']]],
+  ['enabled_5f_5',['enabled_',['../classls_1_1SystemHealthMonitor.html#adb961edeb0603b1df3f58772dd8e7abc',1,'ls::SystemHealthMonitor']]],
+  ['enabledeadzone_6',['enableDeadzone',['../structls_1_1DriverControl_1_1DriveConfig.html#adfd9dade6206f60b31d8f44f8fbe154b',1,'ls::DriverControl::DriveConfig']]],
+  ['encoder_7',['encoder',['../classls_1_1TrackingWheel.html#a4962dfeda04f4d2a64cfaa9faee7e876',1,'ls::TrackingWheel']]],
+  ['enhanced_20control_20systems_20🚀_8',['&lt;b&gt;v3.0.0 - Phase 1: Enhanced Control Systems&lt;/b&gt; 🚀',['../index.html#autotoc_md66',1,'']]],
+  ['enhanced_20odometry_20system_9',['📊 &lt;b&gt;Enhanced Odometry System&lt;/b&gt;',['../index.html#autotoc_md97',1,'']]],
+  ['enhanced_20parameter_20structures_10',['&lt;b&gt;Enhanced Parameter Structures&lt;/b&gt;',['../index.html#autotoc_md80',1,'']]],
+  ['enhanced_5fchassis_2eh_11',['enhanced_chassis.h',['../enhanced__chassis_8h.html',1,'']]],
+  ['enhancedchassis_12',['EnhancedChassis',['../classls_1_1EnhancedChassis.html',1,'ls']]],
+  ['error_2eh_13',['error.h',['../error_8h.html',1,'']]],
+  ['estimation_14',['📍 &lt;b&gt;Pose Estimation&lt;/b&gt;',['../index.html#autotoc_md102',1,'']]],
+  ['events_15',['events',['../structls_1_1DataLogger_1_1MatchData.html#a8569dd7ef56f7fb70e608cafaec11f94',1,'ls::DataLogger::MatchData']]],
+  ['example_20odometry_20pid_20chassis_16',['⚡ Minimal Example (Odometry + PID + Chassis)',['../index.html#autotoc_md13',1,'']]],
+  ['examples_17',['&lt;b&gt;📚 Configuration Examples&lt;/b&gt;',['../index.html#autotoc_md127',1,'']]],
+  ['exit_20logic_18',['Threshold Exit Logic',['../index.html#autotoc_md40',1,'']]],
+  ['experience_20q3_202026_19',['&lt;b&gt;Phase 5: Developer Experience (Q3 2026)&lt;/b&gt;',['../index.html#autotoc_md125',1,'']]],
+  ['expocurve_20',['expoCurve',['../classls_1_1JoystickCurve.html#a65d5e73ae4a0ed15bb4cccffce9abca2',1,'ls::JoystickCurve']]],
+  ['exponential_21',['EXPONENTIAL',['../classls_1_1JoystickCurve.html#a2e4df83a8078f675d92efab430d9c443ae1822d486f927ffa001809b886dbe477',1,'ls::JoystickCurve']]],
+  ['extending_20the_20library_22',['10. Extending the Library',['../index.html#autotoc_md57',1,'']]]
+];

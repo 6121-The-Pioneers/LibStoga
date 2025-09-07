@@ -1,0 +1,35 @@
+var classls_1_1AdaptivePIDController =
+[
+    [ "SurfaceType", "classls_1_1AdaptivePIDController.html#afcf2881e57c82873b2c15d61f6b4b887", [
+      [ "UNKNOWN", "classls_1_1AdaptivePIDController.html#afcf2881e57c82873b2c15d61f6b4b887aadb23c64eb2a1c1f0ffc918cc0886a3c", null ],
+      [ "SMOOTH", "classls_1_1AdaptivePIDController.html#afcf2881e57c82873b2c15d61f6b4b887a3ae363548292bf0f7b269d71dbb5a696", null ],
+      [ "ROUGH", "classls_1_1AdaptivePIDController.html#afcf2881e57c82873b2c15d61f6b4b887a2be77904e22adf02f9da0a39703ccb9b", null ],
+      [ "CARPET", "classls_1_1AdaptivePIDController.html#afcf2881e57c82873b2c15d61f6b4b887a30051bb7577d8f214564fd922373358b", null ]
+    ] ],
+    [ "AdaptivePIDController", "classls_1_1AdaptivePIDController.html#a1ea6efe21c07851927f3f795e5ff4569", null ],
+    [ "applyAdaptiveGains", "classls_1_1AdaptivePIDController.html#a8113e19d6c9a1136b39a95787560cd2a", null ],
+    [ "detectSurfaceConditions", "classls_1_1AdaptivePIDController.html#aeef099673cb75fd99745b16155bdc663", null ],
+    [ "getCurrentGains", "classls_1_1AdaptivePIDController.html#aa2350ae552d4e7958c8c0ee679a0b20b", null ],
+    [ "recordMovement", "classls_1_1AdaptivePIDController.html#aa6db7ccbb991f591dca74394030825a9", null ],
+    [ "update", "classls_1_1AdaptivePIDController.html#ab1055e49f57c860a3dd6024586856902", null ],
+    [ "updateBatteryCompensation", "classls_1_1AdaptivePIDController.html#a2a7882a9d9f9b08805e2c7cc3e1da8b4", null ],
+    [ "updateSurfaceCompensation", "classls_1_1AdaptivePIDController.html#a18d392225097134db29171f41c18af69", null ],
+    [ "ADAPTATION_INTERVAL", "classls_1_1AdaptivePIDController.html#a786a597b2efe9e85dd75d0247d75ac66", null ],
+    [ "ADAPTATION_RATE", "classls_1_1AdaptivePIDController.html#a3240eace281c13b7766ef2a53e6d1b33", null ],
+    [ "base_gains", "classls_1_1AdaptivePIDController.html#a03a64db897905304012faca6720e1af0", null ],
+    [ "battery_compensation", "classls_1_1AdaptivePIDController.html#af2556a1237738e04684ac9c117c78b97", null ],
+    [ "BATTERY_THRESHOLD_HIGH", "classls_1_1AdaptivePIDController.html#ad613291a23ae833e4175d51a96bd0a8d", null ],
+    [ "BATTERY_THRESHOLD_LOW", "classls_1_1AdaptivePIDController.html#a36e07c7dbfee03c03c27f270b7c0b55a", null ],
+    [ "current_gains", "classls_1_1AdaptivePIDController.html#af83cee0e341528a6a86a23d695adb39f", null ],
+    [ "current_surface", "classls_1_1AdaptivePIDController.html#a37dab3aedc02b6ad57cd1560d67643b4", null ],
+    [ "last_adaptation_time", "classls_1_1AdaptivePIDController.html#ac00b589c58a4bb4b5f017a994b1072d2", null ],
+    [ "last_battery_voltage", "classls_1_1AdaptivePIDController.html#a755ecb10ef1d82876316cb28a59c17a2", null ],
+    [ "MAX_GAIN_MULTIPLIER", "classls_1_1AdaptivePIDController.html#aefe2caf814efe18164b9d6e1211e2bac", null ],
+    [ "MIN_GAIN_MULTIPLIER", "classls_1_1AdaptivePIDController.html#aa5962d4be730583bc58b3f015e514acb", null ],
+    [ "PERFORMANCE_WINDOW", "classls_1_1AdaptivePIDController.html#a09313f784e63a7cd1f8e6ca665ed97da", null ],
+    [ "pid", "classls_1_1AdaptivePIDController.html#a514944f099ebaaea4eed2eccd0aacf2f", null ],
+    [ "recent_errors", "classls_1_1AdaptivePIDController.html#a0f1a50a624c4ce13aaad4009be156de4", null ],
+    [ "recent_settling_times", "classls_1_1AdaptivePIDController.html#a8a451c650e84036e125228968ba2e91e", null ],
+    [ "surface_compensation", "classls_1_1AdaptivePIDController.html#a71a4c4b12f3cb954482ac3ac006522c4", null ],
+    [ "surface_detection_time", "classls_1_1AdaptivePIDController.html#a57d0d202cae8924cb3412d1a7e4520f2", null ]
+];

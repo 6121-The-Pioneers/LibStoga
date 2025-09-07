@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['cancel_5fbutton_0',['cancel_button',['../classls_1_1Chassis.html#a82e145643934a0f1a7695fdbaa28e829',1,'ls::Chassis']]],
+  ['cancelbutton_1',['cancelButton',['../structls_1_1ChassisConfig.html#a50d611aca53ca585cfc1954873376f30',1,'ls::ChassisConfig']]],
+  ['center_5fto_5fback_2',['center_to_back',['../structls_1_1threewheel__odom__parameters__t.html#a0a772589eb1a0a2c13789cef7ba9fb6d',1,'ls::threewheel_odom_parameters_t']]],
+  ['center_5fto_5fleft_3',['center_to_left',['../structls_1_1threewheel__odom__parameters__t.html#a595de4c738eec6e6a7f2437c7bc3a594',1,'ls::threewheel_odom_parameters_t']]],
+  ['center_5fto_5fparallel_4',['center_to_parallel',['../structls_1_1imu__odom__parameters__t.html#a59b386890e9efec55c0d32bad6782640',1,'ls::imu_odom_parameters_t']]],
+  ['center_5fto_5fperpendicular_5',['center_to_perpendicular',['../structls_1_1imu__odom__parameters__t.html#a904b645b82607518197ced7b86c921b4',1,'ls::imu_odom_parameters_t']]],
+  ['center_5fto_5fright_6',['center_to_right',['../structls_1_1threewheel__odom__parameters__t.html#ad462c4a053522bfeeaa9adebebddc7c0',1,'ls::threewheel_odom_parameters_t']]],
+  ['centertoback_7',['centerToBack',['../classls_1_1ThreeWheelOdom.html#ae459493100371361bea9576b9ee48489',1,'ls::ThreeWheelOdom']]],
+  ['centertohoriz_8',['centerToHoriz',['../classls_1_1ImuOdom.html#a9f577211ec61d6f991eb83541980e51d',1,'ls::ImuOdom']]],
+  ['centertoleft_9',['centerToLeft',['../classls_1_1ThreeWheelOdom.html#ab9a69c99b7ae45a2f1d2b28a5a5fbffa',1,'ls::ThreeWheelOdom']]],
+  ['centertoright_10',['centerToRight',['../classls_1_1ThreeWheelOdom.html#a6efbd0bccb4a1f26dc5321320379fa73',1,'ls::ThreeWheelOdom']]],
+  ['centertovert_11',['centerToVert',['../classls_1_1ImuOdom.html#a33fd841f67f09b32362dbea189c74691',1,'ls::ImuOdom']]],
+  ['config_12',['config',['../classls_1_1MCLTracker.html#ad95f35a787fabeb749a0bd422d87f842',1,'ls::MCLTracker']]],
+  ['config_5f_13',['config_',['../classls_1_1DriverControl.html#a3fb82c37bfa7c0e4041942a1b78975bd',1,'ls::DriverControl']]],
+  ['controller_14',['controller',['../classls_1_1Chassis.html#ae345ef408bc888b985d9d8af6fef6c10',1,'ls::Chassis']]],
+  ['controllerconfig_15',['controllerConfig',['../classls_1_1ChassisBuilder.html#a61d7b6b8ea3f6bc4ab9ed7d96c11e319',1,'ls::ChassisBuilder']]],
+  ['conversion_5ffactor_16',['conversion_factor',['../classls_1_1TrackingWheel.html#a06708604e4cb55e8996e0d9d20535e2c',1,'ls::TrackingWheel']]],
+  ['correction_5fconstant_17',['correction_constant',['../structls_1_1smart__pid__parameters__t.html#aaa1643c976d3f31dc30fdbb3d0a06cab',1,'ls::smart_pid_parameters_t::correction_constant'],['../classls_1_1SmartPID.html#a838191b3d9328760d8a97213d7cbcdfb',1,'ls::SmartPID::correction_constant']]],
+  ['count_18',['count',['../structls_1_1MCLTracker_1_1Config.html#aab6af6638c3378ee61a334ed20a55356',1,'ls::MCLTracker::Config']]],
+  ['current_19',['current',['../structls_1_1SystemHealthMonitor_1_1MotorHealth.html#a99752e83613ebae407adb69fd0951fe6',1,'ls::SystemHealthMonitor::MotorHealth']]],
+  ['current_5fgains_20',['current_gains',['../classls_1_1AdaptivePIDController.html#af83cee0e341528a6a86a23d695adb39f',1,'ls::AdaptivePIDController']]],
+  ['current_5fsurface_21',['current_surface',['../classls_1_1AdaptivePIDController.html#a37dab3aedc02b6ad57cd1560d67643b4',1,'ls::AdaptivePIDController']]],
+  ['currenthistory_5f_22',['currentHistory_',['../classls_1_1SystemHealthMonitor.html#a6ffaa99ffb3ab0884bd650e890891d30',1,'ls::SystemHealthMonitor']]],
+  ['currentidx_23',['currentIdx',['../classls_1_1PurePursuit.html#a4edcb5a7370d9dfef722a582828cdb4e',1,'ls::PurePursuit']]],
+  ['currentmetrics_5f_24',['currentMetrics_',['../classls_1_1SystemHealthMonitor.html#a60e158784238a1035f38802915408321',1,'ls::SystemHealthMonitor']]]
+];

@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['a_20tracker_0',['Choosing a Tracker',['../index.html#autotoc_md25',1,'']]],
+  ['achievements_1',['&lt;b&gt;Optimization Achievements&lt;/b&gt;',['../index.html#autotoc_md111',1,'']]],
+  ['acknowledgments_2',['&lt;b&gt;🏆 Acknowledgments&lt;/b&gt;',['../index.html#autotoc_md140',1,'']]],
+  ['adaptive_3',['SmartPID (Adaptive)',['../index.html#autotoc_md29',1,'']]],
+  ['adaptive_20control_20auto_20tuning_20🧠_4',['&lt;b&gt;v2.1.0 - Adaptive Control &amp;amp; Auto-Tuning&lt;/b&gt; 🧠',['../index.html#autotoc_md90',1,'']]],
+  ['adaptive_20pid_20controller_5',['🎛️ &lt;b&gt;Adaptive PID Controller&lt;/b&gt;',['../index.html#autotoc_md91',1,'']]],
+  ['adaptive_20pid_20history_20logging_6',['&lt;b&gt;Adaptive PID History Logging&lt;/b&gt;',['../index.html#autotoc_md75',1,'']]],
+  ['adaptivepidcontroller_20new_7',['AdaptivePIDController (NEW)',['../index.html#autotoc_md30',1,'']]],
+  ['advanced_20joystick_20curve_20system_8',['&lt;b&gt;Advanced Joystick Curve System&lt;/b&gt;',['../index.html#autotoc_md68',1,'']]],
+  ['advanced_20motion_20control_20q4_202025_9',['&lt;b&gt;Phase 2: Advanced Motion Control (Q4 2025)&lt;/b&gt;',['../index.html#autotoc_md122',1,'']]],
+  ['advanced_20movement_20control_10',['&lt;b&gt;Advanced Movement Control&lt;/b&gt;',['../index.html#autotoc_md81',1,'']]],
+  ['ai_20q1_202026_11',['&lt;b&gt;Phase 3: Sensor Fusion &amp;amp; AI (Q1 2026)&lt;/b&gt;',['../index.html#autotoc_md123',1,'']]],
+  ['angle_12',['📏 Angle',['../index.html#autotoc_md16',1,'']]],
+  ['angular_13',['Turn PID (Angular)',['../index.html#autotoc_md52',1,'']]],
+  ['api_14',['Chassis API',['../index.html#autotoc_md38',1,'']]],
+  ['api_20changes_20breaking_20changes_15',['&lt;b&gt;🔧 API Changes &amp;amp; Breaking Changes&lt;/b&gt;',['../index.html#autotoc_md113',1,'']]],
+  ['architecture_16',['Architecture',['../index.html#autotoc_md105',1,'🏗️ <b>Core Architecture</b>'],['../index.html#autotoc_md73',1,'<b>Completely Optional Architecture</b>']]],
+  ['architecture_20changes_17',['🔧 &lt;b&gt;Major Architecture Changes&lt;/b&gt;',['../index.html#autotoc_md96',1,'']]],
+  ['architecture_20overhaul_20🏗️_18',['&lt;b&gt;v2.0.0 - Core Architecture Overhaul&lt;/b&gt; 🏗️',['../index.html#autotoc_md95',1,'']]],
+  ['attribution_19',['📚 License / Attribution',['../index.html#autotoc_md146',1,'']]],
+  ['auto_20tuning_20🧠_20',['&lt;b&gt;v2.1.0 - Adaptive Control &amp;amp; Auto-Tuning&lt;/b&gt; 🧠',['../index.html#autotoc_md90',1,'']]],
+  ['auto_20tuning_20system_21',['🎯 &lt;b&gt;Auto-Tuning System&lt;/b&gt;',['../index.html#autotoc_md92',1,'']]],
+  ['auto_20tuning_20system_20new_22',['Auto-Tuning System (NEW)',['../index.html#autotoc_md31',1,'']]],
+  ['autonomous_20routine_20handling_23',['8. Autonomous Routine Handling',['../index.html#autotoc_md43',1,'']]]
+];

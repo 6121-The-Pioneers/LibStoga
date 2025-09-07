@@ -1,0 +1,56 @@
+name: Deploy Doxygen Documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'include/**'
+      - 'src/**'
+      - 'README.md'
+      - 'Doxyfile'
+      - 'docs/custom_theme.css'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+
+    - name: Install Doxygen
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y doxygen graphviz
+
+    - name: Create docs directory
+      run: mkdir -p docs
+
+    - name: Generate Doxygen Documentation
+      run: doxygen Doxyfile
+
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: docs/html
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4

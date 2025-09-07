@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['safety_20features_0',['🛡️ &lt;b&gt;Safety Features&lt;/b&gt;',['../index.html#autotoc_md93',1,'']]],
+  ['sd_20card_20data_20persistence_1',['💾 &lt;b&gt;Major Features: SD Card Data Persistence&lt;/b&gt;',['../index.html#autotoc_md72',1,'']]],
+  ['sd_20card_20data_20persistence_20new_2',['Optional SD Card Data Persistence (NEW)',['../index.html#autotoc_md33',1,'']]],
+  ['sections_3a_3',['&lt;b&gt;📑 Detailed Sections:&lt;/b&gt;',['../index.html#autotoc_md5',1,'']]],
+  ['sensor_20configuration_20testing_4',['Sensor Configuration Testing',['../index.html#autotoc_md47',1,'']]],
+  ['sensor_20fusion_20ai_20q1_202026_5',['&lt;b&gt;Phase 3: Sensor Fusion &amp;amp; AI (Q1 2026)&lt;/b&gt;',['../index.html#autotoc_md123',1,'']]],
+  ['sensors_20tracking_6',['5. Sensors &amp;amp; Tracking',['../index.html#autotoc_md19',1,'']]],
+  ['setup_7',['&lt;b&gt;Development Setup&lt;/b&gt;',['../index.html#autotoc_md132',1,'']]],
+  ['smartpid_20adaptive_8',['SmartPID (Adaptive)',['../index.html#autotoc_md29',1,'']]],
+  ['smartpid_20warning_9',['SmartPID Warning',['../index.html#autotoc_md54',1,'']]],
+  ['special_20thanks_10',['&lt;b&gt;Special Thanks&lt;/b&gt;',['../index.html#autotoc_md143',1,'']]],
+  ['standards_11',['&lt;b&gt;Code Standards&lt;/b&gt;',['../index.html#autotoc_md133',1,'']]],
+  ['start_12',['🚀 Quick Start',['../index.html#autotoc_md11',1,'']]],
+  ['status_20classification_13',['&lt;b&gt;Health Status Classification&lt;/b&gt;',['../index.html#autotoc_md87',1,'']]],
+  ['storage_20management_14',['&lt;b&gt;Storage Management&lt;/b&gt;',['../index.html#autotoc_md77',1,'']]],
+  ['structures_15',['&lt;b&gt;Enhanced Parameter Structures&lt;/b&gt;',['../index.html#autotoc_md80',1,'']]],
+  ['style_20movement_20parameters_16',['🎯 &lt;b&gt;Major Features: LemLib-Style Movement Parameters&lt;/b&gt;',['../index.html#autotoc_md79',1,'']]],
+  ['style_20movement_20parameters_20new_17',['LemLib-Style Movement Parameters (NEW)',['../index.html#autotoc_md34',1,'']]],
+  ['support_20resources_18',['&lt;b&gt;📞 Support &amp;amp; Resources&lt;/b&gt;',['../index.html#autotoc_md136',1,'']]],
+  ['system_19',['System',['../index.html#autotoc_md106',1,'🎛️ <b>PID Control System</b>'],['../index.html#autotoc_md92',1,'🎯 <b>Auto-Tuning System</b>'],['../index.html#autotoc_md97',1,'📊 <b>Enhanced Odometry System</b>'],['../index.html#autotoc_md107',1,'📏 <b>Geometry System</b>'],['../index.html#autotoc_md68',1,'<b>Advanced Joystick Curve System</b>'],['../index.html#autotoc_md86',1,'<b>Real-time Health System</b>']]],
+  ['system_20health_20monitoring_20',['🏥 &lt;b&gt;Major Features: System Health Monitoring&lt;/b&gt;',['../index.html#autotoc_md84',1,'']]],
+  ['system_20health_20monitoring_20new_21',['System Health Monitoring (NEW)',['../index.html#autotoc_md35',1,'']]],
+  ['system_20new_22',['Auto-Tuning System (NEW)',['../index.html#autotoc_md31',1,'']]],
+  ['systems_20🚀_23',['&lt;b&gt;v3.0.0 - Phase 1: Enhanced Control Systems&lt;/b&gt; 🚀',['../index.html#autotoc_md66',1,'']]]
+];

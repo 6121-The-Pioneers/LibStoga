@@ -1,0 +1,45 @@
+var classls_1_1SystemHealthMonitor =
+[
+    [ "HealthIssue", "structls_1_1SystemHealthMonitor_1_1HealthIssue.html", "structls_1_1SystemHealthMonitor_1_1HealthIssue" ],
+    [ "MotorHealth", "structls_1_1SystemHealthMonitor_1_1MotorHealth.html", "structls_1_1SystemHealthMonitor_1_1MotorHealth" ],
+    [ "SystemMetrics", "structls_1_1SystemHealthMonitor_1_1SystemMetrics.html", "structls_1_1SystemHealthMonitor_1_1SystemMetrics" ],
+    [ "HealthStatus", "classls_1_1SystemHealthMonitor.html#a630109075ebf5567044f59e7aa069227", [
+      [ "HEALTHY", "classls_1_1SystemHealthMonitor.html#a630109075ebf5567044f59e7aa069227a5d1cd10a9957ac4e04cf52276bd474ef", null ],
+      [ "WARNING", "classls_1_1SystemHealthMonitor.html#a630109075ebf5567044f59e7aa069227a27cc0d7c772aa6f8e3ddd535ef2252f3", null ],
+      [ "CRITICAL", "classls_1_1SystemHealthMonitor.html#a630109075ebf5567044f59e7aa069227a3ccde750c29040b70cd7769ad3ff6530", null ],
+      [ "FAILURE", "classls_1_1SystemHealthMonitor.html#a630109075ebf5567044f59e7aa069227aa5bbd9a8bb4330def844aa22f75e91e4", null ]
+    ] ],
+    [ "IssueType", "classls_1_1SystemHealthMonitor.html#a89335a36dc720bf53800ddb4f13a2778", [
+      [ "TUG_OF_WAR", "classls_1_1SystemHealthMonitor.html#a89335a36dc720bf53800ddb4f13a2778a51f641f780dc26f514df776144eaf772", null ],
+      [ "BROWNOUT", "classls_1_1SystemHealthMonitor.html#a89335a36dc720bf53800ddb4f13a2778a5641c18e34653a40d5f97e94f8372e7f", null ],
+      [ "BROKEN_DRIVE", "classls_1_1SystemHealthMonitor.html#a89335a36dc720bf53800ddb4f13a2778a9eb9979d6e613205dd706812449af85d", null ],
+      [ "STALL", "classls_1_1SystemHealthMonitor.html#a89335a36dc720bf53800ddb4f13a2778a0565629dceb41620106f74be9982ae1c", null ],
+      [ "OVERCURRENT", "classls_1_1SystemHealthMonitor.html#a89335a36dc720bf53800ddb4f13a2778ae0e1b90360d9f861544a8878bf978c56", null ],
+      [ "TEMPERATURE", "classls_1_1SystemHealthMonitor.html#a89335a36dc720bf53800ddb4f13a2778aa162150a1fc2f087682518190ad836fa", null ],
+      [ "ODOMETRY_DRIFT", "classls_1_1SystemHealthMonitor.html#a89335a36dc720bf53800ddb4f13a2778a790fd76dbf471e6d5fb5a129aae91670", null ],
+      [ "SENSOR_FAILURE", "classls_1_1SystemHealthMonitor.html#a89335a36dc720bf53800ddb4f13a2778ad5ca18e9b29227bc976d729a39ec266f", null ]
+    ] ],
+    [ "SystemHealthMonitor", "classls_1_1SystemHealthMonitor.html#a5c121054de9131abb0c7c696de074199", null ],
+    [ "~SystemHealthMonitor", "classls_1_1SystemHealthMonitor.html#a21aa70159174ff6f588ceca2264ea8eb", null ],
+    [ "checkForIssues", "classls_1_1SystemHealthMonitor.html#ab15e4786ecda5f626aa0e9e0f1ae8ea4", null ],
+    [ "clearResolvedIssues", "classls_1_1SystemHealthMonitor.html#abcf9b1b8516bebf76e7a801ee2bb1443", null ],
+    [ "forceHealthCheck", "classls_1_1SystemHealthMonitor.html#a79d19ca0ff17f5944297cd893c743412", null ],
+    [ "getIssues", "classls_1_1SystemHealthMonitor.html#ab51246f4653ac4074a22e42f0a36bbca", null ],
+    [ "getMetrics", "classls_1_1SystemHealthMonitor.html#afafd9c44b81902bb054ff73b05d2a419", null ],
+    [ "getOverallHealth", "classls_1_1SystemHealthMonitor.html#a48c6e6205ed2e7d63023c11d203287ed", null ],
+    [ "registerMotor", "classls_1_1SystemHealthMonitor.html#aa220379308ad18798cf19f82bd2e6d40", null ],
+    [ "setEnabled", "classls_1_1SystemHealthMonitor.html#a2624aa7d0e133504fa17179cce922694", null ],
+    [ "setHealthCallback", "classls_1_1SystemHealthMonitor.html#a0e4d049c5577ec74b2db4ed88a8ec513", null ],
+    [ "startMonitoring", "classls_1_1SystemHealthMonitor.html#a56596dc0dffefb2eadb4359136590135", null ],
+    [ "stopMonitoring", "classls_1_1SystemHealthMonitor.html#a9b40b716e98a5e3f913fae6895576dc8", null ],
+    [ "updateMetrics", "classls_1_1SystemHealthMonitor.html#a5a8e65c9fbbc8526ab134c1aa090ec78", null ],
+    [ "currentHistory_", "classls_1_1SystemHealthMonitor.html#a6ffaa99ffb3ab0884bd650e890891d30", null ],
+    [ "currentMetrics_", "classls_1_1SystemHealthMonitor.html#a60e158784238a1035f38802915408321", null ],
+    [ "enabled_", "classls_1_1SystemHealthMonitor.html#adb961edeb0603b1df3f58772dd8e7abc", null ],
+    [ "healthCallback_", "classls_1_1SystemHealthMonitor.html#aa138901f7ececf6a63e0845df382e7f2", null ],
+    [ "issues_", "classls_1_1SystemHealthMonitor.html#aab6e661495094f5de0b5d8ee32bd89a2", null ],
+    [ "monitoredMotors_", "classls_1_1SystemHealthMonitor.html#a185603786c4e0e22ff4cc01c23e0f651", null ],
+    [ "monitoringTask_", "classls_1_1SystemHealthMonitor.html#a35f5b9f42239f1e264311c680a59a8df", null ],
+    [ "positionHistory_", "classls_1_1SystemHealthMonitor.html#a54710022906143a3bb3bc3f4d88e88de", null ],
+    [ "voltageHistory_", "classls_1_1SystemHealthMonitor.html#abf2dfc761ff4484ab91499613c5ffdf2", null ]
+];
