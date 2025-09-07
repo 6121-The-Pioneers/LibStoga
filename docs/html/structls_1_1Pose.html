@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,6 +96,9 @@ $(function(){initNavTree('structls_1_1Pose.html','','structls_1_1Pose-members');
 </div><!--header-->
 <div class="contents">
 
+<p>2D pose representation with position and orientation  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="geometry_8h_source.html">geometry.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ls::Pose:</div>
@@ -110,10 +114,14 @@ Collaboration diagram for ls::Pose:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1e3752278dcdb90a39cecaef0ef6ac43" id="r_a1e3752278dcdb90a39cecaef0ef6ac43"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e3752278dcdb90a39cecaef0ef6ac43">Pose</a> ()</td></tr>
+<tr class="memdesc:a1e3752278dcdb90a39cecaef0ef6ac43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor - initializes to origin with 0° heading.  <br /></td></tr>
 <tr class="memitem:a0cf6869c3bafaa2cd31242631ef2d145" id="r_a0cf6869c3bafaa2cd31242631ef2d145"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cf6869c3bafaa2cd31242631ef2d145">Pose</a> (double _x, double _y, double h)</td></tr>
+<tr class="memdesc:a0cf6869c3bafaa2cd31242631ef2d145"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct pose from position and heading.  <br /></td></tr>
 <tr class="inherit_header pub_methods_structls_1_1Point"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_structls_1_1Point')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="structls_1_1Point.html">ls::Point</a></td></tr>
 <tr class="memitem:af478a2ff413b824f969fa6511501cab8 inherit pub_methods_structls_1_1Point" id="r_af478a2ff413b824f969fa6511501cab8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1Point.html#af478a2ff413b824f969fa6511501cab8">Point</a> ()=default</td></tr>
+<tr class="memdesc:af478a2ff413b824f969fa6511501cab8 inherit pub_methods_structls_1_1Point"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor - initializes to origin (0, 0)  <br /></td></tr>
 <tr class="memitem:a72083e654647e9d5aece75889c2161f0 inherit pub_methods_structls_1_1Point" id="r_a72083e654647e9d5aece75889c2161f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1Point.html#a72083e654647e9d5aece75889c2161f0">Point</a> (double _x, double _y)</td></tr>
+<tr class="memdesc:a72083e654647e9d5aece75889c2161f0 inherit pub_methods_structls_1_1Point"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct point from coordinates.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -123,8 +131,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a800bee6e42d667df380142c6d170ea36 inherit pub_attribs_structls_1_1Point" id="r_a800bee6e42d667df380142c6d170ea36"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1Point.html#a800bee6e42d667df380142c6d170ea36">y</a> {0}</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00043">43</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
+<div class="textblock"><p>2D pose representation with position and orientation </p>
+<p>Extends <a class="el" href="structls_1_1Point.html" title="2D point representation in Cartesian coordinates">Point</a> to include heading information, representing the complete state of a robot or object in 2D space. The heading uses the bearing coordinate system where 0° = North. </p>
+
+<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00136">136</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1e3752278dcdb90a39cecaef0ef6ac43" name="a1e3752278dcdb90a39cecaef0ef6ac43"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1e3752278dcdb90a39cecaef0ef6ac43">&#9670;&#160;</a></span>Pose() <span class="overload">[1/2]</span></h2>
@@ -149,9 +159,11 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00045">45</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
+<p>Default constructor - initializes to origin with 0° heading. </p>
 
-<p class="reference">References <a class="el" href="geometry_8h_source.html#l00044">heading</a>, and <a class="el" href="structls_1_1Point.html#af478a2ff413b824f969fa6511501cab8">ls::Point::Point()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00142">142</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
+
+<p class="reference">References <a class="el" href="geometry_8h_source.html#l00137">heading</a>, and <a class="el" href="structls_1_1Point.html#af478a2ff413b824f969fa6511501cab8">ls::Point::Point()</a>.</p>
 
 </div>
 </div>
@@ -187,9 +199,19 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00046">46</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
+<p>Construct pose from position and heading. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_x</td><td>X coordinate </td></tr>
+    <tr><td class="paramname">_y</td><td>Y coordinate </td></tr>
+    <tr><td class="paramname">h</td><td>Heading angle in degrees </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="reference">References <a class="el" href="geometry_8h_source.html#l00044">heading</a>, and <a class="el" href="structls_1_1Point.html#af478a2ff413b824f969fa6511501cab8">ls::Point::Point()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00150">150</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
+
+<p class="reference">References <a class="el" href="geometry_8h_source.html#l00137">heading</a>, and <a class="el" href="structls_1_1Point.html#af478a2ff413b824f969fa6511501cab8">ls::Point::Point()</a>.</p>
 
 </div>
 </div>
@@ -205,10 +227,11 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Bearing angle in degrees (0° = North) </p>
 
-<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00044">44</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00137">137</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="geometry_8h_source.html#l00045">Pose()</a>, <a class="el" href="geometry_8h_source.html#l00046">Pose()</a>, and <a class="el" href="pure__pursuit_8cpp_source.html#l00016">ls::PurePursuit::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="geometry_8h_source.html#l00142">Pose()</a>, <a class="el" href="geometry_8h_source.html#l00150">Pose()</a>, and <a class="el" href="pure__pursuit_8cpp_source.html#l00016">ls::PurePursuit::update()</a>.</p>
 
 </div>
 </div>

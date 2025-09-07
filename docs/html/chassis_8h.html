@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -91,17 +92,18 @@ $(function(){initNavTree('chassis_8h.html','',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">chassis.h File Reference</div></div>
+  <div class="headertitle"><div class="title">chassis.h File Reference<div class="ingroups"><a class="el" href="group__core.html">Core Components</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>contains organizational elements related to the physical robot itself.  
+<p>Chassis control system for LibStoga robotics framework.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;api.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="odom_8h_source.html">odom.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="pid_8h_source.html">pid.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>&quot;</code><br />
 <code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;pros/misc.hpp&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for chassis.h:</div>
@@ -119,8 +121,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:ls_3A_3AChassisConfig" id="r_ls_3A_3AChassisConfig"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1ChassisConfig.html">ls::ChassisConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration structure for <a class="el" href="classls_1_1Chassis.html" title="Main chassis control class for robot movement.">Chassis</a> behavior.  <a href="structls_1_1ChassisConfig.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3AChassis" id="r_ls_3A_3AChassis"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1Chassis.html">ls::Chassis</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the chassis of the robot. Only supports tank drive configuration (TODO)  <a href="classls_1_1Chassis.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main chassis control class for robot movement.  <a href="classls_1_1Chassis.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -128,12 +131,21 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespacels"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all source code for abstract classes or composed ones Basically code that powers abstraction. <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>contains organizational elements related to the physical robot itself. </p>
-<p>✅</p>
-<dl class="section author"><dt>Author</dt><dd>Rishit Varshney </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2024-11-29</dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
+<div class="textblock"><p>Chassis control system for LibStoga robotics framework. </p>
+<p>This file provides the core Chassis class that manages robot movement and control. It supports tank drive configuration with integrated odometry, PID control systems, and autonomous motion primitives. The chassis system is designed for VEX robotics platforms using the PROS framework.</p>
+<p>Key Features:</p><ul>
+<li>Tank drive control with arcade drive support</li>
+<li>Integrated odometry for position tracking</li>
+<li>PID-based motion control for precise movements</li>
+<li>Autonomous motion primitives (drive, turn, point-to-point)</li>
+<li>Path following with pure pursuit algorithm</li>
+<li>Adaptive PID tuning capabilities</li>
+<li>Controller-based cancellation support</li>
+</ul>
+<dl class="section author"><dt>Author</dt><dd>6121D (The Pioneers) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>3.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 6121D - All rights reserved </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 </div></div><!-- contents -->

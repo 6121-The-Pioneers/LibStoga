@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -94,6 +95,9 @@ $(function(){initNavTree('mcl_8h.html','',''); });
   <div class="headertitle"><div class="title">mcl.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Monte Carlo Localization (MCL) for advanced robot positioning.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;random&gt;</code><br />
 <code>#include &quot;<a class="el" href="geometry_8h_source.html">geometry.h</a>&quot;</code><br />
@@ -114,15 +118,42 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:ls_3A_3AParticle" id="r_ls_3A_3AParticle"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1Particle.html">ls::Particle</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Individual particle representing a possible robot pose.  <a href="structls_1_1Particle.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3AMCLTracker" id="r_ls_3A_3AMCLTracker"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1MCLTracker.html">ls::MCLTracker</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monte Carlo Localization tracker using particle filtering.  <a href="classls_1_1MCLTracker.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3AMCLTracker_3A_3AConfig" id="r_ls_3A_3AMCLTracker_3A_3AConfig"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1MCLTracker_1_1Config.html">ls::MCLTracker::Config</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration parameters for MCL system.  <a href="structls_1_1MCLTracker_1_1Config.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:ls" id="r_ls"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacels.html">ls</a></td></tr>
 <tr class="memdesc:namespacels"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all source code for abstract classes or composed ones Basically code that powers abstraction. <br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Monte Carlo Localization (MCL) for advanced robot positioning. </p>
+<p>This file implements Monte Carlo Localization, also known as particle filtering, for robust robot localization in dynamic environments. MCL uses a population of particles to represent the probability distribution of the robot's pose, providing better accuracy than traditional odometry in the presence of wheel slippage, uneven terrain, or kidnapped robot scenarios.</p>
+<p>Key Features:</p><ul>
+<li>Particle filter-based localization</li>
+<li>Robust to odometry drift and wheel slippage</li>
+<li>Handles kidnapped robot problem</li>
+<li>Configurable particle count and noise parameters</li>
+<li>Measurement injection for absolute position updates</li>
+<li>Probabilistic pose estimation</li>
+</ul>
+<p>How MCL Works:</p><ol type="1">
+<li><b>Initialization</b>: Create particles representing possible robot poses</li>
+<li><b>Motion Update</b>: Predict particle movement based on odometry</li>
+<li><b>Measurement Update</b>: Adjust particle weights based on sensor measurements</li>
+<li><b>Resampling</b>: Create new particle set based on weights</li>
+<li><b>Pose Estimation</b>: Calculate robot position from particle distribution</li>
+</ol>
+<dl class="section author"><dt>Author</dt><dd>6121D (The Pioneers) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>3.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 6121D - All rights reserved </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="mcl_8h_source.html">mcl.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

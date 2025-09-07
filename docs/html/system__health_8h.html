@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -94,6 +95,9 @@ $(function(){initNavTree('system__health_8h.html','',''); });
   <div class="headertitle"><div class="title">system_health.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Comprehensive system health monitoring for LibStoga robotics framework.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;deque&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
@@ -117,10 +121,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:ls_3A_3ASystemHealthMonitor" id="r_ls_3A_3ASystemHealthMonitor"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1SystemHealthMonitor.html">ls::SystemHealthMonitor</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">System health monitoring for detecting various robot issues.  <a href="classls_1_1SystemHealthMonitor.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comprehensive system health monitoring and diagnostics.  <a href="classls_1_1SystemHealthMonitor.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3ASystemHealthMonitor_3A_3AHealthIssue" id="r_ls_3A_3ASystemHealthMonitor_3A_3AHealthIssue"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1SystemHealthMonitor_1_1HealthIssue.html">ls::SystemHealthMonitor::HealthIssue</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detailed information about a specific health issue.  <a href="structls_1_1SystemHealthMonitor_1_1HealthIssue.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3ASystemHealthMonitor_3A_3AMotorHealth" id="r_ls_3A_3ASystemHealthMonitor_3A_3AMotorHealth"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1SystemHealthMonitor_1_1MotorHealth.html">ls::SystemHealthMonitor::MotorHealth</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Health information for a single motor.  <a href="structls_1_1SystemHealthMonitor_1_1MotorHealth.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3ASystemHealthMonitor_3A_3ASystemMetrics" id="r_ls_3A_3ASystemHealthMonitor_3A_3ASystemMetrics"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1SystemHealthMonitor_1_1SystemMetrics.html">ls::SystemHealthMonitor::SystemMetrics</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Complete system health metrics snapshot.  <a href="structls_1_1SystemHealthMonitor_1_1SystemMetrics.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -130,9 +137,34 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:af237f0fa01b3b549c63f2cc2bc4ca34a" id="r_af237f0fa01b3b549c63f2cc2bc4ca34a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classls_1_1SystemHealthMonitor.html">SystemHealthMonitor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacels.html#af237f0fa01b3b549c63f2cc2bc4ca34a">ls::getHealthMonitor</a> ()</td></tr>
-<tr class="memdesc:af237f0fa01b3b549c63f2cc2bc4ca34a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global health monitor instance.  <br /></td></tr>
+<tr class="memdesc:af237f0fa01b3b549c63f2cc2bc4ca34a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get global system health monitor instance.  <br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Comprehensive system health monitoring for LibStoga robotics framework. </p>
+<p>This file provides a complete system health monitoring system that continuously tracks robot health, detects issues, and provides diagnostic information. The system monitors motors, battery, sensors, and overall system performance to help identify problems before they cause failures.</p>
+<p>Key Features:</p><ul>
+<li>Real-time motor health monitoring (current, temperature, RPM)</li>
+<li>Battery voltage and current monitoring with brownout detection</li>
+<li>Stall detection and overcurrent protection</li>
+<li>Tug-of-war detection through voltage analysis</li>
+<li>Configurable health thresholds and alerts</li>
+<li>Background monitoring with PROS task integration</li>
+<li>Health status callbacks for user notification</li>
+<li>Rolling history buffers for trend analysis</li>
+</ul>
+<p>Monitored Parameters:</p><ul>
+<li><b>Battery</b>: Voltage, current, brownout detection</li>
+<li><b>Motors</b>: Current draw, temperature, RPM, stall detection</li>
+<li><b>System</b>: Overall health status, issue tracking</li>
+<li><b>Trends</b>: Historical data analysis for anomaly detection</li>
+</ul>
+<dl class="section author"><dt>Author</dt><dd>6121D (The Pioneers) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>3.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 6121D - All rights reserved </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

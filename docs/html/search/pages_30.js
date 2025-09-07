@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['📐_20core_20concepts_0',['📐 Core Concepts',['../index.html#autotoc_md15',1,'']]]
+  ['📍_20point_20pose_20path_0',['📍 Point / Pose / Path',['../index.html#autotoc_md24',1,'']]],
+  ['📍_20pose_20estimation_1',['📍 &lt;b&gt;Pose Estimation&lt;/b&gt;',['../index.html#autotoc_md109',1,'']]]
 ];

@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,32 +96,87 @@ $(function(){initNavTree('classls_1_1Timer.html','','classls_1_1Timer-members');
 </div><!--header-->
 <div class="contents">
 
+<p>High-precision timer with pause/resume functionality.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8680b7a115ff67393bfe00160252856f" id="r_a8680b7a115ff67393bfe00160252856f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8680b7a115ff67393bfe00160252856f">Timer</a> (uint32_t time)</td></tr>
+<tr class="memdesc:a8680b7a115ff67393bfe00160252856f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classls_1_1Timer.html" title="High-precision timer with pause/resume functionality.">Timer</a> with specified duration.  <br /></td></tr>
 <tr class="memitem:a5627c28f25e73f373fff3086a38e1786" id="r_a5627c28f25e73f373fff3086a38e1786"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5627c28f25e73f373fff3086a38e1786">getTimeSet</a> ()</td></tr>
+<tr class="memdesc:a5627c28f25e73f373fff3086a38e1786"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the original time duration set for this timer.  <br /></td></tr>
 <tr class="memitem:ae255a56af688b8692da930715e2d8b01" id="r_ae255a56af688b8692da930715e2d8b01"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae255a56af688b8692da930715e2d8b01">getTimeLeft</a> ()</td></tr>
+<tr class="memdesc:ae255a56af688b8692da930715e2d8b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the remaining time until timer completion.  <br /></td></tr>
 <tr class="memitem:a3258dbef4d1675d2035e8bcc3e2b0d21" id="r_a3258dbef4d1675d2035e8bcc3e2b0d21"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3258dbef4d1675d2035e8bcc3e2b0d21">getTimePassed</a> ()</td></tr>
+<tr class="memdesc:a3258dbef4d1675d2035e8bcc3e2b0d21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the elapsed time since timer started.  <br /></td></tr>
 <tr class="memitem:a4ffe067060b8a7fb2ef412efbbc3635a" id="r_a4ffe067060b8a7fb2ef412efbbc3635a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ffe067060b8a7fb2ef412efbbc3635a">isDone</a> ()</td></tr>
+<tr class="memdesc:a4ffe067060b8a7fb2ef412efbbc3635a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the timer has reached its target time.  <br /></td></tr>
 <tr class="memitem:acf4445abebdfd99627fccdff1d119d6a" id="r_acf4445abebdfd99627fccdff1d119d6a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf4445abebdfd99627fccdff1d119d6a">isPaused</a> ()</td></tr>
+<tr class="memdesc:acf4445abebdfd99627fccdff1d119d6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the timer is currently paused.  <br /></td></tr>
 <tr class="memitem:ad77f9f56fd8d70470d466243dc1c8e83" id="r_ad77f9f56fd8d70470d466243dc1c8e83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad77f9f56fd8d70470d466243dc1c8e83">set</a> (uint32_t time)</td></tr>
+<tr class="memdesc:ad77f9f56fd8d70470d466243dc1c8e83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a new time duration for the timer.  <br /></td></tr>
 <tr class="memitem:a6088e36715f1419ff8be8bb905a2b2cc" id="r_a6088e36715f1419ff8be8bb905a2b2cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6088e36715f1419ff8be8bb905a2b2cc">reset</a> ()</td></tr>
+<tr class="memdesc:a6088e36715f1419ff8be8bb905a2b2cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the timer to its initial state.  <br /></td></tr>
 <tr class="memitem:a314398aa4ef960479106d6e558fb48bb" id="r_a314398aa4ef960479106d6e558fb48bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a314398aa4ef960479106d6e558fb48bb">pause</a> ()</td></tr>
+<tr class="memdesc:a314398aa4ef960479106d6e558fb48bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pause the timer without resetting elapsed time.  <br /></td></tr>
 <tr class="memitem:a28005e3d52671142a5821a7bfe43a410" id="r_a28005e3d52671142a5821a7bfe43a410"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28005e3d52671142a5821a7bfe43a410">resume</a> ()</td></tr>
+<tr class="memdesc:a28005e3d52671142a5821a7bfe43a410"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resume a paused timer.  <br /></td></tr>
 <tr class="memitem:af087fcc2f1de1f7117a72ce33b556746" id="r_af087fcc2f1de1f7117a72ce33b556746"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af087fcc2f1de1f7117a72ce33b556746">waitUntilDone</a> ()</td></tr>
+<tr class="memdesc:af087fcc2f1de1f7117a72ce33b556746"><td class="mdescLeft">&#160;</td><td class="mdescRight">Block execution until timer completes.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a3cb33814567301eee2f95c52416c8083" id="r_a3cb33814567301eee2f95c52416c8083"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3cb33814567301eee2f95c52416c8083">period</a></td></tr>
 <tr class="memitem:a321703a3557f76381d2b94ff17fae001" id="r_a321703a3557f76381d2b94ff17fae001"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a321703a3557f76381d2b94ff17fae001">lastTime</a></td></tr>
-<tr class="memitem:a64859fc9a8376b6544f016b45d724ec1" id="r_a64859fc9a8376b6544f016b45d724ec1"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64859fc9a8376b6544f016b45d724ec1">timeWaited</a> = 0</td></tr>
-<tr class="memitem:a330debe9901a43fd9a307b6640d03be5" id="r_a330debe9901a43fd9a307b6640d03be5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a330debe9901a43fd9a307b6640d03be5">paused</a> = false</td></tr>
+<tr class="memitem:a64859fc9a8376b6544f016b45d724ec1" id="r_a64859fc9a8376b6544f016b45d724ec1"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64859fc9a8376b6544f016b45d724ec1">timeWaited</a></td></tr>
+<tr class="memitem:a330debe9901a43fd9a307b6640d03be5" id="r_a330debe9901a43fd9a307b6640d03be5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a330debe9901a43fd9a307b6640d03be5">paused</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="Timer_8hpp_source.html#l00020">20</a> of file <a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>.</p>
+<div class="textblock"><p>High-precision timer with pause/resume functionality. </p>
+<p>The <a class="el" href="classls_1_1Timer.html" title="High-precision timer with pause/resume functionality.">Timer</a> class provides precise timing control for robotics applications. It uses the PROS system clock for high accuracy and supports advanced features like pausing and resuming timing operations.</p>
+<p>The timer operates in two main states:</p><ul>
+<li><b>Running</b>: Actively counting down from the set time</li>
+<li><b>Paused</b>: Timing suspended, elapsed time preserved</li>
+</ul>
+<p>Usage Examples: </p><div class="fragment"><div class="line"><span class="comment">// Create a 5-second timer</span></div>
+<div class="line"><a class="code hl_function" href="#a8680b7a115ff67393bfe00160252856f">Timer</a> autonTimer(5000); <span class="comment">// 5000ms = 5 seconds</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Start autonomous routine</span></div>
+<div class="line"><span class="keywordflow">while</span> (!autonTimer.isDone()) {</div>
+<div class="line">    <span class="comment">// Perform autonomous actions</span></div>
+<div class="line">    chassis.moveToPoint(24, 24);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Check remaining time for decision making</span></div>
+<div class="line">    <span class="keywordflow">if</span> (autonTimer.getTimeLeft() &lt; 1000) {</div>
+<div class="line">        <span class="comment">// Less than 1 second left - finish up</span></div>
+<div class="line">        <span class="keywordflow">break</span>;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    pros::delay(20); <span class="comment">// Small delay to prevent CPU hogging</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Timer with pause/resume for complex sequences</span></div>
+<div class="line"><a class="code hl_function" href="#a8680b7a115ff67393bfe00160252856f">Timer</a> skillTimer(60000); <span class="comment">// 60 second skills challenge</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// During driver control</span></div>
+<div class="line"><span class="keywordflow">if</span> (controller.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {</div>
+<div class="line">    skillTimer.pause();</div>
+<div class="line">    <span class="comment">// Perform some action that shouldn&#39;t count against time</span></div>
+<div class="line">    skillTimer.resume();</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Non-blocking wait with other operations</span></div>
+<div class="line"><a class="code hl_function" href="#a8680b7a115ff67393bfe00160252856f">Timer</a> delayTimer(1000);</div>
+<div class="line"><span class="keywordflow">while</span> (!delayTimer.isDone()) {</div>
+<div class="line">    <span class="comment">// Can perform other operations while waiting</span></div>
+<div class="line">    updateSensors();</div>
+<div class="line">    pros::delay(10);</div>
+<div class="line">}</div>
+<div class="ttc" id="aclassls_1_1Timer_html_a8680b7a115ff67393bfe00160252856f"><div class="ttname"><a href="#a8680b7a115ff67393bfe00160252856f">ls::Timer::Timer</a></div><div class="ttdeci">Timer(uint32_t time)</div><div class="ttdoc">Construct a new Timer with specified duration.</div><div class="ttdef"><b>Definition</b> <a href="timer_8cpp_source.html#l00006">timer.cpp:6</a></div></div>
+</div><!-- fragment --> 
+<p class="definition">Definition at line <a class="el" href="Timer_8hpp_source.html#l00088">88</a> of file <a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8680b7a115ff67393bfe00160252856f" name="a8680b7a115ff67393bfe00160252856f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8680b7a115ff67393bfe00160252856f">&#9670;&#160;</a></span>Timer()</h2>
@@ -137,9 +193,19 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Construct a new <a class="el" href="classls_1_1Timer.html" title="High-precision timer with pause/resume functionality.">Timer</a> with specified duration. </p>
+<p>Creates a timer that will count down from the specified time in milliseconds. The timer starts running immediately upon construction.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>Duration in milliseconds (must be &gt; 0)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The timer begins counting immediately. Use <a class="el" href="#a314398aa4ef960479106d6e558fb48bb" title="Pause the timer without resetting elapsed time.">pause()</a> after construction if you need to delay the start. </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="timer_8cpp_source.html#l00006">6</a> of file <a class="el" href="timer_8cpp_source.html">timer.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00037">lastTime</a>, and <a class="el" href="Timer_8hpp_source.html#l00036">period</a>.</p>
+<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00206">lastTime</a>, and <a class="el" href="Timer_8hpp_source.html#l00205">period</a>.</p>
 
 </div>
 </div>
@@ -159,9 +225,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get the remaining time until timer completion. </p>
+<p>Calculates how much time is left before the timer reaches its target. Returns 0 if the timer has already finished.</p>
+<dl class="section return"><dt>Returns</dt><dd>Remaining time in milliseconds, or 0 if timer is done </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="timer_8cpp_source.html#l00016">16</a> of file <a class="el" href="timer_8cpp_source.html">timer.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00037">lastTime</a>, <a class="el" href="Timer_8hpp_source.html#l00039">paused</a>, <a class="el" href="Timer_8hpp_source.html#l00036">period</a>, and <a class="el" href="Timer_8hpp_source.html#l00038">timeWaited</a>.</p>
+<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00206">lastTime</a>, <a class="el" href="Timer_8hpp_source.html#l00208">paused</a>, <a class="el" href="Timer_8hpp_source.html#l00205">period</a>, and <a class="el" href="Timer_8hpp_source.html#l00207">timeWaited</a>.</p>
 
 </div>
 </div>
@@ -180,9 +250,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get the elapsed time since timer started. </p>
+<p>Returns how much time has passed since the timer was created or last reset. This includes time spent in paused state.</p>
+<dl class="section return"><dt>Returns</dt><dd>Elapsed time in milliseconds </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="timer_8cpp_source.html#l00024">24</a> of file <a class="el" href="timer_8cpp_source.html">timer.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00037">lastTime</a>, <a class="el" href="Timer_8hpp_source.html#l00039">paused</a>, and <a class="el" href="Timer_8hpp_source.html#l00038">timeWaited</a>.</p>
+<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00206">lastTime</a>, <a class="el" href="Timer_8hpp_source.html#l00208">paused</a>, and <a class="el" href="Timer_8hpp_source.html#l00207">timeWaited</a>.</p>
 
 </div>
 </div>
@@ -201,9 +275,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get the original time duration set for this timer. </p>
+<p>Returns the initial time value that was set when the timer was created or last reset. This value does not change during timer operation.</p>
+<dl class="section return"><dt>Returns</dt><dd>Original time duration in milliseconds </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="timer_8cpp_source.html#l00009">9</a> of file <a class="el" href="timer_8cpp_source.html">timer.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00037">lastTime</a>, <a class="el" href="Timer_8hpp_source.html#l00039">paused</a>, <a class="el" href="Timer_8hpp_source.html#l00036">period</a>, and <a class="el" href="Timer_8hpp_source.html#l00038">timeWaited</a>.</p>
+<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00206">lastTime</a>, <a class="el" href="Timer_8hpp_source.html#l00208">paused</a>, <a class="el" href="Timer_8hpp_source.html#l00205">period</a>, and <a class="el" href="Timer_8hpp_source.html#l00207">timeWaited</a>.</p>
 
 </div>
 </div>
@@ -222,11 +300,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Check if the timer has reached its target time. </p>
+<p>Determines whether the timer has completed its countdown. A timer is considered done when the elapsed time equals or exceeds the set time.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if timer has finished, false if still running </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="timer_8cpp_source.html#l00031">31</a> of file <a class="el" href="timer_8cpp_source.html">timer.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00037">lastTime</a>, <a class="el" href="Timer_8hpp_source.html#l00039">paused</a>, <a class="el" href="Timer_8hpp_source.html#l00036">period</a>, and <a class="el" href="Timer_8hpp_source.html#l00038">timeWaited</a>.</p>
+<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00206">lastTime</a>, <a class="el" href="Timer_8hpp_source.html#l00208">paused</a>, <a class="el" href="Timer_8hpp_source.html#l00205">period</a>, and <a class="el" href="Timer_8hpp_source.html#l00207">timeWaited</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00251">ls::Chassis::driveRelative()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00178">ls::findUltimateGainsRelay()</a>, <a class="el" href="chassis_8cpp_source.html#l00229">ls::Chassis::followPath()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">ls::Chassis::moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00315">ls::Chassis::turnToAngle()</a>, <a class="el" href="chassis_8cpp_source.html#l00161">ls::Chassis::turnToPoint()</a>, and <a class="el" href="timer_8cpp_source.html#l00065">waitUntilDone()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00271">ls::Chassis::driveRelative()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00178">ls::findUltimateGainsRelay()</a>, <a class="el" href="chassis_8cpp_source.html#l00249">ls::Chassis::followPath()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">ls::Chassis::moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00335">ls::Chassis::turnToAngle()</a>, <a class="el" href="chassis_8cpp_source.html#l00181">ls::Chassis::turnToPoint()</a>, and <a class="el" href="timer_8cpp_source.html#l00065">waitUntilDone()</a>.</p>
 
 </div>
 </div>
@@ -245,9 +327,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Check if the timer is currently paused. </p>
+<p>Returns the pause state of the timer. A paused timer does not count down but preserves its elapsed time for when it resumes.</p>
+<dl class="section return"><dt>Returns</dt><dd>true if timer is paused, false if running </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="timer_8cpp_source.html#l00039">39</a> of file <a class="el" href="timer_8cpp_source.html">timer.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00037">lastTime</a>, <a class="el" href="Timer_8hpp_source.html#l00039">paused</a>, and <a class="el" href="Timer_8hpp_source.html#l00038">timeWaited</a>.</p>
+<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00206">lastTime</a>, <a class="el" href="Timer_8hpp_source.html#l00208">paused</a>, and <a class="el" href="Timer_8hpp_source.html#l00207">timeWaited</a>.</p>
 
 </div>
 </div>
@@ -266,9 +352,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Pause the timer without resetting elapsed time. </p>
+<p>Suspends the timer operation while preserving the current elapsed time. The timer can be resumed later with <a class="el" href="#a28005e3d52671142a5821a7bfe43a410" title="Resume a paused timer.">resume()</a>.</p>
+<dl class="section note"><dt>Note</dt><dd>If the timer is already paused, this has no effect </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="timer_8cpp_source.html#l00055">55</a> of file <a class="el" href="timer_8cpp_source.html">timer.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00037">lastTime</a>, and <a class="el" href="Timer_8hpp_source.html#l00039">paused</a>.</p>
+<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00206">lastTime</a>, and <a class="el" href="Timer_8hpp_source.html#l00208">paused</a>.</p>
 
 </div>
 </div>
@@ -287,9 +377,12 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Reset the timer to its initial state. </p>
+<p>Resets the timer to start counting from the beginning again. The timer will use the same duration that was originally set. </p>
+
 <p class="definition">Definition at line <a class="el" href="timer_8cpp_source.html#l00050">50</a> of file <a class="el" href="timer_8cpp_source.html">timer.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00037">lastTime</a>, and <a class="el" href="Timer_8hpp_source.html#l00038">timeWaited</a>.</p>
+<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00206">lastTime</a>, and <a class="el" href="Timer_8hpp_source.html#l00207">timeWaited</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="timer_8cpp_source.html#l00045">set()</a>.</p>
 
@@ -310,9 +403,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Resume a paused timer. </p>
+<p>Continues timing from where it left off when <a class="el" href="#a314398aa4ef960479106d6e558fb48bb" title="Pause the timer without resetting elapsed time.">pause()</a> was called. Has no effect if the timer is not currently paused.</p>
+<dl class="section note"><dt>Note</dt><dd>If the timer is not paused, this has no effect </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="timer_8cpp_source.html#l00060">60</a> of file <a class="el" href="timer_8cpp_source.html">timer.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00037">lastTime</a>, and <a class="el" href="Timer_8hpp_source.html#l00039">paused</a>.</p>
+<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00206">lastTime</a>, and <a class="el" href="Timer_8hpp_source.html#l00208">paused</a>.</p>
 
 </div>
 </div>
@@ -331,9 +428,19 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set a new time duration for the timer. </p>
+<p>Changes the target time for the timer and resets it to start counting from the beginning with the new duration.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>New duration in milliseconds (must be &gt; 0)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This resets the timer completely, clearing any elapsed time </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="timer_8cpp_source.html#l00045">45</a> of file <a class="el" href="timer_8cpp_source.html">timer.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00036">period</a>, and <a class="el" href="timer_8cpp_source.html#l00050">reset()</a>.</p>
+<p class="reference">References <a class="el" href="Timer_8hpp_source.html#l00205">period</a>, and <a class="el" href="timer_8cpp_source.html#l00050">reset()</a>.</p>
 
 </div>
 </div>
@@ -351,6 +458,10 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Block execution until timer completes. </p>
+<p>Waits synchronously until the timer reaches its target time. This is a blocking operation that will pause program execution.</p>
+<dl class="section warning"><dt>Warning</dt><dd>This is a blocking call that will halt program execution. Use <a class="el" href="#a4ffe067060b8a7fb2ef412efbbc3635a" title="Check if the timer has reached its target time.">isDone()</a> for non-blocking checks in most robotics applications. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="timer_8cpp_source.html#l00065">65</a> of file <a class="el" href="timer_8cpp_source.html">timer.cpp</a>.</p>
 
@@ -378,8 +489,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Last time the timer was updated (PROS millis) </p>
 
-<p class="definition">Definition at line <a class="el" href="Timer_8hpp_source.html#l00037">37</a> of file <a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Timer_8hpp_source.html#l00206">206</a> of file <a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="timer_8cpp_source.html#l00016">getTimeLeft()</a>, <a class="el" href="timer_8cpp_source.html#l00024">getTimePassed()</a>, <a class="el" href="timer_8cpp_source.html#l00009">getTimeSet()</a>, <a class="el" href="timer_8cpp_source.html#l00031">isDone()</a>, <a class="el" href="timer_8cpp_source.html#l00039">isPaused()</a>, <a class="el" href="timer_8cpp_source.html#l00055">pause()</a>, <a class="el" href="timer_8cpp_source.html#l00050">reset()</a>, <a class="el" href="timer_8cpp_source.html#l00060">resume()</a>, and <a class="el" href="timer_8cpp_source.html#l00006">Timer()</a>.</p>
 
@@ -395,7 +507,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ls::Timer::paused = false</td>
+          <td class="memname">bool ls::Timer::paused</td>
         </tr>
       </table>
   </td>
@@ -404,8 +516,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Current pause state of the timer </p>
 
-<p class="definition">Definition at line <a class="el" href="Timer_8hpp_source.html#l00039">39</a> of file <a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Timer_8hpp_source.html#l00208">208</a> of file <a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="timer_8cpp_source.html#l00016">getTimeLeft()</a>, <a class="el" href="timer_8cpp_source.html#l00024">getTimePassed()</a>, <a class="el" href="timer_8cpp_source.html#l00009">getTimeSet()</a>, <a class="el" href="timer_8cpp_source.html#l00031">isDone()</a>, <a class="el" href="timer_8cpp_source.html#l00039">isPaused()</a>, <a class="el" href="timer_8cpp_source.html#l00055">pause()</a>, and <a class="el" href="timer_8cpp_source.html#l00060">resume()</a>.</p>
 
@@ -430,8 +543,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Original time duration set for the timer </p>
 
-<p class="definition">Definition at line <a class="el" href="Timer_8hpp_source.html#l00036">36</a> of file <a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Timer_8hpp_source.html#l00205">205</a> of file <a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="timer_8cpp_source.html#l00016">getTimeLeft()</a>, <a class="el" href="timer_8cpp_source.html#l00009">getTimeSet()</a>, <a class="el" href="timer_8cpp_source.html#l00031">isDone()</a>, <a class="el" href="timer_8cpp_source.html#l00045">set()</a>, and <a class="el" href="timer_8cpp_source.html#l00006">Timer()</a>.</p>
 
@@ -447,7 +561,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t ls::Timer::timeWaited = 0</td>
+          <td class="memname">uint32_t ls::Timer::timeWaited</td>
         </tr>
       </table>
   </td>
@@ -456,8 +570,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Total time spent in paused state </p>
 
-<p class="definition">Definition at line <a class="el" href="Timer_8hpp_source.html#l00038">38</a> of file <a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Timer_8hpp_source.html#l00207">207</a> of file <a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="timer_8cpp_source.html#l00016">getTimeLeft()</a>, <a class="el" href="timer_8cpp_source.html#l00024">getTimePassed()</a>, <a class="el" href="timer_8cpp_source.html#l00009">getTimeSet()</a>, <a class="el" href="timer_8cpp_source.html#l00031">isDone()</a>, <a class="el" href="timer_8cpp_source.html#l00039">isPaused()</a>, and <a class="el" href="timer_8cpp_source.html#l00050">reset()</a>.</p>
 

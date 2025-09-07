@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,31 +96,31 @@ $(function(){initNavTree('error_8h_source.html','',''); });
 </div><!--header-->
 <div class="contents">
 <a href="error_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef ERROR_LS_H</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define ERROR_LS_H</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;api.h&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="error_8h.html#a0f95eef540b66f1e6e4723e538c3a060">   17</a></span><span class="preprocessor">#define THROW_ERROR(error) __throw_error(error, __LINE__, __FILE__)</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacels.html">ls</a> {</div>
-<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespacels.html#a19eccdfe12c30d0c26e2992796aef389">   20</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacels.html#a19eccdfe12c30d0c26e2992796aef389">__throw_error</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* error, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> line, <span class="keyword">const</span> <span class="keywordtype">char</span>* file) {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        pros::lcd::clear_line(0);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        pros::lcd::clear_line(1);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        pros::lcd::print(0, <span class="stringliteral">&quot;at line %lu, file %s&quot;</span>, line, file);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        pros::lcd::print(1, error);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordflow">while</span> (<span class="keyword">true</span>) pros::delay(1000);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#ifndef ERROR_LS_H</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#define ERROR_LS_H</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &quot;api.h&quot;</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="error_8h.html#a0f95eef540b66f1e6e4723e538c3a060">   57</a></span><span class="preprocessor">#define THROW_ERROR(error) __throw_error(error, __LINE__, __FILE__)</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacels.html">ls</a> {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span></div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="namespacels.html#a19eccdfe12c30d0c26e2992796aef389">   79</a></span>    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacels.html#a19eccdfe12c30d0c26e2992796aef389">__throw_error</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* error, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> line, <span class="keyword">const</span> <span class="keywordtype">char</span>* file) {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        pros::lcd::clear_line(0);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        pros::lcd::clear_line(1);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        pros::lcd::print(0, <span class="stringliteral">&quot;at line %lu, file %s&quot;</span>, line, file);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        pros::lcd::print(1, error);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">while</span> (<span class="keyword">true</span>) pros::delay(1000);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
 </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif </span><span class="comment">// ERROR_LS_H</span></div>
-<div class="ttc" id="anamespacels_html"><div class="ttname"><a href="namespacels.html">ls</a></div><div class="ttdoc">Contains all source code for abstract classes or composed ones Basically code that powers abstraction...</div><div class="ttdef"><b>Definition</b> <a href="auton__tuner_8h_source.html#l00009">auton_tuner.h:9</a></div></div>
-<div class="ttc" id="anamespacels_html_a19eccdfe12c30d0c26e2992796aef389"><div class="ttname"><a href="namespacels.html#a19eccdfe12c30d0c26e2992796aef389">ls::__throw_error</a></div><div class="ttdeci">void __throw_error(const char *error, unsigned long line, const char *file)</div><div class="ttdef"><b>Definition</b> <a href="#l00020">error.h:20</a></div></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>} <span class="comment">// namespace ls</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#endif </span><span class="comment">// ERROR_LS_H</span></div>
+<div class="ttc" id="anamespacels_html"><div class="ttname"><a href="namespacels.html">ls</a></div><div class="ttdoc">Contains all source code for abstract classes or composed ones Basically code that powers abstraction...</div><div class="ttdef"><b>Definition</b> <a href="auton__tuner_8h_source.html#l00067">auton_tuner.h:67</a></div></div>
+<div class="ttc" id="anamespacels_html_a19eccdfe12c30d0c26e2992796aef389"><div class="ttname"><a href="namespacels.html#a19eccdfe12c30d0c26e2992796aef389">ls::__throw_error</a></div><div class="ttdeci">void __throw_error(const char *error, unsigned long line, const char *file)</div><div class="ttdoc">Internal function for error handling and display.</div><div class="ttdef"><b>Definition</b> <a href="#l00079">error.h:79</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

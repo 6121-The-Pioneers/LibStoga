@@ -1,10 +1,12 @@
 var classls_1_1SmartPID =
 [
-    [ "SmartPID", "classls_1_1SmartPID.html#a59bad50198b2384b1abc87b09acd93e4", null ],
+    [ "SmartPID", "classls_1_1SmartPID.html#a474f813b24af7dcfd177f804fd6963a7", null ],
     [ "SmartPID", "classls_1_1SmartPID.html#a3361b1251a5c3bc6682f9c69224e74c1", null ],
     [ "get_expected", "classls_1_1SmartPID.html#af43add33df940756119a495cbc7d0ce4", null ],
+    [ "getGains", "classls_1_1SmartPID.html#a213d4d90f6e7416232d40c38d9a8cc1d", null ],
     [ "learn_sigmoid", "classls_1_1SmartPID.html#a1f8d65246306a4952dcfa13ca585ea9a", null ],
     [ "reset", "classls_1_1SmartPID.html#a1a45fb9b3a35263f5b3b1f0f5c2fae2f", null ],
+    [ "setGains", "classls_1_1SmartPID.html#a8a17cde596ae76868c496d28cf64172c", null ],
     [ "update", "classls_1_1SmartPID.html#aab80e0272d400340434820444737ff87", null ],
     [ "update_components", "classls_1_1SmartPID.html#a93b2b2968a2f379932d9c8419c24e6a1", null ],
     [ "update_constants", "classls_1_1SmartPID.html#aede855e3faa6fda6674949af202047a9", null ],

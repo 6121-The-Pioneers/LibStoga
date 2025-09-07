@@ -1,3 +1,41 @@
+/** @file driver_control.h
+ * @brief Advanced driver control system with joystick curves and multiple drive modes
+ *
+ * This file provides a sophisticated driver control system designed to enhance
+ * driver experience and performance in VEX robotics competitions. It features
+ * multiple joystick curve types, various drive modes, and configurable parameters
+ * to optimize control feel for different drivers and robot configurations.
+ *
+ * Key Features:
+ * - Multiple joystick curve types (Linear, Exponential, Sigmoid, Cubic, Cheesy Drive)
+ * - Support for Arcade, Tank, Cheesy Drive, Curvature, and GTA drive modes
+ * - Configurable deadzones and gain settings
+ * - Real-time curve application for smooth control
+ * - PROS controller integration
+ *
+ * Drive Modes:
+ * - **Arcade**: Single-stick control with throttle and turn
+ * - **Tank**: Dual-stick control for independent left/right movement
+ * - **Cheesy Drive**: Enhanced arcade with quick-turn boost
+ * - **Curvature**: Radius-based turning for smooth curved paths
+ * - **GTA**: Trigger-based acceleration/braking with analog steering
+ *
+ * Joystick Curves:
+ * - **Linear**: Direct 1:1 input/output mapping
+ * - **Exponential**: Fine control at low speeds, aggressive at high speeds
+ * - **Sigmoid**: Smooth S-curve acceleration for natural feel
+ * - **Cubic**: Very aggressive low-speed control
+ * - **Cheesy Drive**: Optimized curve for Cheesy Drive mode
+ *
+ * @author 6121D (The Pioneers)
+ * @version 2.0.0
+ * @date 2025
+ *
+ * @copyright Copyright (c) 2025 6121D - All rights reserved
+ *
+ * @ingroup control
+ */
+
 #pragma once
 #include <cmath>
 #include <algorithm>
@@ -6,23 +44,52 @@ namespace ls {
 
 /**
  * @brief Joystick curve utilities for enhanced driver control
+ *
+ * The JoystickCurve class provides mathematical transformations to modify
+ * controller input for better driver feel and precision. Different curve
+ * types optimize control for various driving scenarios and driver preferences.
+ *
+ * Curve Types and Use Cases:
+ * - **Linear**: Best for precise, predictable control (good for beginners)
+ * - **Exponential**: Excellent for fine low-speed control with high-speed capability
+ * - **Sigmoid**: Natural acceleration feel, smooth throughout range
+ * - **Cubic**: Maximum precision at low speeds (advanced drivers)
+ * - **Cheesy Drive**: Optimized for quick turns and smooth driving
+ *
+ * Usage Example:
+ * @code
+ * // Apply exponential curve to throttle input
+ * double rawThrottle = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+ * double curvedThrottle = JoystickCurve::applyCurve(rawThrottle,
+ *                                                   JoystickCurve::EXPONENTIAL,
+ *                                                   1.5); // Aggressive curve
+ * @endcode
  */
 class JoystickCurve {
 public:
+    /**
+     * @brief Available joystick curve types
+     */
     enum CurveType {
-        LINEAR,           // No curve, direct mapping
-        EXPONENTIAL,      // Exponential curve for fine control at low speeds
-        SIGMOID,          // S-curve for smooth acceleration
-        CUBIC,           // Cubic curve for aggressive low-speed control
-        CHEESY_DRIVE     // Special curve optimized for Cheesy Drive
+        LINEAR,           /**< No curve, direct 1:1 mapping */
+        EXPONENTIAL,      /**< Exponential curve for fine low-speed control */
+        SIGMOID,          /**< S-curve for smooth, natural acceleration */
+        CUBIC,           /**< Cubic curve for maximum low-speed precision */
+        CHEESY_DRIVE     /**< Special curve optimized for Cheesy Drive mode */
     };
 
     /**
-     * @brief Apply a curve to joystick input
+     * @brief Apply a curve transformation to joystick input
+     *
+     * Transforms raw joystick input using the specified curve type and gain.
+     * All curves include automatic deadzone handling to prevent jitter.
+     *
      * @param input Raw joystick input (-127 to 127)
      * @param type Type of curve to apply
-     * @param gain Curve intensity (0.0 = linear, higher = more aggressive)
-     * @return Curved output (-127 to 127)
+     * @param gain Curve intensity multiplier (0.0 = linear, higher = more aggressive)
+     * @return Curved output value (-127 to 127)
+     *
+     * @note Input is automatically clamped and includes 5% deadzone by default
      */
     static double applyCurve(double input, CurveType type, double gain = 1.0) {
         // Normalize input to -1.0 to 1.0
@@ -62,14 +129,30 @@ public:
     }
 
     /**
-     * @brief Apply exponential curve (good for fine control)
+     * @brief Apply exponential curve for fine low-speed control
+     *
+     * Creates a curve where small inputs produce even smaller outputs,
+     * allowing for precise control at low speeds while maintaining
+     * full power capability at high speeds.
+     *
+     * @param input Normalized input (-1.0 to 1.0)
+     * @param gain Curve aggressiveness (higher = more pronounced curve)
+     * @return Curved output (-1.0 to 1.0)
      */
     static double expoCurve(double input, double gain) {
         return std::copysign(std::pow(std::abs(input), 1.0 + gain), input);
     }
 
     /**
-     * @brief Apply sigmoid curve (smooth S-curve)
+     * @brief Apply sigmoid curve for smooth S-curve acceleration
+     *
+     * Creates a smooth S-shaped curve that provides natural acceleration
+     * feel, with gradual changes at low speeds and more responsive
+     * changes at higher speeds.
+     *
+     * @param input Normalized input (-1.0 to 1.0)
+     * @param gain Curve steepness (higher = steeper S-curve)
+     * @return Curved output (-1.0 to 1.0)
      */
     static double sigmoidCurve(double input, double gain) {
         double scaled = input * gain * 3.0; // Scale for better curve shape
@@ -77,7 +160,15 @@ public:
     }
 
     /**
-     * @brief Apply cubic curve (aggressive low-speed control)
+     * @brief Apply cubic curve for aggressive low-speed control
+     *
+     * Provides maximum precision at low speeds by cubing the input,
+     * making small joystick movements produce very small outputs.
+     * Best for advanced drivers who need fine control.
+     *
+     * @param input Normalized input (-1.0 to 1.0)
+     * @param gain Additional linear component (higher = less aggressive)
+     * @return Curved output (-1.0 to 1.0)
      */
     static double cubicCurve(double input, double gain) {
         double absInput = std::abs(input);
@@ -87,6 +178,14 @@ public:
 
     /**
      * @brief Cheesy Drive optimized curve
+     *
+     * Special curve designed specifically for Cheesy Drive mode,
+     * blending cubic precision at low speeds with linear response
+     * at high speeds for optimal driving feel.
+     *
+     * @param input Normalized input (-1.0 to 1.0)
+     * @param gain Curve blend factor (higher = more linear at high speeds)
+     * @return Curved output (-1.0 to 1.0)
      */
     static double cheesyCurve(double input, double gain) {
         double absInput = std::abs(input);
@@ -99,33 +198,83 @@ public:
 };
 
 /**
- * @brief Enhanced driver control with configurable curves and drive types
+ * @brief Enhanced driver control system with multiple drive modes
+ *
+ * The DriverControl class provides a complete driver control solution
+ * with support for multiple drive modes, configurable joystick curves,
+ * and real-time parameter adjustment. It integrates seamlessly with
+ * PROS controllers and provides optimized motor power calculations.
+ *
+ * Drive Mode Details:
+ * - **Arcade**: Traditional single-stick driving (throttle + turn)
+ * - **Tank**: Independent left/right stick control
+ * - **Cheesy Drive**: Enhanced arcade with quick-turn capability
+ * - **Curvature**: Radius-based turning for smooth curved paths
+ * - **GTA**: Trigger-based acceleration with analog steering
+ *
+ * Configuration Example:
+ * @code
+ * DriverControl::DriveConfig config;
+ * config.type = DriverControl::CHEESY;
+ * config.throttleCurve = JoystickCurve::EXPONENTIAL;
+ * config.turnCurve = JoystickCurve::SIGMOID;
+ * config.throttleGain = 1.2;
+ * config.turnGain = 0.8;
+ *
+ * DriverControl driver(config);
+ *
+ * // In driver control loop
+ * double leftPower, rightPower;
+ * driver.calculateDrivePowers(controller, leftPower, rightPower);
+ * leftMotors.move(leftPower);
+ * rightMotors.move(rightPower);
+ * @endcode
  */
 class DriverControl {
 public:
+    /**
+     * @brief Available drive control modes
+     */
     enum DriveType {
-        ARCADE,      // Single stick: throttle + turn
-        TANK,        // Dual stick: left/right independently
-        CHEESY,      // Cheesy Drive: throttle + quick turn
-        CURVATURE,   // Curvature drive: throttle + radius control
-        GTA         // GTA-style: left trigger brake, right trigger accelerate
+        ARCADE,      /**< Single stick: throttle + turn */
+        TANK,        /**< Dual stick: independent left/right control */
+        CHEESY,      /**< Cheesy Drive: throttle + quick turn boost */
+        CURVATURE,   /**< Curvature drive: throttle + radius control */
+        GTA         /**< GTA-style: trigger acceleration + analog steering */
     };
 
+    /**
+     * @brief Configuration structure for driver control settings
+     */
     struct DriveConfig {
-        DriveType type = ARCADE;
-        JoystickCurve::CurveType throttleCurve = JoystickCurve::EXPONENTIAL;
-        JoystickCurve::CurveType turnCurve = JoystickCurve::SIGMOID;
-        double throttleGain = 1.0;
-        double turnGain = 1.0;
-        bool enableDeadzone = true;
-        double deadzoneThreshold = 5.0;
+        DriveType type = ARCADE;                    /**< Drive mode selection */
+        JoystickCurve::CurveType throttleCurve = JoystickCurve::EXPONENTIAL; /**< Throttle input curve */
+        JoystickCurve::CurveType turnCurve = JoystickCurve::SIGMOID;        /**< Turn input curve */
+        double throttleGain = 1.0;                  /**< Throttle curve intensity */
+        double turnGain = 1.0;                      /**< Turn curve intensity */
+        bool enableDeadzone = true;                 /**< Enable input deadzone */
+        double deadzoneThreshold = 5.0;             /**< Deadzone threshold (0-127) */
     };
 
+    /**
+     * @brief Default constructor with standard configuration
+     */
     DriverControl() : config_(getDefaultConfig()) {}
+
+    /**
+     * @brief Constructor with custom configuration
+     *
+     * @param config Drive configuration settings
+     */
     DriverControl(const DriveConfig& config) : config_(config) {}
 
     /**
-     * @brief Update drive configuration
+     * @brief Update drive configuration at runtime
+     *
+     * Allows changing drive settings during operation, useful for
+     * driver preference adjustments or mode switching.
+     *
+     * @param config New drive configuration
      */
     void setConfig(const DriveConfig& config) {
         config_ = config;
@@ -133,16 +282,25 @@ public:
 
     /**
      * @brief Get current drive configuration
+     *
+     * @return Current drive configuration settings
      */
     const DriveConfig& getConfig() const {
         return config_;
     }
 
     /**
-     * @brief Calculate motor powers based on controller input and drive type
+     * @brief Calculate motor powers from controller input
+     *
+     * Processes controller input according to the current drive configuration
+     * and calculates appropriate motor powers for left and right drive motors.
+     * All curves, deadzones, and drive mode logic are applied automatically.
+     *
      * @param controller PROS controller reference
-     * @param leftMotor Output for left motor power (-127 to 127)
-     * @param rightMotor Output for right motor power (-127 to 127)
+     * @param leftMotor Output power for left motors (-127 to 127)
+     * @param rightMotor Output power for right motors (-127 to 127)
+     *
+     * @note Motor powers are automatically clamped to valid range
      */
     void calculateDrivePowers(pros::Controller& controller, double& leftMotor, double& rightMotor) {
         double throttle = 0.0;
@@ -231,8 +389,13 @@ public:
     }
 
 private:
-    DriveConfig config_;
+    DriveConfig config_; /**< Current drive configuration */
 
+    /**
+     * @brief Get default drive configuration
+     *
+     * @return Default configuration with sensible defaults
+     */
     static DriveConfig getDefaultConfig() {
         DriveConfig config;
         config.type = ARCADE;
@@ -245,6 +408,14 @@ private:
         return config;
     }
 
+    /**
+     * @brief Apply curve and deadzone to input value
+     *
+     * @param input Raw input value
+     * @param curveType Curve type to apply
+     * @param gain Curve gain factor
+     * @return Processed output value
+     */
     double applyCurveToInput(double input, JoystickCurve::CurveType curveType, double gain) {
         if (config_.enableDeadzone && std::abs(input) < config_.deadzoneThreshold) {
             return 0.0;

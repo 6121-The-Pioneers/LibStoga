@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,7 +96,7 @@ $(function(){initNavTree('classls_1_1SystemHealthMonitor.html','','classls_1_1Sy
 </div><!--header-->
 <div class="contents">
 
-<p>System health monitoring for detecting various robot issues.  
+<p>Comprehensive system health monitoring and diagnostics.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="system__health_8h_source.html">system_health.h</a>&gt;</code></p>
@@ -108,8 +109,11 @@ Collaboration diagram for ls::SystemHealthMonitor:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:HealthIssue" id="r_HealthIssue"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1SystemHealthMonitor_1_1HealthIssue.html">HealthIssue</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detailed information about a specific health issue.  <a href="structls_1_1SystemHealthMonitor_1_1HealthIssue.html#details">More...</a><br /></td></tr>
 <tr class="memitem:MotorHealth" id="r_MotorHealth"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1SystemHealthMonitor_1_1MotorHealth.html">MotorHealth</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Health information for a single motor.  <a href="structls_1_1SystemHealthMonitor_1_1MotorHealth.html#details">More...</a><br /></td></tr>
 <tr class="memitem:SystemMetrics" id="r_SystemMetrics"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1SystemHealthMonitor_1_1SystemMetrics.html">SystemMetrics</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Complete system health metrics snapshot.  <a href="structls_1_1SystemHealthMonitor_1_1SystemMetrics.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -118,6 +122,7 @@ Public Types</h2></td></tr>
 , <a class="el" href="#a630109075ebf5567044f59e7aa069227a3ccde750c29040b70cd7769ad3ff6530">CRITICAL</a>
 , <a class="el" href="#a630109075ebf5567044f59e7aa069227aa5bbd9a8bb4330def844aa22f75e91e4">FAILURE</a>
  }</td></tr>
+<tr class="memdesc:a630109075ebf5567044f59e7aa069227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overall system health status levels.  <a href="#a630109075ebf5567044f59e7aa069227">More...</a><br /></td></tr>
 <tr class="memitem:a89335a36dc720bf53800ddb4f13a2778" id="r_a89335a36dc720bf53800ddb4f13a2778"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89335a36dc720bf53800ddb4f13a2778">IssueType</a> { <br />
 &#160;&#160;<a class="el" href="#a89335a36dc720bf53800ddb4f13a2778a51f641f780dc26f514df776144eaf772">TUG_OF_WAR</a>
 , <a class="el" href="#a89335a36dc720bf53800ddb4f13a2778a5641c18e34653a40d5f97e94f8372e7f">BROWNOUT</a>
@@ -130,36 +135,41 @@ Public Types</h2></td></tr>
 , <a class="el" href="#a89335a36dc720bf53800ddb4f13a2778ad5ca18e9b29227bc976d729a39ec266f">SENSOR_FAILURE</a>
 <br />
  }</td></tr>
+<tr class="memdesc:a89335a36dc720bf53800ddb4f13a2778"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types of health issues that can be detected.  <a href="#a89335a36dc720bf53800ddb4f13a2778">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5c121054de9131abb0c7c696de074199" id="r_a5c121054de9131abb0c7c696de074199"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c121054de9131abb0c7c696de074199">SystemHealthMonitor</a> ()</td></tr>
+<tr class="memdesc:a5c121054de9131abb0c7c696de074199"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <br /></td></tr>
 <tr class="memitem:a21aa70159174ff6f588ceca2264ea8eb" id="r_a21aa70159174ff6f588ceca2264ea8eb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21aa70159174ff6f588ceca2264ea8eb">~SystemHealthMonitor</a> ()</td></tr>
+<tr class="memdesc:a21aa70159174ff6f588ceca2264ea8eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor - stops monitoring task.  <br /></td></tr>
 <tr class="memitem:a2624aa7d0e133504fa17179cce922694" id="r_a2624aa7d0e133504fa17179cce922694"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2624aa7d0e133504fa17179cce922694">setEnabled</a> (bool enabled)</td></tr>
 <tr class="memdesc:a2624aa7d0e133504fa17179cce922694"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable health monitoring.  <br /></td></tr>
 <tr class="memitem:a56596dc0dffefb2eadb4359136590135" id="r_a56596dc0dffefb2eadb4359136590135"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56596dc0dffefb2eadb4359136590135">startMonitoring</a> ()</td></tr>
 <tr class="memdesc:a56596dc0dffefb2eadb4359136590135"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start background monitoring task.  <br /></td></tr>
 <tr class="memitem:a9b40b716e98a5e3f913fae6895576dc8" id="r_a9b40b716e98a5e3f913fae6895576dc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b40b716e98a5e3f913fae6895576dc8">stopMonitoring</a> ()</td></tr>
 <tr class="memdesc:a9b40b716e98a5e3f913fae6895576dc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop monitoring task.  <br /></td></tr>
-<tr class="memitem:a48c6e6205ed2e7d63023c11d203287ed" id="r_a48c6e6205ed2e7d63023c11d203287ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a630109075ebf5567044f59e7aa069227">HealthStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48c6e6205ed2e7d63023c11d203287ed">getOverallHealth</a> () const</td></tr>
-<tr class="memdesc:a48c6e6205ed2e7d63023c11d203287ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current system health status.  <br /></td></tr>
-<tr class="memitem:ab51246f4653ac4074a22e42f0a36bbca" id="r_ab51246f4653ac4074a22e42f0a36bbca"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structls_1_1SystemHealthMonitor_1_1HealthIssue.html">HealthIssue</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab51246f4653ac4074a22e42f0a36bbca">getIssues</a> () const</td></tr>
-<tr class="memdesc:ab51246f4653ac4074a22e42f0a36bbca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get list of current health issues.  <br /></td></tr>
-<tr class="memitem:afafd9c44b81902bb054ff73b05d2a419" id="r_afafd9c44b81902bb054ff73b05d2a419"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structls_1_1SystemHealthMonitor_1_1SystemMetrics.html">SystemMetrics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afafd9c44b81902bb054ff73b05d2a419">getMetrics</a> () const</td></tr>
-<tr class="memdesc:afafd9c44b81902bb054ff73b05d2a419"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current system metrics.  <br /></td></tr>
+<tr class="memitem:a23e91f5416078b303af4619b1bc38677" id="r_a23e91f5416078b303af4619b1bc38677"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a630109075ebf5567044f59e7aa069227">HealthStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23e91f5416078b303af4619b1bc38677">getOverallHealth</a> () const</td></tr>
+<tr class="memdesc:a23e91f5416078b303af4619b1bc38677"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current overall system health status.  <br /></td></tr>
+<tr class="memitem:abd377c22f108cb0e742bc8d2423f521a" id="r_abd377c22f108cb0e742bc8d2423f521a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structls_1_1SystemHealthMonitor_1_1HealthIssue.html">HealthIssue</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd377c22f108cb0e742bc8d2423f521a">getIssues</a> () const</td></tr>
+<tr class="memdesc:abd377c22f108cb0e742bc8d2423f521a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get list of current health issues.  <br /></td></tr>
+<tr class="memitem:ac89dbca4be71fbc750f7b498aef3f0f6" id="r_ac89dbca4be71fbc750f7b498aef3f0f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structls_1_1SystemHealthMonitor_1_1SystemMetrics.html">SystemMetrics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac89dbca4be71fbc750f7b498aef3f0f6">getMetrics</a> () const</td></tr>
+<tr class="memdesc:ac89dbca4be71fbc750f7b498aef3f0f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current system metrics.  <br /></td></tr>
 <tr class="memitem:aa220379308ad18798cf19f82bd2e6d40" id="r_aa220379308ad18798cf19f82bd2e6d40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa220379308ad18798cf19f82bd2e6d40">registerMotor</a> (int port, pros::Motor *motor)</td></tr>
-<tr class="memdesc:aa220379308ad18798cf19f82bd2e6d40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a motor for monitoring.  <br /></td></tr>
+<tr class="memdesc:aa220379308ad18798cf19f82bd2e6d40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a motor for health monitoring.  <br /></td></tr>
 <tr class="memitem:a0e4d049c5577ec74b2db4ed88a8ec513" id="r_a0e4d049c5577ec74b2db4ed88a8ec513"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e4d049c5577ec74b2db4ed88a8ec513">setHealthCallback</a> (std::function&lt; void(<a class="el" href="#a630109075ebf5567044f59e7aa069227">HealthStatus</a>, const std::vector&lt; <a class="el" href="structls_1_1SystemHealthMonitor_1_1HealthIssue.html">HealthIssue</a> &gt; &amp;)&gt; callback)</td></tr>
 <tr class="memdesc:a0e4d049c5577ec74b2db4ed88a8ec513"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set callback for health status changes.  <br /></td></tr>
 <tr class="memitem:a79d19ca0ff17f5944297cd893c743412" id="r_a79d19ca0ff17f5944297cd893c743412"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79d19ca0ff17f5944297cd893c743412">forceHealthCheck</a> ()</td></tr>
-<tr class="memdesc:a79d19ca0ff17f5944297cd893c743412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually trigger health check.  <br /></td></tr>
+<tr class="memdesc:a79d19ca0ff17f5944297cd893c743412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manually trigger a health check.  <br /></td></tr>
 <tr class="memitem:abcf9b1b8516bebf76e7a801ee2bb1443" id="r_abcf9b1b8516bebf76e7a801ee2bb1443"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcf9b1b8516bebf76e7a801ee2bb1443">clearResolvedIssues</a> ()</td></tr>
-<tr class="memdesc:abcf9b1b8516bebf76e7a801ee2bb1443"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear resolved issues.  <br /></td></tr>
+<tr class="memdesc:abcf9b1b8516bebf76e7a801ee2bb1443"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear resolved health issues.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a5a8e65c9fbbc8526ab134c1aa090ec78" id="r_a5a8e65c9fbbc8526ab134c1aa090ec78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a8e65c9fbbc8526ab134c1aa090ec78">updateMetrics</a> ()</td></tr>
+<tr class="memdesc:a5a8e65c9fbbc8526ab134c1aa090ec78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update all system health metrics.  <br /></td></tr>
 <tr class="memitem:ab15e4786ecda5f626aa0e9e0f1ae8ea4" id="r_ab15e4786ecda5f626aa0e9e0f1ae8ea4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab15e4786ecda5f626aa0e9e0f1ae8ea4">checkForIssues</a> ()</td></tr>
+<tr class="memdesc:ab15e4786ecda5f626aa0e9e0f1ae8ea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for health issues based on current metrics.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -174,9 +184,46 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a54710022906143a3bb3bc3f4d88e88de" id="r_a54710022906143a3bb3bc3f4d88e88de"><td class="memItemLeft" align="right" valign="top">std::deque&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54710022906143a3bb3bc3f4d88e88de">positionHistory_</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>System health monitoring for detecting various robot issues. </p>
-
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00015">15</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<div class="textblock"><p>Comprehensive system health monitoring and diagnostics. </p>
+<p>The <a class="el" href="classls_1_1SystemHealthMonitor.html" title="Comprehensive system health monitoring and diagnostics.">SystemHealthMonitor</a> provides real-time monitoring of all critical robot systems, detecting issues before they cause failures. It runs as a background task and provides both programmatic access to health data and callback-based notifications for critical issues.</p>
+<p>The monitor tracks:</p><ul>
+<li>Motor health (current, temperature, RPM, stall conditions)</li>
+<li>Battery status (voltage, current, brownout detection)</li>
+<li>System performance trends</li>
+<li>Odometry drift detection</li>
+<li>Sensor communication failures</li>
+</ul>
+<p>Usage Example: </p><div class="fragment"><div class="line"><span class="comment">// Get global health monitor</span></div>
+<div class="line"><span class="keyword">auto</span>&amp; health = <a class="code hl_function" href="namespacels.html#af237f0fa01b3b549c63f2cc2bc4ca34a">getHealthMonitor</a>();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Register motors for monitoring</span></div>
+<div class="line">health.registerMotor(1, &amp;leftFrontMotor);</div>
+<div class="line">health.registerMotor(2, &amp;leftBackMotor);</div>
+<div class="line">health.registerMotor(3, &amp;rightFrontMotor);</div>
+<div class="line">health.registerMotor(4, &amp;rightBackMotor);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Set up health callback</span></div>
+<div class="line">health.setHealthCallback([](<a class="code hl_enumeration" href="#a630109075ebf5567044f59e7aa069227">SystemHealthMonitor::HealthStatus</a> status,</div>
+<div class="line">                           <span class="keyword">const</span> std::vector&lt;SystemHealthMonitor::HealthIssue&gt;&amp; issues) {</div>
+<div class="line">    <span class="keywordflow">if</span> (status &gt;= <a class="code hl_enumvalue" href="#a630109075ebf5567044f59e7aa069227a27cc0d7c772aa6f8e3ddd535ef2252f3">SystemHealthMonitor::WARNING</a>) {</div>
+<div class="line">        <span class="comment">// Handle health issues</span></div>
+<div class="line">        pros::lcd::print(0, <span class="stringliteral">&quot;Health Issue: %s&quot;</span>, issues.back().description.c_str());</div>
+<div class="line">    }</div>
+<div class="line">});</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Start monitoring</span></div>
+<div class="line">health.startMonitoring();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Check health in main loop</span></div>
+<div class="line"><span class="keyword">auto</span> metrics = health.getMetrics();</div>
+<div class="line"><span class="keywordflow">if</span> (metrics.batteryVoltage &lt; 7.0) {</div>
+<div class="line">    <span class="comment">// Low battery warning</span></div>
+<div class="line">}</div>
+<div class="ttc" id="aclassls_1_1SystemHealthMonitor_html_a630109075ebf5567044f59e7aa069227"><div class="ttname"><a href="#a630109075ebf5567044f59e7aa069227">ls::SystemHealthMonitor::HealthStatus</a></div><div class="ttdeci">HealthStatus</div><div class="ttdoc">Overall system health status levels.</div><div class="ttdef"><b>Definition</b> <a href="system__health_8h_source.html#l00095">system_health.h:95</a></div></div>
+<div class="ttc" id="aclassls_1_1SystemHealthMonitor_html_a630109075ebf5567044f59e7aa069227a27cc0d7c772aa6f8e3ddd535ef2252f3"><div class="ttname"><a href="#a630109075ebf5567044f59e7aa069227a27cc0d7c772aa6f8e3ddd535ef2252f3">ls::SystemHealthMonitor::WARNING</a></div><div class="ttdeci">@ WARNING</div><div class="ttdef"><b>Definition</b> <a href="system__health_8h_source.html#l00097">system_health.h:97</a></div></div>
+<div class="ttc" id="anamespacels_html_af237f0fa01b3b549c63f2cc2bc4ca34a"><div class="ttname"><a href="namespacels.html#af237f0fa01b3b549c63f2cc2bc4ca34a">ls::getHealthMonitor</a></div><div class="ttdeci">SystemHealthMonitor &amp; getHealthMonitor()</div><div class="ttdoc">Get global system health monitor instance.</div><div class="ttdef"><b>Definition</b> <a href="system__health_8h_source.html#l00279">system_health.h:279</a></div></div>
+</div><!-- fragment --> 
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00090">90</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 </div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
 <a id="a630109075ebf5567044f59e7aa069227" name="a630109075ebf5567044f59e7aa069227"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a630109075ebf5567044f59e7aa069227">&#9670;&#160;</a></span>HealthStatus</h2>
@@ -189,14 +236,20 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Overall system health status levels. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a630109075ebf5567044f59e7aa069227a5d1cd10a9957ac4e04cf52276bd474ef" name="a630109075ebf5567044f59e7aa069227a5d1cd10a9957ac4e04cf52276bd474ef"></a>HEALTHY&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a630109075ebf5567044f59e7aa069227a27cc0d7c772aa6f8e3ddd535ef2252f3" name="a630109075ebf5567044f59e7aa069227a27cc0d7c772aa6f8e3ddd535ef2252f3"></a>WARNING&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a630109075ebf5567044f59e7aa069227a3ccde750c29040b70cd7769ad3ff6530" name="a630109075ebf5567044f59e7aa069227a3ccde750c29040b70cd7769ad3ff6530"></a>CRITICAL&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a630109075ebf5567044f59e7aa069227aa5bbd9a8bb4330def844aa22f75e91e4" name="a630109075ebf5567044f59e7aa069227aa5bbd9a8bb4330def844aa22f75e91e4"></a>FAILURE&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a630109075ebf5567044f59e7aa069227a5d1cd10a9957ac4e04cf52276bd474ef" name="a630109075ebf5567044f59e7aa069227a5d1cd10a9957ac4e04cf52276bd474ef"></a>HEALTHY&#160;</td><td class="fielddoc"><p>All systems normal </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a630109075ebf5567044f59e7aa069227a27cc0d7c772aa6f8e3ddd535ef2252f3" name="a630109075ebf5567044f59e7aa069227a27cc0d7c772aa6f8e3ddd535ef2252f3"></a>WARNING&#160;</td><td class="fielddoc"><p>Minor issues detected, monitor closely </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a630109075ebf5567044f59e7aa069227a3ccde750c29040b70cd7769ad3ff6530" name="a630109075ebf5567044f59e7aa069227a3ccde750c29040b70cd7769ad3ff6530"></a>CRITICAL&#160;</td><td class="fielddoc"><p>Major issues requiring immediate attention </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a630109075ebf5567044f59e7aa069227aa5bbd9a8bb4330def844aa22f75e91e4" name="a630109075ebf5567044f59e7aa069227aa5bbd9a8bb4330def844aa22f75e91e4"></a>FAILURE&#160;</td><td class="fielddoc"><p>System failure, robot may be inoperable </p>
+</td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00017">17</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00095">95</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
 </div>
 </div>
@@ -211,18 +264,28 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Types of health issues that can be detected. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778a51f641f780dc26f514df776144eaf772" name="a89335a36dc720bf53800ddb4f13a2778a51f641f780dc26f514df776144eaf772"></a>TUG_OF_WAR&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778a5641c18e34653a40d5f97e94f8372e7f" name="a89335a36dc720bf53800ddb4f13a2778a5641c18e34653a40d5f97e94f8372e7f"></a>BROWNOUT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778a9eb9979d6e613205dd706812449af85d" name="a89335a36dc720bf53800ddb4f13a2778a9eb9979d6e613205dd706812449af85d"></a>BROKEN_DRIVE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778a0565629dceb41620106f74be9982ae1c" name="a89335a36dc720bf53800ddb4f13a2778a0565629dceb41620106f74be9982ae1c"></a>STALL&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778ae0e1b90360d9f861544a8878bf978c56" name="a89335a36dc720bf53800ddb4f13a2778ae0e1b90360d9f861544a8878bf978c56"></a>OVERCURRENT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778aa162150a1fc2f087682518190ad836fa" name="a89335a36dc720bf53800ddb4f13a2778aa162150a1fc2f087682518190ad836fa"></a>TEMPERATURE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778a790fd76dbf471e6d5fb5a129aae91670" name="a89335a36dc720bf53800ddb4f13a2778a790fd76dbf471e6d5fb5a129aae91670"></a>ODOMETRY_DRIFT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778ad5ca18e9b29227bc976d729a39ec266f" name="a89335a36dc720bf53800ddb4f13a2778ad5ca18e9b29227bc976d729a39ec266f"></a>SENSOR_FAILURE&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778a51f641f780dc26f514df776144eaf772" name="a89335a36dc720bf53800ddb4f13a2778a51f641f780dc26f514df776144eaf772"></a>TUG_OF_WAR&#160;</td><td class="fielddoc"><p>Robot being pushed or stalled externally </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778a5641c18e34653a40d5f97e94f8372e7f" name="a89335a36dc720bf53800ddb4f13a2778a5641c18e34653a40d5f97e94f8372e7f"></a>BROWNOUT&#160;</td><td class="fielddoc"><p>Low battery voltage detected </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778a9eb9979d6e613205dd706812449af85d" name="a89335a36dc720bf53800ddb4f13a2778a9eb9979d6e613205dd706812449af85d"></a>BROKEN_DRIVE&#160;</td><td class="fielddoc"><p>Drive motor failure or disconnection </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778a0565629dceb41620106f74be9982ae1c" name="a89335a36dc720bf53800ddb4f13a2778a0565629dceb41620106f74be9982ae1c"></a>STALL&#160;</td><td class="fielddoc"><p>Motor stall detection </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778ae0e1b90360d9f861544a8878bf978c56" name="a89335a36dc720bf53800ddb4f13a2778ae0e1b90360d9f861544a8878bf978c56"></a>OVERCURRENT&#160;</td><td class="fielddoc"><p>Motor drawing excessive current </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778aa162150a1fc2f087682518190ad836fa" name="a89335a36dc720bf53800ddb4f13a2778aa162150a1fc2f087682518190ad836fa"></a>TEMPERATURE&#160;</td><td class="fielddoc"><p>Motor overheating </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778a790fd76dbf471e6d5fb5a129aae91670" name="a89335a36dc720bf53800ddb4f13a2778a790fd76dbf471e6d5fb5a129aae91670"></a>ODOMETRY_DRIFT&#160;</td><td class="fielddoc"><p>Odometry position drift detected </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a89335a36dc720bf53800ddb4f13a2778ad5ca18e9b29227bc976d729a39ec266f" name="a89335a36dc720bf53800ddb4f13a2778ad5ca18e9b29227bc976d729a39ec266f"></a>SENSOR_FAILURE&#160;</td><td class="fielddoc"><p>Sensor communication failure </p>
+</td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00024">24</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00105">105</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
 </div>
 </div>
@@ -232,9 +295,6 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">ls::SystemHealthMonitor::SystemHealthMonitor </td>
@@ -243,16 +303,13 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00061">61</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p>Default constructor. </p>
 
-<p class="reference">References <a class="el" href="system__health_8h_source.html#l00170">enabled_</a>, and <a class="el" href="system__health_8h_source.html#l00171">monitoringTask_</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8cpp_source.html#l00006">6</a> of file <a class="el" href="system__health_8cpp_source.html">system_health.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="system__health_8h_source.html#l00242">enabled_</a>, and <a class="el" href="system__health_8h_source.html#l00243">monitoringTask_</a>.</p>
 
 </div>
 </div>
@@ -261,9 +318,6 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">ls::SystemHealthMonitor::~SystemHealthMonitor </td>
@@ -272,16 +326,13 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00063">63</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p>Destructor - stops monitoring task. </p>
 
-<p class="reference">References <a class="el" href="system__health_8h_source.html#l00097">stopMonitoring()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8cpp_source.html#l00008">8</a> of file <a class="el" href="system__health_8cpp_source.html">system_health.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="system__health_8cpp_source.html#l00027">stopMonitoring()</a>.</p>
 
 </div>
 </div>
@@ -304,16 +355,17 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel private">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00214">214</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p>Check for health issues based on current metrics. </p>
+<p>Analyzes the current metrics against thresholds to detect potential problems and creates appropriate health issues. </p>
 
-<p class="reference">References <a class="el" href="system__health_8h_source.html#l00027">BROKEN_DRIVE</a>, <a class="el" href="system__health_8h_source.html#l00026">BROWNOUT</a>, <a class="el" href="system__health_8h_source.html#l00020">CRITICAL</a>, <a class="el" href="system__health_8h_source.html#l00172">currentMetrics_</a>, <a class="el" href="system__health_8h_source.html#l00109">getOverallHealth()</a>, <a class="el" href="system__health_8h_source.html#l00175">healthCallback_</a>, <a class="el" href="system__health_8h_source.html#l00173">issues_</a>, <a class="el" href="system__health_8h_source.html#l00029">OVERCURRENT</a>, <a class="el" href="system__health_8h_source.html#l00030">TEMPERATURE</a>, <a class="el" href="system__health_8h_source.html#l00025">TUG_OF_WAR</a>, <a class="el" href="system__health_8h_source.html#l00178">voltageHistory_</a>, and <a class="el" href="system__health_8h_source.html#l00019">WARNING</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8cpp_source.html#l00091">91</a> of file <a class="el" href="system__health_8cpp_source.html">system_health.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00152">forceHealthCheck()</a>, and <a class="el" href="system__health_8h_source.html#l00082">startMonitoring()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00063">forceHealthCheck()</a>.</p>
 
 </div>
 </div>
@@ -322,9 +374,6 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ls::SystemHealthMonitor::clearResolvedIssues </td>
@@ -333,18 +382,14 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Clear resolved issues. </p>
+<p>Clear resolved health issues. </p>
+<p>Removes health issues that are older than 30 seconds, assuming they have been resolved or are no longer relevant. </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00160">160</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8cpp_source.html#l00069">69</a> of file <a class="el" href="system__health_8cpp_source.html">system_health.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="system__health_8h_source.html#l00173">issues_</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00063">forceHealthCheck()</a>.</p>
 
 </div>
 </div>
@@ -353,9 +398,6 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ls::SystemHealthMonitor::forceHealthCheck </td>
@@ -364,113 +406,88 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Manually trigger health check. </p>
+<p>Manually trigger a health check. </p>
+<p>Forces an immediate health check outside the normal monitoring cycle. Useful for one-time health assessments or debugging. </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00152">152</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8cpp_source.html#l00063">63</a> of file <a class="el" href="system__health_8cpp_source.html">system_health.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="system__health_8h_source.html#l00214">checkForIssues()</a>, and <a class="el" href="system__health_8h_source.html#l00182">updateMetrics()</a>.</p>
+<p class="reference">References <a class="el" href="system__health_8cpp_source.html#l00091">checkForIssues()</a>, <a class="el" href="system__health_8cpp_source.html#l00069">clearResolvedIssues()</a>, and <a class="el" href="system__health_8cpp_source.html#l00073">updateMetrics()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00016">startMonitoring()</a>.</p>
 
 </div>
 </div>
-<a id="ab51246f4653ac4074a22e42f0a36bbca" name="ab51246f4653ac4074a22e42f0a36bbca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab51246f4653ac4074a22e42f0a36bbca">&#9670;&#160;</a></span>getIssues()</h2>
+<a id="abd377c22f108cb0e742bc8d2423f521a" name="abd377c22f108cb0e742bc8d2423f521a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd377c22f108cb0e742bc8d2423f521a">&#9670;&#160;</a></span>getIssues()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="structls_1_1SystemHealthMonitor_1_1HealthIssue.html">HealthIssue</a> &gt; ls::SystemHealthMonitor::getIssues </td>
+          <td class="memname">std::vector&lt; <a class="el" href="structls_1_1SystemHealthMonitor_1_1HealthIssue.html">SystemHealthMonitor::HealthIssue</a> &gt; ls::SystemHealthMonitor::getIssues </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Get list of current health issues. </p>
+<dl class="section return"><dt>Returns</dt><dd>Vector of all currently active health issues </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00124">124</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8cpp_source.html#l00047">47</a> of file <a class="el" href="system__health_8cpp_source.html">system_health.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="system__health_8h_source.html#l00173">issues_</a>.</p>
+<p class="reference">References <a class="el" href="system__health_8h_source.html#l00245">issues_</a>.</p>
 
 </div>
 </div>
-<a id="afafd9c44b81902bb054ff73b05d2a419" name="afafd9c44b81902bb054ff73b05d2a419"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afafd9c44b81902bb054ff73b05d2a419">&#9670;&#160;</a></span>getMetrics()</h2>
+<a id="ac89dbca4be71fbc750f7b498aef3f0f6" name="ac89dbca4be71fbc750f7b498aef3f0f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac89dbca4be71fbc750f7b498aef3f0f6">&#9670;&#160;</a></span>getMetrics()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structls_1_1SystemHealthMonitor_1_1SystemMetrics.html">SystemMetrics</a> ls::SystemHealthMonitor::getMetrics </td>
+          <td class="memname"><a class="el" href="structls_1_1SystemHealthMonitor_1_1SystemMetrics.html">SystemHealthMonitor::SystemMetrics</a> ls::SystemHealthMonitor::getMetrics </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Get current system metrics. </p>
+<dl class="section return"><dt>Returns</dt><dd>Complete snapshot of current system health metrics </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00131">131</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8cpp_source.html#l00051">51</a> of file <a class="el" href="system__health_8cpp_source.html">system_health.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="system__health_8h_source.html#l00172">currentMetrics_</a>.</p>
+<p class="reference">References <a class="el" href="system__health_8h_source.html#l00244">currentMetrics_</a>.</p>
 
 </div>
 </div>
-<a id="a48c6e6205ed2e7d63023c11d203287ed" name="a48c6e6205ed2e7d63023c11d203287ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48c6e6205ed2e7d63023c11d203287ed">&#9670;&#160;</a></span>getOverallHealth()</h2>
+<a id="a23e91f5416078b303af4619b1bc38677" name="a23e91f5416078b303af4619b1bc38677"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23e91f5416078b303af4619b1bc38677">&#9670;&#160;</a></span>getOverallHealth()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#a630109075ebf5567044f59e7aa069227">HealthStatus</a> ls::SystemHealthMonitor::getOverallHealth </td>
+          <td class="memname"><a class="el" href="#a630109075ebf5567044f59e7aa069227">SystemHealthMonitor::HealthStatus</a> ls::SystemHealthMonitor::getOverallHealth </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Get current system health status. </p>
+<p>Get current overall system health status. </p>
+<dl class="section return"><dt>Returns</dt><dd>Current health status (HEALTHY, WARNING, CRITICAL, or FAILURE) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00109">109</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8cpp_source.html#l00035">35</a> of file <a class="el" href="system__health_8cpp_source.html">system_health.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="system__health_8h_source.html#l00018">HEALTHY</a>, and <a class="el" href="system__health_8h_source.html#l00173">issues_</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00214">checkForIssues()</a>.</p>
+<p class="reference">References <a class="el" href="system__health_8h_source.html#l00098">CRITICAL</a>, <a class="el" href="system__health_8h_source.html#l00099">FAILURE</a>, <a class="el" href="system__health_8h_source.html#l00096">HEALTHY</a>, <a class="el" href="system__health_8h_source.html#l00245">issues_</a>, and <a class="el" href="system__health_8h_source.html#l00097">WARNING</a>.</p>
 
 </div>
 </div>
@@ -479,9 +496,6 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ls::SystemHealthMonitor::registerMotor </td>
@@ -494,18 +508,21 @@ Private Attributes</h2></td></tr>
           <td class="paramtype">pros::Motor *</td>          <td class="paramname"><span class="paramname"><em>motor</em></span>&#160;)</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Register a motor for monitoring. </p>
+<p>Register a motor for health monitoring. </p>
+<p>Adds a motor to the monitoring system. The motor will be checked for current draw, temperature, RPM, and stall conditions.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>Motor port number </td></tr>
+    <tr><td class="paramname">motor</td><td>Pointer to PROS motor object </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00138">138</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8cpp_source.html#l00055">55</a> of file <a class="el" href="system__health_8cpp_source.html">system_health.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="system__health_8h_source.html#l00174">monitoredMotors_</a>.</p>
+<p class="reference">References <a class="el" href="system__health_8h_source.html#l00246">monitoredMotors_</a>.</p>
 
 </div>
 </div>
@@ -514,9 +531,6 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ls::SystemHealthMonitor::setEnabled </td>
@@ -525,18 +539,19 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Enable or disable health monitoring. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enabled</td><td>Whether to enable monitoring </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00070">70</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8cpp_source.html#l00012">12</a> of file <a class="el" href="system__health_8cpp_source.html">system_health.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="system__health_8h_source.html#l00170">enabled_</a>, <a class="el" href="system__health_8h_source.html#l00082">startMonitoring()</a>, and <a class="el" href="system__health_8h_source.html#l00097">stopMonitoring()</a>.</p>
+<p class="reference">References <a class="el" href="system__health_8h_source.html#l00242">enabled_</a>.</p>
 
 </div>
 </div>
@@ -545,9 +560,6 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ls::SystemHealthMonitor::setHealthCallback </td>
@@ -556,18 +568,20 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Set callback for health status changes. </p>
+<p>Registers a callback function that will be called whenever the system health status changes or new issues are detected.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">callback</td><td>Function to call on health changes </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00145">145</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8cpp_source.html#l00059">59</a> of file <a class="el" href="system__health_8cpp_source.html">system_health.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="system__health_8h_source.html#l00175">healthCallback_</a>.</p>
+<p class="reference">References <a class="el" href="system__health_8h_source.html#l00247">healthCallback_</a>.</p>
 
 </div>
 </div>
@@ -576,9 +590,6 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ls::SystemHealthMonitor::startMonitoring </td>
@@ -587,20 +598,14 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Start background monitoring task. </p>
+<p>Begins continuous health monitoring in a separate PROS task. The task runs every 100ms checking all monitored systems. </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00082">82</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8cpp_source.html#l00016">16</a> of file <a class="el" href="system__health_8cpp_source.html">system_health.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="system__health_8h_source.html#l00214">checkForIssues()</a>, <a class="el" href="system__health_8h_source.html#l00170">enabled_</a>, <a class="el" href="system__health_8h_source.html#l00171">monitoringTask_</a>, and <a class="el" href="system__health_8h_source.html#l00182">updateMetrics()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00070">setEnabled()</a>.</p>
+<p class="reference">References <a class="el" href="system__health_8h_source.html#l00242">enabled_</a>, <a class="el" href="system__health_8cpp_source.html#l00063">forceHealthCheck()</a>, and <a class="el" href="system__health_8h_source.html#l00243">monitoringTask_</a>.</p>
 
 </div>
 </div>
@@ -609,9 +614,6 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void ls::SystemHealthMonitor::stopMonitoring </td>
@@ -620,20 +622,16 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Stop monitoring task. </p>
+<p>Stops the background monitoring task and cleans up resources. </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00097">97</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8cpp_source.html#l00027">27</a> of file <a class="el" href="system__health_8cpp_source.html">system_health.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="system__health_8h_source.html#l00170">enabled_</a>, and <a class="el" href="system__health_8h_source.html#l00171">monitoringTask_</a>.</p>
+<p class="reference">References <a class="el" href="system__health_8h_source.html#l00242">enabled_</a>, and <a class="el" href="system__health_8h_source.html#l00243">monitoringTask_</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00070">setEnabled()</a>, and <a class="el" href="system__health_8h_source.html#l00063">~SystemHealthMonitor()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00008">~SystemHealthMonitor()</a>.</p>
 
 </div>
 </div>
@@ -655,16 +653,19 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel private">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00182">182</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p>Update all system health metrics. </p>
+<p>Collects current data from all monitored systems including battery status, motor health, and sensor readings. </p>
 
-<p class="reference">References <a class="el" href="system__health_8h_source.html#l00045">ls::SystemHealthMonitor::MotorHealth::current</a>, <a class="el" href="system__health_8h_source.html#l00179">currentHistory_</a>, <a class="el" href="system__health_8h_source.html#l00172">currentMetrics_</a>, <a class="el" href="system__health_8h_source.html#l00049">ls::SystemHealthMonitor::MotorHealth::isStalled</a>, <a class="el" href="system__health_8h_source.html#l00050">ls::SystemHealthMonitor::MotorHealth::lastUpdate</a>, <a class="el" href="system__health_8h_source.html#l00174">monitoredMotors_</a>, <a class="el" href="system__health_8h_source.html#l00044">ls::SystemHealthMonitor::MotorHealth::port</a>, <a class="el" href="system__health_8h_source.html#l00047">ls::SystemHealthMonitor::MotorHealth::power</a>, <a class="el" href="system__health_8h_source.html#l00048">ls::SystemHealthMonitor::MotorHealth::rpm</a>, <a class="el" href="system__health_8h_source.html#l00046">ls::SystemHealthMonitor::MotorHealth::temperature</a>, and <a class="el" href="system__health_8h_source.html#l00178">voltageHistory_</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8cpp_source.html#l00073">73</a> of file <a class="el" href="system__health_8cpp_source.html">system_health.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00152">forceHealthCheck()</a>, and <a class="el" href="system__health_8h_source.html#l00082">startMonitoring()</a>.</p>
+<p class="reference">References <a class="el" href="system__health_8h_source.html#l00132">ls::SystemHealthMonitor::MotorHealth::current</a>, <a class="el" href="system__health_8h_source.html#l00244">currentMetrics_</a>, <a class="el" href="system__health_8h_source.html#l00136">ls::SystemHealthMonitor::MotorHealth::isStalled</a>, <a class="el" href="system__health_8h_source.html#l00137">ls::SystemHealthMonitor::MotorHealth::lastUpdate</a>, <a class="el" href="system__health_8h_source.html#l00246">monitoredMotors_</a>, <a class="el" href="system__health_8h_source.html#l00131">ls::SystemHealthMonitor::MotorHealth::port</a>, <a class="el" href="system__health_8h_source.html#l00134">ls::SystemHealthMonitor::MotorHealth::power</a>, <a class="el" href="system__health_8h_source.html#l00135">ls::SystemHealthMonitor::MotorHealth::rpm</a>, and <a class="el" href="system__health_8h_source.html#l00133">ls::SystemHealthMonitor::MotorHealth::temperature</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00063">forceHealthCheck()</a>.</p>
 
 </div>
 </div>
@@ -688,10 +689,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Battery current history </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00179">179</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00182">updateMetrics()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00251">251</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
 </div>
 </div>
@@ -714,10 +714,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Current health metrics </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00172">172</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00244">244</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00214">checkForIssues()</a>, <a class="el" href="system__health_8h_source.html#l00131">getMetrics()</a>, and <a class="el" href="system__health_8h_source.html#l00182">updateMetrics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00051">getMetrics()</a>, and <a class="el" href="system__health_8cpp_source.html#l00073">updateMetrics()</a>.</p>
 
 </div>
 </div>
@@ -740,10 +741,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Whether monitoring is enabled </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00170">170</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00242">242</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00070">setEnabled()</a>, <a class="el" href="system__health_8h_source.html#l00082">startMonitoring()</a>, <a class="el" href="system__health_8h_source.html#l00097">stopMonitoring()</a>, and <a class="el" href="system__health_8h_source.html#l00061">SystemHealthMonitor()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00012">setEnabled()</a>, <a class="el" href="system__health_8cpp_source.html#l00016">startMonitoring()</a>, <a class="el" href="system__health_8cpp_source.html#l00027">stopMonitoring()</a>, and <a class="el" href="system__health_8cpp_source.html#l00006">SystemHealthMonitor()</a>.</p>
 
 </div>
 </div>
@@ -766,10 +768,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Health change callback </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00175">175</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00247">247</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00214">checkForIssues()</a>, and <a class="el" href="system__health_8h_source.html#l00145">setHealthCallback()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00059">setHealthCallback()</a>.</p>
 
 </div>
 </div>
@@ -792,10 +795,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>List of active issues </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00173">173</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00245">245</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00214">checkForIssues()</a>, <a class="el" href="system__health_8h_source.html#l00160">clearResolvedIssues()</a>, <a class="el" href="system__health_8h_source.html#l00124">getIssues()</a>, and <a class="el" href="system__health_8h_source.html#l00109">getOverallHealth()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00047">getIssues()</a>, and <a class="el" href="system__health_8cpp_source.html#l00035">getOverallHealth()</a>.</p>
 
 </div>
 </div>
@@ -818,10 +822,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Motors being monitored </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00174">174</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00246">246</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00138">registerMotor()</a>, and <a class="el" href="system__health_8h_source.html#l00182">updateMetrics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00055">registerMotor()</a>, and <a class="el" href="system__health_8cpp_source.html#l00073">updateMetrics()</a>.</p>
 
 </div>
 </div>
@@ -844,10 +849,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Background monitoring task </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00171">171</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00243">243</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00082">startMonitoring()</a>, <a class="el" href="system__health_8h_source.html#l00097">stopMonitoring()</a>, and <a class="el" href="system__health_8h_source.html#l00061">SystemHealthMonitor()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00016">startMonitoring()</a>, <a class="el" href="system__health_8cpp_source.html#l00027">stopMonitoring()</a>, and <a class="el" href="system__health_8cpp_source.html#l00006">SystemHealthMonitor()</a>.</p>
 
 </div>
 </div>
@@ -870,8 +876,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="structls_1_1Position.html" title="Complete robot pose representation (position + orientation)">Position</a> history for drift detection </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00180">180</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00252">252</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
 </div>
 </div>
@@ -894,15 +901,15 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Battery voltage history </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00178">178</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00214">checkForIssues()</a>, and <a class="el" href="system__health_8h_source.html#l00182">updateMetrics()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00250">250</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/LibStoga/<a class="el" href="system__health_8h_source.html">system_health.h</a></li>
+<li>src/LibStoga/<a class="el" href="system__health_8cpp_source.html">system_health.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

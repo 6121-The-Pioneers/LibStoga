@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['📈_20performance_20metrics_20benchmarks_0',['&lt;b&gt;📈 Performance Metrics &amp;amp; Benchmarks&lt;/b&gt;',['../index.html#autotoc_md109',1,'']]]
+  ['💾_20major_20features_3a_20sd_20card_20data_20persistence_0',['💾 &lt;b&gt;Major Features: SD Card Data Persistence&lt;/b&gt;',['../index.html#autotoc_md79',1,'']]]
 ];

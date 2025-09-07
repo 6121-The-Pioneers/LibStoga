@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['📞_20support_20resources_0',['&lt;b&gt;📞 Support &amp;amp; Resources&lt;/b&gt;',['../index.html#autotoc_md136',1,'']]]
+  ['📑_20detailed_20sections_3a_0',['&lt;b&gt;📑 Detailed Sections:&lt;/b&gt;',['../index.html#autotoc_md8',1,'']]]
 ];

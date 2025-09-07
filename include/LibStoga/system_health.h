@@ -1,3 +1,36 @@
+/** @file system_health.h
+ * @brief Comprehensive system health monitoring for LibStoga robotics framework
+ *
+ * This file provides a complete system health monitoring system that continuously
+ * tracks robot health, detects issues, and provides diagnostic information.
+ * The system monitors motors, battery, sensors, and overall system performance
+ * to help identify problems before they cause failures.
+ *
+ * Key Features:
+ * - Real-time motor health monitoring (current, temperature, RPM)
+ * - Battery voltage and current monitoring with brownout detection
+ * - Stall detection and overcurrent protection
+ * - Tug-of-war detection through voltage analysis
+ * - Configurable health thresholds and alerts
+ * - Background monitoring with PROS task integration
+ * - Health status callbacks for user notification
+ * - Rolling history buffers for trend analysis
+ *
+ * Monitored Parameters:
+ * - **Battery**: Voltage, current, brownout detection
+ * - **Motors**: Current draw, temperature, RPM, stall detection
+ * - **System**: Overall health status, issue tracking
+ * - **Trends**: Historical data analysis for anomaly detection
+ *
+ * @author 6121D (The Pioneers)
+ * @version 3.0.0
+ * @date 2025
+ *
+ * @copyright Copyright (c) 2025 6121D - All rights reserved
+ *
+ * @ingroup diagnostics
+ */
+
 #pragma once
 #include <vector>
 #include <deque>
@@ -10,307 +43,238 @@
 namespace ls {
 
 /**
- * @brief System health monitoring for detecting various robot issues
+ * @brief Comprehensive system health monitoring and diagnostics
+ *
+ * The SystemHealthMonitor provides real-time monitoring of all critical robot
+ * systems, detecting issues before they cause failures. It runs as a background
+ * task and provides both programmatic access to health data and callback-based
+ * notifications for critical issues.
+ *
+ * The monitor tracks:
+ * - Motor health (current, temperature, RPM, stall conditions)
+ * - Battery status (voltage, current, brownout detection)
+ * - System performance trends
+ * - Odometry drift detection
+ * - Sensor communication failures
+ *
+ * Usage Example:
+ * @code
+ * // Get global health monitor
+ * auto& health = getHealthMonitor();
+ *
+ * // Register motors for monitoring
+ * health.registerMotor(1, &leftFrontMotor);
+ * health.registerMotor(2, &leftBackMotor);
+ * health.registerMotor(3, &rightFrontMotor);
+ * health.registerMotor(4, &rightBackMotor);
+ *
+ * // Set up health callback
+ * health.setHealthCallback([](SystemHealthMonitor::HealthStatus status,
+ *                            const std::vector<SystemHealthMonitor::HealthIssue>& issues) {
+ *     if (status >= SystemHealthMonitor::WARNING) {
+ *         // Handle health issues
+ *         pros::lcd::print(0, "Health Issue: %s", issues.back().description.c_str());
+ *     }
+ * });
+ *
+ * // Start monitoring
+ * health.startMonitoring();
+ *
+ * // Check health in main loop
+ * auto metrics = health.getMetrics();
+ * if (metrics.batteryVoltage < 7.0) {
+ *     // Low battery warning
+ * }
+ * @endcode
  */
 class SystemHealthMonitor {
 public:
+    /**
+     * @brief Overall system health status levels
+     */
     enum HealthStatus {
-        HEALTHY,           // Everything normal
-        WARNING,           // Minor issues detected
-        CRITICAL,          // Major issues requiring attention
-        FAILURE           // System failure
+        HEALTHY,    /**< All systems normal */
+        WARNING,    /**< Minor issues detected, monitor closely */
+        CRITICAL,   /**< Major issues requiring immediate attention */
+        FAILURE     /**< System failure, robot may be inoperable */
     };
 
+    /**
+     * @brief Types of health issues that can be detected
+     */
     enum IssueType {
-        TUG_OF_WAR,       // Robot being pushed/stalled
-        BROWNOUT,         // Low battery voltage
-        BROKEN_DRIVE,     // Drive motor failure
-        STALL,            // Motor stall detection
-        OVERCURRENT,      // Motor overcurrent
-        TEMPERATURE,      // Motor overheating
-        ODOMETRY_DRIFT,   // Odometry position drift
-        SENSOR_FAILURE    // Sensor communication failure
+        TUG_OF_WAR,       /**< Robot being pushed or stalled externally */
+        BROWNOUT,         /**< Low battery voltage detected */
+        BROKEN_DRIVE,     /**< Drive motor failure or disconnection */
+        STALL,            /**< Motor stall detection */
+        OVERCURRENT,      /**< Motor drawing excessive current */
+        TEMPERATURE,      /**< Motor overheating */
+        ODOMETRY_DRIFT,   /**< Odometry position drift detected */
+        SENSOR_FAILURE    /**< Sensor communication failure */
     };
 
+    /**
+     * @brief Detailed information about a specific health issue
+     */
     struct HealthIssue {
-        IssueType type;
-        HealthStatus severity;
-        std::string description;
-        uint32_t timestamp;
-        std::string recommendation;
+        IssueType type;           /**< Type of health issue */
+        HealthStatus severity;    /**< Severity level of the issue */
+        std::string description;  /**< Human-readable description */
+        uint32_t timestamp;       /**< When the issue was detected (PROS millis) */
+        std::string recommendation; /**< Suggested action to resolve the issue */
     };
 
+    /**
+     * @brief Health information for a single motor
+     */
     struct MotorHealth {
-        int port;
-        double current;
-        double temperature;
-        double power;
-        int rpm;
-        bool isStalled;
-        uint32_t lastUpdate;
+        int port;           /**< Motor port number */
+        double current;     /**< Current draw in amperes */
+        double temperature; /**< Motor temperature in Celsius */
+        double power;       /**< Motor power output (0-1) */
+        int rpm;            /**< Motor RPM */
+        bool isStalled;     /**< Whether motor appears to be stalled */
+        uint32_t lastUpdate; /**< Timestamp of last health update */
     };
 
+    /**
+     * @brief Complete system health metrics snapshot
+     */
     struct SystemMetrics {
-        double batteryVoltage;
-        double batteryCurrent;
-        std::vector<MotorHealth> motorHealth;
-        double odometryDrift;
-        uint32_t timestamp;
+        double batteryVoltage;        /**< Battery voltage in volts */
+        double batteryCurrent;        /**< Battery current draw in amperes */
+        std::vector<MotorHealth> motorHealth; /**< Health data for all monitored motors */
+        double odometryDrift;         /**< Odometry drift measurement */
+        uint32_t timestamp;           /**< When metrics were collected */
     };
 
-    SystemHealthMonitor() : enabled_(true), monitoringTask_(nullptr) {}
+    /**
+     * @brief Default constructor
+     */
+    SystemHealthMonitor();
 
-    ~SystemHealthMonitor() {
-        stopMonitoring();
-    }
+    /**
+     * @brief Destructor - stops monitoring task
+     */
+    ~SystemHealthMonitor();
 
     /**
      * @brief Enable or disable health monitoring
+     *
+     * @param enabled Whether to enable monitoring
      */
-    void setEnabled(bool enabled) {
-        enabled_ = enabled;
-        if (enabled) {
-            startMonitoring();
-        } else {
-            stopMonitoring();
-        }
-    }
+    void setEnabled(bool enabled);
 
     /**
      * @brief Start background monitoring task
+     *
+     * Begins continuous health monitoring in a separate PROS task.
+     * The task runs every 100ms checking all monitored systems.
      */
-    void startMonitoring() {
-        if (!enabled_ || monitoringTask_ != nullptr) return;
-
-        monitoringTask_ = new pros::Task([this]() {
-            while (enabled_) {
-                updateMetrics();
-                checkForIssues();
-                pros::delay(100); // Check every 100ms
-            }
-        });
-    }
+    void startMonitoring();
 
     /**
      * @brief Stop monitoring task
+     *
+     * Stops the background monitoring task and cleans up resources.
      */
-    void stopMonitoring() {
-        enabled_ = false;
-        if (monitoringTask_ != nullptr) {
-            monitoringTask_->remove();
-            delete monitoringTask_;
-            monitoringTask_ = nullptr;
-        }
-    }
+    void stopMonitoring();
 
     /**
-     * @brief Get current system health status
+     * @brief Get current overall system health status
+     *
+     * @return Current health status (HEALTHY, WARNING, CRITICAL, or FAILURE)
      */
-    HealthStatus getOverallHealth() const {
-        if (issues_.empty()) return HEALTHY;
-
-        HealthStatus worst = HEALTHY;
-        for (const auto& issue : issues_) {
-            if (issue.severity > worst) {
-                worst = issue.severity;
-            }
-        }
-        return worst;
-    }
+    HealthStatus getOverallHealth() const;
 
     /**
      * @brief Get list of current health issues
+     *
+     * @return Vector of all currently active health issues
      */
-    std::vector<HealthIssue> getIssues() const {
-        return issues_;
-    }
+    std::vector<HealthIssue> getIssues() const;
 
     /**
      * @brief Get current system metrics
+     *
+     * @return Complete snapshot of current system health metrics
      */
-    SystemMetrics getMetrics() const {
-        return currentMetrics_;
-    }
+    SystemMetrics getMetrics() const;
 
     /**
-     * @brief Register a motor for monitoring
+     * @brief Register a motor for health monitoring
+     *
+     * Adds a motor to the monitoring system. The motor will be checked
+     * for current draw, temperature, RPM, and stall conditions.
+     *
+     * @param port Motor port number
+     * @param motor Pointer to PROS motor object
      */
-    void registerMotor(int port, pros::Motor* motor) {
-        monitoredMotors_.push_back({port, motor});
-    }
+    void registerMotor(int port, pros::Motor* motor);
 
     /**
      * @brief Set callback for health status changes
+     *
+     * Registers a callback function that will be called whenever the
+     * system health status changes or new issues are detected.
+     *
+     * @param callback Function to call on health changes
      */
-    void setHealthCallback(std::function<void(HealthStatus, const std::vector<HealthIssue>&)> callback) {
-        healthCallback_ = callback;
-    }
+    void setHealthCallback(std::function<void(HealthStatus, const std::vector<HealthIssue>&)> callback);
 
     /**
-     * @brief Manually trigger health check
+     * @brief Manually trigger a health check
+     *
+     * Forces an immediate health check outside the normal monitoring cycle.
+     * Useful for one-time health assessments or debugging.
      */
-    void forceHealthCheck() {
-        updateMetrics();
-        checkForIssues();
-    }
+    void forceHealthCheck();
 
     /**
-     * @brief Clear resolved issues
+     * @brief Clear resolved health issues
+     *
+     * Removes health issues that are older than 30 seconds, assuming
+     * they have been resolved or are no longer relevant.
      */
-    void clearResolvedIssues() {
-        auto it = std::remove_if(issues_.begin(), issues_.end(),
-            [](const HealthIssue& issue) {
-                // Remove issues older than 30 seconds
-                return (pros::millis() - issue.timestamp) > 30000;
-            });
-        issues_.erase(it, issues_.end());
-    }
+    void clearResolvedIssues();
 
 private:
-    bool enabled_;
-    pros::Task* monitoringTask_;
-    SystemMetrics currentMetrics_;
-    std::vector<HealthIssue> issues_;
-    std::vector<std::pair<int, pros::Motor*>> monitoredMotors_;
-    std::function<void(HealthStatus, const std::vector<HealthIssue>&)> healthCallback_;
+    bool enabled_;                                              /**< Whether monitoring is enabled */
+    pros::Task* monitoringTask_;                               /**< Background monitoring task */
+    SystemMetrics currentMetrics_;                             /**< Current health metrics */
+    std::vector<HealthIssue> issues_;                          /**< List of active issues */
+    std::vector<std::pair<int, pros::Motor*>> monitoredMotors_; /**< Motors being monitored */
+    std::function<void(HealthStatus, const std::vector<HealthIssue>&)> healthCallback_; /**< Health change callback */
 
-    // Rolling buffers for trend analysis
-    std::deque<double> voltageHistory_;
-    std::deque<double> currentHistory_;
-    std::deque<double> positionHistory_;
+    // Rolling buffers for trend analysis (last 5 seconds of data)
+    std::deque<double> voltageHistory_;   /**< Battery voltage history */
+    std::deque<double> currentHistory_;   /**< Battery current history */
+    std::deque<double> positionHistory_;  /**< Position history for drift detection */
 
-    void updateMetrics() {
-        currentMetrics_.timestamp = pros::millis();
-        currentMetrics_.batteryVoltage = pros::battery::get_voltage() / 1000.0;
-        currentMetrics_.batteryCurrent = pros::battery::get_current() / 1000.0;
+    /**
+     * @brief Update all system health metrics
+     *
+     * Collects current data from all monitored systems including
+     * battery status, motor health, and sensor readings.
+     */
+    void updateMetrics();
 
-        // Update motor health
-        currentMetrics_.motorHealth.clear();
-        for (const auto& motorPair : monitoredMotors_) {
-            if (motorPair.second) {
-                MotorHealth health;
-                health.port = motorPair.first;
-                health.current = motorPair.second->get_current_draw() / 1000.0;
-                health.temperature = motorPair.second->get_temperature();
-                health.power = motorPair.second->get_power();
-                health.rpm = motorPair.second->get_actual_velocity();
-                health.lastUpdate = currentMetrics_.timestamp;
-
-                // Stall detection
-                health.isStalled = (std::abs(health.power) > 0.1 && std::abs(health.rpm) < 5);
-
-                currentMetrics_.motorHealth.push_back(health);
-            }
-        }
-
-        // Maintain rolling history (last 50 readings = 5 seconds)
-        voltageHistory_.push_back(currentMetrics_.batteryVoltage);
-        currentHistory_.push_back(currentMetrics_.batteryCurrent);
-
-        if (voltageHistory_.size() > 50) voltageHistory_.pop_front();
-        if (currentHistory_.size() > 50) currentHistory_.pop_front();
-    }
-
-    void checkForIssues() {
-        std::vector<HealthIssue> newIssues;
-
-        // Check battery voltage (brownout detection)
-        if (currentMetrics_.batteryVoltage < 6.5) {
-            newIssues.push_back({
-                BROWNOUT,
-                currentMetrics_.batteryVoltage < 6.0 ? CRITICAL : WARNING,
-                "Low battery voltage detected",
-                currentMetrics_.timestamp,
-                "Check battery charge or reduce motor load"
-            });
-        }
-
-        // Check for voltage drops (tug of war detection)
-        if (voltageHistory_.size() >= 10) {
-            double avgVoltage = 0.0;
-            for (double v : voltageHistory_) avgVoltage += v;
-            avgVoltage /= voltageHistory_.size();
-
-            double voltageDrop = avgVoltage - currentMetrics_.batteryVoltage;
-            if (voltageDrop > 0.5) { // 0.5V drop indicates heavy load
-                newIssues.push_back({
-                    TUG_OF_WAR,
-                    WARNING,
-                    "Sudden voltage drop detected - possible tug of war",
-                    currentMetrics_.timestamp,
-                    "Reduce motor power or check for external resistance"
-                });
-            }
-        }
-
-        // Check motor health
-        for (const auto& motor : currentMetrics_.motorHealth) {
-            // Overcurrent detection
-            if (motor.current > 2.5) { // 2.5A threshold
-                newIssues.push_back({
-                    OVERCURRENT,
-                    motor.current > 3.0 ? CRITICAL : WARNING,
-                    "Motor " + std::to_string(motor.port) + " overcurrent",
-                    currentMetrics_.timestamp,
-                    "Check motor wiring and reduce load"
-                });
-            }
-
-            // Temperature warning
-            if (motor.temperature > 50.0) { // 50°C threshold
-                newIssues.push_back({
-                    TEMPERATURE,
-                    motor.temperature > 60.0 ? CRITICAL : WARNING,
-                    "Motor " + std::to_string(motor.port) + " overheating",
-                    currentMetrics_.timestamp,
-                    "Allow motor to cool or reduce usage"
-                });
-            }
-
-            // Stall detection
-            if (motor.isStalled) {
-                newIssues.push_back({
-                    BROKEN_DRIVE,
-                    CRITICAL,
-                    "Motor " + std::to_string(motor.port) + " appears stalled",
-                    currentMetrics_.timestamp,
-                    "Check motor connection and mechanical issues"
-                });
-            }
-        }
-
-        // Add new issues to the list
-        for (const auto& issue : newIssues) {
-            // Check if similar issue already exists
-            bool exists = false;
-            for (const auto& existing : issues_) {
-                if (existing.type == issue.type &&
-                    existing.severity == issue.severity &&
-                    (currentMetrics_.timestamp - existing.timestamp) < 5000) { // Within 5 seconds
-                    exists = true;
-                    break;
-                }
-            }
-
-            if (!exists) {
-                issues_.push_back(issue);
-            }
-        }
-
-        // Limit issue history
-        if (issues_.size() > 20) {
-            issues_.erase(issues_.begin(), issues_.begin() + issues_.size() - 20);
-        }
-
-        // Notify callback if health changed
-        if (!newIssues.empty() && healthCallback_) {
-            healthCallback_(getOverallHealth(), issues_);
-        }
-    }
+    /**
+     * @brief Check for health issues based on current metrics
+     *
+     * Analyzes the current metrics against thresholds to detect
+     * potential problems and creates appropriate health issues.
+     */
+    void checkForIssues();
 };
 
 /**
- * @brief Global health monitor instance
+ * @brief Get global system health monitor instance
+ *
+ * Returns a reference to the global SystemHealthMonitor instance.
+ * This provides a singleton pattern for easy access throughout the codebase.
+ *
+ * @return Reference to global health monitor
  */
 inline SystemHealthMonitor& getHealthMonitor() {
     static SystemHealthMonitor monitor;

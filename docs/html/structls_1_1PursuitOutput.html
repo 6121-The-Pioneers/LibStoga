@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,6 +96,9 @@ $(function(){initNavTree('structls_1_1PursuitOutput.html','','structls_1_1Pursui
 </div><!--header-->
 <div class="contents">
 
+<p>Output structure for Pure Pursuit calculations.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="pure__pursuit_8h_source.html">pure_pursuit.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -104,8 +108,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aae4affc0a78ebe486621eb6a86cfff41" id="r_aae4affc0a78ebe486621eb6a86cfff41"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae4affc0a78ebe486621eb6a86cfff41">done</a> {false}</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="pure__pursuit_8h_source.html#l00007">7</a> of file <a class="el" href="pure__pursuit_8h_source.html">pure_pursuit.h</a>.</p>
+<div class="textblock"><p>Output structure for Pure Pursuit calculations. </p>
+<p>Contains the control outputs from the Pure Pursuit algorithm that should be applied to the robot's motion controllers. </p>
+
+<p class="definition">Definition at line <a class="el" href="pure__pursuit_8h_source.html#l00044">44</a> of file <a class="el" href="pure__pursuit_8h_source.html">pure_pursuit.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="a9f3982dc40a1d70dcf330b66d3399d52" name="a9f3982dc40a1d70dcf330b66d3399d52"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9f3982dc40a1d70dcf330b66d3399d52">&#9670;&#160;</a></span>angular</h2>
@@ -118,8 +124,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Angular velocity command (turning) </p>
 
-<p class="definition">Definition at line <a class="el" href="pure__pursuit_8h_source.html#l00009">9</a> of file <a class="el" href="pure__pursuit_8h_source.html">pure_pursuit.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pure__pursuit_8h_source.html#l00046">46</a> of file <a class="el" href="pure__pursuit_8h_source.html">pure_pursuit.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="pure__pursuit_8cpp_source.html#l00016">ls::PurePursuit::update()</a>.</p>
 
@@ -136,8 +143,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Whether the path following is complete </p>
 
-<p class="definition">Definition at line <a class="el" href="pure__pursuit_8h_source.html#l00010">10</a> of file <a class="el" href="pure__pursuit_8h_source.html">pure_pursuit.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pure__pursuit_8h_source.html#l00047">47</a> of file <a class="el" href="pure__pursuit_8h_source.html">pure_pursuit.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="pure__pursuit_8cpp_source.html#l00016">ls::PurePursuit::update()</a>.</p>
 
@@ -154,10 +162,11 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Linear velocity command (forward/backward) </p>
 
-<p class="definition">Definition at line <a class="el" href="pure__pursuit_8h_source.html#l00008">8</a> of file <a class="el" href="pure__pursuit_8h_source.html">pure_pursuit.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pure__pursuit_8h_source.html#l00045">45</a> of file <a class="el" href="pure__pursuit_8h_source.html">pure_pursuit.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00229">ls::Chassis::followPath()</a>, and <a class="el" href="pure__pursuit_8cpp_source.html#l00016">ls::PurePursuit::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00249">ls::Chassis::followPath()</a>, and <a class="el" href="pure__pursuit_8cpp_source.html#l00016">ls::PurePursuit::update()</a>.</p>
 
 </div>
 </div>

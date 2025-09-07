@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['🧭_0',['&lt;b&gt;v1.5.0 - MCL &amp;amp; Localization&lt;/b&gt; 🧭',['../index.html#autotoc_md100',1,'']]]
+  ['🤝_20contributing_20development_0',['&lt;b&gt;🤝 Contributing &amp;amp; Development&lt;/b&gt;',['../index.html#autotoc_md138',1,'']]]
 ];

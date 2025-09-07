@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['📈_20performance_20metrics_20benchmarks_0',['&lt;b&gt;📈 Performance Metrics &amp;amp; Benchmarks&lt;/b&gt;',['../index.html#autotoc_md109',1,'']]]
+  ['🐛_20known_20issues_20limitations_0',['&lt;b&gt;🐛 Known Issues &amp;amp; Limitations&lt;/b&gt;',['../index.html#autotoc_md124',1,'']]],
+  ['🐛_20troubleshooting_1',['🐛 Troubleshooting',['../index.html#autotoc_md66',1,'']]]
 ];

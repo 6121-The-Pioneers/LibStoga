@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,7 +96,7 @@ $(function(){initNavTree('pid_8h.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>Contains all PID related classes and methods.  
+<p>PID control system implementation for LibStoga robotics framework.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="error_8h_source.html">error.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="gains_8h_source.html">gains.h</a>&quot;</code><br />
@@ -115,8 +116,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:ls_3A_3AAbstractPID" id="r_ls_3A_3AAbstractPID"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractPID.html">ls::AbstractPID</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract base class for <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controllers.  <a href="classls_1_1AbstractPID.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3APID" id="r_ls_3A_3APID"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1PID.html">ls::PID</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> object, calculates <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> outputs given an error.  <a href="classls_1_1PID.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller implementation.  <a href="classls_1_1PID.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -124,12 +126,25 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespacels"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all source code for abstract classes or composed ones Basically code that powers abstraction. <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Contains all PID related classes and methods. </p>
-<p>✅</p>
-<dl class="section author"><dt>Author</dt><dd>Rishit Varshney </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2024-11-29</dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
+<div class="textblock"><p>PID control system implementation for LibStoga robotics framework. </p>
+<p>This file provides comprehensive PID (Proportional-Integral-Derivative) control system implementation essential for precise robot control. The PID system includes both abstract and concrete implementations with advanced features like integral windup protection, sign flip reset, and configurable gains.</p>
+<p>Key Features:</p><ul>
+<li>Abstract base class for extensible PID implementations</li>
+<li>Standard PID controller with configurable parameters</li>
+<li>Integral windup protection to prevent overshoot</li>
+<li>Sign flip reset for handling direction changes</li>
+<li>Time-based derivative calculation for smooth control</li>
+<li>Gain management through structured configuration</li>
+</ul>
+<p>PID Theory:</p><ul>
+<li><b>Proportional (P)</b>: Responds to current error</li>
+<li><b>Integral (I)</b>: Corrects for accumulated error over time</li>
+<li><b>Derivative (D)</b>: Predicts future error based on rate of change</li>
+</ul>
+<dl class="section author"><dt>Author</dt><dd>6121D (The Pioneers) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>3.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 6121D - All rights reserved </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="pid_8h_source.html">pid.h</a>.</p>
 </div></div><!-- contents -->

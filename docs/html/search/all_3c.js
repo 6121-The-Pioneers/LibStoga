@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['🚀_0',['&lt;b&gt;v3.0.0 - Phase 1: Enhanced Control Systems&lt;/b&gt; 🚀',['../index.html#autotoc_md66',1,'']]],
-  ['🚀_20quick_20start_1',['🚀 Quick Start',['../index.html#autotoc_md11',1,'']]]
+  ['🔧_20api_20changes_20breaking_20changes_0',['&lt;b&gt;🔧 API Changes &amp;amp; Breaking Changes&lt;/b&gt;',['../index.html#autotoc_md120',1,'']]],
+  ['🔧_20major_20architecture_20changes_1',['🔧 &lt;b&gt;Major Architecture Changes&lt;/b&gt;',['../index.html#autotoc_md103',1,'']]]
 ];

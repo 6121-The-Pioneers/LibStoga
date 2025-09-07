@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,17 +96,22 @@ $(function(){initNavTree('structls_1_1ChassisTolerances.html','','structls_1_1Ch
 </div><!--header-->
 <div class="contents">
 
+<p>Movement completion thresholds and timing parameters.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="config_8h_source.html">config.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a5d0dab9aa5544f3bdc86706d1b614042" id="r_a5d0dab9aa5544f3bdc86706d1b614042"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d0dab9aa5544f3bdc86706d1b614042">lateralThresh</a> {1}</td></tr>
-<tr class="memitem:a7c6a96982da4f7d6dc681f35c47962d2" id="r_a7c6a96982da4f7d6dc681f35c47962d2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c6a96982da4f7d6dc681f35c47962d2">angularThresh</a> {5}</td></tr>
+<tr class="memitem:a5d0dab9aa5544f3bdc86706d1b614042" id="r_a5d0dab9aa5544f3bdc86706d1b614042"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d0dab9aa5544f3bdc86706d1b614042">lateralThresh</a> {1.0}</td></tr>
+<tr class="memitem:a7c6a96982da4f7d6dc681f35c47962d2" id="r_a7c6a96982da4f7d6dc681f35c47962d2"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c6a96982da4f7d6dc681f35c47962d2">angularThresh</a> {5.0}</td></tr>
 <tr class="memitem:a3bd985da22c8b799326458bb34c2f827" id="r_a3bd985da22c8b799326458bb34c2f827"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bd985da22c8b799326458bb34c2f827">dwellMs</a> {300}</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00015">15</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<div class="textblock"><p>Movement completion thresholds and timing parameters. </p>
+<p>Defines the criteria for determining when autonomous movements are complete. These parameters control the precision and timing of chassis movements. </p>
+
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00049">49</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="a7c6a96982da4f7d6dc681f35c47962d2" name="a7c6a96982da4f7d6dc681f35c47962d2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c6a96982da4f7d6dc681f35c47962d2">&#9670;&#160;</a></span>angularThresh</h2>
@@ -114,12 +120,13 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double ls::ChassisTolerances::angularThresh {5}</td>
+          <td class="memname">double ls::ChassisTolerances::angularThresh {5.0}</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p><a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> threshold for turn completion (degrees) </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00017">17</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00051">51</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -134,8 +141,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Time movement must stay within threshold (milliseconds) </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00018">18</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00052">52</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -146,12 +154,13 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double ls::ChassisTolerances::lateralThresh {1}</td>
+          <td class="memname">double ls::ChassisTolerances::lateralThresh {1.0}</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Distance threshold for drive completion (inches) </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00016">16</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00050">50</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>

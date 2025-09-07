@@ -12,7 +12,8 @@ var searchData=
   ['lead_9',['lead',['../structls_1_1MoveToPointParams.html#a5a2c3d536a2aec76538f5ba960378f07',1,'ls::MoveToPointParams::lead'],['../structls_1_1MoveToPoseParams.html#a3c8dc43f5c13a992fb762b9573d7f4a3',1,'ls::MoveToPoseParams::lead'],['../structls_1_1FollowPathParams.html#a2756a4d386936cb3cacd129ce17de5b7',1,'ls::FollowPathParams::lead']]],
   ['learning_5fconstant_10',['learning_constant',['../structls_1_1smart__pid__parameters__t.html#a461104d7cea20de863298b86e4fa1887',1,'ls::smart_pid_parameters_t::learning_constant'],['../classls_1_1SmartPID.html#a65b3e7d07e399d354f0587a032b2ba67',1,'ls::SmartPID::learning_constant']]],
   ['left_11',['left',['../classls_1_1Chassis.html#a3e30b82ba2befb45b382861c0a2417c4',1,'ls::Chassis::left'],['../structls_1_1threewheel__odom__parameters__t.html#a0eb81cd1a7a7457f1ec4cbde5e1314fc',1,'ls::threewheel_odom_parameters_t::left'],['../classls_1_1ThreeWheelOdom.html#a036e7aab82efa65c0a153123482b7f0f',1,'ls::ThreeWheelOdom::left']]],
-  ['leftmotors_12',['leftMotors',['../structls_1_1DrivetrainConfig.html#a00fdcf983cf71cebc4df5d31bf7f376a',1,'ls::DrivetrainConfig']]],
-  ['linear_13',['linear',['../structls_1_1PursuitOutput.html#a916be06cc84a18b2837a518133061c4a',1,'ls::PursuitOutput']]],
-  ['lookaheaddist_14',['lookaheadDist',['../classls_1_1PurePursuit.html#a9c3906ae2d2bda13caff3d3ecf3190ca',1,'ls::PurePursuit']]]
+  ['left_5fmotors_12',['left_motors',['../classls_1_1Chassis.html#ab5b517421a4f40627995cc44bb296a75',1,'ls::Chassis']]],
+  ['leftmotors_13',['leftMotors',['../structls_1_1DrivetrainConfig.html#a00fdcf983cf71cebc4df5d31bf7f376a',1,'ls::DrivetrainConfig']]],
+  ['linear_14',['linear',['../structls_1_1PursuitOutput.html#a916be06cc84a18b2837a518133061c4a',1,'ls::PursuitOutput']]],
+  ['lookaheaddist_15',['lookaheadDist',['../classls_1_1PurePursuit.html#a9c3906ae2d2bda13caff3d3ecf3190ca',1,'ls::PurePursuit']]]
 ];

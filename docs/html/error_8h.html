@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -91,11 +92,11 @@ $(function(){initNavTree('error_8h.html','',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">error.h File Reference</div></div>
+  <div class="headertitle"><div class="title">error.h File Reference<div class="ingroups"><a class="el" href="group__utilities.html">Utilities</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Includes all form of error handling specific to this library.  
+<p>Error handling system for LibStoga robotics framework.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;api.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -119,18 +120,34 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a0f95eef540b66f1e6e4723e538c3a060" id="r_a0f95eef540b66f1e6e4723e538c3a060"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f95eef540b66f1e6e4723e538c3a060">THROW_ERROR</a>(error)</td></tr>
+<tr class="memdesc:a0f95eef540b66f1e6e4723e538c3a060"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro for throwing fatal errors with automatic file/line information.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a19eccdfe12c30d0c26e2992796aef389" id="r_a19eccdfe12c30d0c26e2992796aef389"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacels.html#a19eccdfe12c30d0c26e2992796aef389">ls::__throw_error</a> (const char *error, unsigned long line, const char *file)</td></tr>
+<tr class="memdesc:a19eccdfe12c30d0c26e2992796aef389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal function for error handling and display.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Includes all form of error handling specific to this library. </p>
-<p>✅</p>
-<dl class="section author"><dt>Author</dt><dd>Rishit Varshney </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2024-11-29</dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
+<div class="textblock"><p>Error handling system for LibStoga robotics framework. </p>
+<p>This file provides a comprehensive error handling system specifically designed for robotics applications running on the PROS platform. The system includes both compile-time assertions and runtime error handling with visual feedback on the robot's LCD screen.</p>
+<p>Key Features:</p><ul>
+<li>Runtime error display on PROS LCD</li>
+<li>File and line number reporting for debugging</li>
+<li>Fatal error handling that halts execution</li>
+<li>Simple macro-based error throwing</li>
+<li>VEX Brain LCD integration for field debugging</li>
+</ul>
+<p>Error Handling Strategy:</p><ul>
+<li><b>Fatal Errors</b>: System halts with LCD display (use THROW_ERROR macro)</li>
+<li><b>Debug Information</b>: File and line number automatically included</li>
+<li><b>User Feedback</b>: Clear error messages displayed on robot LCD</li>
+<li><b>Development Aid</b>: Helps identify issues during testing and competition</li>
+</ul>
+<dl class="section warning"><dt>Warning</dt><dd>Fatal errors will halt robot execution. Use only for critical failures that require immediate attention. For recoverable errors, consider alternative error handling strategies.</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>6121D (The Pioneers) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>3.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 6121D - All rights reserved </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="error_8h_source.html">error.h</a>.</p>
 </div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Macro Definition Documentation</h2>
@@ -150,9 +167,26 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">__throw_error(error, __LINE__, __FILE__)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="error_8h_source.html#l00017">17</a> of file <a class="el" href="error_8h_source.html">error.h</a>.</p>
+<p>Macro for throwing fatal errors with automatic file/line information. </p>
+<p>This macro provides a convenient way to throw fatal errors that will:</p><ul>
+<li>Display the error message on the PROS LCD</li>
+<li>Show the file name and line number where the error occurred</li>
+<li>Halt program execution to prevent further damage</li>
+</ul>
+<p>Usage Example: </p><div class="fragment"><div class="line"><span class="keywordflow">if</span> (motor == <span class="keyword">nullptr</span>) {</div>
+<div class="line">    <a class="code hl_define" href="#a0f95eef540b66f1e6e4723e538c3a060">THROW_ERROR</a>(<span class="stringliteral">&quot;Motor initialization failed&quot;</span>);</div>
+<div class="line">}</div>
+<div class="ttc" id="aerror_8h_html_a0f95eef540b66f1e6e4723e538c3a060"><div class="ttname"><a href="#a0f95eef540b66f1e6e4723e538c3a060">THROW_ERROR</a></div><div class="ttdeci">#define THROW_ERROR(error)</div><div class="ttdoc">Macro for throwing fatal errors with automatic file/line information.</div><div class="ttdef"><b>Definition</b> <a href="error_8h_source.html#l00057">error.h:57</a></div></div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>Error message string to display </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="reference">Referenced by <a class="el" href="pid_8h_source.html#l00056">ls::PID::PID()</a>, <a class="el" href="tracking_8cpp_source.html#l00004">ls::TrackingWheel::TrackingWheel()</a>, and <a class="el" href="tracking_8cpp_source.html#l00016">ls::TrackingWheel::TrackingWheel()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="error_8h_source.html#l00057">57</a> of file <a class="el" href="error_8h_source.html">error.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pid_8h_source.html#l00137">ls::PID::PID()</a>, <a class="el" href="tracking_8cpp_source.html#l00004">ls::TrackingWheel::TrackingWheel()</a>, and <a class="el" href="tracking_8cpp_source.html#l00016">ls::TrackingWheel::TrackingWheel()</a>.</p>
 
 </div>
 </div>

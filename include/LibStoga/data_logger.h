@@ -1,265 +1,236 @@
+/** @file data_logger.h
+ * @brief SD card data logging and persistence system for LibStoga robotics framework
+ *
+ * This file provides a comprehensive data logging system that saves tuning data,
+ * match information, and system performance metrics to the robot's SD card.
+ * All operations are completely optional and gracefully fail if no SD card
+ * is available, making it safe to use in any environment.
+ *
+ * Key Features:
+ * - PID tuning profile persistence and loading
+ * - Adaptive PID history tracking
+ * - Match data logging with events and results
+ * - CSV export for data analysis
+ * - SD card usage monitoring
+ * - Graceful degradation when SD card unavailable
+ * - Thread-safe file operations
+ *
+ * Data Types Logged:
+ * - **Tuning Profiles**: PID gains with timestamps and notes
+ * - **Adaptive Data**: Real-time PID adaptation with performance metrics
+ * - **Match Data**: Competition information, events, and results
+ * - **System Metrics**: Battery voltage, performance scores, surface conditions
+ *
+ * @author 6121D (The Pioneers)
+ * @version 3.0.0
+ * @date 2025
+ *
+ * @copyright Copyright (c) 2025 6121D - All rights reserved
+ *
+ * @ingroup utilities
+ */
+
 #pragma once
 #include <string>
 #include <vector>
 #include <memory>
 #include <fstream>
-#include <filesystem>
 #include <optional>
 #include "pros/rtos.hpp"
 #include "pros/misc.hpp"
 #include "gains.h"
 
-namespace fs = std::filesystem;
-
 namespace ls {
 
 /**
- * @brief Optional SD card data persistence for tuning data and configurations
- * All operations are completely optional and will gracefully fail if SD card is not available
+ * @brief Comprehensive SD card data logging and persistence system
+ *
+ * The DataLogger provides optional data persistence capabilities for the LibStoga
+ * framework. It saves tuning profiles, match data, and system performance metrics
+ * to the robot's SD card for later analysis and reuse. All operations are designed
+ * to be completely optional and will gracefully fail if no SD card is present.
+ *
+ * The logger supports multiple data types:
+ * - PID tuning profiles with metadata
+ * - Adaptive PID performance history
+ * - Competition match logs with events
+ * - System diagnostics and performance metrics
+ *
+ * Usage Example:
+ * @code
+ * // Get global data logger
+ * auto& logger = getDataLogger();
+ *
+ * if (logger.isSDAvailable()) {
+ *     // Save a tuning profile
+ *     DataLogger::TuningProfile profile{
+ *         .name = "competition_tune",
+ *         .driveGains = {1.2, 0.05, 0.8},
+ *         .turnGains = {2.0, 0.1, 1.0},
+ *         .timestamp = pros::millis(),
+ *         .notes = "Final competition tuning"
+ *     };
+ *
+ *     if (logger.saveTuningProfile(profile)) {
+ *         pros::lcd::print(0, "Profile saved!");
+ *     }
+ *
+ *     // Save match data
+ *     DataLogger::MatchData match{
+ *         .timestamp = pros::millis(),
+ *         .matchType = "Qualification",
+ *         .matchNumber = 25,
+ *         .autonSelection = 1,
+ *         .events = {"Auton started", "Scored 2 points", "Driver control"},
+ *         .result = "Win"
+ *     };
+ *
+ *     logger.saveMatchData(match);
+ * }
+ * @endcode
  */
 class DataLogger {
 public:
+    /**
+     * @brief PID tuning profile with metadata
+     *
+     * Stores a complete set of PID gains along with identification
+     * and descriptive information for organization and reuse.
+     */
     struct TuningProfile {
-        std::string name;
-        PIDGains driveGains;
-        PIDGains turnGains;
-        uint32_t timestamp;
-        std::string notes;
+        std::string name;        /**< Profile name for identification */
+        PIDGains driveGains;     /**< PID gains for drive/lateral motion */
+        PIDGains turnGains;      /**< PID gains for turning/angular motion */
+        uint32_t timestamp;      /**< When profile was created (PROS millis) */
+        std::string notes;       /**< Additional notes about the tuning */
     };
 
+    /**
+     * @brief Adaptive PID performance data point
+     *
+     * Records the state of adaptive PID tuning at a specific point in time,
+     * including environmental conditions and performance metrics.
+     */
     struct AdaptiveData {
-        uint32_t timestamp;
-        double batteryVoltage;
-        PIDGains adaptedGains;
-        std::string surfaceType;
-        double performanceScore;
+        uint32_t timestamp;      /**< When data was recorded */
+        double batteryVoltage;   /**< Battery voltage at time of recording */
+        PIDGains adaptedGains;   /**< Current adapted PID gains */
+        std::string surfaceType; /**< Surface condition description */
+        double performanceScore; /**< Performance metric (0-1, higher is better) */
     };
 
+    /**
+     * @brief Competition match data and events
+     *
+     * Records information about a competition match including events,
+     * autonomous selection, and final result for post-match analysis.
+     */
     struct MatchData {
-        uint32_t timestamp;
-        std::string matchType;
-        int matchNumber;
-        int autonSelection;
-        std::vector<std::string> events;
-        std::string result;
+        uint32_t timestamp;           /**< Match start time */
+        std::string matchType;        /**< "Practice", "Qualification", "Elimination" */
+        int matchNumber;              /**< Match number */
+        int autonSelection;           /**< Autonomous routine selected (0-3) */
+        std::vector<std::string> events; /**< Chronological list of match events */
+        std::string result;           /**< Match result ("Win", "Loss", "Tie") */
     };
 
-    DataLogger() : sdAvailable_(checkSDAvailable()) {}
+    /**
+     * @brief Default constructor - checks SD card availability
+     */
+    DataLogger();
 
     /**
      * @brief Check if SD card is available for data operations
+     *
+     * @return true if SD card is present and accessible, false otherwise
      */
-    bool isSDAvailable() const {
-        return sdAvailable_;
-    }
+    bool isSDAvailable() const;
 
     /**
      * @brief Save PID tuning profile to SD card
+     *
+     * Saves a tuning profile as a JSON file on the SD card. The profile
+     * can later be loaded and applied to the robot's control systems.
+     *
      * @param profile The tuning profile to save
-     * @return true if successful, false otherwise
+     * @return true if successful, false if SD unavailable or save failed
      */
-    bool saveTuningProfile(const TuningProfile& profile) {
-        if (!sdAvailable_) return false;
-
-        try {
-            std::string filename = "/usd/tuning_" + profile.name + ".json";
-            std::ofstream file(filename);
-
-            if (!file.is_open()) return false;
-
-            // Simple JSON-like format
-            file << "{\n";
-            file << "  \"name\": \"" << profile.name << "\",\n";
-            file << "  \"timestamp\": " << profile.timestamp << ",\n";
-            file << "  \"driveGains\": {\n";
-            file << "    \"kP\": " << profile.driveGains.kP << ",\n";
-            file << "    \"kI\": " << profile.driveGains.kI << ",\n";
-            file << "    \"kD\": " << profile.driveGains.kD << "\n";
-            file << "  },\n";
-            file << "  \"turnGains\": {\n";
-            file << "    \"kP\": " << profile.turnGains.kP << ",\n";
-            file << "    \"kI\": " << profile.turnGains.kI << ",\n";
-            file << "    \"kD\": " << profile.turnGains.kD << "\n";
-            file << "  },\n";
-            file << "  \"notes\": \"" << profile.notes << "\"\n";
-            file << "}\n";
-
-            file.close();
-            return true;
-        } catch (...) {
-            return false;
-        }
-    }
+    bool saveTuningProfile(const TuningProfile& profile);
 
     /**
      * @brief Load PID tuning profile from SD card
+     *
+     * Loads a previously saved tuning profile from the SD card.
+     * Returns empty optional if profile not found or SD unavailable.
+     *
      * @param name Name of the profile to load
      * @return Optional containing the profile if successful
      */
-    std::optional<TuningProfile> loadTuningProfile(const std::string& name) {
-        if (!sdAvailable_) return std::nullopt;
-
-        try {
-            std::string filename = "/usd/tuning_" + name + ".json";
-            std::ifstream file(filename);
-
-            if (!file.is_open()) return std::nullopt;
-
-            TuningProfile profile;
-            profile.name = name;
-
-            // Simple JSON parsing (basic implementation)
-            std::string line;
-            while (std::getline(file, line)) {
-                // Basic parsing - could be enhanced with proper JSON library
-                if (line.find("\"kP\":") != std::string::npos) {
-                    // Parse PID values (simplified)
-                }
-            }
-
-            file.close();
-            return profile;
-        } catch (...) {
-            return std::nullopt;
-        }
-    }
+    std::optional<TuningProfile> loadTuningProfile(const std::string& name);
 
     /**
-     * @brief Save adaptive PID history
-     * @param history Vector of adaptive data points
-     * @return true if successful, false otherwise
+     * @brief Save adaptive PID history data
+     *
+     * Saves a series of adaptive PID data points to a CSV file for
+     * analysis of how PID gains changed over time and conditions.
+     *
+     * @param history Vector of adaptive data points to save
+     * @return true if successful, false if SD unavailable or save failed
      */
-    bool saveAdaptiveHistory(const std::vector<AdaptiveData>& history) {
-        if (!sdAvailable_ || history.empty()) return false;
-
-        try {
-            std::string filename = "/usd/adaptive_history.csv";
-            std::ofstream file(filename, std::ios::app); // Append mode
-
-            if (!file.is_open()) return false;
-
-            // Write CSV header if file is empty
-            if (file.tellp() == 0) {
-                file << "timestamp,battery_voltage,drive_kp,drive_ki,drive_kd,turn_kp,turn_ki,turn_kd,surface_type,performance_score\n";
-            }
-
-            // Write data points
-            for (const auto& data : history) {
-                file << data.timestamp << ","
-                     << data.batteryVoltage << ","
-                     << data.adaptedGains.kP << ","
-                     << data.adaptedGains.kI << ","
-                     << data.adaptedGains.kD << ","
-                     << data.adaptedGains.kP << "," // Assuming same structure
-                     << data.adaptedGains.kI << ","
-                     << data.adaptedGains.kD << ","
-                     << data.surfaceType << ","
-                     << data.performanceScore << "\n";
-            }
-
-            file.close();
-            return true;
-        } catch (...) {
-            return false;
-        }
-    }
+    bool saveAdaptiveHistory(const std::vector<AdaptiveData>& history);
 
     /**
-     * @brief Save match data
+     * @brief Save match data and events
+     *
+     * Saves detailed information about a competition match including
+     * events, autonomous selection, and results for post-match analysis.
+     *
      * @param match The match data to save
-     * @return true if successful, false otherwise
+     * @return true if successful, false if SD unavailable or save failed
      */
-    bool saveMatchData(const MatchData& match) {
-        if (!sdAvailable_) return false;
-
-        try {
-            std::string filename = "/usd/match_" + std::to_string(match.timestamp) + ".log";
-            std::ofstream file(filename);
-
-            if (!file.is_open()) return false;
-
-            file << "Match Log - " << match.timestamp << "\n";
-            file << "Type: " << match.matchType << "\n";
-            file << "Number: " << match.matchNumber << "\n";
-            file << "Auton: " << match.autonSelection << "\n";
-            file << "Result: " << match.result << "\n";
-            file << "Events:\n";
-
-            for (const auto& event : match.events) {
-                file << "  " << event << "\n";
-            }
-
-            file.close();
-            return true;
-        } catch (...) {
-            return false;
-        }
-    }
+    bool saveMatchData(const MatchData& match);
 
     /**
      * @brief List all saved tuning profiles
-     * @return Vector of profile names
+     *
+     * Returns a list of all tuning profile names currently saved on the SD card.
+     * Useful for creating profile selection menus in driver control.
+     *
+     * @return Vector of profile names (empty if SD unavailable)
      */
-    std::vector<std::string> listTuningProfiles() {
-        std::vector<std::string> profiles;
-
-        if (!sdAvailable_) return profiles;
-
-        try {
-            std::string path = "/usd";
-            for (const auto& entry : fs::directory_iterator(path)) {
-                std::string filename = entry.path().filename().string();
-                if (filename.find("tuning_") == 0 && filename.find(".json") != std::string::npos) {
-                    std::string profileName = filename.substr(7); // Remove "tuning_"
-                    profileName = profileName.substr(0, profileName.find(".json"));
-                    profiles.push_back(profileName);
-                }
-            }
-        } catch (...) {
-            // Ignore errors
-        }
-
-        return profiles;
-    }
+    std::vector<std::string> listTuningProfiles();
 
     /**
      * @brief Get SD card usage statistics
-     * @return String with usage information
+     *
+     * Returns a human-readable string with SD card usage information
+     * including used space, total space, and percentage used.
+     *
+     * @return Usage statistics string, or error message if unavailable
      */
-    std::string getSDStats() {
-        if (!sdAvailable_) return "SD card not available";
-
-        try {
-            fs::space_info space = fs::space("/usd");
-            double usedGB = (space.capacity - space.available) / (1024.0 * 1024.0 * 1024.0);
-            double totalGB = space.capacity / (1024.0 * 1024.0 * 1024.0);
-
-            char buffer[100];
-            std::snprintf(buffer, sizeof(buffer), "SD Usage: %.2f/%.2f GB (%.1f%%)",
-                         usedGB, totalGB, (usedGB / totalGB) * 100.0);
-            return std::string(buffer);
-        } catch (...) {
-            return "Unable to read SD statistics";
-        }
-    }
+    std::string getSDStats();
 
 private:
-    bool sdAvailable_;
+    bool sdAvailable_;  /**< Whether SD card is available for operations */
 
     /**
-     * @brief Check if SD card is available
+     * @brief Check if SD card is available and accessible
+     *
+     * Performs a filesystem check to determine if the SD card is present
+     * and can be used for file operations.
+     *
+     * @return true if SD card is available, false otherwise
      */
-    bool checkSDAvailable() {
-        try {
-            return fs::exists("/usd");
-        } catch (...) {
-            return false;
-        }
-    }
+    bool checkSDAvailable();
 };
 
 /**
- * @brief Global data logger instance (optional usage)
+ * @brief Get global data logger instance
+ *
+ * Returns a reference to the global DataLogger instance, providing
+ * a singleton pattern for easy access throughout the codebase.
+ *
+ * @return Reference to global data logger
  */
 inline DataLogger& getDataLogger() {
     static DataLogger logger;

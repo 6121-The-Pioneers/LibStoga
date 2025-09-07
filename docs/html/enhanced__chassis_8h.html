@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -94,6 +95,9 @@ $(function(){initNavTree('enhanced__chassis_8h.html','',''); });
   <div class="headertitle"><div class="title">enhanced_chassis.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Advanced chassis control interface with LemLib-inspired movement parameters.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for enhanced_chassis.h:</div>
@@ -111,13 +115,19 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:ls_3A_3AMoveToPointParams" id="r_ls_3A_3AMoveToPointParams"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1MoveToPointParams.html">ls::MoveToPointParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for point-to-point movement.  <a href="structls_1_1MoveToPointParams.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3ATurnToHeadingParams" id="r_ls_3A_3ATurnToHeadingParams"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1TurnToHeadingParams.html">ls::TurnToHeadingParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for heading rotation movements.  <a href="structls_1_1TurnToHeadingParams.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3AMoveToPoseParams" id="r_ls_3A_3AMoveToPoseParams"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1MoveToPoseParams.html">ls::MoveToPoseParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for pose (position + heading) movement.  <a href="structls_1_1MoveToPoseParams.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3ASwingToHeadingParams" id="r_ls_3A_3ASwingToHeadingParams"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1SwingToHeadingParams.html">ls::SwingToHeadingParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for swing turn movements.  <a href="structls_1_1SwingToHeadingParams.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3ASwingToPointParams" id="r_ls_3A_3ASwingToPointParams"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1SwingToPointParams.html">ls::SwingToPointParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for swing turns to face a point.  <a href="structls_1_1SwingToPointParams.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3AFollowPathParams" id="r_ls_3A_3AFollowPathParams"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1FollowPathParams.html">ls::FollowPathParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for path following movements.  <a href="structls_1_1FollowPathParams.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3AEnhancedChassis" id="r_ls_3A_3AEnhancedChassis"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1EnhancedChassis.html">ls::EnhancedChassis</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enhanced chassis with LemLib-style movement parameters.  <a href="classls_1_1EnhancedChassis.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enhanced chassis control interface with advanced movement capabilities.  <a href="classls_1_1EnhancedChassis.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -130,9 +140,39 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespacels.html#a7cae1edaf7351248ff1e759fab0f0b83abf6cd64d3637f0de292538e9bd740550">ls::CW_CLOCKWISE</a>
 , <a class="el" href="namespacels.html#a7cae1edaf7351248ff1e759fab0f0b83abe1548e6f19334b7b4c860c2b98375dd">ls::CCW_COUNTERCLOCKWISE</a>
  }</td></tr>
-<tr class="memdesc:a7cae1edaf7351248ff1e759fab0f0b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Movement parameter structures inspired by LemLib for enhanced control.  <a href="namespacels.html#a7cae1edaf7351248ff1e759fab0f0b83">More...</a><br /></td></tr>
+<tr class="memdesc:a7cae1edaf7351248ff1e759fab0f0b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Angular rotation direction options.  <a href="namespacels.html#a7cae1edaf7351248ff1e759fab0f0b83">More...</a><br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Advanced chassis control interface with LemLib-inspired movement parameters. </p>
+<p>This file provides an enhanced chassis control system with sophisticated movement parameters inspired by LemLib. It offers fine-grained control over robot motion including speed profiles, early exit conditions, path following parameters, and advanced turning behaviors.</p>
+<p>Key Features:</p><ul>
+<li>Configurable speed profiles with min/max speeds</li>
+<li>Early exit conditions for precise stopping</li>
+<li>Advanced path following with carrot chasing algorithm</li>
+<li>Multiple turning modes (swing turns, point-to-point)</li>
+<li>Asynchronous operation support</li>
+<li>Comprehensive motion state management</li>
+</ul>
+<p>Movement Types:</p><ul>
+<li><b>Point-to-Point</b>: Move to specific coordinates with heading control</li>
+<li><b>Heading Turns</b>: Rotate to specific angles with direction control</li>
+<li><b>Swing Turns</b>: Pivot turns with one side locked for precision</li>
+<li><b>Path Following</b>: Follow predefined paths with lookahead control</li>
+<li><b>Pose Control</b>: Combined position and heading movement</li>
+</ul>
+<p>Advanced Parameters:</p><ul>
+<li><b>Lead/Carrot</b>: Controls how far ahead on the path the robot aims</li>
+<li><b>Horizontal Drift</b>: Adjusts cornering aggressiveness</li>
+<li><b>Early Exit</b>: Stop movement when close enough to target</li>
+<li><b>Speed Profiles</b>: Minimum and maximum speed constraints</li>
+</ul>
+<dl class="section author"><dt>Author</dt><dd>6121D (The Pioneers) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>2.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 6121D - All rights reserved </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

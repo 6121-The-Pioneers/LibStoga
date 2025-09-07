@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,23 +96,23 @@ $(function(){initNavTree('structls_1_1smart__pid__parameters__t.html','','struct
 </div><!--header-->
 <div class="contents">
 
-<p>A structure that contains all parameters of the <a class="el" href="classls_1_1SmartPID.html" title="The Smart PID class... an extension of the PID class that uses the Smart PID Algorithm....">SmartPID</a> class.  
+<p>Configuration parameters for Smart <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="spid_8h_source.html">spid.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aaa1643c976d3f31dc30fdbb3d0a06cab" id="r_aaa1643c976d3f31dc30fdbb3d0a06cab"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa1643c976d3f31dc30fdbb3d0a06cab">correction_constant</a> = 1</td></tr>
-<tr class="memitem:afbb08a5ca0445ecc1ac48937bc832e5d" id="r_afbb08a5ca0445ecc1ac48937bc832e5d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbb08a5ca0445ecc1ac48937bc832e5d">windup</a> = 1</td></tr>
+<tr class="memitem:aaa1643c976d3f31dc30fdbb3d0a06cab" id="r_aaa1643c976d3f31dc30fdbb3d0a06cab"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa1643c976d3f31dc30fdbb3d0a06cab">correction_constant</a> = 1.0</td></tr>
+<tr class="memitem:afbb08a5ca0445ecc1ac48937bc832e5d" id="r_afbb08a5ca0445ecc1ac48937bc832e5d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbb08a5ca0445ecc1ac48937bc832e5d">windup</a> = 1.0</td></tr>
 <tr class="memitem:a461104d7cea20de863298b86e4fa1887" id="r_a461104d7cea20de863298b86e4fa1887"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a461104d7cea20de863298b86e4fa1887">learning_constant</a> = 0.001</td></tr>
-<tr class="memitem:a147f6e3d22a1cf269d3ea5de484e9d81" id="r_a147f6e3d22a1cf269d3ea5de484e9d81"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a147f6e3d22a1cf269d3ea5de484e9d81">max_value</a> = 127</td></tr>
+<tr class="memitem:a147f6e3d22a1cf269d3ea5de484e9d81" id="r_a147f6e3d22a1cf269d3ea5de484e9d81"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a147f6e3d22a1cf269d3ea5de484e9d81">max_value</a> = 127.0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A structure that contains all parameters of the <a class="el" href="classls_1_1SmartPID.html" title="The Smart PID class... an extension of the PID class that uses the Smart PID Algorithm....">SmartPID</a> class. </p>
-<p>Order: correction_constant, windup, learning_constant, max_value, damp </p>
+<div class="textblock"><p>Configuration parameters for Smart <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller. </p>
+<p>Defines all parameters needed to configure a Smart <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller. These parameters control the learning behavior and performance characteristics. </p>
 
-<p class="definition">Definition at line <a class="el" href="spid_8h_source.html#l00023">23</a> of file <a class="el" href="spid_8h_source.html">spid.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="spid_8h_source.html#l00050">50</a> of file <a class="el" href="spid_8h_source.html">spid.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="aaa1643c976d3f31dc30fdbb3d0a06cab" name="aaa1643c976d3f31dc30fdbb3d0a06cab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaa1643c976d3f31dc30fdbb3d0a06cab">&#9670;&#160;</a></span>correction_constant</h2>
@@ -120,12 +121,13 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double ls::smart_pid_parameters_t::correction_constant = 1</td>
+          <td class="memname">double ls::smart_pid_parameters_t::correction_constant = 1.0</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Speed of overall motion and adaptation rate </p>
 
-<p class="definition">Definition at line <a class="el" href="spid_8h_source.html#l00024">24</a> of file <a class="el" href="spid_8h_source.html">spid.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="spid_8h_source.html#l00051">51</a> of file <a class="el" href="spid_8h_source.html">spid.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="spid_8cpp_source.html#l00010">ls::SmartPID::SmartPID()</a>.</p>
 
@@ -142,8 +144,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Rate at which the system learns and adapts </p>
 
-<p class="definition">Definition at line <a class="el" href="spid_8h_source.html#l00026">26</a> of file <a class="el" href="spid_8h_source.html">spid.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="spid_8h_source.html#l00053">53</a> of file <a class="el" href="spid_8h_source.html">spid.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="spid_8cpp_source.html#l00010">ls::SmartPID::SmartPID()</a>.</p>
 
@@ -156,12 +159,13 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double ls::smart_pid_parameters_t::max_value = 127</td>
+          <td class="memname">double ls::smart_pid_parameters_t::max_value = 127.0</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Maximum absolute output value </p>
 
-<p class="definition">Definition at line <a class="el" href="spid_8h_source.html#l00027">27</a> of file <a class="el" href="spid_8h_source.html">spid.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="spid_8h_source.html#l00054">54</a> of file <a class="el" href="spid_8h_source.html">spid.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="spid_8cpp_source.html#l00010">ls::SmartPID::SmartPID()</a>.</p>
 
@@ -174,12 +178,13 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double ls::smart_pid_parameters_t::windup = 1</td>
+          <td class="memname">double ls::smart_pid_parameters_t::windup = 1.0</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Integral windup protection and dominance factor </p>
 
-<p class="definition">Definition at line <a class="el" href="spid_8h_source.html#l00025">25</a> of file <a class="el" href="spid_8h_source.html">spid.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="spid_8h_source.html#l00052">52</a> of file <a class="el" href="spid_8h_source.html">spid.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="spid_8cpp_source.html#l00010">ls::SmartPID::SmartPID()</a>.</p>
 

@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,19 +96,24 @@ $(function(){initNavTree('structls_1_1MCLTracker_1_1Config.html','','structls_1_
 </div><!--header-->
 <div class="contents">
 
+<p>Configuration parameters for MCL system.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="mcl_8h_source.html">mcl.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aab6af6638c3378ee61a334ed20a55356" id="r_aab6af6638c3378ee61a334ed20a55356"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab6af6638c3378ee61a334ed20a55356">count</a> = 200</td></tr>
 <tr class="memitem:a3858fed6f66e7283625e5e2d0690c827" id="r_a3858fed6f66e7283625e5e2d0690c827"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3858fed6f66e7283625e5e2d0690c827">processNoiseXY</a> = 0.5</td></tr>
-<tr class="memitem:ae3f474d01bca100b532fc605542696c5" id="r_ae3f474d01bca100b532fc605542696c5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3f474d01bca100b532fc605542696c5">processNoiseTheta</a> = 2</td></tr>
-<tr class="memitem:a5e47f145124e811f1d10c064d251ce72" id="r_a5e47f145124e811f1d10c064d251ce72"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e47f145124e811f1d10c064d251ce72">fieldW</a> = 144</td></tr>
-<tr class="memitem:ad423aede50d19137021efd1102151f61" id="r_ad423aede50d19137021efd1102151f61"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad423aede50d19137021efd1102151f61">fieldH</a> = 144</td></tr>
+<tr class="memitem:ae3f474d01bca100b532fc605542696c5" id="r_ae3f474d01bca100b532fc605542696c5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3f474d01bca100b532fc605542696c5">processNoiseTheta</a> = 2.0</td></tr>
+<tr class="memitem:a5e47f145124e811f1d10c064d251ce72" id="r_a5e47f145124e811f1d10c064d251ce72"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e47f145124e811f1d10c064d251ce72">fieldW</a> = 144.0</td></tr>
+<tr class="memitem:ad423aede50d19137021efd1102151f61" id="r_ad423aede50d19137021efd1102151f61"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad423aede50d19137021efd1102151f61">fieldH</a> = 144.0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="mcl_8h_source.html#l00012">12</a> of file <a class="el" href="mcl_8h_source.html">mcl.h</a>.</p>
+<div class="textblock"><p>Configuration parameters for MCL system. </p>
+<p>Defines all parameters needed to configure the Monte Carlo Localization system, including particle count, noise characteristics, and field dimensions. </p>
+
+<p class="definition">Definition at line <a class="el" href="mcl_8h_source.html#l00100">100</a> of file <a class="el" href="mcl_8h_source.html">mcl.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="aab6af6638c3378ee61a334ed20a55356" name="aab6af6638c3378ee61a334ed20a55356"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aab6af6638c3378ee61a334ed20a55356">&#9670;&#160;</a></span>count</h2>
@@ -120,8 +126,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Number of particles (more = better accuracy, slower) </p>
 
-<p class="definition">Definition at line <a class="el" href="mcl_8h_source.html#l00012">12</a> of file <a class="el" href="mcl_8h_source.html">mcl.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mcl_8h_source.html#l00101">101</a> of file <a class="el" href="mcl_8h_source.html">mcl.h</a>.</p>
 
 </div>
 </div>
@@ -132,12 +139,13 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double ls::MCLTracker::Config::fieldH = 144</td>
+          <td class="memname">double ls::MCLTracker::Config::fieldH = 144.0</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Field height for particle initialization (inches) </p>
 
-<p class="definition">Definition at line <a class="el" href="mcl_8h_source.html#l00012">12</a> of file <a class="el" href="mcl_8h_source.html">mcl.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mcl_8h_source.html#l00105">105</a> of file <a class="el" href="mcl_8h_source.html">mcl.h</a>.</p>
 
 </div>
 </div>
@@ -148,12 +156,13 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double ls::MCLTracker::Config::fieldW = 144</td>
+          <td class="memname">double ls::MCLTracker::Config::fieldW = 144.0</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Field width for particle initialization (inches) </p>
 
-<p class="definition">Definition at line <a class="el" href="mcl_8h_source.html#l00012">12</a> of file <a class="el" href="mcl_8h_source.html">mcl.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mcl_8h_source.html#l00104">104</a> of file <a class="el" href="mcl_8h_source.html">mcl.h</a>.</p>
 
 </div>
 </div>
@@ -164,12 +173,13 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double ls::MCLTracker::Config::processNoiseTheta = 2</td>
+          <td class="memname">double ls::MCLTracker::Config::processNoiseTheta = 2.0</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Process noise for heading (degrees) </p>
 
-<p class="definition">Definition at line <a class="el" href="mcl_8h_source.html#l00012">12</a> of file <a class="el" href="mcl_8h_source.html">mcl.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mcl_8h_source.html#l00103">103</a> of file <a class="el" href="mcl_8h_source.html">mcl.h</a>.</p>
 
 </div>
 </div>
@@ -184,8 +194,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Process noise for X/Y position (inches) </p>
 
-<p class="definition">Definition at line <a class="el" href="mcl_8h_source.html#l00012">12</a> of file <a class="el" href="mcl_8h_source.html">mcl.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mcl_8h_source.html#l00102">102</a> of file <a class="el" href="mcl_8h_source.html">mcl.h</a>.</p>
 
 </div>
 </div>

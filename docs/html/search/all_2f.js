@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['💾_20major_20features_3a_20sd_20card_20data_20persistence_0',['💾 &lt;b&gt;Major Features: SD Card Data Persistence&lt;/b&gt;',['../index.html#autotoc_md72',1,'']]]
+  ['🐛_20known_20issues_20limitations_0',['&lt;b&gt;🐛 Known Issues &amp;amp; Limitations&lt;/b&gt;',['../index.html#autotoc_md124',1,'']]],
+  ['🐛_20troubleshooting_1',['🐛 Troubleshooting',['../index.html#autotoc_md66',1,'']]]
 ];

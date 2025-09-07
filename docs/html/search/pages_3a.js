@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['🤝_20contributing_20development_0',['&lt;b&gt;🤝 Contributing &amp;amp; Development&lt;/b&gt;',['../index.html#autotoc_md131',1,'']]]
+  ['🚀_0',['&lt;b&gt;v3.0.0 - Phase 1: Enhanced Control Systems&lt;/b&gt; 🚀',['../index.html#autotoc_md73',1,'']]],
+  ['🚀_20quick_20start_1',['🚀 Quick Start',['../index.html#autotoc_md18',1,'']]]
 ];

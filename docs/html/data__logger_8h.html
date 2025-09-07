@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -91,14 +92,16 @@ $(function(){initNavTree('data__logger_8h.html','',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">data_logger.h File Reference</div></div>
+  <div class="headertitle"><div class="title">data_logger.h File Reference<div class="ingroups"><a class="el" href="group__utilities.html">Utilities</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>SD card data logging and persistence system for LibStoga robotics framework.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
-<code>#include &lt;filesystem&gt;</code><br />
 <code>#include &lt;optional&gt;</code><br />
 <code>#include &quot;pros/rtos.hpp&quot;</code><br />
 <code>#include &quot;pros/misc.hpp&quot;</code><br />
@@ -119,10 +122,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:ls_3A_3ADataLogger" id="r_ls_3A_3ADataLogger"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1DataLogger.html">ls::DataLogger</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional SD card data persistence for tuning data and configurations All operations are completely optional and will gracefully fail if SD card is not available.  <a href="classls_1_1DataLogger.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comprehensive SD card data logging and persistence system.  <a href="classls_1_1DataLogger.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3ADataLogger_3A_3ATuningProfile" id="r_ls_3A_3ADataLogger_3A_3ATuningProfile"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1DataLogger_1_1TuningProfile.html">ls::DataLogger::TuningProfile</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> tuning profile with metadata.  <a href="structls_1_1DataLogger_1_1TuningProfile.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3ADataLogger_3A_3AAdaptiveData" id="r_ls_3A_3ADataLogger_3A_3AAdaptiveData"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1DataLogger_1_1AdaptiveData.html">ls::DataLogger::AdaptiveData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> performance data point.  <a href="structls_1_1DataLogger_1_1AdaptiveData.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3ADataLogger_3A_3AMatchData" id="r_ls_3A_3ADataLogger_3A_3AMatchData"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1DataLogger_1_1MatchData.html">ls::DataLogger::MatchData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Competition match data and events.  <a href="structls_1_1DataLogger_1_1MatchData.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -132,9 +138,33 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a5b74073cec31f2172bcaf1daebd8b54f" id="r_a5b74073cec31f2172bcaf1daebd8b54f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classls_1_1DataLogger.html">DataLogger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacels.html#a5b74073cec31f2172bcaf1daebd8b54f">ls::getDataLogger</a> ()</td></tr>
-<tr class="memdesc:a5b74073cec31f2172bcaf1daebd8b54f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global data logger instance (optional usage)  <br /></td></tr>
+<tr class="memdesc:a5b74073cec31f2172bcaf1daebd8b54f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get global data logger instance.  <br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>SD card data logging and persistence system for LibStoga robotics framework. </p>
+<p>This file provides a comprehensive data logging system that saves tuning data, match information, and system performance metrics to the robot's SD card. All operations are completely optional and gracefully fail if no SD card is available, making it safe to use in any environment.</p>
+<p>Key Features:</p><ul>
+<li>PID tuning profile persistence and loading</li>
+<li>Adaptive PID history tracking</li>
+<li>Match data logging with events and results</li>
+<li>CSV export for data analysis</li>
+<li>SD card usage monitoring</li>
+<li>Graceful degradation when SD card unavailable</li>
+<li>Thread-safe file operations</li>
+</ul>
+<p>Data Types Logged:</p><ul>
+<li><b>Tuning Profiles</b>: PID gains with timestamps and notes</li>
+<li><b>Adaptive Data</b>: Real-time PID adaptation with performance metrics</li>
+<li><b>Match Data</b>: Competition information, events, and results</li>
+<li><b>System Metrics</b>: Battery voltage, performance scores, surface conditions</li>
+</ul>
+<dl class="section author"><dt>Author</dt><dd>6121D (The Pioneers) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>3.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 6121D - All rights reserved </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

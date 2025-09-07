@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,7 +96,7 @@ $(function(){initNavTree('classls_1_1AbstractOdom.html','','classls_1_1AbstractO
 </div><!--header-->
 <div class="contents">
 
-<p>Represents all odometry classes in one abstract term.  
+<p>Abstract base class for all odometry implementations.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="odom_8h_source.html">odom.h</a>&gt;</code></p>
@@ -113,24 +114,38 @@ Collaboration diagram for ls::AbstractOdom:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afbaf7a69b102f5d5d5624e787599ea7c" id="r_afbaf7a69b102f5d5d5624e787599ea7c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbaf7a69b102f5d5d5624e787599ea7c">initialize</a> (std::initializer_list&lt; uint8_t &gt; ports)=0</td></tr>
-<tr class="memdesc:afbaf7a69b102f5d5d5624e787599ea7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize this <a class="el" href="classls_1_1AbstractOdom.html" title="Represents all odometry classes in one abstract term.">AbstractOdom</a> with a list of pins. Depending on the specific subclass, the meaning of this and the specific order of the pins may be different.  <br /></td></tr>
+<tr class="memdesc:afbaf7a69b102f5d5d5624e787599ea7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize odometry system with sensor ports.  <br /></td></tr>
 <tr class="memitem:a8a3c5cb591e7bb3e06b295f4e8a1a308" id="r_a8a3c5cb591e7bb3e06b295f4e8a1a308"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a3c5cb591e7bb3e06b295f4e8a1a308">compute</a> ()</td></tr>
-<tr class="memdesc:a8a3c5cb591e7bb3e06b295f4e8a1a308"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the new coordinations and angle of the robot since the program has started. Assumes that (0, 0) is where the robot starts at reboot. Also assumes that initial posture is 0 degrees (bearing)  <br /></td></tr>
+<tr class="memdesc:a8a3c5cb591e7bb3e06b295f4e8a1a308"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update robot position based on sensor readings.  <br /></td></tr>
 <tr class="memitem:a1698bac3831a45aa54e62b0f275ac3f0" id="r_a1698bac3831a45aa54e62b0f275ac3f0"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1698bac3831a45aa54e62b0f275ac3f0">getX</a> ()</td></tr>
+<tr class="memdesc:a1698bac3831a45aa54e62b0f275ac3f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current X coordinate.  <br /></td></tr>
 <tr class="memitem:ace7109b90015ca4177e3b0d21d802703" id="r_ace7109b90015ca4177e3b0d21d802703"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace7109b90015ca4177e3b0d21d802703">getY</a> ()</td></tr>
+<tr class="memdesc:ace7109b90015ca4177e3b0d21d802703"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current Y coordinate.  <br /></td></tr>
 <tr class="memitem:ab69a7a9685d6bcac67eb3e9be5500306" id="r_ab69a7a9685d6bcac67eb3e9be5500306"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab69a7a9685d6bcac67eb3e9be5500306">getAngle</a> ()</td></tr>
+<tr class="memdesc:ab69a7a9685d6bcac67eb3e9be5500306"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current heading angle.  <br /></td></tr>
 <tr class="memitem:a0ec29e2db261e4d533c97ae5d7300056" id="r_a0ec29e2db261e4d533c97ae5d7300056"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structls_1_1Position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ec29e2db261e4d533c97ae5d7300056">getPosition</a> ()</td></tr>
+<tr class="memdesc:a0ec29e2db261e4d533c97ae5d7300056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get complete current position.  <br /></td></tr>
 <tr class="memitem:a7e5ba67b2f39fc45ba5ade235413c93c" id="r_a7e5ba67b2f39fc45ba5ade235413c93c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e5ba67b2f39fc45ba5ade235413c93c">resetX</a> ()</td></tr>
+<tr class="memdesc:a7e5ba67b2f39fc45ba5ade235413c93c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset X coordinate to zero.  <br /></td></tr>
 <tr class="memitem:a3a7cb7d8eb09eb2d09b4abd7c48e5be1" id="r_a3a7cb7d8eb09eb2d09b4abd7c48e5be1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a7cb7d8eb09eb2d09b4abd7c48e5be1">resetY</a> ()</td></tr>
+<tr class="memdesc:a3a7cb7d8eb09eb2d09b4abd7c48e5be1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset Y coordinate to zero.  <br /></td></tr>
 <tr class="memitem:a057b49b88614e9e8644e79cc6baea9e1" id="r_a057b49b88614e9e8644e79cc6baea9e1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a057b49b88614e9e8644e79cc6baea9e1">resetAngle</a> ()</td></tr>
+<tr class="memdesc:a057b49b88614e9e8644e79cc6baea9e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset heading angle to zero.  <br /></td></tr>
 <tr class="memitem:a77030ad73418ad9431f57b67612f0abd" id="r_a77030ad73418ad9431f57b67612f0abd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77030ad73418ad9431f57b67612f0abd">resetAll</a> ()</td></tr>
+<tr class="memdesc:a77030ad73418ad9431f57b67612f0abd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset all position and heading to zero.  <br /></td></tr>
 <tr class="memitem:ace1dc7474e351e8a0e442979d1249c4e" id="r_ace1dc7474e351e8a0e442979d1249c4e"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace1dc7474e351e8a0e442979d1249c4e">getDeltaX</a> ()=0</td></tr>
+<tr class="memdesc:ace1dc7474e351e8a0e442979d1249c4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get X position change since last <a class="el" href="#a8a3c5cb591e7bb3e06b295f4e8a1a308" title="Update robot position based on sensor readings.">compute()</a> call.  <br /></td></tr>
 <tr class="memitem:a5bf4d2455aa30848c0e4919cba3f35a5" id="r_a5bf4d2455aa30848c0e4919cba3f35a5"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bf4d2455aa30848c0e4919cba3f35a5">getDeltaY</a> ()=0</td></tr>
+<tr class="memdesc:a5bf4d2455aa30848c0e4919cba3f35a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Y position change since last <a class="el" href="#a8a3c5cb591e7bb3e06b295f4e8a1a308" title="Update robot position based on sensor readings.">compute()</a> call.  <br /></td></tr>
 <tr class="memitem:a772aa46b4f12e12680f69a4dee79321f" id="r_a772aa46b4f12e12680f69a4dee79321f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classls_1_1Angle.html">Angle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a772aa46b4f12e12680f69a4dee79321f">getDeltaAngle</a> ()=0</td></tr>
+<tr class="memdesc:a772aa46b4f12e12680f69a4dee79321f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get heading change since last <a class="el" href="#a8a3c5cb591e7bb3e06b295f4e8a1a308" title="Update robot position based on sensor readings.">compute()</a> call.  <br /></td></tr>
+<tr class="memitem:a707df24ba8cd062a06d1322b9390a53d" id="r_a707df24ba8cd062a06d1322b9390a53d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a707df24ba8cd062a06d1322b9390a53d">~AbstractOdom</a> ()=default</td></tr>
+<tr class="memdesc:a707df24ba8cd062a06d1322b9390a53d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:acca103e51d3d77f7ff12645b8127f4e5" id="r_acca103e51d3d77f7ff12645b8127f4e5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acca103e51d3d77f7ff12645b8127f4e5">AbstractOdom</a> ()</td></tr>
+<tr class="memdesc:acca103e51d3d77f7ff12645b8127f4e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protected constructor for derived classes.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -138,10 +153,11 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:aaaecffa0e13234ac4e7176a808783541" id="r_aaaecffa0e13234ac4e7176a808783541"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structls_1_1Position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaaecffa0e13234ac4e7176a808783541">prev_pos</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents all odometry classes in one abstract term. </p>
-<p>must be used as a pure abstract class </p>
+<div class="textblock"><p>Abstract base class for all odometry implementations. </p>
+<p>Defines the common interface for all odometry systems in the framework. Concrete implementations must provide position tracking capabilities using different sensor configurations (wheels, IMU, etc.).</p>
+<p>This abstraction allows users to switch between different odometry implementations without changing their application code. </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00100">100</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00149">149</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="acca103e51d3d77f7ff12645b8127f4e5" name="acca103e51d3d77f7ff12645b8127f4e5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acca103e51d3d77f7ff12645b8127f4e5">&#9670;&#160;</a></span>AbstractOdom()</h2>
@@ -166,9 +182,38 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00103">103</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p>Protected constructor for derived classes. </p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00102">pos</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00157">157</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00151">pos</a>.</p>
+
+</div>
+</div>
+<a id="a707df24ba8cd062a06d1322b9390a53d" name="a707df24ba8cd062a06d1322b9390a53d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a707df24ba8cd062a06d1322b9390a53d">&#9670;&#160;</a></span>~AbstractOdom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual ls::AbstractOdom::~AbstractOdom </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Virtual destructor for proper cleanup. </p>
 
 </div>
 </div>
@@ -196,11 +241,11 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Computes the new coordinations and angle of the robot since the program has started. Assumes that (0, 0) is where the robot starts at reboot. Also assumes that initial posture is 0 degrees (bearing) </p>
-<p>Must give X, Y, and angle new values after this call is over.</p>
+<p>Update robot position based on sensor readings. </p>
+<p>Computes new position and heading based on sensor data since last update. This method should be called regularly (typically in a control loop) to maintain accurate position tracking.</p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::bad_function_call</td><td>if object has not been initialized properly. </td></tr>
+    <tr><td class="paramname">std::bad_function_call</td><td>if not properly initialized </td></tr>
   </table>
   </dd>
 </dl>
@@ -209,7 +254,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00010">10</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="#a772aa46b4f12e12680f69a4dee79321f">getDeltaAngle()</a>, <a class="el" href="#ace1dc7474e351e8a0e442979d1249c4e">getDeltaX()</a>, <a class="el" href="#a5bf4d2455aa30848c0e4919cba3f35a5">getDeltaY()</a>, and <a class="el" href="odom_8h_source.html#l00102">pos</a>.</p>
+<p class="reference">References <a class="el" href="#a772aa46b4f12e12680f69a4dee79321f">getDeltaAngle()</a>, <a class="el" href="#ace1dc7474e351e8a0e442979d1249c4e">getDeltaX()</a>, <a class="el" href="#a5bf4d2455aa30848c0e4919cba3f35a5">getDeltaY()</a>, and <a class="el" href="odom_8h_source.html#l00151">pos</a>.</p>
 
 </div>
 </div>
@@ -235,18 +280,19 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Gets the bearing angle of the robot since program started. Assumes 0 degrees is initial orientation when program starts.</p>
-<dl class="section return"><dt>Returns</dt><dd>the x-coordinate value </dd></dl>
+
+<p>Get current heading angle. </p>
+<dl class="section return"><dt>Returns</dt><dd>Heading angle in degrees (bearing system: 0° = North) </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::bad_function_call</td><td>if object is not initialized properly. </td></tr>
+    <tr><td class="paramname">std::bad_function_call</td><td>if not properly initialized </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00028">28</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00102">pos</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00151">pos</a>.</p>
 
 </div>
 </div>
@@ -272,12 +318,13 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Gets the change in angle since the previous call of this method. Does not call <a class="el" href="#a057b49b88614e9e8644e79cc6baea9e1">resetAngle()</a> or reset the angle in any way.</p>
-<p>Will return 0 on first call.</p>
-<dl class="section return"><dt>Returns</dt><dd>the delta in the angle </dd></dl>
+
+<p>Get heading change since last <a class="el" href="#a8a3c5cb591e7bb3e06b295f4e8a1a308" title="Update robot position based on sensor readings.">compute()</a> call. </p>
+<p>Returns the incremental change in heading without resetting. Returns 0 on first call.</p>
+<dl class="section return"><dt>Returns</dt><dd>Delta angle in degrees </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::bad_function_call</td><td>if object is not initialized properly. </td></tr>
+    <tr><td class="paramname">std::bad_function_call</td><td>if not properly initialized </td></tr>
   </table>
   </dd>
 </dl>
@@ -310,12 +357,13 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Gets the change in X since the previous call of this method. Does not call <a class="el" href="#a7e5ba67b2f39fc45ba5ade235413c93c">resetX()</a> or reset the coordinates in any way.</p>
-<p>Will return 0 on first call.</p>
-<dl class="section return"><dt>Returns</dt><dd>the delta in the x-coordinate value </dd></dl>
+
+<p>Get X position change since last <a class="el" href="#a8a3c5cb591e7bb3e06b295f4e8a1a308" title="Update robot position based on sensor readings.">compute()</a> call. </p>
+<p>Returns the incremental change in X position without resetting. Returns 0 on first call.</p>
+<dl class="section return"><dt>Returns</dt><dd>Delta X in inches </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::bad_function_call</td><td>if object is not initialized properly. </td></tr>
+    <tr><td class="paramname">std::bad_function_call</td><td>if not properly initialized </td></tr>
   </table>
   </dd>
 </dl>
@@ -348,12 +396,13 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Gets the change in Y since the previous call of this method. Does not call <a class="el" href="#a3a7cb7d8eb09eb2d09b4abd7c48e5be1">resetY()</a> or reset the coordinates in any way.</p>
-<p>Will return 0 on first call.</p>
-<dl class="section return"><dt>Returns</dt><dd>the delta in the y-coordinate value </dd></dl>
+
+<p>Get Y position change since last <a class="el" href="#a8a3c5cb591e7bb3e06b295f4e8a1a308" title="Update robot position based on sensor readings.">compute()</a> call. </p>
+<p>Returns the incremental change in Y position without resetting. Returns 0 on first call.</p>
+<dl class="section return"><dt>Returns</dt><dd>Delta Y in inches </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::bad_function_call</td><td>if object is not initialized properly. </td></tr>
+    <tr><td class="paramname">std::bad_function_call</td><td>if not properly initialized </td></tr>
   </table>
   </dd>
 </dl>
@@ -386,11 +435,13 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Gets the <a class="el" href="structls_1_1Position.html" title="A compact representation for x, y, and theta.">Position</a> of this odom object in terms of the <a class="el" href="structls_1_1Position.html" title="A compact representation for x, y, and theta.">Position</a> object. </p>
+
+<p>Get complete current position. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structls_1_1Position.html" title="Complete robot pose representation (position + orientation)">Position</a> structure with X, Y, and heading </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00033">33</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00102">pos</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00151">pos</a>.</p>
 
 </div>
 </div>
@@ -416,18 +467,19 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Gets the x-coordinate value of the robot since program started. Assumes (0, 0) is when the robot started.</p>
-<dl class="section return"><dt>Returns</dt><dd>the x-coordinate value </dd></dl>
+
+<p>Get current X coordinate. </p>
+<dl class="section return"><dt>Returns</dt><dd>X coordinate in inches from origin </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::bad_function_call</td><td>if object is not initialized properly. </td></tr>
+    <tr><td class="paramname">std::bad_function_call</td><td>if not properly initialized </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00018">18</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00102">pos</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00151">pos</a>.</p>
 
 </div>
 </div>
@@ -453,18 +505,19 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Gets the y-coordinate value of the robot since program started. Assumes (0, 0) is when the robot started.</p>
-<dl class="section return"><dt>Returns</dt><dd>the y-coordinate value </dd></dl>
+
+<p>Get current Y coordinate. </p>
+<dl class="section return"><dt>Returns</dt><dd>Y coordinate in inches from origin </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::bad_function_call</td><td>if object is not initialized properly. </td></tr>
+    <tr><td class="paramname">std::bad_function_call</td><td>if not properly initialized </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00023">23</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00102">pos</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00151">pos</a>.</p>
 
 </div>
 </div>
@@ -491,12 +544,15 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Initialize this <a class="el" href="classls_1_1AbstractOdom.html" title="Represents all odometry classes in one abstract term.">AbstractOdom</a> with a list of pins. Depending on the specific subclass, the meaning of this and the specific order of the pins may be different. </p>
-<p>Ex. The 3 Wheel Odom class can have an instance where the 1st one is center, 2nd is right, 3rd is left But for 2 Wheel Odom + IMU, it might have an instance where 1st one is IMU, 2nd is perpendicular, 3rd is parralel.</p>
-<p>If items on ports have to be reversed, it can be given as a negative number</p>
+<p>Initialize odometry system with sensor ports. </p>
+<p>Sets up the odometry system with the specified sensor ports. The exact meaning and order of ports depends on the concrete implementation:</p><ul>
+<li><a class="el" href="classls_1_1ThreeWheelOdom.html" title="Three-wheel odometry implementation.">ThreeWheelOdom</a>: right, left, back tracking wheel ports</li>
+<li><a class="el" href="classls_1_1ImuOdom.html" title="IMU-enhanced two-wheel odometry implementation.">ImuOdom</a>: horizontal, vertical tracking wheel ports, IMU port</li>
+</ul>
+<p>Negative port numbers indicate reversed sensor mounting.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ports</td><td>the ports that this Odom object uses </td></tr>
+    <tr><td class="paramname">ports</td><td>List of sensor ports to initialize </td></tr>
   </table>
   </dd>
 </dl>
@@ -527,7 +583,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Reset the positioning and angles of the robot. makes the current position (0, 0) and the current angle = 0; </p>
+
+<p>Reset all position and heading to zero. </p>
+<p>Resets robot to origin (0, 0) with 0° heading. </p>
 
 <p>Reimplemented in <a class="el" href="classls_1_1ImuOdom.html#a0627d9fa1646703ba510e2e7b4e68dc1">ls::ImuOdom</a>.</p>
 
@@ -561,11 +619,13 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Reset the angle of the robot. Make the current angle = 0 </p>
+
+<p>Reset heading angle to zero. </p>
+<p>Sets current heading to 0°, maintaining X and Y position. </p>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00048">48</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00102">pos</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00151">pos</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00053">resetAll()</a>.</p>
 
@@ -593,11 +653,13 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Reset the X coordinate of the robot. Make the current position X = 0 </p>
+
+<p>Reset X coordinate to zero. </p>
+<p>Sets current X position to 0, maintaining Y and heading. </p>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00038">38</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00102">pos</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00151">pos</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00053">resetAll()</a>.</p>
 
@@ -625,11 +687,13 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Reset the Y coordinate of the robot. Make the current position Y = 0 </p>
+
+<p>Reset Y coordinate to zero. </p>
+<p>Sets current Y position to 0, maintaining X and heading. </p>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00043">43</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00102">pos</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00151">pos</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00053">resetAll()</a>.</p>
 
@@ -655,10 +719,11 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Current robot position and heading </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00102">102</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00151">151</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="odom_8h_source.html#l00103">AbstractOdom()</a>, <a class="el" href="odom_8cpp_source.html#l00010">compute()</a>, <a class="el" href="odom_8cpp_source.html#l00273">ls::ImuOdom::compute()</a>, <a class="el" href="odom_8cpp_source.html#l00175">ls::ThreeWheelOdom::compute()</a>, <a class="el" href="odom_8cpp_source.html#l00028">getAngle()</a>, <a class="el" href="odom_8cpp_source.html#l00033">getPosition()</a>, <a class="el" href="odom_8cpp_source.html#l00018">getX()</a>, <a class="el" href="odom_8cpp_source.html#l00023">getY()</a>, <a class="el" href="odom_8cpp_source.html#l00048">resetAngle()</a>, <a class="el" href="odom_8cpp_source.html#l00038">resetX()</a>, <a class="el" href="odom_8cpp_source.html#l00043">resetY()</a>, and <a class="el" href="mcl_8cpp_source.html#l00048">ls::MCLTracker::updateEstimate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="odom_8h_source.html#l00157">AbstractOdom()</a>, <a class="el" href="odom_8cpp_source.html#l00010">compute()</a>, <a class="el" href="odom_8cpp_source.html#l00273">ls::ImuOdom::compute()</a>, <a class="el" href="odom_8cpp_source.html#l00175">ls::ThreeWheelOdom::compute()</a>, <a class="el" href="odom_8cpp_source.html#l00028">getAngle()</a>, <a class="el" href="odom_8cpp_source.html#l00033">getPosition()</a>, <a class="el" href="odom_8cpp_source.html#l00018">getX()</a>, <a class="el" href="odom_8cpp_source.html#l00023">getY()</a>, <a class="el" href="odom_8cpp_source.html#l00048">resetAngle()</a>, <a class="el" href="odom_8cpp_source.html#l00038">resetX()</a>, <a class="el" href="odom_8cpp_source.html#l00043">resetY()</a>, and <a class="el" href="mcl_8cpp_source.html#l00048">ls::MCLTracker::updateEstimate()</a>.</p>
 
 </div>
 </div>
@@ -681,8 +746,9 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Previous position for delta calculations </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00206">206</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00152">152</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 </div>
 </div>

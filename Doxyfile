@@ -147,8 +147,17 @@ HTML_FILE_EXTENSION    = .html
 HTML_HEADER            =
 HTML_FOOTER            =
 HTML_STYLESHEET        =
-HTML_EXTRA_STYLESHEET  = docs/custom_theme.css
-HTML_EXTRA_FILES       =
+HTML_EXTRA_STYLESHEET  = doxygen-awesome-css/doxygen-awesome.css \
+                         doxygen-awesome-css/doxygen-awesome-sidebar-only.css
+HTML_EXTRA_FILES       = doxygen-awesome-css/doxygen-awesome.css \
+                         doxygen-awesome-css/doxygen-awesome-sidebar-only.css \
+                         doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
+                         doxygen-awesome-css/doxygen-awesome-fragment-copy-button.js \
+                         doxygen-awesome-css/doxygen-awesome-interactive-toc.js \
+                         doxygen-awesome-css/doxygen-awesome-paragraph-link.js \
+                         doxygen-awesome-css/doxygen-awesome-sidebar-only-darkmode-toggle.css \
+                         doxygen-awesome-css/doxygen-awesome-tabs.js \
+                         favicon.png
 HTML_COLORSTYLE        = LIGHT
 HTML_COLORSTYLE_HUE    = 220
 HTML_COLORSTYLE_SAT    = 100
@@ -178,6 +187,7 @@ GENERATE_ECLIPSEHELP   = NO
 ECLIPSE_DOC_ID         = org.doxygen.libstoga
 DISABLE_INDEX          = NO
 GENERATE_TREEVIEW      = YES
+FULL_SIDEBAR           = NO
 ENUM_VALUES_PER_LINE   = 4
 TREEVIEW_WIDTH         = 250
 EXT_LINKS_IN_WINDOW    = NO
@@ -314,7 +324,7 @@ GRAPHICAL_HIERARCHY    = YES
 DIRECTORY_GRAPH        = YES
 DOT_IMAGE_FORMAT       = png
 INTERACTIVE_SVG        = NO
-DOT_PATH               =
+DOT_PATH               = "C:\Program Files\Graphviz\bin"
 DOTFILE_DIRS           =
 MSCFILE_DIRS           =
 DIAFILE_DIRS           =
@@ -325,4 +335,4 @@ MAX_DOT_GRAPH_DEPTH    = 0
 DOT_TRANSPARENT        = NO
 DOT_MULTI_TARGETS      = NO
 GENERATE_LEGEND        = YES
-DOT_CLEANUP            = YES
+DOT_CLEANUP            = NO

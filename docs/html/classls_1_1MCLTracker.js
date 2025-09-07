@@ -8,7 +8,7 @@ var classls_1_1MCLTracker =
     [ "getDeltaY", "classls_1_1MCLTracker.html#aad5f597ea33306e52421188cb45f8f30", null ],
     [ "initialize", "classls_1_1MCLTracker.html#aaabdef1241f9512ae9a7edfdd43591a6", null ],
     [ "initParticles", "classls_1_1MCLTracker.html#a4d97347441fdd2d90b2a23d6a838aadc", null ],
-    [ "injectMeasurement", "classls_1_1MCLTracker.html#adeaca1c6d6b9259e4d3a9a6d2e882a14", null ],
+    [ "injectMeasurement", "classls_1_1MCLTracker.html#a35d51aa34a654df76e5b6237e39244e0", null ],
     [ "motionUpdate", "classls_1_1MCLTracker.html#a42c904b2523db94e113889994138d129", null ],
     [ "normalize", "classls_1_1MCLTracker.html#a29c43f239fd638951fef4dbe6cea459d", null ],
     [ "resample", "classls_1_1MCLTracker.html#a9fdb0e7006a09c78f2c04bacc708f70b", null ],

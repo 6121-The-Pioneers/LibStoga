@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,6 +96,9 @@ $(function(){initNavTree('classls_1_1AbstractPID.html','','classls_1_1AbstractPI
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract base class for <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controllers.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="pid_8h_source.html">pid.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ls::AbstractPID:</div>
@@ -105,16 +109,51 @@ Inheritance diagram for ls::AbstractPID:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa67cf3b86790fd249196eb3396c080b3" id="r_aa67cf3b86790fd249196eb3396c080b3"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa67cf3b86790fd249196eb3396c080b3">update</a> (const double error)=0</td></tr>
+<tr class="memdesc:aa67cf3b86790fd249196eb3396c080b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> output for given error.  <br /></td></tr>
 <tr class="memitem:af52b64bea96bbd54aa41c26d07a36792" id="r_af52b64bea96bbd54aa41c26d07a36792"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af52b64bea96bbd54aa41c26d07a36792">reset</a> ()=0</td></tr>
+<tr class="memdesc:af52b64bea96bbd54aa41c26d07a36792"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller state.  <br /></td></tr>
 <tr class="memitem:a6f08958633f1524239ce08f6119859e2" id="r_a6f08958633f1524239ce08f6119859e2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f08958633f1524239ce08f6119859e2">setGains</a> (const <a class="el" href="structls_1_1PIDGains.html">PIDGains</a> &amp;gains)=0</td></tr>
-<tr class="memdesc:a6f08958633f1524239ce08f6119859e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set new <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> gains.  <br /></td></tr>
+<tr class="memdesc:a6f08958633f1524239ce08f6119859e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set new <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gain parameters.  <br /></td></tr>
 <tr class="memitem:a649f9cbd7144a8a7cf79979b9f58a7e3" id="r_a649f9cbd7144a8a7cf79979b9f58a7e3"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structls_1_1PIDGains.html">PIDGains</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a649f9cbd7144a8a7cf79979b9f58a7e3">getGains</a> () const =0</td></tr>
-<tr class="memdesc:a649f9cbd7144a8a7cf79979b9f58a7e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> gains.  <br /></td></tr>
+<tr class="memdesc:a649f9cbd7144a8a7cf79979b9f58a7e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gain parameters.  <br /></td></tr>
+<tr class="memitem:af4549c7b1355fef5fe5e9312a0c51179" id="r_af4549c7b1355fef5fe5e9312a0c51179"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4549c7b1355fef5fe5e9312a0c51179">~AbstractPID</a> ()=default</td></tr>
+<tr class="memdesc:af4549c7b1355fef5fe5e9312a0c51179"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="pid_8h_source.html#l00022">22</a> of file <a class="el" href="pid_8h_source.html">pid.h</a>.</p>
-</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><p>Abstract base class for <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controllers. </p>
+<p>Defines the interface for all <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller implementations in the framework. This abstraction allows for different <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> variants (standard, adaptive, fuzzy, etc.) while maintaining a consistent API for users.</p>
+<p>All concrete <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> implementations must inherit from this class and provide implementations for the pure virtual methods. </p>
+
+<p class="definition">Definition at line <a class="el" href="pid_8h_source.html#l00049">49</a> of file <a class="el" href="pid_8h_source.html">pid.h</a>.</p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="af4549c7b1355fef5fe5e9312a0c51179" name="af4549c7b1355fef5fe5e9312a0c51179"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4549c7b1355fef5fe5e9312a0c51179">&#9670;&#160;</a></span>~AbstractPID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual ls::AbstractPID::~AbstractPID </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Virtual destructor for proper cleanup. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a649f9cbd7144a8a7cf79979b9f58a7e3" name="a649f9cbd7144a8a7cf79979b9f58a7e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a649f9cbd7144a8a7cf79979b9f58a7e3">&#9670;&#160;</a></span>getGains()</h2>
 
@@ -138,10 +177,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get current <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> gains. </p>
-<dl class="section return"><dt>Returns</dt><dd>The current <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> gains. </dd></dl>
+<p>Get current <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gain parameters. </p>
+<p>Returns the currently active gain parameters. Useful for debugging, logging, or saving controller configurations.</p>
+<dl class="section return"><dt>Returns</dt><dd>Current <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gain parameters </dd></dl>
 
-<p>Implemented in <a class="el" href="classls_1_1PID.html#a968d64700d83620283c6499585e05369">ls::PID</a>.</p>
+<p>Implemented in <a class="el" href="classls_1_1PID.html#a968d64700d83620283c6499585e05369">ls::PID</a>, and <a class="el" href="classls_1_1SmartPID.html#a213d4d90f6e7416232d40c38d9a8cc1d">ls::SmartPID</a>.</p>
 
 </div>
 </div>
@@ -167,6 +207,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Reset <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller state. </p>
+<p>Resets all internal state variables (integral accumulator, previous error, timing information) to initial values. This should be called when starting a new control sequence or when the system state changes significantly. </p>
 
 <p>Implemented in <a class="el" href="classls_1_1PID.html#a29b583334653cb49e4ac9a8a1c1a040a">ls::PID</a>, and <a class="el" href="classls_1_1SmartPID.html#a1a45fb9b3a35263f5b3b1f0f5c2fae2f">ls::SmartPID</a>.</p>
 
@@ -195,15 +238,16 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Set new <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> gains. </p>
+<p>Set new <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gain parameters. </p>
+<p>Updates the <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller with new gain values. This allows dynamic tuning of the controller during operation or loading of preset configurations.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gains</td><td>The new gains to use. </td></tr>
+    <tr><td class="paramname">gains</td><td>New <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gain parameters </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classls_1_1PID.html#a8966f203079612a325b2a6a1a6b6b992">ls::PID</a>.</p>
+<p>Implemented in <a class="el" href="classls_1_1PID.html#a8966f203079612a325b2a6a1a6b6b992">ls::PID</a>, and <a class="el" href="classls_1_1SmartPID.html#a8a17cde596ae76868c496d28cf64172c">ls::SmartPID</a>.</p>
 
 </div>
 </div>
@@ -229,6 +273,16 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Calculate <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> output for given error. </p>
+<p>This is the core method that computes the control output based on the current error from the target. The implementation should handle all <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> calculations including proportional, integral, and derivative terms.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>Current error value (target - current) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Control output value for actuators </dd></dl>
 
 <p>Implemented in <a class="el" href="classls_1_1PID.html#abf3ab1667b8296627a7c19efa3e401f7">ls::PID</a>, and <a class="el" href="classls_1_1SmartPID.html#aab80e0272d400340434820444737ff87">ls::SmartPID</a>.</p>
 

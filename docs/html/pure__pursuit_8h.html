@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -91,9 +92,12 @@ $(function(){initNavTree('pure__pursuit_8h.html','',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">pure_pursuit.h File Reference</div></div>
+  <div class="headertitle"><div class="title">pure_pursuit.h File Reference<div class="ingroups"><a class="el" href="group__motion.html">Motion Control</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Pure Pursuit path following algorithm for autonomous navigation.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="geometry_8h_source.html">geometry.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="odom_8h_source.html">odom.h</a>&quot;</code><br />
 <code>#include &lt;optional&gt;</code><br />
@@ -113,14 +117,38 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:ls_3A_3APursuitOutput" id="r_ls_3A_3APursuitOutput"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1PursuitOutput.html">ls::PursuitOutput</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output structure for Pure Pursuit calculations.  <a href="structls_1_1PursuitOutput.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3APurePursuit" id="r_ls_3A_3APurePursuit"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1PurePursuit.html">ls::PurePursuit</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure Pursuit path following controller.  <a href="classls_1_1PurePursuit.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:ls" id="r_ls"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacels.html">ls</a></td></tr>
 <tr class="memdesc:namespacels"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all source code for abstract classes or composed ones Basically code that powers abstraction. <br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Pure Pursuit path following algorithm for autonomous navigation. </p>
+<p>This file implements the Pure Pursuit algorithm, a geometric path tracking method commonly used in autonomous robotics. The algorithm calculates the required curvature to follow a predefined path by finding a "lookahead point" ahead of the robot and steering towards it.</p>
+<p>Key Features:</p><ul>
+<li>Smooth path following with configurable lookahead distance</li>
+<li>Real-time curvature calculation based on robot pose</li>
+<li>Adaptive lookahead point selection</li>
+<li>Integration with odometry systems for position feedback</li>
+<li>Completion detection when reaching path end</li>
+</ul>
+<p>Algorithm Overview:</p><ol type="1">
+<li>Find the point on the path that is exactly "lookahead distance" ahead</li>
+<li>Calculate the curvature needed to reach that point</li>
+<li>Apply proportional control to minimize cross-track error</li>
+<li>Update robot control outputs (linear and angular velocity)</li>
+</ol>
+<dl class="section author"><dt>Author</dt><dd>6121D (The Pioneers) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>3.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 6121D - All rights reserved </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="pure__pursuit_8h_source.html">pure_pursuit.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

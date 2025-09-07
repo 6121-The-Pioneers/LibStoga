@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,6 +96,9 @@ $(function(){initNavTree('structls_1_1ChassisControllerConfig.html','','structls
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="classls_1_1Chassis.html" title="Main chassis control class for robot movement.">Chassis</a> controller configuration.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="config_8h_source.html">config.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for ls::ChassisControllerConfig:</div>
@@ -111,8 +115,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a176b184c161fbe4ed4ba6d1d2a612b48" id="r_a176b184c161fbe4ed4ba6d1d2a612b48"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a176b184c161fbe4ed4ba6d1d2a612b48">enableAdaptivePID</a> {false}</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00035">35</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<div class="textblock"><p><a class="el" href="classls_1_1Chassis.html" title="Main chassis control class for robot movement.">Chassis</a> controller configuration. </p>
+<p>Comprehensive configuration for chassis control systems including <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains, movement tolerances, and advanced features. </p>
+
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00087">87</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="a4ae3cd06b79419a19686c9cac5296534" name="a4ae3cd06b79419a19686c9cac5296534"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4ae3cd06b79419a19686c9cac5296534">&#9670;&#160;</a></span>driveGains</h2>
@@ -125,8 +131,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p><a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains for forward/backward motion </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00036">36</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00088">88</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -141,8 +148,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Enable adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> that adjusts to conditions </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00040">40</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00092">92</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -157,8 +165,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Movement completion thresholds </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00038">38</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00090">90</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -173,8 +182,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p><a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains for turning motion </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00037">37</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00089">89</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>
@@ -189,8 +199,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Multiplier for turn input sensitivity </p>
 
-<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00039">39</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8h_source.html#l00091">91</a> of file <a class="el" href="config_8h_source.html">config.h</a>.</p>
 
 </div>
 </div>

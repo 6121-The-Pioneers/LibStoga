@@ -19,3 +19,11 @@ temp.errors
 # Visual Studio:
 CppProperties.json
 .vs/
+
+# Generated Documentation
+docs/html/
+docs/latex/
+docs/rtf/
+docs/xml/
+docs/man/
+docs/docbook/

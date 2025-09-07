@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -101,67 +102,90 @@ $(function(){initNavTree('namespacels.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:AbstractOdom" id="r_AbstractOdom"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractOdom.html">AbstractOdom</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents all odometry classes in one abstract term.  <a href="classls_1_1AbstractOdom.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract base class for all odometry implementations.  <a href="classls_1_1AbstractOdom.html#details">More...</a><br /></td></tr>
 <tr class="memitem:AbstractPID" id="r_AbstractPID"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractPID.html">AbstractPID</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract base class for <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controllers.  <a href="classls_1_1AbstractPID.html#details">More...</a><br /></td></tr>
 <tr class="memitem:AdaptivePIDController" id="r_AdaptivePIDController"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AdaptivePIDController.html">AdaptivePIDController</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller with real-time gain adjustment.  <a href="classls_1_1AdaptivePIDController.html#details">More...</a><br /></td></tr>
 <tr class="memitem:Angle" id="r_Angle"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1Angle.html">Angle</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class to represent and manipulate angles.  <a href="classls_1_1Angle.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class to represent and manipulate angles in robotics applications.  <a href="classls_1_1Angle.html#details">More...</a><br /></td></tr>
 <tr class="memitem:Chassis" id="r_Chassis"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1Chassis.html">Chassis</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the chassis of the robot. Only supports tank drive configuration (TODO)  <a href="classls_1_1Chassis.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main chassis control class for robot movement.  <a href="classls_1_1Chassis.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ChassisBuilder" id="r_ChassisBuilder"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1ChassisBuilder.html">ChassisBuilder</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Builder pattern for chassis configuration and construction.  <a href="classls_1_1ChassisBuilder.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ChassisConfig" id="r_ChassisConfig"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1ChassisConfig.html">ChassisConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration structure for <a class="el" href="classls_1_1Chassis.html" title="Main chassis control class for robot movement.">Chassis</a> behavior.  <a href="structls_1_1ChassisConfig.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ChassisControllerConfig" id="r_ChassisControllerConfig"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1ChassisControllerConfig.html">ChassisControllerConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classls_1_1Chassis.html" title="Main chassis control class for robot movement.">Chassis</a> controller configuration.  <a href="structls_1_1ChassisControllerConfig.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ChassisTolerances" id="r_ChassisTolerances"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1ChassisTolerances.html">ChassisTolerances</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Movement completion thresholds and timing parameters.  <a href="structls_1_1ChassisTolerances.html#details">More...</a><br /></td></tr>
 <tr class="memitem:DataLogger" id="r_DataLogger"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1DataLogger.html">DataLogger</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional SD card data persistence for tuning data and configurations All operations are completely optional and will gracefully fail if SD card is not available.  <a href="classls_1_1DataLogger.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comprehensive SD card data logging and persistence system.  <a href="classls_1_1DataLogger.html#details">More...</a><br /></td></tr>
 <tr class="memitem:DriverControl" id="r_DriverControl"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1DriverControl.html">DriverControl</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enhanced driver control with configurable curves and drive types.  <a href="classls_1_1DriverControl.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enhanced driver control system with multiple drive modes.  <a href="classls_1_1DriverControl.html#details">More...</a><br /></td></tr>
 <tr class="memitem:DrivetrainConfig" id="r_DrivetrainConfig"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1DrivetrainConfig.html">DrivetrainConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drivetrain mechanical and electrical configuration.  <a href="structls_1_1DrivetrainConfig.html#details">More...</a><br /></td></tr>
 <tr class="memitem:EnhancedChassis" id="r_EnhancedChassis"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1EnhancedChassis.html">EnhancedChassis</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enhanced chassis with LemLib-style movement parameters.  <a href="classls_1_1EnhancedChassis.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enhanced chassis control interface with advanced movement capabilities.  <a href="classls_1_1EnhancedChassis.html#details">More...</a><br /></td></tr>
 <tr class="memitem:FollowPathParams" id="r_FollowPathParams"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1FollowPathParams.html">FollowPathParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for path following movements.  <a href="structls_1_1FollowPathParams.html#details">More...</a><br /></td></tr>
 <tr class="memitem:imu_5Fodom_5Fparameters_5Ft" id="r_imu_5Fodom_5Fparameters_5Ft"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1imu__odom__parameters__t.html">imu_odom_parameters_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parameters for the <a class="el" href="classls_1_1ImuOdom.html" title="Represents all the calculations for 2 wheel and IMU odometry.">ImuOdom</a>.  <a href="structls_1_1imu__odom__parameters__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration parameters for IMU-based odometry.  <a href="structls_1_1imu__odom__parameters__t.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ImuOdom" id="r_ImuOdom"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1ImuOdom.html">ImuOdom</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents all the calculations for 2 wheel and IMU odometry.  <a href="classls_1_1ImuOdom.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IMU-enhanced two-wheel odometry implementation.  <a href="classls_1_1ImuOdom.html#details">More...</a><br /></td></tr>
 <tr class="memitem:JoystickCurve" id="r_JoystickCurve"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1JoystickCurve.html">JoystickCurve</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joystick curve utilities for enhanced driver control.  <a href="classls_1_1JoystickCurve.html#details">More...</a><br /></td></tr>
 <tr class="memitem:MCLTracker" id="r_MCLTracker"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1MCLTracker.html">MCLTracker</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Monte Carlo Localization tracker using particle filtering.  <a href="classls_1_1MCLTracker.html#details">More...</a><br /></td></tr>
 <tr class="memitem:MoveToPointParams" id="r_MoveToPointParams"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1MoveToPointParams.html">MoveToPointParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for point-to-point movement.  <a href="structls_1_1MoveToPointParams.html#details">More...</a><br /></td></tr>
 <tr class="memitem:MoveToPoseParams" id="r_MoveToPoseParams"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1MoveToPoseParams.html">MoveToPoseParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for pose (position + heading) movement.  <a href="structls_1_1MoveToPoseParams.html#details">More...</a><br /></td></tr>
 <tr class="memitem:OdomConfig" id="r_OdomConfig"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1OdomConfig.html">OdomConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odometry system configuration.  <a href="structls_1_1OdomConfig.html#details">More...</a><br /></td></tr>
 <tr class="memitem:Particle" id="r_Particle"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1Particle.html">Particle</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Individual particle representing a possible robot pose.  <a href="structls_1_1Particle.html#details">More...</a><br /></td></tr>
 <tr class="memitem:PID" id="r_PID"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1PID.html">PID</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> object, calculates <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> outputs given an error.  <a href="classls_1_1PID.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller implementation.  <a href="classls_1_1PID.html#details">More...</a><br /></td></tr>
 <tr class="memitem:PIDGains" id="r_PIDGains"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1PIDGains.html">PIDGains</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A struct to hold <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> gains.  <a href="structls_1_1PIDGains.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Complete <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller gain configuration.  <a href="structls_1_1PIDGains.html#details">More...</a><br /></td></tr>
 <tr class="memitem:Point" id="r_Point"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1Point.html">Point</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D point representation in Cartesian coordinates  <a href="structls_1_1Point.html#details">More...</a><br /></td></tr>
 <tr class="memitem:Pose" id="r_Pose"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1Pose.html">Pose</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">2D pose representation with position and orientation  <a href="structls_1_1Pose.html#details">More...</a><br /></td></tr>
 <tr class="memitem:Position" id="r_Position"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1Position.html">Position</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A compact representation for x, y, and theta.  <a href="structls_1_1Position.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Complete robot pose representation (position + orientation)  <a href="structls_1_1Position.html#details">More...</a><br /></td></tr>
 <tr class="memitem:PurePursuit" id="r_PurePursuit"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1PurePursuit.html">PurePursuit</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure Pursuit path following controller.  <a href="classls_1_1PurePursuit.html#details">More...</a><br /></td></tr>
 <tr class="memitem:PursuitOutput" id="r_PursuitOutput"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1PursuitOutput.html">PursuitOutput</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output structure for Pure Pursuit calculations.  <a href="structls_1_1PursuitOutput.html#details">More...</a><br /></td></tr>
 <tr class="memitem:smart_5Fpid_5Fparameters_5Ft" id="r_smart_5Fpid_5Fparameters_5Ft"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1smart__pid__parameters__t.html">smart_pid_parameters_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains all parameters of the <a class="el" href="classls_1_1SmartPID.html" title="The Smart PID class... an extension of the PID class that uses the Smart PID Algorithm....">SmartPID</a> class.  <a href="structls_1_1smart__pid__parameters__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration parameters for Smart <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller.  <a href="structls_1_1smart__pid__parameters__t.html#details">More...</a><br /></td></tr>
 <tr class="memitem:SmartPID" id="r_SmartPID"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1SmartPID.html">SmartPID</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Smart <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> class... an extension of the <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> class that uses the Smart <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> Algorithm. More about SPID can be looked up in the LibStoga documentation.  <a href="classls_1_1SmartPID.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Smart <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller with adaptive learning capabilities.  <a href="classls_1_1SmartPID.html#details">More...</a><br /></td></tr>
 <tr class="memitem:SwingToHeadingParams" id="r_SwingToHeadingParams"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1SwingToHeadingParams.html">SwingToHeadingParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for swing turn movements.  <a href="structls_1_1SwingToHeadingParams.html#details">More...</a><br /></td></tr>
 <tr class="memitem:SwingToPointParams" id="r_SwingToPointParams"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1SwingToPointParams.html">SwingToPointParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for swing turns to face a point.  <a href="structls_1_1SwingToPointParams.html#details">More...</a><br /></td></tr>
 <tr class="memitem:SystemHealthMonitor" id="r_SystemHealthMonitor"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1SystemHealthMonitor.html">SystemHealthMonitor</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">System health monitoring for detecting various robot issues.  <a href="classls_1_1SystemHealthMonitor.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comprehensive system health monitoring and diagnostics.  <a href="classls_1_1SystemHealthMonitor.html#details">More...</a><br /></td></tr>
 <tr class="memitem:threewheel_5Fodom_5Fparameters_5Ft" id="r_threewheel_5Fodom_5Fparameters_5Ft"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1threewheel__odom__parameters__t.html">threewheel_odom_parameters_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parameters for the <a class="el" href="classls_1_1ThreeWheelOdom.html" title="Represents all the calculations for 3 wheel odom.">ThreeWheelOdom</a>.  <a href="structls_1_1threewheel__odom__parameters__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration parameters for three-wheel odometry.  <a href="structls_1_1threewheel__odom__parameters__t.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ThreeWheelOdom" id="r_ThreeWheelOdom"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1ThreeWheelOdom.html">ThreeWheelOdom</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents all the calculations for 3 wheel odom.  <a href="classls_1_1ThreeWheelOdom.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Three-wheel odometry implementation.  <a href="classls_1_1ThreeWheelOdom.html#details">More...</a><br /></td></tr>
 <tr class="memitem:Timer" id="r_Timer"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1Timer.html">Timer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">High-precision timer with pause/resume functionality.  <a href="classls_1_1Timer.html#details">More...</a><br /></td></tr>
 <tr class="memitem:tracking_5Frotation_5Fparameters_5Ft" id="r_tracking_5Frotation_5Fparameters_5Ft"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1tracking__rotation__parameters__t.html">tracking_rotation_parameters_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parameters for rotational tracking wheels.  <a href="structls_1_1tracking__rotation__parameters__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration parameters for tracking wheel sensors.  <a href="structls_1_1tracking__rotation__parameters__t.html#details">More...</a><br /></td></tr>
 <tr class="memitem:TrackingWheel" id="r_TrackingWheel"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1TrackingWheel.html">TrackingWheel</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tracking wheel sensor wrapper for odometry calculations.  <a href="classls_1_1TrackingWheel.html#details">More...</a><br /></td></tr>
 <tr class="memitem:TurnToHeadingParams" id="r_TurnToHeadingParams"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1TurnToHeadingParams.html">TurnToHeadingParams</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameters for heading rotation movements.  <a href="structls_1_1TurnToHeadingParams.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:aa1de31b8406d8adab166931d8094c66f" id="r_aa1de31b8406d8adab166931d8094c66f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1de31b8406d8adab166931d8094c66f">Path</a> = std::vector&lt;<a class="el" href="structls_1_1Point.html">Point</a>&gt;</td></tr>
+<tr class="memdesc:aa1de31b8406d8adab166931d8094c66f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias for a sequence of waypoints.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -169,39 +193,52 @@ Enumerations</h2></td></tr>
 , <a class="el" href="#a7cae1edaf7351248ff1e759fab0f0b83abf6cd64d3637f0de292538e9bd740550">CW_CLOCKWISE</a>
 , <a class="el" href="#a7cae1edaf7351248ff1e759fab0f0b83abe1548e6f19334b7b4c860c2b98375dd">CCW_COUNTERCLOCKWISE</a>
  }</td></tr>
-<tr class="memdesc:a7cae1edaf7351248ff1e759fab0f0b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Movement parameter structures inspired by LemLib for enhanced control.  <a href="#a7cae1edaf7351248ff1e759fab0f0b83">More...</a><br /></td></tr>
+<tr class="memdesc:a7cae1edaf7351248ff1e759fab0f0b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Angular rotation direction options.  <a href="#a7cae1edaf7351248ff1e759fab0f0b83">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:acdb854359013b08634bb230f979efdaa" id="r_acdb854359013b08634bb230f979efdaa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdb854359013b08634bb230f979efdaa">autoTune</a> (std::shared_ptr&lt; <a class="el" href="classls_1_1Chassis.html">Chassis</a> &gt; chassis)</td></tr>
-<tr class="memdesc:acdb854359013b08634bb230f979efdaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatically tunes the <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> controllers for the chassis by running a star pattern.  <br /></td></tr>
+<tr class="memdesc:acdb854359013b08634bb230f979efdaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatically tune <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controllers using star pattern test.  <br /></td></tr>
 <tr class="memitem:af58b00654b06f891b24bf5eba80f542d" id="r_af58b00654b06f891b24bf5eba80f542d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af58b00654b06f891b24bf5eba80f542d">updateAdaptivePID</a> ()</td></tr>
-<tr class="memdesc:af58b00654b06f891b24bf5eba80f542d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the adaptive <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> controllers during operation. Call this periodically (e.g., every 50-100ms) during autonomous or driver control.  <br /></td></tr>
+<tr class="memdesc:af58b00654b06f891b24bf5eba80f542d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update all adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controllers.  <br /></td></tr>
 <tr class="memitem:a9037f0c5921fa4527cdeba969c993bde" id="r_a9037f0c5921fa4527cdeba969c993bde"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9037f0c5921fa4527cdeba969c993bde">recordMovementPerformance</a> (double lateral_error, double lateral_settling_time, double angular_error, double angular_settling_time)</td></tr>
-<tr class="memdesc:a9037f0c5921fa4527cdeba969c993bde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Records movement performance data for adaptive learning.  <br /></td></tr>
+<tr class="memdesc:a9037f0c5921fa4527cdeba969c993bde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Record movement performance data for adaptive learning.  <br /></td></tr>
 <tr class="memitem:a4db1cbc7122afaabc3771ab7f86df61b" id="r_a4db1cbc7122afaabc3771ab7f86df61b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structls_1_1PIDGains.html">PIDGains</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4db1cbc7122afaabc3771ab7f86df61b">getCurrentLateralGains</a> ()</td></tr>
-<tr class="memdesc:a4db1cbc7122afaabc3771ab7f86df61b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current adapted lateral <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> gains.  <br /></td></tr>
+<tr class="memdesc:a4db1cbc7122afaabc3771ab7f86df61b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current adapted lateral <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains.  <br /></td></tr>
 <tr class="memitem:a367812f798aa538eed1e7151766850bd" id="r_a367812f798aa538eed1e7151766850bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structls_1_1PIDGains.html">PIDGains</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a367812f798aa538eed1e7151766850bd">getCurrentAngularGains</a> ()</td></tr>
-<tr class="memdesc:a367812f798aa538eed1e7151766850bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current adapted angular <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> gains.  <br /></td></tr>
+<tr class="memdesc:a367812f798aa538eed1e7151766850bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current adapted angular <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains.  <br /></td></tr>
 <tr class="memitem:a5b74073cec31f2172bcaf1daebd8b54f" id="r_a5b74073cec31f2172bcaf1daebd8b54f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classls_1_1DataLogger.html">DataLogger</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b74073cec31f2172bcaf1daebd8b54f">getDataLogger</a> ()</td></tr>
-<tr class="memdesc:a5b74073cec31f2172bcaf1daebd8b54f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global data logger instance (optional usage)  <br /></td></tr>
+<tr class="memdesc:a5b74073cec31f2172bcaf1daebd8b54f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get global data logger instance.  <br /></td></tr>
 <tr class="memitem:a19eccdfe12c30d0c26e2992796aef389" id="r_a19eccdfe12c30d0c26e2992796aef389"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19eccdfe12c30d0c26e2992796aef389">__throw_error</a> (const char *error, unsigned long line, const char *file)</td></tr>
+<tr class="memdesc:a19eccdfe12c30d0c26e2992796aef389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal function for error handling and display.  <br /></td></tr>
 <tr class="memitem:a2ec9466659c8f6012fc2d66ab588f165" id="r_a2ec9466659c8f6012fc2d66ab588f165"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ec9466659c8f6012fc2d66ab588f165">degreesToRadians</a> (double degrees)</td></tr>
+<tr class="memdesc:a2ec9466659c8f6012fc2d66ab588f165"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert degrees to radians.  <br /></td></tr>
 <tr class="memitem:a4168a696a6332cd03f925599e867e6b9" id="r_a4168a696a6332cd03f925599e867e6b9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4168a696a6332cd03f925599e867e6b9">radiansToDegrees</a> (double radians)</td></tr>
+<tr class="memdesc:a4168a696a6332cd03f925599e867e6b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert radians to degrees.  <br /></td></tr>
 <tr class="memitem:a69260248280da3336a292918aacc0781" id="r_a69260248280da3336a292918aacc0781"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a69260248280da3336a292918aacc0781">distance</a> (const <a class="el" href="structls_1_1Point.html">Point</a> &amp;a, const <a class="el" href="structls_1_1Point.html">Point</a> &amp;b)</td></tr>
+<tr class="memdesc:a69260248280da3336a292918aacc0781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate Euclidean distance between two points.  <br /></td></tr>
 <tr class="memitem:a7b22537f3411676e681a0f68b6eac719" id="r_a7b22537f3411676e681a0f68b6eac719"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classls_1_1Angle.html">Angle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b22537f3411676e681a0f68b6eac719">bearingTo</a> (const <a class="el" href="structls_1_1Point.html">Point</a> &amp;a, const <a class="el" href="structls_1_1Point.html">Point</a> &amp;b)</td></tr>
+<tr class="memdesc:a7b22537f3411676e681a0f68b6eac719"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate bearing angle from point A to point B.  <br /></td></tr>
 <tr class="memitem:a0e79d16f5ee209aa6e2e429718b10d86" id="r_a0e79d16f5ee209aa6e2e429718b10d86"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e79d16f5ee209aa6e2e429718b10d86">angleDiff</a> (double a, double b)</td></tr>
+<tr class="memdesc:a0e79d16f5ee209aa6e2e429718b10d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the smallest angle difference between two angles.  <br /></td></tr>
 <tr class="memitem:af237f0fa01b3b549c63f2cc2bc4ca34a" id="r_af237f0fa01b3b549c63f2cc2bc4ca34a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classls_1_1SystemHealthMonitor.html">SystemHealthMonitor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af237f0fa01b3b549c63f2cc2bc4ca34a">getHealthMonitor</a> ()</td></tr>
-<tr class="memdesc:af237f0fa01b3b549c63f2cc2bc4ca34a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global health monitor instance.  <br /></td></tr>
+<tr class="memdesc:af237f0fa01b3b549c63f2cc2bc4ca34a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get global system health monitor instance.  <br /></td></tr>
 <tr class="memitem:a4fc8d2ce01f64d9ab6b9978b4adf57d3" id="r_a4fc8d2ce01f64d9ab6b9978b4adf57d3"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a4fc8d2ce01f64d9ab6b9978b4adf57d3 template"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fc8d2ce01f64d9ab6b9978b4adf57d3">clamp</a> (const T &amp;v, const T &amp;lo, const T &amp;hi)</td></tr>
+<tr class="memdesc:a4fc8d2ce01f64d9ab6b9978b4adf57d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic value clamping function.  <br /></td></tr>
 <tr class="memitem:aeee2626deeb9daa8c939c7eaebd6a2a3" id="r_aeee2626deeb9daa8c939c7eaebd6a2a3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeee2626deeb9daa8c939c7eaebd6a2a3">clampPower</a> (double v)</td></tr>
+<tr class="memdesc:aeee2626deeb9daa8c939c7eaebd6a2a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clamp motor power to VEX V5 range.  <br /></td></tr>
 <tr class="memitem:af980a1fc991abb5b1c99b3da64ef1c19" id="r_af980a1fc991abb5b1c99b3da64ef1c19"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af980a1fc991abb5b1c99b3da64ef1c19">deadband</a> (double v, double db)</td></tr>
+<tr class="memdesc:af980a1fc991abb5b1c99b3da64ef1c19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply deadband to reduce noise.  <br /></td></tr>
 <tr class="memitem:a7b9412f719bbac96788298da56d1bde0" id="r_a7b9412f719bbac96788298da56d1bde0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b9412f719bbac96788298da56d1bde0">scale</a> (double v, double inMin, double inMax, double outMin, double outMax, bool clampResult=true)</td></tr>
+<tr class="memdesc:a7b9412f719bbac96788298da56d1bde0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linear scaling between ranges.  <br /></td></tr>
 <tr class="memitem:aac38bc1b6c1d5c8b1cd09dec26e401c3" id="r_aac38bc1b6c1d5c8b1cd09dec26e401c3"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:aac38bc1b6c1d5c8b1cd09dec26e401c3 template"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aac38bc1b6c1d5c8b1cd09dec26e401c3">sign</a> (T v)</td></tr>
+<tr class="memdesc:aac38bc1b6c1d5c8b1cd09dec26e401c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract sign of value.  <br /></td></tr>
 <tr class="memitem:a5c1b443e8eb727cb1e1c86327d009bb0" id="r_a5c1b443e8eb727cb1e1c86327d009bb0"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c1b443e8eb727cb1e1c86327d009bb0">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classls_1_1Angle.html">Angle</a> &amp;a)</td></tr>
+<tr class="memdesc:a5c1b443e8eb727cb1e1c86327d009bb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream operator for <a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> type.  <br /></td></tr>
 <tr class="memitem:ac7bc7871bd50028568fbf8cc3ecc0acf" id="r_ac7bc7871bd50028568fbf8cc3ecc0acf"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7bc7871bd50028568fbf8cc3ecc0acf">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="structls_1_1Position.html">Position</a> &amp;p)</td></tr>
+<tr class="memdesc:ac7bc7871bd50028568fbf8cc3ecc0acf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream operator for <a class="el" href="structls_1_1Position.html" title="Complete robot pose representation (position + orientation)">Position</a> type.  <br /></td></tr>
 <tr class="memitem:ae95ffe3637331e97b15e059afadd8e6f" id="r_ae95ffe3637331e97b15e059afadd8e6f"><td class="memItemLeft" align="right" valign="top">static std::pair&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae95ffe3637331e97b15e059afadd8e6f">findUltimateGainsRelay</a> (std::shared_ptr&lt; <a class="el" href="classls_1_1Chassis.html">Chassis</a> &gt; chassis, bool isAngular)</td></tr>
 <tr class="memitem:a0192d3b3a0acec997b17647f24cf857c" id="r_a0192d3b3a0acec997b17647f24cf857c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0192d3b3a0acec997b17647f24cf857c">adaptiveTune</a> (std::shared_ptr&lt; <a class="el" href="classls_1_1Chassis.html">Chassis</a> &gt; chassis, <a class="el" href="structls_1_1PIDGains.html">PIDGains</a> &amp;lateral_gains, <a class="el" href="structls_1_1PIDGains.html">PIDGains</a> &amp;angular_gains, pros::Controller *controller)</td></tr>
 <tr class="memitem:a5af077dcc05d5386699e9caf5c7302f2" id="r_a5af077dcc05d5386699e9caf5c7302f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5af077dcc05d5386699e9caf5c7302f2">sgn</a> (float val)</td></tr>
@@ -213,8 +250,8 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains all source code for abstract classes or composed ones Basically code that powers abstraction. </p>
-<p>Code for <a class="el" href="classls_1_1ImuOdom.html" title="Represents all the calculations for 2 wheel and IMU odometry.">ImuOdom</a> class.</p>
-<p>Code for <a class="el" href="classls_1_1ThreeWheelOdom.html" title="Represents all the calculations for 3 wheel odom.">ThreeWheelOdom</a> class. </p>
+<p>Code for <a class="el" href="classls_1_1ImuOdom.html" title="IMU-enhanced two-wheel odometry implementation.">ImuOdom</a> class.</p>
+<p>Code for <a class="el" href="classls_1_1ThreeWheelOdom.html" title="Three-wheel odometry implementation.">ThreeWheelOdom</a> class. </p>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
 <a id="aa1de31b8406d8adab166931d8094c66f" name="aa1de31b8406d8adab166931d8094c66f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa1de31b8406d8adab166931d8094c66f">&#9670;&#160;</a></span>Path</h2>
@@ -228,7 +265,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00049">49</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
+<p>Type alias for a sequence of waypoints. </p>
+<p>Represents a path as a series of points that can be followed by motion planning algorithms like pure pursuit. </p>
+
+<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00159">159</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
 
 </div>
 </div>
@@ -253,14 +293,18 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Movement parameter structures inspired by LemLib for enhanced control. </p>
+<p>Angular rotation direction options. </p>
+<p>Specifies the direction for rotational movements, allowing control over whether turns should be clockwise, counter-clockwise, or automatically choose the shortest path. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7cae1edaf7351248ff1e759fab0f0b83ae1f2d5134ed2543d38a0de9751cf75d9" name="a7cae1edaf7351248ff1e759fab0f0b83ae1f2d5134ed2543d38a0de9751cf75d9"></a>AUTO&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7cae1edaf7351248ff1e759fab0f0b83abf6cd64d3637f0de292538e9bd740550" name="a7cae1edaf7351248ff1e759fab0f0b83abf6cd64d3637f0de292538e9bd740550"></a>CW_CLOCKWISE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7cae1edaf7351248ff1e759fab0f0b83abe1548e6f19334b7b4c860c2b98375dd" name="a7cae1edaf7351248ff1e759fab0f0b83abe1548e6f19334b7b4c860c2b98375dd"></a>CCW_COUNTERCLOCKWISE&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7cae1edaf7351248ff1e759fab0f0b83ae1f2d5134ed2543d38a0de9751cf75d9" name="a7cae1edaf7351248ff1e759fab0f0b83ae1f2d5134ed2543d38a0de9751cf75d9"></a>AUTO&#160;</td><td class="fielddoc"><p>Automatically choose shortest rotation direction </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7cae1edaf7351248ff1e759fab0f0b83abf6cd64d3637f0de292538e9bd740550" name="a7cae1edaf7351248ff1e759fab0f0b83abf6cd64d3637f0de292538e9bd740550"></a>CW_CLOCKWISE&#160;</td><td class="fielddoc"><p>Force clockwise rotation </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7cae1edaf7351248ff1e759fab0f0b83abe1548e6f19334b7b4c860c2b98375dd" name="a7cae1edaf7351248ff1e759fab0f0b83abe1548e6f19334b7b4c860c2b98375dd"></a>CCW_COUNTERCLOCKWISE&#160;</td><td class="fielddoc"><p>Force counter-clockwise rotation </p>
+</td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00009">9</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00051">51</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
 
 </div>
 </div>
@@ -297,7 +341,24 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="error_8h_source.html#l00020">20</a> of file <a class="el" href="error_8h_source.html">error.h</a>.</p>
+<p>Internal function for error handling and display. </p>
+<p>This function handles the actual error display and program halting. It displays the error information on the PROS LCD screen and enters an infinite loop to halt program execution.</p>
+<p>The function clears the first two lines of the LCD and displays:</p><ul>
+<li>Line 0: File and line number information</li>
+<li>Line 1: The error message</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>The error message to display </td></tr>
+    <tr><td class="paramname">line</td><td>The line number where the error occurred </td></tr>
+    <tr><td class="paramname">file</td><td>The source file where the error occurred</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This function never returns - it halts execution indefinitely </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Only call this function through the THROW_ERROR macro </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="error_8h_source.html#l00079">79</a> of file <a class="el" href="error_8h_source.html">error.h</a>.</p>
 
 </div>
 </div>
@@ -340,7 +401,7 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="auton__tuner_8cpp_source.html#l00245">245</a> of file <a class="el" href="auton__tuner_8cpp_source.html">auton_tuner.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="gains_8h_source.html#l00011">ls::PIDGains::kD</a>, <a class="el" href="gains_8h_source.html#l00010">ls::PIDGains::kI</a>, and <a class="el" href="gains_8h_source.html#l00009">ls::PIDGains::kP</a>.</p>
+<p class="reference">References <a class="el" href="gains_8h_source.html#l00050">ls::PIDGains::kD</a>, <a class="el" href="gains_8h_source.html#l00049">ls::PIDGains::kI</a>, and <a class="el" href="gains_8h_source.html#l00048">ls::PIDGains::kP</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00432">autoTune()</a>.</p>
 
@@ -365,6 +426,17 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Calculate the smallest angle difference between two angles. </p>
+<p>Returns the minimum angle difference considering the circular nature of angles. Result is in range [-180, 180].</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>First angle in degrees </td></tr>
+    <tr><td class="paramname">b</td><td>Second angle in degrees </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Minimum angle difference in degrees </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="geometry_8cpp_source.html#l00074">74</a> of file <a class="el" href="geometry_8cpp_source.html">geometry.cpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="mcl_8cpp_source.html#l00063">ls::MCLTracker::injectMeasurement()</a>, and <a class="el" href="mcl_8cpp_source.html#l00048">ls::MCLTracker::updateEstimate()</a>.</p>
@@ -386,17 +458,27 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Automatically tunes the <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> controllers for the chassis by running a star pattern. </p>
+<p>Automatically tune <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controllers using star pattern test. </p>
+<p>Performs automatic <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> tuning by commanding the robot to move in a star pattern (multiple directions and distances). The system analyzes the performance of each movement and optimizes <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains accordingly.</p>
+<p>Tuning Process:</p><ol type="1">
+<li>Moves robot in 8 different directions (45-degree increments)</li>
+<li>Tests various distances to assess different speed ranges</li>
+<li>Analyzes overshoot, settling time, and steady-state error</li>
+<li>Iteratively adjusts gains using optimization algorithms</li>
+<li>Validates final gains with additional test movements</li>
+</ol>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">chassis</td><td>A shared pointer to the chassis object. </td></tr>
+    <tr><td class="paramname">chassis</td><td>Shared pointer to chassis object to tune</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>This is a blocking operation that may take several minutes </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Robot should be in a clear area with space to move freely </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="auton__tuner_8cpp_source.html#l00432">432</a> of file <a class="el" href="auton__tuner_8cpp_source.html">auton_tuner.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="auton__tuner_8cpp_source.html#l00245">adaptiveTune()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00178">findUltimateGainsRelay()</a>, <a class="el" href="gains_8h_source.html#l00011">ls::PIDGains::kD</a>, <a class="el" href="gains_8h_source.html#l00010">ls::PIDGains::kI</a>, and <a class="el" href="gains_8h_source.html#l00009">ls::PIDGains::kP</a>.</p>
+<p class="reference">References <a class="el" href="auton__tuner_8cpp_source.html#l00245">adaptiveTune()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00178">findUltimateGainsRelay()</a>, <a class="el" href="gains_8h_source.html#l00050">ls::PIDGains::kD</a>, <a class="el" href="gains_8h_source.html#l00049">ls::PIDGains::kI</a>, and <a class="el" href="gains_8h_source.html#l00048">ls::PIDGains::kP</a>.</p>
 
 </div>
 </div>
@@ -419,9 +501,20 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Calculate bearing angle from point A to point B. </p>
+<p>Returns the bearing angle (in degrees) from point A to point B, where 0° = North, 90° = East, etc.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>Starting point </td></tr>
+    <tr><td class="paramname">b</td><td>Target point </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Bearing angle in degrees [0, 360) </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="geometry_8cpp_source.html#l00066">66</a> of file <a class="el" href="geometry_8cpp_source.html">geometry.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="geometry_8cpp_source.html#l00055">radiansToDegrees()</a>, <a class="el" href="geometry_8h_source.html#l00037">ls::Point::x</a>, and <a class="el" href="geometry_8h_source.html#l00038">ls::Point::y</a>.</p>
+<p class="reference">References <a class="el" href="geometry_8cpp_source.html#l00055">radiansToDegrees()</a>, <a class="el" href="geometry_8h_source.html#l00113">ls::Point::x</a>, and <a class="el" href="geometry_8h_source.html#l00114">ls::Point::y</a>.</p>
 
 </div>
 </div>
@@ -459,9 +552,28 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="clamp_8hpp_source.html#l00008">8</a> of file <a class="el" href="clamp_8hpp_source.html">clamp.hpp</a>.</p>
+<p>Generic value clamping function. </p>
+<p>Constrains a value to fall within a specified range. This is a convenience wrapper around std::clamp that maintains namespace consistency.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Value type (must support comparison operators) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Value to clamp </td></tr>
+    <tr><td class="paramname">lo</td><td>Lower bound (inclusive) </td></tr>
+    <tr><td class="paramname">hi</td><td>Upper bound (inclusive) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Value constrained to [lo, hi] range</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If v &lt; lo, returns lo. If v &gt; hi, returns hi. Otherwise returns v. </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="clamp_8hpp_source.html#l00013">clampPower()</a>, and <a class="el" href="clamp_8hpp_source.html#l00019">scale()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clamp_8hpp_source.html#l00077">77</a> of file <a class="el" href="clamp_8hpp_source.html">clamp.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="clamp_8hpp_source.html#l00093">clampPower()</a>, and <a class="el" href="clamp_8hpp_source.html#l00128">scale()</a>.</p>
 
 </div>
 </div>
@@ -488,11 +600,22 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="clamp_8hpp_source.html#l00013">13</a> of file <a class="el" href="clamp_8hpp_source.html">clamp.hpp</a>.</p>
+<p>Clamp motor power to VEX V5 range. </p>
+<p>Constrains motor power values to the valid range for VEX V5 motors. This prevents motor damage from over-powering and ensures compatibility with PROS motor control functions.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Raw motor power value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Power value clamped to [-127, 127] range</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>VEX V5 motors accept power values from -127 (full reverse) to 127 (full forward) </dd></dl>
 
-<p class="reference">References <a class="el" href="clamp_8hpp_source.html#l00008">clamp()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clamp_8hpp_source.html#l00093">93</a> of file <a class="el" href="clamp_8hpp_source.html">clamp.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00251">ls::Chassis::driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00229">ls::Chassis::followPath()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">ls::Chassis::moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00315">ls::Chassis::turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00161">ls::Chassis::turnToPoint()</a>.</p>
+<p class="reference">References <a class="el" href="clamp_8hpp_source.html#l00077">clamp()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00271">ls::Chassis::driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00249">ls::Chassis::followPath()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">ls::Chassis::moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00335">ls::Chassis::turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00181">ls::Chassis::turnToPoint()</a>.</p>
 
 </div>
 </div>
@@ -523,7 +646,21 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="clamp_8hpp_source.html#l00016">16</a> of file <a class="el" href="clamp_8hpp_source.html">clamp.hpp</a>.</p>
+<p>Apply deadband to reduce noise. </p>
+<p>Zeroes out small magnitude values to reduce noise and prevent unwanted small movements. Values within the deadband range are treated as zero, while larger values are passed through unchanged.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Input value </td></tr>
+    <tr><td class="paramname">db</td><td>Deadband threshold (must be &gt;= 0) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Input value with deadband applied</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Commonly used with joystick inputs and sensor readings </dd>
+<dd>
+db = 0 disables deadband (no effect) </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="clamp_8hpp_source.html#l00109">109</a> of file <a class="el" href="clamp_8hpp_source.html">clamp.hpp</a>.</p>
 
 </div>
 </div>
@@ -541,6 +678,15 @@ template&lt;typename T&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Convert degrees to radians. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">degrees</td><td><a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> in degrees </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Equivalent angle in radians </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="geometry_8cpp_source.html#l00050">50</a> of file <a class="el" href="geometry_8cpp_source.html">geometry.cpp</a>.</p>
 
@@ -567,11 +713,21 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>Calculate Euclidean distance between two points. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>First point </td></tr>
+    <tr><td class="paramname">b</td><td>Second point </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Distance between points (always positive) </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="geometry_8cpp_source.html#l00060">60</a> of file <a class="el" href="geometry_8cpp_source.html">geometry.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="geometry_8h_source.html#l00037">ls::Point::x</a>, and <a class="el" href="geometry_8h_source.html#l00038">ls::Point::y</a>.</p>
+<p class="reference">References <a class="el" href="geometry_8h_source.html#l00113">ls::Point::x</a>, and <a class="el" href="geometry_8h_source.html#l00114">ls::Point::y</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00251">ls::Chassis::driveRelative()</a>, <a class="el" href="pure__pursuit_8cpp_source.html#l00005">ls::PurePursuit::findLookahead()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">ls::Chassis::moveToPoint()</a>, <a class="el" href="classls_1_1Chassis.html#af589511b80f13900cdccfcc8b24e5726">ls::Chassis::operator=()</a>, <a class="el" href="pure__pursuit_8cpp_source.html#l00016">ls::PurePursuit::update()</a>, and <a class="el" href="classls_1_1EnhancedChassis.html#a67731d84fb1f351f20631c068a322c22">ls::EnhancedChassis::waitUntil()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00271">ls::Chassis::driveRelative()</a>, <a class="el" href="pure__pursuit_8cpp_source.html#l00005">ls::PurePursuit::findLookahead()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">ls::Chassis::moveToPoint()</a>, <a class="el" href="classls_1_1Chassis.html#af589511b80f13900cdccfcc8b24e5726">ls::Chassis::operator=()</a>, <a class="el" href="pure__pursuit_8cpp_source.html#l00016">ls::PurePursuit::update()</a>, and <a class="el" href="classls_1_1EnhancedChassis.html#a67731d84fb1f351f20631c068a322c22">ls::EnhancedChassis::waitUntil()</a>.</p>
 
 </div>
 </div>
@@ -625,8 +781,9 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Gets the current adapted angular <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> gains. </p>
-<dl class="section return"><dt>Returns</dt><dd>Current angular <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> gains </dd></dl>
+<p>Get current adapted angular <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains. </p>
+<p>Returns the current <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains for angular (turning) movement after applying all adaptive compensations.</p>
+<dl class="section return"><dt>Returns</dt><dd>Current angular <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains with adaptations applied </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="auton__tuner_8cpp_source.html#l00501">501</a> of file <a class="el" href="auton__tuner_8cpp_source.html">auton_tuner.cpp</a>.</p>
 
@@ -649,8 +806,9 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Gets the current adapted lateral <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> gains. </p>
-<dl class="section return"><dt>Returns</dt><dd>Current lateral <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> gains </dd></dl>
+<p>Get current adapted lateral <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains. </p>
+<p>Returns the current <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains for lateral (forward/backward) movement after applying all adaptive compensations.</p>
+<dl class="section return"><dt>Returns</dt><dd>Current lateral <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains with adaptations applied </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="auton__tuner_8cpp_source.html#l00495">495</a> of file <a class="el" href="auton__tuner_8cpp_source.html">auton_tuner.cpp</a>.</p>
 
@@ -681,9 +839,11 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Global data logger instance (optional usage) </p>
+<p>Get global data logger instance. </p>
+<p>Returns a reference to the global <a class="el" href="classls_1_1DataLogger.html" title="Comprehensive SD card data logging and persistence system.">DataLogger</a> instance, providing a singleton pattern for easy access throughout the codebase.</p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to global data logger </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="data__logger_8h_source.html#l00264">264</a> of file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__logger_8h_source.html#l00235">235</a> of file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
 
 </div>
 </div>
@@ -710,9 +870,11 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Global health monitor instance. </p>
+<p>Get global system health monitor instance. </p>
+<p>Returns a reference to the global <a class="el" href="classls_1_1SystemHealthMonitor.html" title="Comprehensive system health monitoring and diagnostics.">SystemHealthMonitor</a> instance. This provides a singleton pattern for easy access throughout the codebase.</p>
+<dl class="section return"><dt>Returns</dt><dd>Reference to global health monitor </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00315">315</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00279">279</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
 </div>
 </div>
@@ -743,7 +905,19 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="logging_8hpp_source.html#l00013">13</a> of file <a class="el" href="logging_8hpp_source.html">logging.hpp</a>.</p>
+<p>Stream operator for <a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> type. </p>
+<p>Outputs an <a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> object to a stream in a human-readable format. Displays the angle value in degrees followed by "deg" suffix.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>Output stream </td></tr>
+    <tr><td class="paramname">a</td><td><a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> object to output </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the output stream</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Output format: "45.2deg" </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="logging_8hpp_source.html#l00087">87</a> of file <a class="el" href="logging_8hpp_source.html">logging.hpp</a>.</p>
 
 <p class="reference">References <a class="el" href="geometry_8cpp_source.html#l00011">ls::Angle::getAngle()</a>.</p>
 
@@ -776,9 +950,22 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="logging_8hpp_source.html#l00016">16</a> of file <a class="el" href="logging_8hpp_source.html">logging.hpp</a>.</p>
+<p>Stream operator for <a class="el" href="structls_1_1Position.html" title="Complete robot pose representation (position + orientation)">Position</a> type. </p>
+<p>Stream output operator for debugging.</p>
+<p>Outputs a <a class="el" href="structls_1_1Position.html" title="Complete robot pose representation (position + orientation)">Position</a> object to a stream showing X, Y coordinates and heading angle in a structured format.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>Output stream </td></tr>
+    <tr><td class="paramname">p</td><td><a class="el" href="structls_1_1Position.html" title="Complete robot pose representation (position + orientation)">Position</a> object to output </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the output stream</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Output format: "{X=24.5, Y=12.3, theta=45.2deg}" </dd></dl>
 
-<p class="reference">References <a class="el" href="geometry_8cpp_source.html#l00011">ls::Angle::getAngle()</a>, <a class="el" href="odom_8h_source.html#l00032">ls::Position::theta</a>, <a class="el" href="odom_8h_source.html#l00030">ls::Position::X</a>, and <a class="el" href="odom_8h_source.html#l00031">ls::Position::Y</a>.</p>
+<p class="definition">Definition at line <a class="el" href="logging_8hpp_source.html#l00103">103</a> of file <a class="el" href="logging_8hpp_source.html">logging.hpp</a>.</p>
+
+<p class="reference">References <a class="el" href="geometry_8cpp_source.html#l00011">ls::Angle::getAngle()</a>, <a class="el" href="odom_8h_source.html#l00064">ls::Position::theta</a>, <a class="el" href="odom_8h_source.html#l00062">ls::Position::X</a>, and <a class="el" href="odom_8h_source.html#l00063">ls::Position::Y</a>.</p>
 
 </div>
 </div>
@@ -796,6 +983,15 @@ template&lt;typename T&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Convert radians to degrees. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">radians</td><td><a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> in radians </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Equivalent angle in degrees </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="geometry_8cpp_source.html#l00055">55</a> of file <a class="el" href="geometry_8cpp_source.html">geometry.cpp</a>.</p>
 
@@ -832,13 +1028,14 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Records movement performance data for adaptive learning. </p>
+<p>Record movement performance data for adaptive learning. </p>
+<p>Records performance metrics from completed movements to enable continuous learning and adaptation. This data helps improve <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> performance over time and across different conditions.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">lateral_error</td><td>Final position error for lateral movement (inches) </td></tr>
-    <tr><td class="paramname">lateral_settling_time</td><td>Time to settle for lateral movement (ms) </td></tr>
+    <tr><td class="paramname">lateral_settling_time</td><td>Time taken to settle laterally (milliseconds) </td></tr>
     <tr><td class="paramname">angular_error</td><td>Final angle error for angular movement (degrees) </td></tr>
-    <tr><td class="paramname">angular_settling_time</td><td>Time to settle for angular movement (ms) </td></tr>
+    <tr><td class="paramname">angular_settling_time</td><td>Time taken to settle angularly (milliseconds) </td></tr>
   </table>
   </dd>
 </dl>
@@ -896,9 +1093,26 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="clamp_8hpp_source.html#l00019">19</a> of file <a class="el" href="clamp_8hpp_source.html">clamp.hpp</a>.</p>
+<p>Linear scaling between ranges. </p>
+<p>Scales a value from one range to another using linear interpolation. Optionally clamps the result to the output range bounds.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Input value to scale </td></tr>
+    <tr><td class="paramname">inMin</td><td>Input range minimum </td></tr>
+    <tr><td class="paramname">inMax</td><td>Input range maximum </td></tr>
+    <tr><td class="paramname">outMin</td><td>Output range minimum </td></tr>
+    <tr><td class="paramname">outMax</td><td>Output range maximum </td></tr>
+    <tr><td class="paramname">clampResult</td><td>Whether to clamp result to output range </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Scaled value in output range</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>If inMax == inMin, returns outMin to avoid division by zero </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Ensure inMin != inMax to avoid undefined behavior </dd></dl>
 
-<p class="reference">References <a class="el" href="clamp_8hpp_source.html#l00008">clamp()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="clamp_8hpp_source.html#l00128">128</a> of file <a class="el" href="clamp_8hpp_source.html">clamp.hpp</a>.</p>
+
+<p class="reference">References <a class="el" href="clamp_8hpp_source.html#l00077">clamp()</a>.</p>
 
 </div>
 </div>
@@ -956,7 +1170,24 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="clamp_8hpp_source.html#l00029">29</a> of file <a class="el" href="clamp_8hpp_source.html">clamp.hpp</a>.</p>
+<p>Extract sign of value. </p>
+<p>Returns the sign of a value as an integer: -1 for negative, 0 for zero, and 1 for positive. Useful for directional logic and sign-preserving operations.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Value type (must support comparison operators) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>Input value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Sign as integer: -1 (negative), 0 (zero), or 1 (positive)</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Equivalent to: (v &gt; 0) - (v &lt; 0) </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="clamp_8hpp_source.html#l00150">150</a> of file <a class="el" href="clamp_8hpp_source.html">clamp.hpp</a>.</p>
 
 </div>
 </div>
@@ -975,7 +1206,14 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Updates the adaptive <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> controllers during operation. Call this periodically (e.g., every 50-100ms) during autonomous or driver control. </p>
+<p>Update all adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controllers. </p>
+<p>Updates both lateral and angular adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controllers with current conditions and performance data. Should be called periodically during autonomous or driver control operation (every 50-100ms).</p>
+<p>This function:</p><ul>
+<li>Updates battery voltage compensation</li>
+<li>Performs surface condition detection</li>
+<li>Applies adaptive gain adjustments</li>
+<li>Maintains performance tracking windows </li>
+</ul>
 
 <p class="definition">Definition at line <a class="el" href="auton__tuner_8cpp_source.html#l00474">474</a> of file <a class="el" href="auton__tuner_8cpp_source.html">auton_tuner.cpp</a>.</p>
 

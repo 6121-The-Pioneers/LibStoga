@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -94,6 +95,9 @@ $(function(){initNavTree('libstoga_8h.html','',''); });
   <div class="headertitle"><div class="title">libstoga.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Main header file for LibStoga - High-Performance PROS/C++ Robotics Framework.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="geometry_8h_source.html">geometry.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="tracking_8h_source.html">tracking.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="odom_8h_source.html">odom.h</a>&quot;</code><br />
@@ -108,6 +112,9 @@ $(function(){initNavTree('libstoga_8h.html','',''); });
 <code>#include &quot;<a class="el" href="data__logger_8h_source.html">data_logger.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="system__health_8h_source.html">system_health.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="error_8h_source.html">error.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gains_8h_source.html">gains.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for libstoga.h:</div>
 <div class="dyncontent">
@@ -115,7 +122,26 @@ Include dependency graph for libstoga.h:</div>
 </div>
 </div>
 <p><a href="libstoga_8h_source.html">Go to the source code of this file.</a></p>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Main header file for LibStoga - High-Performance PROS/C++ Robotics Framework. </p>
+<p>This file serves as the central include point for the entire LibStoga library. It includes all major components and provides a unified interface for robotics applications using the PROS framework.</p>
+<p>LibStoga provides a comprehensive set of tools for robotics development including:</p><ul>
+<li>Advanced odometry systems (IMU, three-wheel, MCL)</li>
+<li>PID and SmartPID controllers with adaptive features</li>
+<li>Chassis control with autonomous motion planning</li>
+<li>Pure pursuit path following</li>
+<li>System health monitoring and data logging</li>
+<li>Enhanced driver control interfaces</li>
+</ul>
+<dl class="section author"><dt>Author</dt><dd>6121D (The Pioneers) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>3.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 6121D - All rights reserved</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This library is designed for VEX Robotics Competition teams using PROS </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Requires PROS kernel &gt;= 3.8.0 for full functionality </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="libstoga_8h_source.html">libstoga.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

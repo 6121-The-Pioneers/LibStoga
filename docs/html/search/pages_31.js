@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['📑_20detailed_20sections_3a_0',['&lt;b&gt;📑 Detailed Sections:&lt;/b&gt;',['../index.html#autotoc_md5',1,'']]]
+  ['📏_20angle_0',['📏 Angle',['../index.html#autotoc_md23',1,'']]],
+  ['📏_20geometry_20system_1',['📏 &lt;b&gt;Geometry System&lt;/b&gt;',['../index.html#autotoc_md114',1,'']]]
 ];

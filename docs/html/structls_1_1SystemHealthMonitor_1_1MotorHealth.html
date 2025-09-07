@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,6 +96,9 @@ $(function(){initNavTree('structls_1_1SystemHealthMonitor_1_1MotorHealth.html','
 </div><!--header-->
 <div class="contents">
 
+<p>Health information for a single motor.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="system__health_8h_source.html">system_health.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -108,8 +112,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a9ab460a280b3c055f992bae30b8e4899" id="r_a9ab460a280b3c055f992bae30b8e4899"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ab460a280b3c055f992bae30b8e4899">lastUpdate</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00043">43</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<div class="textblock"><p>Health information for a single motor. </p>
+
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00130">130</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="a99752e83613ebae407adb69fd0951fe6" name="a99752e83613ebae407adb69fd0951fe6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a99752e83613ebae407adb69fd0951fe6">&#9670;&#160;</a></span>current</h2>
@@ -122,10 +127,11 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Current draw in amperes </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00045">45</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00132">132</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00182">ls::SystemHealthMonitor::updateMetrics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00073">ls::SystemHealthMonitor::updateMetrics()</a>.</p>
 
 </div>
 </div>
@@ -140,10 +146,11 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Whether motor appears to be stalled </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00049">49</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00136">136</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00182">ls::SystemHealthMonitor::updateMetrics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00073">ls::SystemHealthMonitor::updateMetrics()</a>.</p>
 
 </div>
 </div>
@@ -158,10 +165,11 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Timestamp of last health update </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00050">50</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00137">137</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00182">ls::SystemHealthMonitor::updateMetrics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00073">ls::SystemHealthMonitor::updateMetrics()</a>.</p>
 
 </div>
 </div>
@@ -176,10 +184,11 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Motor port number </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00044">44</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00131">131</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00182">ls::SystemHealthMonitor::updateMetrics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00073">ls::SystemHealthMonitor::updateMetrics()</a>.</p>
 
 </div>
 </div>
@@ -194,10 +203,11 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Motor power output (0-1) </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00047">47</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00134">134</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00182">ls::SystemHealthMonitor::updateMetrics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00073">ls::SystemHealthMonitor::updateMetrics()</a>.</p>
 
 </div>
 </div>
@@ -212,10 +222,11 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Motor RPM </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00048">48</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00135">135</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00182">ls::SystemHealthMonitor::updateMetrics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00073">ls::SystemHealthMonitor::updateMetrics()</a>.</p>
 
 </div>
 </div>
@@ -230,10 +241,11 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Motor temperature in Celsius </p>
 
-<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00046">46</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system__health_8h_source.html#l00133">133</a> of file <a class="el" href="system__health_8h_source.html">system_health.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="system__health_8h_source.html#l00182">ls::SystemHealthMonitor::updateMetrics()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="system__health_8cpp_source.html#l00073">ls::SystemHealthMonitor::updateMetrics()</a>.</p>
 
 </div>
 </div>

@@ -9,5 +9,7 @@ var searchData=
   ['updateestimate_6',['updateEstimate',['../classls_1_1MCLTracker.html#aa592a6c0c42c8f32be4727794cba95df',1,'ls::MCLTracker']]],
   ['updatemetrics_7',['updateMetrics',['../classls_1_1SystemHealthMonitor.html#a5a8e65c9fbbc8526ab134c1aa090ec78',1,'ls::SystemHealthMonitor']]],
   ['updatesurfacecompensation_8',['updateSurfaceCompensation',['../classls_1_1AdaptivePIDController.html#a18d392225097134db29171f41c18af69',1,'ls::AdaptivePIDController']]],
-  ['usethreewheel_9',['useThreeWheel',['../structls_1_1OdomConfig.html#ac1766ec291e4d9408af8f7aa1b4c6bc3',1,'ls::OdomConfig']]]
+  ['usage_20example_9',['Usage Example',['../group__libstoga.html#autotoc_md2',1,'']]],
+  ['usethreewheel_10',['useThreeWheel',['../structls_1_1OdomConfig.html#ac1766ec291e4d9408af8f7aa1b4c6bc3',1,'ls::OdomConfig']]],
+  ['utilities_11',['Utilities',['../group__utilities.html',1,'']]]
 ];

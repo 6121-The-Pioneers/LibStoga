@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['📑_20detailed_20sections_3a_0',['&lt;b&gt;📑 Detailed Sections:&lt;/b&gt;',['../index.html#autotoc_md5',1,'']]]
+  ['📐_20core_20concepts_0',['📐 Core Concepts',['../index.html#autotoc_md22',1,'']]]
 ];

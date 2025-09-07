@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,6 +96,9 @@ $(function(){initNavTree('structls_1_1MoveToPoseParams.html','','structls_1_1Mov
 </div><!--header-->
 <div class="contents">
 
+<p>Parameters for pose (position + heading) movement.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -107,8 +111,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aacc4acc96ce962eee88584a262863dce" id="r_aacc4acc96ce962eee88584a262863dce"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacc4acc96ce962eee88584a262863dce">horizontalDrift</a> = 2.0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00031">31</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
+<div class="textblock"><p>Parameters for pose (position + heading) movement. </p>
+<p>Advanced parameters for moving to a complete pose consisting of both position coordinates and target heading angle. </p>
+
+<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00092">92</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="a7fdb9797f33cc63aea1fb54bb74a83db" name="a7fdb9797f33cc63aea1fb54bb74a83db"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7fdb9797f33cc63aea1fb54bb74a83db">&#9670;&#160;</a></span>earlyExitRange</h2>
@@ -121,8 +127,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Exit early when within this distance (inches) of pose </p>
 
-<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00035">35</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00096">96</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
 
 </div>
 </div>
@@ -137,8 +144,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Move forwards (true) or backwards (false) to pose </p>
 
-<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00032">32</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00093">93</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
 
 </div>
 </div>
@@ -153,8 +161,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Cornering aggressiveness for curved paths </p>
 
-<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00037">37</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00098">98</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
 
 </div>
 </div>
@@ -169,8 +178,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Carrot point multiplier (0-1) for path following </p>
 
-<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00036">36</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00097">97</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
 
 </div>
 </div>
@@ -185,8 +195,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Maximum linear speed (0-127) </p>
 
-<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00033">33</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00094">94</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
 
 </div>
 </div>
@@ -201,8 +212,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Minimum linear speed (0-127) for final approach </p>
 
-<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00034">34</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="enhanced__chassis_8h_source.html#l00095">95</a> of file <a class="el" href="enhanced__chassis_8h_source.html">enhanced_chassis.h</a>.</p>
 
 </div>
 </div>

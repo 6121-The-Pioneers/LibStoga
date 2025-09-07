@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -91,11 +92,11 @@ $(function(){initNavTree('odom_8h.html','',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">odom.h File Reference</div></div>
+  <div class="headertitle"><div class="title">odom.h File Reference<div class="ingroups"><a class="el" href="group__core.html">Core Components</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Contains all code related to odometry and the different types of odometry as classes.  
+<p>Odometry system implementations for LibStoga robotics framework.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;initializer_list&gt;</code><br />
 <code>#include &lt;exception&gt;</code><br />
@@ -120,19 +121,19 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:ls_3A_3APosition" id="r_ls_3A_3APosition"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1Position.html">ls::Position</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A compact representation for x, y, and theta.  <a href="structls_1_1Position.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Complete robot pose representation (position + orientation)  <a href="structls_1_1Position.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3AAbstractOdom" id="r_ls_3A_3AAbstractOdom"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractOdom.html">ls::AbstractOdom</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents all odometry classes in one abstract term.  <a href="classls_1_1AbstractOdom.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract base class for all odometry implementations.  <a href="classls_1_1AbstractOdom.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3Atracking_5Frotation_5Fparameters_5Ft" id="r_ls_3A_3Atracking_5Frotation_5Fparameters_5Ft"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1tracking__rotation__parameters__t.html">ls::tracking_rotation_parameters_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parameters for rotational tracking wheels.  <a href="structls_1_1tracking__rotation__parameters__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration parameters for tracking wheel sensors.  <a href="structls_1_1tracking__rotation__parameters__t.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3Aimu_5Fodom_5Fparameters_5Ft" id="r_ls_3A_3Aimu_5Fodom_5Fparameters_5Ft"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1imu__odom__parameters__t.html">ls::imu_odom_parameters_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parameters for the <a class="el" href="classls_1_1ImuOdom.html" title="Represents all the calculations for 2 wheel and IMU odometry.">ImuOdom</a>.  <a href="structls_1_1imu__odom__parameters__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration parameters for IMU-based odometry.  <a href="structls_1_1imu__odom__parameters__t.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3Athreewheel_5Fodom_5Fparameters_5Ft" id="r_ls_3A_3Athreewheel_5Fodom_5Fparameters_5Ft"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1threewheel__odom__parameters__t.html">ls::threewheel_odom_parameters_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parameters for the <a class="el" href="classls_1_1ThreeWheelOdom.html" title="Represents all the calculations for 3 wheel odom.">ThreeWheelOdom</a>.  <a href="structls_1_1threewheel__odom__parameters__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration parameters for three-wheel odometry.  <a href="structls_1_1threewheel__odom__parameters__t.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3AThreeWheelOdom" id="r_ls_3A_3AThreeWheelOdom"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1ThreeWheelOdom.html">ls::ThreeWheelOdom</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents all the calculations for 3 wheel odom.  <a href="classls_1_1ThreeWheelOdom.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Three-wheel odometry implementation.  <a href="classls_1_1ThreeWheelOdom.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3AImuOdom" id="r_ls_3A_3AImuOdom"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1ImuOdom.html">ls::ImuOdom</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents all the calculations for 2 wheel and IMU odometry.  <a href="classls_1_1ImuOdom.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">IMU-enhanced two-wheel odometry implementation.  <a href="classls_1_1ImuOdom.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -140,12 +141,30 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespacels"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all source code for abstract classes or composed ones Basically code that powers abstraction. <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Contains all code related to odometry and the different types of odometry as classes. </p>
-<p>✅</p>
-<dl class="section author"><dt>Author</dt><dd>Rishit Varshney </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2024-11-29</dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
+<div class="textblock"><p>Odometry system implementations for LibStoga robotics framework. </p>
+<p>This file provides comprehensive odometry (position tracking) functionality essential for autonomous robot navigation. It includes multiple odometry implementations supporting different sensor configurations commonly used in VEX robotics.</p>
+<p>Supported Odometry Types:</p><ul>
+<li><b>Three Wheel Odometry</b>: Uses three tracking wheels (left, right, back)</li>
+<li><b>IMU Odometry</b>: Uses two tracking wheels + IMU for enhanced accuracy</li>
+</ul>
+<p>Key Features:</p><ul>
+<li>Abstract base class for extensible odometry implementations</li>
+<li>Position tracking with X, Y coordinates and heading angle</li>
+<li>Delta calculations for incremental position updates</li>
+<li>Bearing-based angle system (0° = North)</li>
+<li>Comprehensive error handling and validation</li>
+<li>Support for sensor reversal and calibration</li>
+</ul>
+<p>Coordinate System:</p><ul>
+<li>Origin (0, 0) is robot's starting position</li>
+<li>Angles use bearing system: 0° = North, 90° = East, etc.</li>
+<li>All distances in inches</li>
+<li>All angles in degrees</li>
+</ul>
+<dl class="section author"><dt>Author</dt><dd>6121D (The Pioneers) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>3.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 6121D - All rights reserved </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 </div></div><!-- contents -->

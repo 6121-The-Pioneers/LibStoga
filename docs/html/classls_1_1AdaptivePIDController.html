@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,6 +96,9 @@ $(function(){initNavTree('classls_1_1AdaptivePIDController.html','','classls_1_1
 </div><!--header-->
 <div class="contents">
 
+<p>Adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller with real-time gain adjustment.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for ls::AdaptivePIDController:</div>
@@ -105,9 +109,13 @@ Collaboration diagram for ls::AdaptivePIDController:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1ea6efe21c07851927f3f795e5ff4569" id="r_a1ea6efe21c07851927f3f795e5ff4569"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ea6efe21c07851927f3f795e5ff4569">AdaptivePIDController</a> (std::shared_ptr&lt; <a class="el" href="classls_1_1AbstractPID.html">AbstractPID</a> &gt; pid_controller, <a class="el" href="structls_1_1PIDGains.html">PIDGains</a> base)</td></tr>
+<tr class="memdesc:a1ea6efe21c07851927f3f795e5ff4569"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller.  <br /></td></tr>
 <tr class="memitem:ab1055e49f57c860a3dd6024586856902" id="r_ab1055e49f57c860a3dd6024586856902"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1055e49f57c860a3dd6024586856902">update</a> ()</td></tr>
+<tr class="memdesc:ab1055e49f57c860a3dd6024586856902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update adaptive controller.  <br /></td></tr>
 <tr class="memitem:aa6db7ccbb991f591dca74394030825a9" id="r_aa6db7ccbb991f591dca74394030825a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6db7ccbb991f591dca74394030825a9">recordMovement</a> (double final_error, double settling_time)</td></tr>
+<tr class="memdesc:aa6db7ccbb991f591dca74394030825a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Record movement performance for learning.  <br /></td></tr>
 <tr class="memitem:aa2350ae552d4e7958c8c0ee679a0b20b" id="r_aa2350ae552d4e7958c8c0ee679a0b20b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structls_1_1PIDGains.html">PIDGains</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2350ae552d4e7958c8c0ee679a0b20b">getCurrentGains</a> () const</td></tr>
+<tr class="memdesc:aa2350ae552d4e7958c8c0ee679a0b20b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current adapted gains.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-types" class="groupheader"><a id="pri-types" name="pri-types"></a>
 Private Types</h2></td></tr>
@@ -120,9 +128,13 @@ Private Types</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a2a7882a9d9f9b08805e2c7cc3e1da8b4" id="r_a2a7882a9d9f9b08805e2c7cc3e1da8b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a7882a9d9f9b08805e2c7cc3e1da8b4">updateBatteryCompensation</a> (double current_voltage)</td></tr>
+<tr class="memdesc:a2a7882a9d9f9b08805e2c7cc3e1da8b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update battery voltage compensation.  <br /></td></tr>
 <tr class="memitem:aeef099673cb75fd99745b16155bdc663" id="r_aeef099673cb75fd99745b16155bdc663"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeef099673cb75fd99745b16155bdc663">detectSurfaceConditions</a> ()</td></tr>
+<tr class="memdesc:aeef099673cb75fd99745b16155bdc663"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect current surface conditions.  <br /></td></tr>
 <tr class="memitem:a18d392225097134db29171f41c18af69" id="r_a18d392225097134db29171f41c18af69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a18d392225097134db29171f41c18af69">updateSurfaceCompensation</a> ()</td></tr>
+<tr class="memdesc:a18d392225097134db29171f41c18af69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update surface condition compensation.  <br /></td></tr>
 <tr class="memitem:a8113e19d6c9a1136b39a95787560cd2a" id="r_a8113e19d6c9a1136b39a95787560cd2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8113e19d6c9a1136b39a95787560cd2a">applyAdaptiveGains</a> ()</td></tr>
+<tr class="memdesc:a8113e19d6c9a1136b39a95787560cd2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply adapted gains to <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -146,8 +158,17 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a57d0d202cae8924cb3412d1a7e4520f2" id="r_a57d0d202cae8924cb3412d1a7e4520f2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57d0d202cae8924cb3412d1a7e4520f2">surface_detection_time</a> = 0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00013">13</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<div class="textblock"><p>Adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller with real-time gain adjustment. </p>
+<p>The <a class="el" href="classls_1_1AdaptivePIDController.html" title="Adaptive PID controller with real-time gain adjustment.">AdaptivePIDController</a> continuously monitors robot performance and environmental conditions to automatically adjust <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains for optimal control. It compensates for battery voltage changes, surface conditions, and learns from movement performance to improve accuracy over time.</p>
+<p>Adaptation Mechanisms:</p><ul>
+<li><b>Battery Compensation</b>: Increases gains when battery voltage drops</li>
+<li><b>Surface Detection</b>: Adjusts for different surface types (smooth/rough)</li>
+<li><b>Performance Learning</b>: Analyzes settling time and final error</li>
+<li><b>Conservative Adaptation</b>: Gradual changes to prevent instability</li>
+</ul>
+<p>The controller maintains separate compensation factors for each <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> term and applies them multiplicatively to the base tuned gains. </p>
+
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00087">87</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 </div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
 <a id="afcf2881e57c82873b2c15d61f6b4b887" name="afcf2881e57c82873b2c15d61f6b4b887"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afcf2881e57c82873b2c15d61f6b4b887">&#9670;&#160;</a></span>SurfaceType</h2>
@@ -175,7 +196,7 @@ Private Attributes</h2></td></tr>
 <tr><td class="fieldname"><a id="afcf2881e57c82873b2c15d61f6b4b887a30051bb7577d8f214564fd922373358b" name="afcf2881e57c82873b2c15d61f6b4b887a30051bb7577d8f214564fd922373358b"></a>CARPET&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00037">37</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00111">111</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
 </div>
 </div>
@@ -207,9 +228,18 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00042">42</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p>Construct adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pid_controller</td><td>Underlying <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller to adapt </td></tr>
+    <tr><td class="paramname">base</td><td>Base tuned gains to adapt from </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00016">base_gains</a>, <a class="el" href="auton__tuner_8h_source.html#l00018">battery_compensation</a>, <a class="el" href="auton__tuner_8h_source.html#l00017">current_gains</a>, <a class="el" href="auton__tuner_8h_source.html#l00015">pid</a>, and <a class="el" href="auton__tuner_8h_source.html#l00019">surface_compensation</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00122">122</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+
+<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00090">base_gains</a>, <a class="el" href="auton__tuner_8h_source.html#l00092">battery_compensation</a>, <a class="el" href="auton__tuner_8h_source.html#l00091">current_gains</a>, <a class="el" href="auton__tuner_8h_source.html#l00089">pid</a>, and <a class="el" href="auton__tuner_8h_source.html#l00093">surface_compensation</a>.</p>
 
 </div>
 </div>
@@ -237,9 +267,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Apply adapted gains to <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller. </p>
+<p>Calculates final gains by combining base gains with all compensation factors and applies them to the <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller. </p>
+
 <p class="definition">Definition at line <a class="el" href="auton__tuner_8cpp_source.html#l00142">142</a> of file <a class="el" href="auton__tuner_8cpp_source.html">auton_tuner.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00016">base_gains</a>, <a class="el" href="auton__tuner_8h_source.html#l00018">battery_compensation</a>, <a class="el" href="auton__tuner_8h_source.html#l00017">current_gains</a>, <a class="el" href="gains_8h_source.html#l00011">ls::PIDGains::kD</a>, <a class="el" href="gains_8h_source.html#l00010">ls::PIDGains::kI</a>, <a class="el" href="gains_8h_source.html#l00009">ls::PIDGains::kP</a>, <a class="el" href="auton__tuner_8h_source.html#l00026">MAX_GAIN_MULTIPLIER</a>, <a class="el" href="auton__tuner_8h_source.html#l00027">MIN_GAIN_MULTIPLIER</a>, <a class="el" href="auton__tuner_8h_source.html#l00015">pid</a>, and <a class="el" href="auton__tuner_8h_source.html#l00019">surface_compensation</a>.</p>
+<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00090">base_gains</a>, <a class="el" href="auton__tuner_8h_source.html#l00092">battery_compensation</a>, <a class="el" href="auton__tuner_8h_source.html#l00091">current_gains</a>, <a class="el" href="gains_8h_source.html#l00050">ls::PIDGains::kD</a>, <a class="el" href="gains_8h_source.html#l00049">ls::PIDGains::kI</a>, <a class="el" href="gains_8h_source.html#l00048">ls::PIDGains::kP</a>, <a class="el" href="auton__tuner_8h_source.html#l00100">MAX_GAIN_MULTIPLIER</a>, <a class="el" href="auton__tuner_8h_source.html#l00101">MIN_GAIN_MULTIPLIER</a>, <a class="el" href="auton__tuner_8h_source.html#l00089">pid</a>, and <a class="el" href="auton__tuner_8h_source.html#l00093">surface_compensation</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00016">update()</a>.</p>
 
@@ -268,9 +301,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Detect current surface conditions. </p>
+<p>Analyzes recent movement data to determine surface type (smooth, rough, carpet) for appropriate gain compensation. </p>
+
 <p class="definition">Definition at line <a class="el" href="auton__tuner_8cpp_source.html#l00082">82</a> of file <a class="el" href="auton__tuner_8cpp_source.html">auton_tuner.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00037">CARPET</a>, <a class="el" href="auton__tuner_8h_source.html#l00038">current_surface</a>, <a class="el" href="auton__tuner_8h_source.html#l00030">recent_errors</a>, <a class="el" href="auton__tuner_8h_source.html#l00031">recent_settling_times</a>, <a class="el" href="auton__tuner_8h_source.html#l00037">ROUGH</a>, <a class="el" href="auton__tuner_8h_source.html#l00037">SMOOTH</a>, <a class="el" href="auton__tuner_8h_source.html#l00039">surface_detection_time</a>, and <a class="el" href="auton__tuner_8h_source.html#l00037">UNKNOWN</a>.</p>
+<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00111">CARPET</a>, <a class="el" href="auton__tuner_8h_source.html#l00112">current_surface</a>, <a class="el" href="auton__tuner_8h_source.html#l00104">recent_errors</a>, <a class="el" href="auton__tuner_8h_source.html#l00105">recent_settling_times</a>, <a class="el" href="auton__tuner_8h_source.html#l00111">ROUGH</a>, <a class="el" href="auton__tuner_8h_source.html#l00111">SMOOTH</a>, <a class="el" href="auton__tuner_8h_source.html#l00113">surface_detection_time</a>, and <a class="el" href="auton__tuner_8h_source.html#l00111">UNKNOWN</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00016">update()</a>.</p>
 
@@ -299,9 +335,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00054">54</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p>Get current adapted gains. </p>
+<dl class="section return"><dt>Returns</dt><dd>Currently adapted <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains </dd></dl>
 
-<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00017">current_gains</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00157">157</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+
+<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00091">current_gains</a>.</p>
 
 </div>
 </div>
@@ -324,9 +363,19 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Record movement performance for learning. </p>
+<p>Records the performance of a completed movement to improve future gain adaptations. This data helps the system learn optimal gain adjustments for different scenarios.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">final_error</td><td>Final position/angle error at movement end </td></tr>
+    <tr><td class="paramname">settling_time</td><td>Time taken to settle within acceptable range </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="auton__tuner_8cpp_source.html#l00043">43</a> of file <a class="el" href="auton__tuner_8cpp_source.html">auton_tuner.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00025">PERFORMANCE_WINDOW</a>, <a class="el" href="auton__tuner_8h_source.html#l00030">recent_errors</a>, and <a class="el" href="auton__tuner_8h_source.html#l00031">recent_settling_times</a>.</p>
+<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00099">PERFORMANCE_WINDOW</a>, <a class="el" href="auton__tuner_8h_source.html#l00104">recent_errors</a>, and <a class="el" href="auton__tuner_8h_source.html#l00105">recent_settling_times</a>.</p>
 
 </div>
 </div>
@@ -345,9 +394,12 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Update adaptive controller. </p>
+<p>Performs periodic updates to adapt gains based on current conditions and recent performance data. Should be called regularly during operation. </p>
+
 <p class="definition">Definition at line <a class="el" href="auton__tuner_8cpp_source.html#l00016">16</a> of file <a class="el" href="auton__tuner_8cpp_source.html">auton_tuner.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00034">ADAPTATION_INTERVAL</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00142">applyAdaptiveGains()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00082">detectSurfaceConditions()</a>, <a class="el" href="auton__tuner_8h_source.html#l00033">last_adaptation_time</a>, <a class="el" href="auton__tuner_8h_source.html#l00032">last_battery_voltage</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00054">updateBatteryCompensation()</a>, and <a class="el" href="auton__tuner_8cpp_source.html#l00118">updateSurfaceCompensation()</a>.</p>
+<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00108">ADAPTATION_INTERVAL</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00142">applyAdaptiveGains()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00082">detectSurfaceConditions()</a>, <a class="el" href="auton__tuner_8h_source.html#l00107">last_adaptation_time</a>, <a class="el" href="auton__tuner_8h_source.html#l00106">last_battery_voltage</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00054">updateBatteryCompensation()</a>, and <a class="el" href="auton__tuner_8cpp_source.html#l00118">updateSurfaceCompensation()</a>.</p>
 
 </div>
 </div>
@@ -374,9 +426,18 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Update battery voltage compensation. </p>
+<p>Adjusts gain compensation based on current battery voltage. Lower voltage requires higher gains to maintain performance.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">current_voltage</td><td>Current battery voltage </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="auton__tuner_8cpp_source.html#l00054">54</a> of file <a class="el" href="auton__tuner_8cpp_source.html">auton_tuner.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00018">battery_compensation</a>, <a class="el" href="auton__tuner_8h_source.html#l00024">BATTERY_THRESHOLD_HIGH</a>, <a class="el" href="auton__tuner_8h_source.html#l00023">BATTERY_THRESHOLD_LOW</a>, and <a class="el" href="auton__tuner_8h_source.html#l00026">MAX_GAIN_MULTIPLIER</a>.</p>
+<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00092">battery_compensation</a>, <a class="el" href="auton__tuner_8h_source.html#l00098">BATTERY_THRESHOLD_HIGH</a>, <a class="el" href="auton__tuner_8h_source.html#l00097">BATTERY_THRESHOLD_LOW</a>, and <a class="el" href="auton__tuner_8h_source.html#l00100">MAX_GAIN_MULTIPLIER</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00016">update()</a>.</p>
 
@@ -405,9 +466,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Update surface condition compensation. </p>
+<p>Adjusts gains based on detected surface conditions. Rough surfaces typically require different gain settings. </p>
+
 <p class="definition">Definition at line <a class="el" href="auton__tuner_8cpp_source.html#l00118">118</a> of file <a class="el" href="auton__tuner_8cpp_source.html">auton_tuner.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00037">CARPET</a>, <a class="el" href="auton__tuner_8h_source.html#l00038">current_surface</a>, <a class="el" href="auton__tuner_8h_source.html#l00037">ROUGH</a>, <a class="el" href="auton__tuner_8h_source.html#l00037">SMOOTH</a>, and <a class="el" href="auton__tuner_8h_source.html#l00019">surface_compensation</a>.</p>
+<p class="reference">References <a class="el" href="auton__tuner_8h_source.html#l00111">CARPET</a>, <a class="el" href="auton__tuner_8h_source.html#l00112">current_surface</a>, <a class="el" href="auton__tuner_8h_source.html#l00111">ROUGH</a>, <a class="el" href="auton__tuner_8h_source.html#l00111">SMOOTH</a>, and <a class="el" href="auton__tuner_8h_source.html#l00093">surface_compensation</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00016">update()</a>.</p>
 
@@ -433,8 +497,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Adapt every 5 seconds </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00034">34</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00108">108</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00016">update()</a>.</p>
 
@@ -459,8 +524,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>How aggressively to adapt (0.01 = conservative, 0.1 = aggressive) </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00022">22</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00096">96</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
 </div>
 </div>
@@ -483,10 +549,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Original manually tuned gains </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00016">16</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00090">90</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="auton__tuner_8h_source.html#l00042">AdaptivePIDController()</a>, and <a class="el" href="auton__tuner_8cpp_source.html#l00142">applyAdaptiveGains()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="auton__tuner_8h_source.html#l00122">AdaptivePIDController()</a>, and <a class="el" href="auton__tuner_8cpp_source.html#l00142">applyAdaptiveGains()</a>.</p>
 
 </div>
 </div>
@@ -509,10 +576,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Battery voltage compensation factors </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00018">18</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00092">92</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="auton__tuner_8h_source.html#l00042">AdaptivePIDController()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00142">applyAdaptiveGains()</a>, and <a class="el" href="auton__tuner_8cpp_source.html#l00054">updateBatteryCompensation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="auton__tuner_8h_source.html#l00122">AdaptivePIDController()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00142">applyAdaptiveGains()</a>, and <a class="el" href="auton__tuner_8cpp_source.html#l00054">updateBatteryCompensation()</a>.</p>
 
 </div>
 </div>
@@ -535,8 +603,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Full battery voltage </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00024">24</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00098">98</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00054">updateBatteryCompensation()</a>.</p>
 
@@ -561,8 +630,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Voltage below which to start compensating </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00023">23</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00097">97</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00054">updateBatteryCompensation()</a>.</p>
 
@@ -587,10 +657,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Currently adapted gains </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00017">17</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00091">91</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="auton__tuner_8h_source.html#l00042">AdaptivePIDController()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00142">applyAdaptiveGains()</a>, and <a class="el" href="auton__tuner_8h_source.html#l00054">getCurrentGains()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="auton__tuner_8h_source.html#l00122">AdaptivePIDController()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00142">applyAdaptiveGains()</a>, and <a class="el" href="auton__tuner_8h_source.html#l00157">getCurrentGains()</a>.</p>
 
 </div>
 </div>
@@ -613,8 +684,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Currently detected surface </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00038">38</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00112">112</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00082">detectSurfaceConditions()</a>, and <a class="el" href="auton__tuner_8cpp_source.html#l00118">updateSurfaceCompensation()</a>.</p>
 
@@ -639,8 +711,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Last time gains were adapted </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00033">33</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00107">107</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00016">update()</a>.</p>
 
@@ -665,8 +738,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Last recorded battery voltage </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00032">32</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00106">106</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00016">update()</a>.</p>
 
@@ -691,8 +765,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Maximum gain increase allowed </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00026">26</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00100">100</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00142">applyAdaptiveGains()</a>, and <a class="el" href="auton__tuner_8cpp_source.html#l00054">updateBatteryCompensation()</a>.</p>
 
@@ -717,8 +792,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Minimum gain decrease allowed </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00027">27</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00101">101</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00142">applyAdaptiveGains()</a>.</p>
 
@@ -743,8 +819,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Number of movements to average for performance </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00025">25</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00099">99</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00043">recordMovement()</a>.</p>
 
@@ -769,10 +846,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Underlying <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00015">15</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00089">89</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="auton__tuner_8h_source.html#l00042">AdaptivePIDController()</a>, and <a class="el" href="auton__tuner_8cpp_source.html#l00142">applyAdaptiveGains()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="auton__tuner_8h_source.html#l00122">AdaptivePIDController()</a>, and <a class="el" href="auton__tuner_8cpp_source.html#l00142">applyAdaptiveGains()</a>.</p>
 
 </div>
 </div>
@@ -795,8 +873,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Recent movement final errors </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00030">30</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00104">104</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00082">detectSurfaceConditions()</a>, and <a class="el" href="auton__tuner_8cpp_source.html#l00043">recordMovement()</a>.</p>
 
@@ -821,8 +900,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Recent movement settling times </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00031">31</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00105">105</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00082">detectSurfaceConditions()</a>, and <a class="el" href="auton__tuner_8cpp_source.html#l00043">recordMovement()</a>.</p>
 
@@ -847,10 +927,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Surface condition compensation factors </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00019">19</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00093">93</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="auton__tuner_8h_source.html#l00042">AdaptivePIDController()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00142">applyAdaptiveGains()</a>, and <a class="el" href="auton__tuner_8cpp_source.html#l00118">updateSurfaceCompensation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="auton__tuner_8h_source.html#l00122">AdaptivePIDController()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00142">applyAdaptiveGains()</a>, and <a class="el" href="auton__tuner_8cpp_source.html#l00118">updateSurfaceCompensation()</a>.</p>
 
 </div>
 </div>
@@ -873,8 +954,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Last surface detection time </p>
 
-<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00039">39</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="auton__tuner_8h_source.html#l00113">113</a> of file <a class="el" href="auton__tuner_8h_source.html">auton_tuner.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00082">detectSurfaceConditions()</a>.</p>
 

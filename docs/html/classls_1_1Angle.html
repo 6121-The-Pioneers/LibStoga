@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,7 +96,7 @@ $(function(){initNavTree('classls_1_1Angle.html','','classls_1_1Angle-members');
 </div><!--header-->
 <div class="contents">
 
-<p>A class to represent and manipulate angles.  
+<p>A class to represent and manipulate angles in robotics applications.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="geometry_8h_source.html">geometry.h</a>&gt;</code></p>
@@ -103,23 +104,35 @@ $(function(){initNavTree('classls_1_1Angle.html','','classls_1_1Angle-members');
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9c7118229b4d45e581a10fade1edd137" id="r_a9c7118229b4d45e581a10fade1edd137"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c7118229b4d45e581a10fade1edd137">Angle</a> ()</td></tr>
+<tr class="memdesc:a9c7118229b4d45e581a10fade1edd137"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor - initializes to 0°  <br /></td></tr>
 <tr class="memitem:a85f9ee8de91f7400c7baebcf34c70460" id="r_a85f9ee8de91f7400c7baebcf34c70460"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85f9ee8de91f7400c7baebcf34c70460">Angle</a> (double a)</td></tr>
+<tr class="memdesc:a85f9ee8de91f7400c7baebcf34c70460"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct angle from degrees.  <br /></td></tr>
 <tr class="memitem:a00dfc0bcd6ff8b6d46f30723387c9cbe" id="r_a00dfc0bcd6ff8b6d46f30723387c9cbe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00dfc0bcd6ff8b6d46f30723387c9cbe">setAngle</a> (double val)</td></tr>
+<tr class="memdesc:a00dfc0bcd6ff8b6d46f30723387c9cbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the angle value.  <br /></td></tr>
 <tr class="memitem:a3a9e0dbb3d6a4c689e7cec33b2917420" id="r_a3a9e0dbb3d6a4c689e7cec33b2917420"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a9e0dbb3d6a4c689e7cec33b2917420">getAngle</a> () const</td></tr>
+<tr class="memdesc:a3a9e0dbb3d6a4c689e7cec33b2917420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current angle value.  <br /></td></tr>
 <tr class="memitem:a3d416ec571da570207121d4f3e341655" id="r_a3d416ec571da570207121d4f3e341655"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d416ec571da570207121d4f3e341655">convertToRadians</a> () const</td></tr>
+<tr class="memdesc:a3d416ec571da570207121d4f3e341655"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert angle to radians.  <br /></td></tr>
 <tr class="memitem:a85c7ee65313527c0eb8bd83d84c9102a" id="r_a85c7ee65313527c0eb8bd83d84c9102a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85c7ee65313527c0eb8bd83d84c9102a">normalize</a> () const</td></tr>
+<tr class="memdesc:a85c7ee65313527c0eb8bd83d84c9102a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalize angle to [0, 360) degree range.  <br /></td></tr>
 <tr class="memitem:acc11668d2497c2940b213c9c034a087f" id="r_acc11668d2497c2940b213c9c034a087f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classls_1_1Angle.html">Angle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc11668d2497c2940b213c9c034a087f">minimumAngleDifference</a> (const <a class="el" href="classls_1_1Angle.html">Angle</a> &amp;other) const</td></tr>
+<tr class="memdesc:acc11668d2497c2940b213c9c034a087f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate minimum angle difference to another angle.  <br /></td></tr>
 <tr class="memitem:ad3fe24ae3c7366b7e857fc1585223857" id="r_ad3fe24ae3c7366b7e857fc1585223857"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3fe24ae3c7366b7e857fc1585223857">operator=</a> (double x)</td></tr>
+<tr class="memdesc:ad3fe24ae3c7366b7e857fc1585223857"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignment operator from double.  <br /></td></tr>
 <tr class="memitem:ae6d39eb44a238b407eb1eb9ead43600f" id="r_ae6d39eb44a238b407eb1eb9ead43600f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6d39eb44a238b407eb1eb9ead43600f">operator+=</a> (<a class="el" href="classls_1_1Angle.html">Angle</a> other)</td></tr>
+<tr class="memdesc:ae6d39eb44a238b407eb1eb9ead43600f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Addition assignment operator.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a7adc1348d8dd362e7a4b76505ea77568" id="r_a7adc1348d8dd362e7a4b76505ea77568"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7adc1348d8dd362e7a4b76505ea77568">angle</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A class to represent and manipulate angles. </p>
+<div class="textblock"><p>A class to represent and manipulate angles in robotics applications. </p>
+<p>The <a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> class provides robust angle manipulation with automatic normalization and conversion between degrees and radians. All angles are stored internally in degrees using the bearing system (0° = North).</p>
+<dl class="section note"><dt>Note</dt><dd>Angles are automatically normalized to [0, 360) degree range </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Input angles should be in degrees unless specified otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00021">21</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00042">42</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9c7118229b4d45e581a10fade1edd137" name="a9c7118229b4d45e581a10fade1edd137"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9c7118229b4d45e581a10fade1edd137">&#9670;&#160;</a></span>Angle() <span class="overload">[1/2]</span></h2>
@@ -144,9 +157,11 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00025">25</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
+<p>Default constructor - initializes to 0° </p>
 
-<p class="reference">References <a class="el" href="geometry_8h_source.html#l00023">angle</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00050">50</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
+
+<p class="reference">References <a class="el" href="geometry_8h_source.html#l00044">angle</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="geometry_8cpp_source.html#l00028">minimumAngleDifference()</a>, and <a class="el" href="geometry_8cpp_source.html#l00045">operator+=()</a>.</p>
 
@@ -175,9 +190,17 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00026">26</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
+<p>Construct angle from degrees. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td><a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> in degrees (automatically normalized) </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="reference">References <a class="el" href="geometry_8h_source.html#l00023">angle</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00056">56</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
+
+<p class="reference">References <a class="el" href="geometry_8h_source.html#l00044">angle</a>.</p>
 
 </div>
 </div>
@@ -197,11 +220,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Convert angle to radians. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> in radians [-π, π] </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="geometry_8cpp_source.html#l00016">16</a> of file <a class="el" href="geometry_8cpp_source.html">geometry.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="geometry_8h_source.html#l00023">angle</a>, and <a class="el" href="geometry_8cpp_source.html#l00050">ls::degreesToRadians()</a>.</p>
+<p class="reference">References <a class="el" href="geometry_8h_source.html#l00044">angle</a>, and <a class="el" href="geometry_8cpp_source.html#l00050">ls::degreesToRadians()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00273">ls::ImuOdom::compute()</a>, <a class="el" href="odom_8cpp_source.html#l00175">ls::ThreeWheelOdom::compute()</a>, and <a class="el" href="chassis_8cpp_source.html#l00225">ls::Chassis::move_priority()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00273">ls::ImuOdom::compute()</a>, <a class="el" href="odom_8cpp_source.html#l00175">ls::ThreeWheelOdom::compute()</a>, and <a class="el" href="chassis_8cpp_source.html#l00245">ls::Chassis::move_priority()</a>.</p>
 
 </div>
 </div>
@@ -220,11 +246,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get the current angle value. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> in degrees [0, 360) </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="geometry_8cpp_source.html#l00011">11</a> of file <a class="el" href="geometry_8cpp_source.html">geometry.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="geometry_8h_source.html#l00023">angle</a>.</p>
+<p class="reference">References <a class="el" href="geometry_8h_source.html#l00044">angle</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00072">ls::Position::isBehind()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">ls::Chassis::moveToPoint()</a>, <a class="el" href="logging_8hpp_source.html#l00013">ls::operator&lt;&lt;()</a>, <a class="el" href="logging_8hpp_source.html#l00016">ls::operator&lt;&lt;()</a>, <a class="el" href="odom_8h_source.html#l00089">ls::Position::operator&lt;&lt;</a>, <a class="el" href="chassis_8cpp_source.html#l00315">ls::Chassis::turnToAngle()</a>, <a class="el" href="chassis_8cpp_source.html#l00161">ls::Chassis::turnToPoint()</a>, and <a class="el" href="pure__pursuit_8cpp_source.html#l00016">ls::PurePursuit::update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00072">ls::Position::isBehind()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">ls::Chassis::moveToPoint()</a>, <a class="el" href="logging_8hpp_source.html#l00087">ls::operator&lt;&lt;()</a>, <a class="el" href="logging_8hpp_source.html#l00103">ls::operator&lt;&lt;()</a>, <a class="el" href="odom_8h_source.html#l00133">ls::Position::operator&lt;&lt;</a>, <a class="el" href="chassis_8cpp_source.html#l00335">ls::Chassis::turnToAngle()</a>, <a class="el" href="chassis_8cpp_source.html#l00181">ls::Chassis::turnToPoint()</a>, and <a class="el" href="pure__pursuit_8cpp_source.html#l00016">ls::PurePursuit::update()</a>.</p>
 
 </div>
 </div>
@@ -243,11 +272,21 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Calculate minimum angle difference to another angle. </p>
+<p>Returns the smallest angle difference, considering that angles wrap around at 360°. The result will be in range [-180, 180].</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The target angle to compare against </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Minimum angle difference in degrees </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="geometry_8cpp_source.html#l00028">28</a> of file <a class="el" href="geometry_8cpp_source.html">geometry.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="geometry_8h_source.html#l00025">Angle()</a>, and <a class="el" href="geometry_8h_source.html#l00023">angle</a>.</p>
+<p class="reference">References <a class="el" href="geometry_8h_source.html#l00050">Angle()</a>, and <a class="el" href="geometry_8h_source.html#l00044">angle</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00092">ls::Chassis::moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00315">ls::Chassis::turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00161">ls::Chassis::turnToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00112">ls::Chassis::moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00335">ls::Chassis::turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00181">ls::Chassis::turnToPoint()</a>.</p>
 
 </div>
 </div>
@@ -266,11 +305,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Normalize angle to [0, 360) degree range. </p>
+<dl class="section return"><dt>Returns</dt><dd>Normalized angle in degrees </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="geometry_8cpp_source.html#l00021">21</a> of file <a class="el" href="geometry_8cpp_source.html">geometry.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="geometry_8h_source.html#l00023">angle</a>.</p>
+<p class="reference">References <a class="el" href="geometry_8h_source.html#l00044">angle</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00072">ls::Position::isBehind()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">ls::Chassis::moveToPoint()</a>, and <a class="el" href="chassis_8cpp_source.html#l00161">ls::Chassis::turnToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00072">ls::Position::isBehind()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">ls::Chassis::moveToPoint()</a>, and <a class="el" href="chassis_8cpp_source.html#l00181">ls::Chassis::turnToPoint()</a>.</p>
 
 </div>
 </div>
@@ -289,9 +331,17 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Addition assignment operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td><a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> to add </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="geometry_8cpp_source.html#l00045">45</a> of file <a class="el" href="geometry_8cpp_source.html">geometry.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="geometry_8h_source.html#l00025">Angle()</a>, and <a class="el" href="geometry_8h_source.html#l00023">angle</a>.</p>
+<p class="reference">References <a class="el" href="geometry_8h_source.html#l00050">Angle()</a>, and <a class="el" href="geometry_8h_source.html#l00044">angle</a>.</p>
 
 </div>
 </div>
@@ -309,6 +359,14 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Assignment operator from double. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td><a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> value in degrees </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="geometry_8cpp_source.html#l00040">40</a> of file <a class="el" href="geometry_8cpp_source.html">geometry.cpp</a>.</p>
 
@@ -331,9 +389,17 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set the angle value. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>New angle in degrees </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="geometry_8cpp_source.html#l00006">6</a> of file <a class="el" href="geometry_8cpp_source.html">geometry.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="geometry_8h_source.html#l00023">angle</a>.</p>
+<p class="reference">References <a class="el" href="geometry_8h_source.html#l00044">angle</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="geometry_8cpp_source.html#l00040">operator=()</a>.</p>
 
@@ -359,10 +425,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Internal angle storage in degrees </p>
 
-<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00023">23</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="geometry_8h_source.html#l00044">44</a> of file <a class="el" href="geometry_8h_source.html">geometry.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="geometry_8h_source.html#l00025">Angle()</a>, <a class="el" href="geometry_8h_source.html#l00026">Angle()</a>, <a class="el" href="geometry_8cpp_source.html#l00016">convertToRadians()</a>, <a class="el" href="geometry_8cpp_source.html#l00011">getAngle()</a>, <a class="el" href="geometry_8cpp_source.html#l00028">minimumAngleDifference()</a>, <a class="el" href="geometry_8cpp_source.html#l00021">normalize()</a>, <a class="el" href="geometry_8cpp_source.html#l00045">operator+=()</a>, and <a class="el" href="geometry_8cpp_source.html#l00006">setAngle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="geometry_8h_source.html#l00050">Angle()</a>, <a class="el" href="geometry_8h_source.html#l00056">Angle()</a>, <a class="el" href="geometry_8cpp_source.html#l00016">convertToRadians()</a>, <a class="el" href="geometry_8cpp_source.html#l00011">getAngle()</a>, <a class="el" href="geometry_8cpp_source.html#l00028">minimumAngleDifference()</a>, <a class="el" href="geometry_8cpp_source.html#l00021">normalize()</a>, <a class="el" href="geometry_8cpp_source.html#l00045">operator+=()</a>, and <a class="el" href="geometry_8cpp_source.html#l00006">setAngle()</a>.</p>
 
 </div>
 </div>

@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,7 +96,7 @@ $(function(){initNavTree('structls_1_1threewheel__odom__parameters__t.html','','
 </div><!--header-->
 <div class="contents">
 
-<p>The parameters for the <a class="el" href="classls_1_1ThreeWheelOdom.html" title="Represents all the calculations for 3 wheel odom.">ThreeWheelOdom</a>.  
+<p>Configuration parameters for three-wheel odometry.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="odom_8h_source.html">odom.h</a>&gt;</code></p>
@@ -115,10 +116,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a0a772589eb1a0a2c13789cef7ba9fb6d" id="r_a0a772589eb1a0a2c13789cef7ba9fb6d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a772589eb1a0a2c13789cef7ba9fb6d">center_to_back</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The parameters for the <a class="el" href="classls_1_1ThreeWheelOdom.html" title="Represents all the calculations for 3 wheel odom.">ThreeWheelOdom</a>. </p>
-<p>Order: right (<a class="el" href="structls_1_1tracking__rotation__parameters__t.html" title="The parameters for rotational tracking wheels.">tracking_rotation_parameters_t</a>), center_to_right (inches), left (<a class="el" href="structls_1_1tracking__rotation__parameters__t.html" title="The parameters for rotational tracking wheels.">tracking_rotation_parameters_t</a>), center_to_left (inches), back (<a class="el" href="structls_1_1tracking__rotation__parameters__t.html" title="The parameters for rotational tracking wheels.">tracking_rotation_parameters_t</a>), center_to_back (inches) note that this is only for a FULLY rotational sensor system. </p>
+<div class="textblock"><p>Configuration parameters for three-wheel odometry. </p>
+<p>Complete setup for traditional three-wheel odometry system with left, right, and back tracking wheels. </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00240">240</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00315">315</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="abd6ae8460786d85e875e29c74f39e961" name="abd6ae8460786d85e875e29c74f39e961"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abd6ae8460786d85e875e29c74f39e961">&#9670;&#160;</a></span>back</h2>
@@ -131,8 +132,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Back tracking wheel configuration </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00245">245</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00320">320</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00117">ls::ThreeWheelOdom::ThreeWheelOdom()</a>.</p>
 
@@ -149,8 +151,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Distance from center to back wheel </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00246">246</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00321">321</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00117">ls::ThreeWheelOdom::ThreeWheelOdom()</a>.</p>
 
@@ -167,8 +170,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Distance from center to left wheel </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00244">244</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00319">319</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00117">ls::ThreeWheelOdom::ThreeWheelOdom()</a>.</p>
 
@@ -185,8 +189,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Distance from center to right wheel </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00242">242</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00317">317</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00117">ls::ThreeWheelOdom::ThreeWheelOdom()</a>.</p>
 
@@ -203,8 +208,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Left tracking wheel configuration </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00243">243</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00318">318</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00117">ls::ThreeWheelOdom::ThreeWheelOdom()</a>.</p>
 
@@ -221,8 +227,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Right tracking wheel configuration </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00241">241</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00316">316</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00117">ls::ThreeWheelOdom::ThreeWheelOdom()</a>.</p>
 

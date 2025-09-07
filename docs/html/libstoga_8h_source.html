@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -94,51 +95,88 @@ $(function(){initNavTree('libstoga_8h_source.html','',''); });
   <div class="headertitle"><div class="title">libstoga.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="libstoga_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* ✅</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">* This file includes all relevant files in the library into one file.</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#ifndef LIBSTOGA_LS_H</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#define LIBSTOGA_LS_H</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">// Core components</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="geometry_8h.html">geometry.h</a>&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="tracking_8h.html">tracking.h</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="odom_8h.html">odom.h</a>&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="mcl_8h.html">mcl.h</a>&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="pid_8h.html">pid.h</a>&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="spid_8h.html">spid.h</a>&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="chassis_8h.html">chassis.h</a>&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="Timer_8hpp.html">Timer.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// Higher level motion utilities</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="pure__pursuit_8h.html">pure_pursuit.h</a>&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="config_8h.html">config.h</a>&quot;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">// NEW: Enhanced driver control and monitoring</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="driver__control_8h.html">driver_control.h</a>&quot;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="data__logger_8h.html">data_logger.h</a>&quot;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="enhanced__chassis_8h.html">enhanced_chassis.h</a>&quot;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;<a class="code" href="system__health_8h.html">system_health.h</a>&quot;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// (Autonomous selector removed)</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif </span><span class="comment">// !LIBSTOGA_LS_H</span></div>
-<div class="ttc" id="aTimer_8hpp_html"><div class="ttname"><a href="Timer_8hpp.html">Timer.hpp</a></div></div>
-<div class="ttc" id="achassis_8h_html"><div class="ttname"><a href="chassis_8h.html">chassis.h</a></div><div class="ttdoc">contains organizational elements related to the physical robot itself.</div></div>
-<div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="config_8h.html">config.h</a></div></div>
-<div class="ttc" id="adata__logger_8h_html"><div class="ttname"><a href="data__logger_8h.html">data_logger.h</a></div></div>
-<div class="ttc" id="adriver__control_8h_html"><div class="ttname"><a href="driver__control_8h.html">driver_control.h</a></div></div>
-<div class="ttc" id="aenhanced__chassis_8h_html"><div class="ttname"><a href="enhanced__chassis_8h.html">enhanced_chassis.h</a></div></div>
-<div class="ttc" id="ageometry_8h_html"><div class="ttname"><a href="geometry_8h.html">geometry.h</a></div><div class="ttdoc">Contains all code for geometrical constructions (like Angles) and other such helpful stuff.</div></div>
-<div class="ttc" id="amcl_8h_html"><div class="ttname"><a href="mcl_8h.html">mcl.h</a></div></div>
-<div class="ttc" id="aodom_8h_html"><div class="ttname"><a href="odom_8h.html">odom.h</a></div><div class="ttdoc">Contains all code related to odometry and the different types of odometry as classes.</div></div>
-<div class="ttc" id="apid_8h_html"><div class="ttname"><a href="pid_8h.html">pid.h</a></div><div class="ttdoc">Contains all PID related classes and methods.</div></div>
-<div class="ttc" id="apure__pursuit_8h_html"><div class="ttname"><a href="pure__pursuit_8h.html">pure_pursuit.h</a></div></div>
-<div class="ttc" id="aspid_8h_html"><div class="ttname"><a href="spid_8h.html">spid.h</a></div><div class="ttdoc">Contains all code for the SPID (Smart PID) Algorithm.</div></div>
-<div class="ttc" id="asystem__health_8h_html"><div class="ttname"><a href="system__health_8h.html">system_health.h</a></div></div>
-<div class="ttc" id="atracking_8h_html"><div class="ttname"><a href="tracking_8h.html">tracking.h</a></div><div class="ttdoc">This file contains all classes for Tracking movements. Used extensively in odom.h.</div></div>
+<a href="libstoga_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#ifndef LIBSTOGA_LS_H</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#define LIBSTOGA_LS_H</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">// CORE COMPONENTS</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#include &quot;<a class="code" href="geometry_8h.html">geometry.h</a>&quot;</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">#include &quot;<a class="code" href="tracking_8h.html">tracking.h</a>&quot;</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#include &quot;<a class="code" href="odom_8h.html">odom.h</a>&quot;</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">#include &quot;<a class="code" href="mcl_8h.html">mcl.h</a>&quot;</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">#include &quot;<a class="code" href="pid_8h.html">pid.h</a>&quot;</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">#include &quot;<a class="code" href="spid_8h.html">spid.h</a>&quot;</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="preprocessor">#include &quot;<a class="code" href="chassis_8h.html">chassis.h</a>&quot;</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">#include &quot;<a class="code" href="Timer_8hpp.html">Timer.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> <span class="comment">// end of core group</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">// MOTION &amp; CONTROL SYSTEMS</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="preprocessor">#include &quot;<a class="code" href="pure__pursuit_8h.html">pure_pursuit.h</a>&quot;</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="preprocessor">#include &quot;<a class="code" href="config_8h.html">config.h</a>&quot;</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> <span class="comment">// end of motion group</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">// ENHANCED FEATURES</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="preprocessor">#include &quot;<a class="code" href="driver__control_8h.html">driver_control.h</a>&quot;</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="preprocessor">#include &quot;<a class="code" href="data__logger_8h.html">data_logger.h</a>&quot;</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="preprocessor">#include &quot;<a class="code" href="enhanced__chassis_8h.html">enhanced_chassis.h</a>&quot;</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="preprocessor">#include &quot;<a class="code" href="system__health_8h.html">system_health.h</a>&quot;</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> <span class="comment">// end of enhanced group</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment">// UTILITY COMPONENTS</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment">//==============================================================================</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="preprocessor">#include &quot;<a class="code" href="error_8h.html">error.h</a>&quot;</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="preprocessor">#include &quot;<a class="code" href="gains_8h.html">gains.h</a>&quot;</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="preprocessor">#include &quot;<a class="code" href="auton__tuner_8h.html">auton_tuner.h</a>&quot;</span></div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> <span class="comment">// end of utilities group</span></div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="preprocessor">#endif </span><span class="comment">// !LIBSTOGA_LS_H</span></div>
+<div class="ttc" id="aTimer_8hpp_html"><div class="ttname"><a href="Timer_8hpp.html">Timer.hpp</a></div><div class="ttdoc">High-precision timer utility for PROS robotics applications.</div></div>
+<div class="ttc" id="aauton__tuner_8h_html"><div class="ttname"><a href="auton__tuner_8h.html">auton_tuner.h</a></div><div class="ttdoc">Autonomous tuning system with adaptive PID controllers.</div></div>
+<div class="ttc" id="achassis_8h_html"><div class="ttname"><a href="chassis_8h.html">chassis.h</a></div><div class="ttdoc">Chassis control system for LibStoga robotics framework.</div></div>
+<div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="config_8h.html">config.h</a></div><div class="ttdoc">Configuration management system for LibStoga robotics framework.</div></div>
+<div class="ttc" id="adata__logger_8h_html"><div class="ttname"><a href="data__logger_8h.html">data_logger.h</a></div><div class="ttdoc">SD card data logging and persistence system for LibStoga robotics framework.</div></div>
+<div class="ttc" id="adriver__control_8h_html"><div class="ttname"><a href="driver__control_8h.html">driver_control.h</a></div><div class="ttdoc">Advanced driver control system with joystick curves and multiple drive modes.</div></div>
+<div class="ttc" id="aenhanced__chassis_8h_html"><div class="ttname"><a href="enhanced__chassis_8h.html">enhanced_chassis.h</a></div><div class="ttdoc">Advanced chassis control interface with LemLib-inspired movement parameters.</div></div>
+<div class="ttc" id="aerror_8h_html"><div class="ttname"><a href="error_8h.html">error.h</a></div><div class="ttdoc">Error handling system for LibStoga robotics framework.</div></div>
+<div class="ttc" id="agains_8h_html"><div class="ttname"><a href="gains_8h.html">gains.h</a></div><div class="ttdoc">PID gain configuration structures for LibStoga robotics framework.</div></div>
+<div class="ttc" id="ageometry_8h_html"><div class="ttname"><a href="geometry_8h.html">geometry.h</a></div><div class="ttdoc">Core geometry utilities for LibStoga robotics framework.</div></div>
+<div class="ttc" id="amcl_8h_html"><div class="ttname"><a href="mcl_8h.html">mcl.h</a></div><div class="ttdoc">Monte Carlo Localization (MCL) for advanced robot positioning.</div></div>
+<div class="ttc" id="aodom_8h_html"><div class="ttname"><a href="odom_8h.html">odom.h</a></div><div class="ttdoc">Odometry system implementations for LibStoga robotics framework.</div></div>
+<div class="ttc" id="apid_8h_html"><div class="ttname"><a href="pid_8h.html">pid.h</a></div><div class="ttdoc">PID control system implementation for LibStoga robotics framework.</div></div>
+<div class="ttc" id="apure__pursuit_8h_html"><div class="ttname"><a href="pure__pursuit_8h.html">pure_pursuit.h</a></div><div class="ttdoc">Pure Pursuit path following algorithm for autonomous navigation.</div></div>
+<div class="ttc" id="aspid_8h_html"><div class="ttname"><a href="spid_8h.html">spid.h</a></div><div class="ttdoc">Smart PID (SPID) - Adaptive PID control system.</div></div>
+<div class="ttc" id="asystem__health_8h_html"><div class="ttname"><a href="system__health_8h.html">system_health.h</a></div><div class="ttdoc">Comprehensive system health monitoring for LibStoga robotics framework.</div></div>
+<div class="ttc" id="atracking_8h_html"><div class="ttname"><a href="tracking_8h.html">tracking.h</a></div><div class="ttdoc">Tracking wheel sensor management for odometry systems.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

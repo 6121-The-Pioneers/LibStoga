@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,7 +96,7 @@ $(function(){initNavTree('classls_1_1Chassis.html','','classls_1_1Chassis-member
 </div><!--header-->
 <div class="contents">
 
-<p>Represents the chassis of the robot. Only supports tank drive configuration (TODO)  
+<p>Main chassis control class for robot movement.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="chassis_8h_source.html">chassis.h</a>&gt;</code></p>
@@ -103,46 +104,59 @@ $(function(){initNavTree('classls_1_1Chassis.html','','classls_1_1Chassis-member
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a752666de9b304729fb6a80249d1bc49b" id="r_a752666de9b304729fb6a80249d1bc49b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a752666de9b304729fb6a80249d1bc49b">setController</a> (pros::Controller &amp;cont)</td></tr>
-<tr class="memdesc:a752666de9b304729fb6a80249d1bc49b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the Controller object.  <br /></td></tr>
+<tr class="memdesc:a752666de9b304729fb6a80249d1bc49b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the controller for user input and cancellation.  <br /></td></tr>
 <tr class="memitem:a61fab3bf5645855d95e8649ced54c97d" id="r_a61fab3bf5645855d95e8649ced54c97d"><td class="memItemLeft" align="right" valign="top">pros::Controller *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61fab3bf5645855d95e8649ced54c97d">getController</a> ()</td></tr>
-<tr class="memdesc:a61fab3bf5645855d95e8649ced54c97d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Controller object.  <br /></td></tr>
+<tr class="memdesc:a61fab3bf5645855d95e8649ced54c97d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the currently associated controller.  <br /></td></tr>
 <tr class="memitem:a113783494e48d437b5f2fe0c052202db" id="r_a113783494e48d437b5f2fe0c052202db"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classls_1_1AbstractOdom.html">ls::AbstractOdom</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a113783494e48d437b5f2fe0c052202db">getOdom</a> ()</td></tr>
-<tr class="memdesc:a113783494e48d437b5f2fe0c052202db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a pointer to the odom system.  <br /></td></tr>
+<tr class="memdesc:a113783494e48d437b5f2fe0c052202db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get access to the odometry system.  <br /></td></tr>
 <tr class="memitem:adf505c87e2d17323382a952aee601376" id="r_adf505c87e2d17323382a952aee601376"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classls_1_1AbstractPID.html">AbstractPID</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf505c87e2d17323382a952aee601376">getLateralControl</a> ()</td></tr>
-<tr class="memdesc:adf505c87e2d17323382a952aee601376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Lateral Control object.  <br /></td></tr>
+<tr class="memdesc:adf505c87e2d17323382a952aee601376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the lateral motion <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller.  <br /></td></tr>
 <tr class="memitem:a95c1d683861a3b38810a9de46a1cf159" id="r_a95c1d683861a3b38810a9de46a1cf159"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classls_1_1AbstractPID.html">AbstractPID</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95c1d683861a3b38810a9de46a1cf159">getAngularControl</a> ()</td></tr>
-<tr class="memdesc:a95c1d683861a3b38810a9de46a1cf159"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Angular Control object.  <br /></td></tr>
+<tr class="memdesc:a95c1d683861a3b38810a9de46a1cf159"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the angular motion <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller.  <br /></td></tr>
+<tr class="memitem:a0adde64b3175a57362fbe2d6656de797" id="r_a0adde64b3175a57362fbe2d6656de797"><td class="memItemLeft" align="right" valign="top">std::vector&lt; pros::Motor &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0adde64b3175a57362fbe2d6656de797">getLeftMotorVec</a> ()</td></tr>
+<tr class="memdesc:a0adde64b3175a57362fbe2d6656de797"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the left motor vector.  <br /></td></tr>
+<tr class="memitem:aafe03b7353effa7cdcd9dc25df06c23d" id="r_aafe03b7353effa7cdcd9dc25df06c23d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; pros::Motor &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafe03b7353effa7cdcd9dc25df06c23d">getRightMotorVec</a> ()</td></tr>
+<tr class="memdesc:aafe03b7353effa7cdcd9dc25df06c23d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the right motor vector.  <br /></td></tr>
+<tr class="memitem:a4ecdafd6c4438a3c5d79e5b5dd25947b" id="r_a4ecdafd6c4438a3c5d79e5b5dd25947b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; pros::MotorGroup &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ecdafd6c4438a3c5d79e5b5dd25947b">getLeftMotors</a> ()</td></tr>
+<tr class="memdesc:a4ecdafd6c4438a3c5d79e5b5dd25947b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the left motor group.  <br /></td></tr>
+<tr class="memitem:ae667728d09ed72ab2eddeff989a0e251" id="r_ae667728d09ed72ab2eddeff989a0e251"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; pros::MotorGroup &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae667728d09ed72ab2eddeff989a0e251">getRightMotors</a> ()</td></tr>
+<tr class="memdesc:ae667728d09ed72ab2eddeff989a0e251"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the right motor group.  <br /></td></tr>
+<tr class="memitem:a6a1b1651704bd8006ed3bf4049d17b38" id="r_a6a1b1651704bd8006ed3bf4049d17b38"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a1b1651704bd8006ed3bf4049d17b38">isAdaptivePIDEnabled</a> () const</td></tr>
+<tr class="memdesc:a6a1b1651704bd8006ed3bf4049d17b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> is enabled.  <br /></td></tr>
 <tr class="memitem:a1e6c03689af84cb73c81662499fb85f3" id="r_a1e6c03689af84cb73c81662499fb85f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e6c03689af84cb73c81662499fb85f3">updateAdaptivePID</a> ()</td></tr>
-<tr class="memdesc:a1e6c03689af84cb73c81662499fb85f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update adaptive <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> controllers if enabled Should be called periodically during autonomous operation.  <br /></td></tr>
-<tr class="memitem:a9dc8846057d1390e348d6b2c3b02dfff" id="r_a9dc8846057d1390e348d6b2c3b02dfff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9dc8846057d1390e348d6b2c3b02dfff">Chassis</a> (std::shared_ptr&lt; pros::MotorGroup &gt; _right, std::shared_ptr&lt; pros::MotorGroup &gt; _left, std::shared_ptr&lt; <a class="el" href="classls_1_1AbstractOdom.html">ls::AbstractOdom</a> &gt; _odom, std::shared_ptr&lt; <a class="el" href="classls_1_1AbstractPID.html">ls::AbstractPID</a> &gt; _lateral_control, std::shared_ptr&lt; <a class="el" href="classls_1_1AbstractPID.html">ls::AbstractPID</a> &gt; _angular_control, const <a class="el" href="structls_1_1ChassisConfig.html">ChassisConfig</a> &amp;cfg={})</td></tr>
-<tr class="memdesc:a9dc8846057d1390e348d6b2c3b02dfff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classls_1_1Chassis.html" title="Represents the chassis of the robot. Only supports tank drive configuration (TODO)">Chassis</a> object.  <br /></td></tr>
+<tr class="memdesc:a1e6c03689af84cb73c81662499fb85f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controllers.  <br /></td></tr>
+<tr class="memitem:a5e4551fc37056d7bff2f1572b87bc795" id="r_a5e4551fc37056d7bff2f1572b87bc795"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e4551fc37056d7bff2f1572b87bc795">Chassis</a> (std::vector&lt; pros::Motor &gt; _left_motors, std::vector&lt; pros::Motor &gt; _right_motors, std::shared_ptr&lt; pros::MotorGroup &gt; _right, std::shared_ptr&lt; pros::MotorGroup &gt; _left, std::shared_ptr&lt; <a class="el" href="classls_1_1AbstractOdom.html">ls::AbstractOdom</a> &gt; _odom, std::shared_ptr&lt; <a class="el" href="classls_1_1AbstractPID.html">ls::AbstractPID</a> &gt; _lateral_control, std::shared_ptr&lt; <a class="el" href="classls_1_1AbstractPID.html">ls::AbstractPID</a> &gt; _angular_control, const <a class="el" href="structls_1_1ChassisConfig.html">ChassisConfig</a> &amp;cfg={})</td></tr>
+<tr class="memdesc:a5e4551fc37056d7bff2f1572b87bc795"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classls_1_1Chassis.html" title="Main chassis control class for robot movement.">Chassis</a> object.  <br /></td></tr>
 <tr class="memitem:a4df81978d1be06bd7e2d2e2f48627a3b" id="r_a4df81978d1be06bd7e2d2e2f48627a3b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4df81978d1be06bd7e2d2e2f48627a3b">Chassis</a> (const <a class="el" href="classls_1_1Chassis.html">Chassis</a> &amp;)=default</td></tr>
 <tr class="memitem:a9b479d5dd50e473cfe1019af02f8c7e6" id="r_a9b479d5dd50e473cfe1019af02f8c7e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classls_1_1Chassis.html">Chassis</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b479d5dd50e473cfe1019af02f8c7e6">operator=</a> (const <a class="el" href="classls_1_1Chassis.html">Chassis</a> &amp;)=default</td></tr>
 <tr class="memitem:a0fa3a716c6310c950da07585c6ad6e4a" id="r_a0fa3a716c6310c950da07585c6ad6e4a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fa3a716c6310c950da07585c6ad6e4a">Chassis</a> (<a class="el" href="classls_1_1Chassis.html">Chassis</a> &amp;&amp;)=default</td></tr>
 <tr class="memitem:af589511b80f13900cdccfcc8b24e5726" id="r_af589511b80f13900cdccfcc8b24e5726"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classls_1_1Chassis.html">Chassis</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af589511b80f13900cdccfcc8b24e5726">operator=</a> (<a class="el" href="classls_1_1Chassis.html">Chassis</a> &amp;&amp;)=default</td></tr>
 <tr class="memitem:aff43e596d6debf9f47dd520bc2a2aed6" id="r_aff43e596d6debf9f47dd520bc2a2aed6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff43e596d6debf9f47dd520bc2a2aed6">moveToPoint</a> (double X, double Y, unsigned int timeout, bool reverse=false)</td></tr>
-<tr class="memdesc:aff43e596d6debf9f47dd520bc2a2aed6"><td class="mdescLeft">&#160;</td><td class="mdescRight">moves chassis to the following point in the cartesian coordinate plane with latest odom reset point as (0, 0)  <br /></td></tr>
+<tr class="memdesc:aff43e596d6debf9f47dd520bc2a2aed6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move chassis to a specific point in Cartesian coordinates.  <br /></td></tr>
 <tr class="memitem:aaf54ad7748b70e7fcd4b7580957124cc" id="r_aaf54ad7748b70e7fcd4b7580957124cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf54ad7748b70e7fcd4b7580957124cc">turnToPoint</a> (double X, double Y, unsigned int timeout, bool reverse=false)</td></tr>
-<tr class="memdesc:aaf54ad7748b70e7fcd4b7580957124cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">turns chassis to face the following point in the cartesian coordinate plane with latest odom reset point as (0, 0)  <br /></td></tr>
+<tr class="memdesc:aaf54ad7748b70e7fcd4b7580957124cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn chassis to face a specific point.  <br /></td></tr>
 <tr class="memitem:abcc9e9c7c3e12f07b49265765433c53e" id="r_abcc9e9c7c3e12f07b49265765433c53e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abcc9e9c7c3e12f07b49265765433c53e">turnToAngle</a> (double angle, unsigned int timeout)</td></tr>
-<tr class="memdesc:abcc9e9c7c3e12f07b49265765433c53e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turns the chassis to a specific angle.  <br /></td></tr>
+<tr class="memdesc:abcc9e9c7c3e12f07b49265765433c53e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn chassis to a specific absolute angle.  <br /></td></tr>
 <tr class="memitem:a8d8569706d384c9cc29f98057a11ef0c" id="r_a8d8569706d384c9cc29f98057a11ef0c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d8569706d384c9cc29f98057a11ef0c">driveRelative</a> (double <a class="el" href="namespacels.html#a69260248280da3336a292918aacc0781">distance</a>, unsigned int timeout)</td></tr>
-<tr class="memdesc:a8d8569706d384c9cc29f98057a11ef0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drive forward a relative distance from the current pose. Positive distance drives forward; negative will target a point behind (robot may rotate to reach it).  <br /></td></tr>
+<tr class="memdesc:a8d8569706d384c9cc29f98057a11ef0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Drive forward/backward a relative distance.  <br /></td></tr>
 <tr class="memitem:a6c7f3077a3420adbfdea3bcac9a4e7fb" id="r_a6c7f3077a3420adbfdea3bcac9a4e7fb"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c7f3077a3420adbfdea3bcac9a4e7fb">turnRelative</a> (double deltaAngle, unsigned int timeout)</td></tr>
-<tr class="memdesc:a6c7f3077a3420adbfdea3bcac9a4e7fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn by a relative delta angle (bearing frame).  <br /></td></tr>
+<tr class="memdesc:a6c7f3077a3420adbfdea3bcac9a4e7fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn by a relative angle change.  <br /></td></tr>
 <tr class="memitem:a1f5e3138eb1816d51a9132b606f22db3" id="r_a1f5e3138eb1816d51a9132b606f22db3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f5e3138eb1816d51a9132b606f22db3">tank_drive</a> (double left_y, double right_y)</td></tr>
-<tr class="memdesc:a1f5e3138eb1816d51a9132b606f22db3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls the chassis with tank drive logic.  <br /></td></tr>
+<tr class="memdesc:a1f5e3138eb1816d51a9132b606f22db3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manual tank drive control.  <br /></td></tr>
 <tr class="memitem:a7b28844b106b59fc52a533d5e5c979ba" id="r_a7b28844b106b59fc52a533d5e5c979ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b28844b106b59fc52a533d5e5c979ba">arcade</a> (double forward, double turn)</td></tr>
-<tr class="memdesc:a7b28844b106b59fc52a533d5e5c979ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls the chassis with arcade drive logic.  <br /></td></tr>
+<tr class="memdesc:a7b28844b106b59fc52a533d5e5c979ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manual arcade drive control.  <br /></td></tr>
 <tr class="memitem:af82a56ed28b60bd6da11c1d1a9a32c91" id="r_af82a56ed28b60bd6da11c1d1a9a32c91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af82a56ed28b60bd6da11c1d1a9a32c91">followPath</a> (const <a class="el" href="namespacels.html#aa1de31b8406d8adab166931d8094c66f">Path</a> &amp;path, double lookahead, unsigned int timeout)</td></tr>
-<tr class="memdesc:af82a56ed28b60bd6da11c1d1a9a32c91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Follow a path using Pure Pursuit controller.  <br /></td></tr>
+<tr class="memdesc:af82a56ed28b60bd6da11c1d1a9a32c91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Follow a path using pure pursuit algorithm.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a4dc889496d0f1a5fa2118032d9d6f0a4" id="r_a4dc889496d0f1a5fa2118032d9d6f0a4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dc889496d0f1a5fa2118032d9d6f0a4">move_priority</a> (<a class="el" href="classls_1_1Angle.html">Angle</a> &amp;angle) const</td></tr>
+<tr class="memdesc:a4dc889496d0f1a5fa2118032d9d6f0a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate movement priority for coordinated motion.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:ab5b517421a4f40627995cc44bb296a75" id="r_ab5b517421a4f40627995cc44bb296a75"><td class="memItemLeft" align="right" valign="top">std::vector&lt; pros::Motor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5b517421a4f40627995cc44bb296a75">left_motors</a></td></tr>
+<tr class="memitem:a55e3d8c5a5141af7447c4684ceed3e70" id="r_a55e3d8c5a5141af7447c4684ceed3e70"><td class="memItemLeft" align="right" valign="top">std::vector&lt; pros::Motor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55e3d8c5a5141af7447c4684ceed3e70">right_motors</a></td></tr>
 <tr class="memitem:afdc77196df91e2441730f987d5508ebe" id="r_afdc77196df91e2441730f987d5508ebe"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; pros::MotorGroup &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdc77196df91e2441730f987d5508ebe">right</a></td></tr>
 <tr class="memitem:a3e30b82ba2befb45b382861c0a2417c4" id="r_a3e30b82ba2befb45b382861c0a2417c4"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; pros::MotorGroup &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e30b82ba2befb45b382861c0a2417c4">left</a></td></tr>
 <tr class="memitem:a95ec91b08daa9b2a86742c970c396571" id="r_a95ec91b08daa9b2a86742c970c396571"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classls_1_1AbstractOdom.html">ls::AbstractOdom</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95ec91b08daa9b2a86742c970c396571">odom</a></td></tr>
@@ -160,12 +174,22 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:abc8cdfefc1cf4d72269efc6f05d61415" id="r_abc8cdfefc1cf4d72269efc6f05d61415"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classls_1_1AdaptivePIDController.html">AdaptivePIDController</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc8cdfefc1cf4d72269efc6f05d61415">angular_adaptive_controller</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents the chassis of the robot. Only supports tank drive configuration (TODO) </p>
+<div class="textblock"><p>Main chassis control class for robot movement. </p>
+<p>The <a class="el" href="classls_1_1Chassis.html" title="Main chassis control class for robot movement.">Chassis</a> class provides comprehensive control over robot movement including:</p><ul>
+<li>Manual control via tank or arcade drive</li>
+<li>Autonomous motion primitives with <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> control</li>
+<li><a class="el" href="namespacels.html#aa1de31b8406d8adab166931d8094c66f" title="Type alias for a sequence of waypoints.">Path</a> following capabilities</li>
+<li>Integrated odometry for position feedback</li>
+<li>Adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> tuning for optimal performance</li>
+</ul>
+<p>The class currently supports tank drive configuration with left/right motor groups. Future versions may add support for other drive configurations (Mecanum, X-drive, etc.).</p>
+<dl class="section note"><dt>Note</dt><dd>All distances are in inches, angles in degrees (bearing system: 0° = North) </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>Requires proper motor calibration and <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> tuning for optimal performance </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00037">37</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00073">73</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a9dc8846057d1390e348d6b2c3b02dfff" name="a9dc8846057d1390e348d6b2c3b02dfff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dc8846057d1390e348d6b2c3b02dfff">&#9670;&#160;</a></span>Chassis() <span class="overload">[1/3]</span></h2>
+<a id="a5e4551fc37056d7bff2f1572b87bc795" name="a5e4551fc37056d7bff2f1572b87bc795"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e4551fc37056d7bff2f1572b87bc795">&#9670;&#160;</a></span>Chassis() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -176,6 +200,16 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">ls::Chassis::Chassis </td>
           <td>(</td>
+          <td class="paramtype">std::vector&lt; pros::Motor &gt;</td>          <td class="paramname"><span class="paramname"><em>_left_motors</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; pros::Motor &gt;</td>          <td class="paramname"><span class="paramname"><em>_right_motors</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">std::shared_ptr&lt; pros::MotorGroup &gt;</td>          <td class="paramname"><span class="paramname"><em>_right</em></span>, </td>
         </tr>
         <tr>
@@ -211,22 +245,25 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="classls_1_1Chassis.html" title="Represents the chassis of the robot. Only supports tank drive configuration (TODO)">Chassis</a> object. </p>
+<p>Construct a new <a class="el" href="classls_1_1Chassis.html" title="Main chassis control class for robot movement.">Chassis</a> object. </p>
+<p>Creates a chassis with the specified motor groups, odometry system, and <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controllers. Configuration can be customized via the config parameter.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_right</td><td>the right motors </td></tr>
-    <tr><td class="paramname">_left</td><td>the left motors </td></tr>
-    <tr><td class="paramname">_odom</td><td>odom of the chassis </td></tr>
-    <tr><td class="paramname">_lateral_control</td><td><a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> class denoting forward motion </td></tr>
-    <tr><td class="paramname">_angular_control</td><td><a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> class denoting turn motion </td></tr>
-    <tr><td class="paramname">cfg</td><td>Configuration struct </td></tr>
+    <tr><td class="paramname">_left_motors</td><td>Vector of left side motors </td></tr>
+    <tr><td class="paramname">_right_motors</td><td>Vector of right side motors </td></tr>
+    <tr><td class="paramname">_right</td><td>Shared pointer to right side motor group </td></tr>
+    <tr><td class="paramname">_left</td><td>Shared pointer to left side motor group </td></tr>
+    <tr><td class="paramname">_odom</td><td>Shared pointer to odometry system </td></tr>
+    <tr><td class="paramname">_lateral_control</td><td>Shared pointer to lateral <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller </td></tr>
+    <tr><td class="paramname">_angular_control</td><td>Shared pointer to angular <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller </td></tr>
+    <tr><td class="paramname">cfg</td><td>Configuration struct (uses defaults if not provided) </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00036">36</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="chassis_8h_source.html#l00058">angular_adaptive_controller</a>, <a class="el" href="chassis_8h_source.html#l00045">angular_control</a>, <a class="el" href="chassis_8h_source.html#l00027">ls::ChassisConfig::angularThreshold</a>, <a class="el" href="chassis_8h_source.html#l00052">cancel_button</a>, <a class="el" href="chassis_8h_source.html#l00030">ls::ChassisConfig::cancelButton</a>, <a class="el" href="chassis_8h_source.html#l00054">controller</a>, <a class="el" href="chassis_8h_source.html#l00028">ls::ChassisConfig::dwellTimeMs</a>, <a class="el" href="chassis_8h_source.html#l00053">enable_adaptive_pid</a>, <a class="el" href="chassis_8h_source.html#l00051">enable_cancel</a>, <a class="el" href="chassis_8h_source.html#l00031">ls::ChassisConfig::enableAdaptivePID</a>, <a class="el" href="chassis_8h_source.html#l00029">ls::ChassisConfig::enableCancel</a>, <a class="el" href="gains_8h_source.html#l00011">ls::PIDGains::kD</a>, <a class="el" href="gains_8h_source.html#l00010">ls::PIDGains::kI</a>, <a class="el" href="gains_8h_source.html#l00009">ls::PIDGains::kP</a>, <a class="el" href="chassis_8h_source.html#l00057">lateral_adaptive_controller</a>, <a class="el" href="chassis_8h_source.html#l00044">lateral_control</a>, <a class="el" href="chassis_8h_source.html#l00026">ls::ChassisConfig::lateralThreshold</a>, <a class="el" href="chassis_8h_source.html#l00041">left</a>, <a class="el" href="chassis_8h_source.html#l00042">odom</a>, <a class="el" href="chassis_8h_source.html#l00040">right</a>, <a class="el" href="chassis_8h_source.html#l00049">threshold_angular</a>, <a class="el" href="chassis_8h_source.html#l00048">threshold_lateral</a>, <a class="el" href="chassis_8h_source.html#l00050">threshold_timeout</a>, <a class="el" href="chassis_8h_source.html#l00047">turn_sensitivity</a>, and <a class="el" href="chassis_8h_source.html#l00025">ls::ChassisConfig::turnSensitivity</a>.</p>
+<p class="reference">References <a class="el" href="chassis_8h_source.html#l00096">angular_adaptive_controller</a>, <a class="el" href="chassis_8h_source.html#l00083">angular_control</a>, <a class="el" href="chassis_8h_source.html#l00050">ls::ChassisConfig::angularThreshold</a>, <a class="el" href="chassis_8h_source.html#l00090">cancel_button</a>, <a class="el" href="chassis_8h_source.html#l00053">ls::ChassisConfig::cancelButton</a>, <a class="el" href="chassis_8h_source.html#l00092">controller</a>, <a class="el" href="chassis_8h_source.html#l00051">ls::ChassisConfig::dwellTimeMs</a>, <a class="el" href="chassis_8h_source.html#l00091">enable_adaptive_pid</a>, <a class="el" href="chassis_8h_source.html#l00089">enable_cancel</a>, <a class="el" href="chassis_8h_source.html#l00054">ls::ChassisConfig::enableAdaptivePID</a>, <a class="el" href="chassis_8h_source.html#l00052">ls::ChassisConfig::enableCancel</a>, <a class="el" href="gains_8h_source.html#l00050">ls::PIDGains::kD</a>, <a class="el" href="gains_8h_source.html#l00049">ls::PIDGains::kI</a>, <a class="el" href="gains_8h_source.html#l00048">ls::PIDGains::kP</a>, <a class="el" href="chassis_8h_source.html#l00095">lateral_adaptive_controller</a>, <a class="el" href="chassis_8h_source.html#l00082">lateral_control</a>, <a class="el" href="chassis_8h_source.html#l00049">ls::ChassisConfig::lateralThreshold</a>, <a class="el" href="chassis_8h_source.html#l00079">left</a>, <a class="el" href="chassis_8h_source.html#l00076">left_motors</a>, <a class="el" href="chassis_8h_source.html#l00080">odom</a>, <a class="el" href="chassis_8h_source.html#l00078">right</a>, <a class="el" href="chassis_8h_source.html#l00077">right_motors</a>, <a class="el" href="chassis_8h_source.html#l00087">threshold_angular</a>, <a class="el" href="chassis_8h_source.html#l00086">threshold_lateral</a>, <a class="el" href="chassis_8h_source.html#l00088">threshold_timeout</a>, <a class="el" href="chassis_8h_source.html#l00085">turn_sensitivity</a>, and <a class="el" href="chassis_8h_source.html#l00048">ls::ChassisConfig::turnSensitivity</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="#a0fa3a716c6310c950da07585c6ad6e4a">Chassis()</a>, <a class="el" href="#a4df81978d1be06bd7e2d2e2f48627a3b">Chassis()</a>, <a class="el" href="#af589511b80f13900cdccfcc8b24e5726">operator=()</a>, and <a class="el" href="#a9b479d5dd50e473cfe1019af02f8c7e6">operator=()</a>.</p>
 
@@ -306,16 +343,17 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Controls the chassis with arcade drive logic. </p>
+<p>Manual arcade drive control. </p>
+<p>Controls the chassis using arcade drive logic with separate forward/backward and turn inputs. This provides more intuitive control for drivers.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">forward</td><td>The input for forward/backward movement. </td></tr>
-    <tr><td class="paramname">turn</td><td>The input for turning movement. </td></tr>
+    <tr><td class="paramname">forward</td><td>Forward/backward movement input (-1 to 1 or -127 to 127) </td></tr>
+    <tr><td class="paramname">turn</td><td>Left/right turn input (-1 to 1 or -127 to 127) </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00356">356</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00376">376</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
 
 </div>
 </div>
@@ -338,18 +376,20 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Drive forward a relative distance from the current pose. Positive distance drives forward; negative will target a point behind (robot may rotate to reach it). </p>
+<p>Drive forward/backward a relative distance. </p>
+<p>Moves the robot forward or backward by the specified distance from its current position using <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> control.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">distance</td><td>inches to drive (forward +) </td></tr>
-    <tr><td class="paramname">timeout</td><td>ms timeout </td></tr>
+    <tr><td class="paramname">distance</td><td>Distance to drive in inches (positive = forward, negative = backward) </td></tr>
+    <tr><td class="paramname">timeout</td><td>Maximum time to complete movement in milliseconds </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Actual distance traveled when movement completed or timed out </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00251">251</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00271">271</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="chassis_8h_source.html#l00052">cancel_button</a>, <a class="el" href="clamp_8hpp_source.html#l00013">ls::clampPower()</a>, <a class="el" href="chassis_8h_source.html#l00054">controller</a>, <a class="el" href="chassis_8cpp_source.html#l00032">DBG_PRINT</a>, <a class="el" href="geometry_8cpp_source.html#l00060">ls::distance()</a>, <a class="el" href="chassis_8h_source.html#l00051">enable_cancel</a>, <a class="el" href="timer_8cpp_source.html#l00031">ls::Timer::isDone()</a>, <a class="el" href="chassis_8h_source.html#l00044">lateral_control</a>, <a class="el" href="chassis_8h_source.html#l00041">left</a>, <a class="el" href="chassis_8cpp_source.html#l00012">LOOP_DELAY</a>, <a class="el" href="chassis_8h_source.html#l00042">odom</a>, <a class="el" href="chassis_8h_source.html#l00040">right</a>, <a class="el" href="chassis_8h_source.html#l00048">threshold_lateral</a>, and <a class="el" href="chassis_8h_source.html#l00050">threshold_timeout</a>.</p>
+<p class="reference">References <a class="el" href="chassis_8h_source.html#l00090">cancel_button</a>, <a class="el" href="clamp_8hpp_source.html#l00093">ls::clampPower()</a>, <a class="el" href="chassis_8h_source.html#l00092">controller</a>, <a class="el" href="chassis_8cpp_source.html#l00032">DBG_PRINT</a>, <a class="el" href="geometry_8cpp_source.html#l00060">ls::distance()</a>, <a class="el" href="chassis_8h_source.html#l00089">enable_cancel</a>, <a class="el" href="timer_8cpp_source.html#l00031">ls::Timer::isDone()</a>, <a class="el" href="chassis_8h_source.html#l00082">lateral_control</a>, <a class="el" href="chassis_8h_source.html#l00079">left</a>, <a class="el" href="chassis_8cpp_source.html#l00012">LOOP_DELAY</a>, <a class="el" href="chassis_8h_source.html#l00080">odom</a>, <a class="el" href="chassis_8h_source.html#l00078">right</a>, <a class="el" href="chassis_8h_source.html#l00086">threshold_lateral</a>, and <a class="el" href="chassis_8h_source.html#l00088">threshold_timeout</a>.</p>
 
 </div>
 </div>
@@ -377,19 +417,20 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Follow a path using Pure Pursuit controller. </p>
+<p>Follow a path using pure pursuit algorithm. </p>
+<p>Executes path following using the pure pursuit algorithm to smoothly navigate through a series of waypoints. The lookahead distance determines how far ahead on the path the robot aims.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>list of waypoints (inches) </td></tr>
-    <tr><td class="paramname">lookahead</td><td>lookahead distance (inches) </td></tr>
-    <tr><td class="paramname">timeout</td><td>ms timeout </td></tr>
+    <tr><td class="paramname">path</td><td>Vector of waypoints defining the path </td></tr>
+    <tr><td class="paramname">lookahead</td><td>Lookahead distance in inches for path following </td></tr>
+    <tr><td class="paramname">timeout</td><td>Maximum time to complete path following in milliseconds </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00229">229</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00249">249</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="clamp_8hpp_source.html#l00013">ls::clampPower()</a>, <a class="el" href="timer_8cpp_source.html#l00031">ls::Timer::isDone()</a>, <a class="el" href="pure__pursuit_8h_source.html#l00019">ls::PurePursuit::isFinished()</a>, <a class="el" href="chassis_8h_source.html#l00041">left</a>, <a class="el" href="pure__pursuit_8h_source.html#l00008">ls::PursuitOutput::linear</a>, <a class="el" href="chassis_8h_source.html#l00042">odom</a>, <a class="el" href="chassis_8h_source.html#l00040">right</a>, <a class="el" href="pure__pursuit_8h_source.html#l00016">ls::PurePursuit::setPath()</a>, and <a class="el" href="pure__pursuit_8cpp_source.html#l00016">ls::PurePursuit::update()</a>.</p>
+<p class="reference">References <a class="el" href="clamp_8hpp_source.html#l00093">ls::clampPower()</a>, <a class="el" href="timer_8cpp_source.html#l00031">ls::Timer::isDone()</a>, <a class="el" href="pure__pursuit_8h_source.html#l00134">ls::PurePursuit::isFinished()</a>, <a class="el" href="chassis_8h_source.html#l00079">left</a>, <a class="el" href="pure__pursuit_8h_source.html#l00045">ls::PursuitOutput::linear</a>, <a class="el" href="chassis_8h_source.html#l00080">odom</a>, <a class="el" href="chassis_8h_source.html#l00078">right</a>, <a class="el" href="classls_1_1PurePursuit.html#ab0c068607afd87242662b432da6806e4">ls::PurePursuit::setPath()</a>, and <a class="el" href="pure__pursuit_8cpp_source.html#l00016">ls::PurePursuit::update()</a>.</p>
 
 </div>
 </div>
@@ -408,12 +449,12 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the Angular Control object. </p>
-<dl class="section return"><dt>Returns</dt><dd>std::shared_ptr&lt;AbstractPID&gt; </dd></dl>
+<p>Get the angular motion <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller. </p>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the angular <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00088">88</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="chassis_8h_source.html#l00045">angular_control</a>.</p>
+<p class="reference">References <a class="el" href="chassis_8h_source.html#l00083">angular_control</a>.</p>
 
 </div>
 </div>
@@ -440,12 +481,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the Controller object. </p>
-<dl class="section return"><dt>Returns</dt><dd>pros::Controller* </dd></dl>
+<p>Get the currently associated controller. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the PROS controller (nullptr if not set) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00072">72</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00114">114</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
-<p class="reference">References <a class="el" href="chassis_8h_source.html#l00054">controller</a>.</p>
+<p class="reference">References <a class="el" href="chassis_8h_source.html#l00092">controller</a>.</p>
 
 </div>
 </div>
@@ -464,12 +505,60 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the Lateral Control object. </p>
-<dl class="section return"><dt>Returns</dt><dd>std::shared_ptr&lt;AbstractPID&gt; </dd></dl>
+<p>Get the lateral motion <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller. </p>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the lateral <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00084">84</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="chassis_8h_source.html#l00044">lateral_control</a>.</p>
+<p class="reference">References <a class="el" href="chassis_8h_source.html#l00082">lateral_control</a>.</p>
+
+</div>
+</div>
+<a id="a4ecdafd6c4438a3c5d79e5b5dd25947b" name="a4ecdafd6c4438a3c5d79e5b5dd25947b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ecdafd6c4438a3c5d79e5b5dd25947b">&#9670;&#160;</a></span>getLeftMotors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; pros::MotorGroup &gt; ls::Chassis::getLeftMotors </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the left motor group. </p>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the left motor group </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00100">100</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="chassis_8h_source.html#l00079">left</a>.</p>
+
+</div>
+</div>
+<a id="a0adde64b3175a57362fbe2d6656de797" name="a0adde64b3175a57362fbe2d6656de797"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0adde64b3175a57362fbe2d6656de797">&#9670;&#160;</a></span>getLeftMotorVec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; pros::Motor &gt; &amp; ls::Chassis::getLeftMotorVec </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the left motor vector. </p>
+<dl class="section return"><dt>Returns</dt><dd>Vector of left motors </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00092">92</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="chassis_8h_source.html#l00076">left_motors</a>.</p>
 
 </div>
 </div>
@@ -488,12 +577,85 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get a pointer to the odom system. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classls_1_1AbstractOdom.html" title="Represents all odometry classes in one abstract term.">ls::AbstractOdom</a>* </dd></dl>
+<p>Get access to the odometry system. </p>
+<p>Provides access to the chassis's odometry system for position tracking and pose estimation.</p>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the odometry system </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00080">80</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="chassis_8h_source.html#l00042">odom</a>.</p>
+<p class="reference">References <a class="el" href="chassis_8h_source.html#l00080">odom</a>.</p>
+
+</div>
+</div>
+<a id="ae667728d09ed72ab2eddeff989a0e251" name="ae667728d09ed72ab2eddeff989a0e251"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae667728d09ed72ab2eddeff989a0e251">&#9670;&#160;</a></span>getRightMotors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; pros::MotorGroup &gt; ls::Chassis::getRightMotors </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the right motor group. </p>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to the right motor group </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00104">104</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="chassis_8h_source.html#l00078">right</a>.</p>
+
+</div>
+</div>
+<a id="aafe03b7353effa7cdcd9dc25df06c23d" name="aafe03b7353effa7cdcd9dc25df06c23d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafe03b7353effa7cdcd9dc25df06c23d">&#9670;&#160;</a></span>getRightMotorVec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; pros::Motor &gt; &amp; ls::Chassis::getRightMotorVec </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the right motor vector. </p>
+<dl class="section return"><dt>Returns</dt><dd>Vector of right motors </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00096">96</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="chassis_8h_source.html#l00077">right_motors</a>.</p>
+
+</div>
+</div>
+<a id="a6a1b1651704bd8006ed3bf4049d17b38" name="a6a1b1651704bd8006ed3bf4049d17b38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a1b1651704bd8006ed3bf4049d17b38">&#9670;&#160;</a></span>isAdaptivePIDEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ls::Chassis::isAdaptivePIDEnabled </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> is enabled. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> is enabled, false otherwise </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00108">108</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="chassis_8h_source.html#l00091">enable_adaptive_pid</a>.</p>
 
 </div>
 </div>
@@ -519,13 +681,22 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Calculate priority from [0, 1] as percentage of which the turn motion has priority over the move motion. Usefull for moveToPoint linear </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00225">225</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
+<p>Calculate movement priority for coordinated motion. </p>
+<p>Calculates a priority value from [0, 1] representing the percentage by which turn motion has priority over lateral motion. This is useful for smooth point-to-point movements that require both translation and rotation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>Target angle for movement coordination </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Priority value between 0.0 and 1.0 </dd></dl>
 
-<p class="reference">References <a class="el" href="geometry_8cpp_source.html#l00016">ls::Angle::convertToRadians()</a>, and <a class="el" href="chassis_8h_source.html#l00047">turn_sensitivity</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00245">245</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00092">moveToPoint()</a>.</p>
+<p class="reference">References <a class="el" href="geometry_8cpp_source.html#l00016">ls::Angle::convertToRadians()</a>, and <a class="el" href="chassis_8h_source.html#l00085">turn_sensitivity</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00112">moveToPoint()</a>.</p>
 
 </div>
 </div>
@@ -558,18 +729,22 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>moves chassis to the following point in the cartesian coordinate plane with latest odom reset point as (0, 0) </p>
-<p>TODO </p>
+<p>Move chassis to a specific point in Cartesian coordinates. </p>
+<p>Moves the robot to the specified (X, Y) position using odometry feedback and <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> control. The origin (0, 0) is the latest odometry reset point.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">...</td><td>(figure it out once done with function) </td></tr>
+    <tr><td class="paramname">X</td><td>Target X coordinate in inches </td></tr>
+    <tr><td class="paramname">Y</td><td>Target Y coordinate in inches </td></tr>
+    <tr><td class="paramname">timeout</td><td>Maximum time to complete movement in milliseconds </td></tr>
+    <tr><td class="paramname">reverse</td><td>Whether to drive in reverse (default: false)</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>This function is currently marked as TODO and may not be fully implemented </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00092">92</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00112">112</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8cpp_source.html#l00091">ls::Position::angleToPosition()</a>, <a class="el" href="chassis_8h_source.html#l00045">angular_control</a>, <a class="el" href="chassis_8h_source.html#l00052">cancel_button</a>, <a class="el" href="clamp_8hpp_source.html#l00013">ls::clampPower()</a>, <a class="el" href="chassis_8h_source.html#l00054">controller</a>, <a class="el" href="chassis_8cpp_source.html#l00032">DBG_PRINT</a>, <a class="el" href="geometry_8cpp_source.html#l00060">ls::distance()</a>, <a class="el" href="odom_8cpp_source.html#l00067">ls::Position::distanceFromPointSigned()</a>, <a class="el" href="chassis_8h_source.html#l00051">enable_cancel</a>, <a class="el" href="geometry_8cpp_source.html#l00011">ls::Angle::getAngle()</a>, <a class="el" href="timer_8cpp_source.html#l00031">ls::Timer::isDone()</a>, <a class="el" href="chassis_8h_source.html#l00044">lateral_control</a>, <a class="el" href="chassis_8h_source.html#l00041">left</a>, <a class="el" href="chassis_8cpp_source.html#l00012">LOOP_DELAY</a>, <a class="el" href="geometry_8cpp_source.html#l00028">ls::Angle::minimumAngleDifference()</a>, <a class="el" href="chassis_8cpp_source.html#l00225">move_priority()</a>, <a class="el" href="geometry_8cpp_source.html#l00021">ls::Angle::normalize()</a>, <a class="el" href="chassis_8h_source.html#l00042">odom</a>, <a class="el" href="chassis_8h_source.html#l00040">right</a>, <a class="el" href="odom_8h_source.html#l00032">ls::Position::theta</a>, <a class="el" href="chassis_8h_source.html#l00048">threshold_lateral</a>, and <a class="el" href="chassis_8h_source.html#l00050">threshold_timeout</a>.</p>
+<p class="reference">References <a class="el" href="odom_8cpp_source.html#l00091">ls::Position::angleToPosition()</a>, <a class="el" href="chassis_8h_source.html#l00083">angular_control</a>, <a class="el" href="chassis_8h_source.html#l00090">cancel_button</a>, <a class="el" href="clamp_8hpp_source.html#l00093">ls::clampPower()</a>, <a class="el" href="chassis_8h_source.html#l00092">controller</a>, <a class="el" href="chassis_8cpp_source.html#l00032">DBG_PRINT</a>, <a class="el" href="geometry_8cpp_source.html#l00060">ls::distance()</a>, <a class="el" href="odom_8cpp_source.html#l00067">ls::Position::distanceFromPointSigned()</a>, <a class="el" href="chassis_8h_source.html#l00089">enable_cancel</a>, <a class="el" href="geometry_8cpp_source.html#l00011">ls::Angle::getAngle()</a>, <a class="el" href="timer_8cpp_source.html#l00031">ls::Timer::isDone()</a>, <a class="el" href="chassis_8h_source.html#l00082">lateral_control</a>, <a class="el" href="chassis_8h_source.html#l00079">left</a>, <a class="el" href="chassis_8cpp_source.html#l00012">LOOP_DELAY</a>, <a class="el" href="geometry_8cpp_source.html#l00028">ls::Angle::minimumAngleDifference()</a>, <a class="el" href="chassis_8cpp_source.html#l00245">move_priority()</a>, <a class="el" href="geometry_8cpp_source.html#l00021">ls::Angle::normalize()</a>, <a class="el" href="chassis_8h_source.html#l00080">odom</a>, <a class="el" href="chassis_8h_source.html#l00078">right</a>, <a class="el" href="odom_8h_source.html#l00064">ls::Position::theta</a>, <a class="el" href="chassis_8h_source.html#l00086">threshold_lateral</a>, and <a class="el" href="chassis_8h_source.html#l00088">threshold_timeout</a>.</p>
 
 </div>
 </div>
@@ -642,17 +817,18 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the Controller object. </p>
+<p>Set the controller for user input and cancellation. </p>
+<p>Associates a PROS controller with the chassis for manual control and autonomous movement cancellation.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cont</td><td>The controller to use for cancellation </td></tr>
+    <tr><td class="paramname">cont</td><td>Reference to PROS controller object </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00065">65</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="chassis_8h_source.html#l00054">controller</a>.</p>
+<p class="reference">References <a class="el" href="chassis_8h_source.html#l00092">controller</a>.</p>
 
 </div>
 </div>
@@ -675,11 +851,12 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Controls the chassis with tank drive logic. </p>
+<p>Manual tank drive control. </p>
+<p>Controls the chassis using tank drive logic where left and right sides are controlled independently. Values should be in range [-1, 1] or [-127, 127] depending on motor configuration.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">left_y</td><td>The input for the left side motors. </td></tr>
-    <tr><td class="paramname">right_y</td><td>The input for the right side motors. </td></tr>
+    <tr><td class="paramname">left_y</td><td>Left side motor power/input </td></tr>
+    <tr><td class="paramname">right_y</td><td>Right side motor power/input </td></tr>
   </table>
   </dd>
 </dl>
@@ -705,18 +882,20 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Turn by a relative delta angle (bearing frame). </p>
+<p>Turn by a relative angle change. </p>
+<p>Rotates the robot by the specified angle delta from its current heading. Positive angles turn clockwise, negative turn counterclockwise.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">deltaAngle</td><td>angle change in degrees (positive clockwise) </td></tr>
-    <tr><td class="paramname">timeout</td><td>ms timeout </td></tr>
+    <tr><td class="paramname">deltaAngle</td><td><a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> change in degrees (positive = clockwise) </td></tr>
+    <tr><td class="paramname">timeout</td><td>Maximum time to complete turn in milliseconds </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Actual angle change achieved when movement completed or timed out </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00305">305</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00325">325</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="chassis_8cpp_source.html#l00032">DBG_PRINT</a>, <a class="el" href="chassis_8h_source.html#l00042">odom</a>, and <a class="el" href="chassis_8cpp_source.html#l00315">turnToAngle()</a>.</p>
+<p class="reference">References <a class="el" href="chassis_8cpp_source.html#l00032">DBG_PRINT</a>, <a class="el" href="chassis_8h_source.html#l00080">odom</a>, and <a class="el" href="chassis_8cpp_source.html#l00335">turnToAngle()</a>.</p>
 
 </div>
 </div>
@@ -739,20 +918,22 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Turns the chassis to a specific angle. </p>
+<p>Turn chassis to a specific absolute angle. </p>
+<p>Rotates the robot to face the specified absolute bearing angle using <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> control and odometry feedback.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">angle</td><td>The target angle in degrees. </td></tr>
-    <tr><td class="paramname">timeout</td><td>The maximum time to complete the turn. </td></tr>
+    <tr><td class="paramname">angle</td><td>Target angle in degrees (0° = North, 90° = East) </td></tr>
+    <tr><td class="paramname">timeout</td><td>Maximum time to complete turn in milliseconds </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Actual angle achieved when movement completed or timed out </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00315">315</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00335">335</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="chassis_8h_source.html#l00045">angular_control</a>, <a class="el" href="chassis_8h_source.html#l00052">cancel_button</a>, <a class="el" href="clamp_8hpp_source.html#l00013">ls::clampPower()</a>, <a class="el" href="chassis_8h_source.html#l00054">controller</a>, <a class="el" href="chassis_8cpp_source.html#l00032">DBG_PRINT</a>, <a class="el" href="chassis_8h_source.html#l00051">enable_cancel</a>, <a class="el" href="geometry_8cpp_source.html#l00011">ls::Angle::getAngle()</a>, <a class="el" href="timer_8cpp_source.html#l00031">ls::Timer::isDone()</a>, <a class="el" href="chassis_8h_source.html#l00041">left</a>, <a class="el" href="chassis_8cpp_source.html#l00012">LOOP_DELAY</a>, <a class="el" href="geometry_8cpp_source.html#l00028">ls::Angle::minimumAngleDifference()</a>, <a class="el" href="chassis_8h_source.html#l00042">odom</a>, <a class="el" href="chassis_8h_source.html#l00040">right</a>, <a class="el" href="chassis_8h_source.html#l00049">threshold_angular</a>, and <a class="el" href="chassis_8h_source.html#l00050">threshold_timeout</a>.</p>
+<p class="reference">References <a class="el" href="chassis_8h_source.html#l00083">angular_control</a>, <a class="el" href="chassis_8h_source.html#l00090">cancel_button</a>, <a class="el" href="clamp_8hpp_source.html#l00093">ls::clampPower()</a>, <a class="el" href="chassis_8h_source.html#l00092">controller</a>, <a class="el" href="chassis_8cpp_source.html#l00032">DBG_PRINT</a>, <a class="el" href="chassis_8h_source.html#l00089">enable_cancel</a>, <a class="el" href="geometry_8cpp_source.html#l00011">ls::Angle::getAngle()</a>, <a class="el" href="timer_8cpp_source.html#l00031">ls::Timer::isDone()</a>, <a class="el" href="chassis_8h_source.html#l00079">left</a>, <a class="el" href="chassis_8cpp_source.html#l00012">LOOP_DELAY</a>, <a class="el" href="geometry_8cpp_source.html#l00028">ls::Angle::minimumAngleDifference()</a>, <a class="el" href="chassis_8h_source.html#l00080">odom</a>, <a class="el" href="chassis_8h_source.html#l00078">right</a>, <a class="el" href="chassis_8h_source.html#l00087">threshold_angular</a>, and <a class="el" href="chassis_8h_source.html#l00088">threshold_timeout</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00305">turnRelative()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00325">turnRelative()</a>.</p>
 
 </div>
 </div>
@@ -785,18 +966,22 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>turns chassis to face the following point in the cartesian coordinate plane with latest odom reset point as (0, 0) </p>
-<p>TODO </p>
+<p>Turn chassis to face a specific point. </p>
+<p>Rotates the robot to face the specified (X, Y) point while maintaining current position. Uses odometry for position feedback.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">...</td><td>(figure it out once done with function) </td></tr>
+    <tr><td class="paramname">X</td><td>Target X coordinate to face </td></tr>
+    <tr><td class="paramname">Y</td><td>Target Y coordinate to face </td></tr>
+    <tr><td class="paramname">timeout</td><td>Maximum time to complete turn in milliseconds </td></tr>
+    <tr><td class="paramname">reverse</td><td>Whether to face the point in reverse (180° offset)</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>This function is currently marked as TODO and may not be fully implemented </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00161">161</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00181">181</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8cpp_source.html#l00091">ls::Position::angleToPosition()</a>, <a class="el" href="chassis_8h_source.html#l00045">angular_control</a>, <a class="el" href="chassis_8h_source.html#l00052">cancel_button</a>, <a class="el" href="clamp_8hpp_source.html#l00013">ls::clampPower()</a>, <a class="el" href="chassis_8h_source.html#l00054">controller</a>, <a class="el" href="chassis_8cpp_source.html#l00032">DBG_PRINT</a>, <a class="el" href="chassis_8h_source.html#l00051">enable_cancel</a>, <a class="el" href="geometry_8cpp_source.html#l00011">ls::Angle::getAngle()</a>, <a class="el" href="timer_8cpp_source.html#l00031">ls::Timer::isDone()</a>, <a class="el" href="chassis_8h_source.html#l00041">left</a>, <a class="el" href="chassis_8cpp_source.html#l00012">LOOP_DELAY</a>, <a class="el" href="geometry_8cpp_source.html#l00028">ls::Angle::minimumAngleDifference()</a>, <a class="el" href="geometry_8cpp_source.html#l00021">ls::Angle::normalize()</a>, <a class="el" href="chassis_8h_source.html#l00042">odom</a>, <a class="el" href="chassis_8h_source.html#l00040">right</a>, <a class="el" href="odom_8h_source.html#l00032">ls::Position::theta</a>, <a class="el" href="chassis_8h_source.html#l00049">threshold_angular</a>, and <a class="el" href="chassis_8h_source.html#l00050">threshold_timeout</a>.</p>
+<p class="reference">References <a class="el" href="odom_8cpp_source.html#l00091">ls::Position::angleToPosition()</a>, <a class="el" href="chassis_8h_source.html#l00083">angular_control</a>, <a class="el" href="chassis_8h_source.html#l00090">cancel_button</a>, <a class="el" href="clamp_8hpp_source.html#l00093">ls::clampPower()</a>, <a class="el" href="chassis_8h_source.html#l00092">controller</a>, <a class="el" href="chassis_8cpp_source.html#l00032">DBG_PRINT</a>, <a class="el" href="chassis_8h_source.html#l00089">enable_cancel</a>, <a class="el" href="geometry_8cpp_source.html#l00011">ls::Angle::getAngle()</a>, <a class="el" href="timer_8cpp_source.html#l00031">ls::Timer::isDone()</a>, <a class="el" href="chassis_8h_source.html#l00079">left</a>, <a class="el" href="chassis_8cpp_source.html#l00012">LOOP_DELAY</a>, <a class="el" href="geometry_8cpp_source.html#l00028">ls::Angle::minimumAngleDifference()</a>, <a class="el" href="geometry_8cpp_source.html#l00021">ls::Angle::normalize()</a>, <a class="el" href="chassis_8h_source.html#l00080">odom</a>, <a class="el" href="chassis_8h_source.html#l00078">right</a>, <a class="el" href="odom_8h_source.html#l00064">ls::Position::theta</a>, <a class="el" href="chassis_8h_source.html#l00087">threshold_angular</a>, and <a class="el" href="chassis_8h_source.html#l00088">threshold_timeout</a>.</p>
 
 </div>
 </div>
@@ -815,11 +1000,12 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Update adaptive <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> controllers if enabled Should be called periodically during autonomous operation. </p>
+<p>Update adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controllers. </p>
+<p>Should be called periodically during autonomous operation to allow adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controllers to adjust parameters based on system performance. </p>
 
 <p class="definition">Definition at line <a class="el" href="chassis_8cpp_source.html#l00069">69</a> of file <a class="el" href="chassis_8cpp_source.html">chassis.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="chassis_8h_source.html#l00058">angular_adaptive_controller</a>, <a class="el" href="chassis_8h_source.html#l00053">enable_adaptive_pid</a>, and <a class="el" href="chassis_8h_source.html#l00057">lateral_adaptive_controller</a>.</p>
+<p class="reference">References <a class="el" href="chassis_8h_source.html#l00096">angular_adaptive_controller</a>, <a class="el" href="chassis_8h_source.html#l00091">enable_adaptive_pid</a>, and <a class="el" href="chassis_8h_source.html#l00095">lateral_adaptive_controller</a>.</p>
 
 </div>
 </div>
@@ -843,8 +1029,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Adaptive angular <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00058">58</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00096">96</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, and <a class="el" href="chassis_8cpp_source.html#l00069">updateAdaptivePID()</a>.</p>
 
@@ -869,10 +1056,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller for turning motion </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00045">45</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00083">83</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00088">getAngularControl()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00315">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00161">turnToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00088">getAngularControl()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00335">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00181">turnToPoint()</a>.</p>
 
 </div>
 </div>
@@ -895,10 +1083,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Controller button for cancellation </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00052">52</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00090">90</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00251">driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00315">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00161">turnToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00271">driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00335">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00181">turnToPoint()</a>.</p>
 
 </div>
 </div>
@@ -921,10 +1110,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>PROS controller for user input </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00054">54</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00092">92</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00251">driveRelative()</a>, <a class="el" href="chassis_8h_source.html#l00072">getController()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00065">setController()</a>, <a class="el" href="chassis_8cpp_source.html#l00315">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00161">turnToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00271">driveRelative()</a>, <a class="el" href="chassis_8h_source.html#l00114">getController()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00065">setController()</a>, <a class="el" href="chassis_8cpp_source.html#l00335">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00181">turnToPoint()</a>.</p>
 
 </div>
 </div>
@@ -947,10 +1137,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> enable flag </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00053">53</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00091">91</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, and <a class="el" href="chassis_8cpp_source.html#l00069">updateAdaptivePID()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00108">isAdaptivePIDEnabled()</a>, and <a class="el" href="chassis_8cpp_source.html#l00069">updateAdaptivePID()</a>.</p>
 
 </div>
 </div>
@@ -973,10 +1164,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Controller cancellation enable flag </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00051">51</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00089">89</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00251">driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00315">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00161">turnToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00271">driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00335">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00181">turnToPoint()</a>.</p>
 
 </div>
 </div>
@@ -999,8 +1191,9 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Adaptive lateral <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00057">57</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00095">95</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, and <a class="el" href="chassis_8cpp_source.html#l00069">updateAdaptivePID()</a>.</p>
 
@@ -1025,10 +1218,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller for forward/backward motion </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00044">44</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00082">82</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00251">driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00084">getLateralControl()</a>, and <a class="el" href="chassis_8cpp_source.html#l00092">moveToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00271">driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00084">getLateralControl()</a>, and <a class="el" href="chassis_8cpp_source.html#l00112">moveToPoint()</a>.</p>
 
 </div>
 </div>
@@ -1051,10 +1245,38 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Left side motor group </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00041">41</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00079">79</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00251">driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00229">followPath()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00315">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00161">turnToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00271">driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00249">followPath()</a>, <a class="el" href="chassis_8cpp_source.html#l00100">getLeftMotors()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00335">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00181">turnToPoint()</a>.</p>
+
+</div>
+</div>
+<a id="ab5b517421a4f40627995cc44bb296a75" name="ab5b517421a4f40627995cc44bb296a75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5b517421a4f40627995cc44bb296a75">&#9670;&#160;</a></span>left_motors</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;pros::Motor&gt; ls::Chassis::left_motors</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Left side motors </p>
+
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00076">76</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, and <a class="el" href="chassis_8cpp_source.html#l00092">getLeftMotorVec()</a>.</p>
 
 </div>
 </div>
@@ -1077,10 +1299,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Odometry system for position tracking </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00042">42</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00080">80</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00251">driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00229">followPath()</a>, <a class="el" href="chassis_8cpp_source.html#l00080">getOdom()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00305">turnRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00315">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00161">turnToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00271">driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00249">followPath()</a>, <a class="el" href="chassis_8cpp_source.html#l00080">getOdom()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00325">turnRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00335">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00181">turnToPoint()</a>.</p>
 
 </div>
 </div>
@@ -1103,10 +1326,38 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Right side motor group </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00040">40</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00078">78</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00251">driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00229">followPath()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00315">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00161">turnToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00271">driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00249">followPath()</a>, <a class="el" href="chassis_8cpp_source.html#l00104">getRightMotors()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00335">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00181">turnToPoint()</a>.</p>
+
+</div>
+</div>
+<a id="a55e3d8c5a5141af7447c4684ceed3e70" name="a55e3d8c5a5141af7447c4684ceed3e70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55e3d8c5a5141af7447c4684ceed3e70">&#9670;&#160;</a></span>right_motors</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;pros::Motor&gt; ls::Chassis::right_motors</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Right side motors </p>
+
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00077">77</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, and <a class="el" href="chassis_8cpp_source.html#l00096">getRightMotorVec()</a>.</p>
 
 </div>
 </div>
@@ -1129,10 +1380,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Angular movement completion threshold </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00049">49</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00087">87</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00315">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00161">turnToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00335">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00181">turnToPoint()</a>.</p>
 
 </div>
 </div>
@@ -1155,10 +1407,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Lateral movement completion threshold </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00048">48</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00086">86</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00251">driveRelative()</a>, and <a class="el" href="chassis_8cpp_source.html#l00092">moveToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00271">driveRelative()</a>, and <a class="el" href="chassis_8cpp_source.html#l00112">moveToPoint()</a>.</p>
 
 </div>
 </div>
@@ -1181,10 +1434,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Dwell time after threshold met </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00050">50</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00088">88</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00251">driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00315">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00161">turnToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, <a class="el" href="chassis_8cpp_source.html#l00271">driveRelative()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">moveToPoint()</a>, <a class="el" href="chassis_8cpp_source.html#l00335">turnToAngle()</a>, and <a class="el" href="chassis_8cpp_source.html#l00181">turnToPoint()</a>.</p>
 
 </div>
 </div>
@@ -1207,10 +1461,11 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Turn input sensitivity multiplier </p>
 
-<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00047">47</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="chassis_8h_source.html#l00085">85</a> of file <a class="el" href="chassis_8h_source.html">chassis.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, and <a class="el" href="chassis_8cpp_source.html#l00225">move_priority()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00036">Chassis()</a>, and <a class="el" href="chassis_8cpp_source.html#l00245">move_priority()</a>.</p>
 
 </div>
 </div>

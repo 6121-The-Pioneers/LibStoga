@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['🔧_20api_20changes_20breaking_20changes_0',['&lt;b&gt;🔧 API Changes &amp;amp; Breaking Changes&lt;/b&gt;',['../index.html#autotoc_md113',1,'']]],
-  ['🔧_20major_20architecture_20changes_1',['🔧 &lt;b&gt;Major Architecture Changes&lt;/b&gt;',['../index.html#autotoc_md96',1,'']]]
+  ['📚_20configuration_20examples_0',['&lt;b&gt;📚 Configuration Examples&lt;/b&gt;',['../index.html#autotoc_md134',1,'']]],
+  ['📚_20documentation_1',['📚 Documentation',['../index.html#autotoc_md10',1,'']]],
+  ['📚_20license_20attribution_2',['📚 License / Attribution',['../index.html#autotoc_md153',1,'']]]
 ];

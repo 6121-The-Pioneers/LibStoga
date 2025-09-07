@@ -10,5 +10,5 @@ digraph "src/LibStoga"
   dir_0579a788b93e3e1ec4dd5414e01177bc [label="LibStoga", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_0579a788b93e3e1ec4dd5414e01177bc.html",tooltip=""];
   }
   dir_d44c64559bbebec7f509842c48db8b23 [label="include", fillcolor="#edf0f7", color="red", style="filled", URL="dir_d44c64559bbebec7f509842c48db8b23.html",tooltip=""];
-  dir_0579a788b93e3e1ec4dd5414e01177bc->dir_d44c64559bbebec7f509842c48db8b23 [headlabel="26", labeldistance=1.5 headhref="dir_000002_000000.html" href="dir_000002_000000.html" color="steelblue1" fontcolor="steelblue1"];
+  dir_0579a788b93e3e1ec4dd5414e01177bc->dir_d44c64559bbebec7f509842c48db8b23 [headlabel="28", labeldistance=1.5 headhref="dir_000002_000000.html" href="dir_000002_000000.html" color="steelblue1" fontcolor="steelblue1"];
 }

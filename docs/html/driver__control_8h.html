@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -94,6 +95,9 @@ $(function(){initNavTree('driver__control_8h.html','',''); });
   <div class="headertitle"><div class="title">driver_control.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Advanced driver control system with joystick curves and multiple drive modes.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -114,15 +118,46 @@ Classes</h2></td></tr>
 <tr class="memitem:ls_3A_3AJoystickCurve" id="r_ls_3A_3AJoystickCurve"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1JoystickCurve.html">ls::JoystickCurve</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joystick curve utilities for enhanced driver control.  <a href="classls_1_1JoystickCurve.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3ADriverControl" id="r_ls_3A_3ADriverControl"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1DriverControl.html">ls::DriverControl</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enhanced driver control with configurable curves and drive types.  <a href="classls_1_1DriverControl.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enhanced driver control system with multiple drive modes.  <a href="classls_1_1DriverControl.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3ADriverControl_3A_3ADriveConfig" id="r_ls_3A_3ADriverControl_3A_3ADriveConfig"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1DriverControl_1_1DriveConfig.html">ls::DriverControl::DriveConfig</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration structure for driver control settings.  <a href="structls_1_1DriverControl_1_1DriveConfig.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:ls" id="r_ls"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacels.html">ls</a></td></tr>
 <tr class="memdesc:namespacels"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all source code for abstract classes or composed ones Basically code that powers abstraction. <br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Advanced driver control system with joystick curves and multiple drive modes. </p>
+<p>This file provides a sophisticated driver control system designed to enhance driver experience and performance in VEX robotics competitions. It features multiple joystick curve types, various drive modes, and configurable parameters to optimize control feel for different drivers and robot configurations.</p>
+<p>Key Features:</p><ul>
+<li>Multiple joystick curve types (Linear, Exponential, Sigmoid, Cubic, Cheesy Drive)</li>
+<li>Support for Arcade, Tank, Cheesy Drive, Curvature, and GTA drive modes</li>
+<li>Configurable deadzones and gain settings</li>
+<li>Real-time curve application for smooth control</li>
+<li>PROS controller integration</li>
+</ul>
+<p>Drive Modes:</p><ul>
+<li><b>Arcade</b>: Single-stick control with throttle and turn</li>
+<li><b>Tank</b>: Dual-stick control for independent left/right movement</li>
+<li><b>Cheesy Drive</b>: Enhanced arcade with quick-turn boost</li>
+<li><b>Curvature</b>: Radius-based turning for smooth curved paths</li>
+<li><b>GTA</b>: Trigger-based acceleration/braking with analog steering</li>
+</ul>
+<p>Joystick Curves:</p><ul>
+<li><b>Linear</b>: Direct 1:1 input/output mapping</li>
+<li><b>Exponential</b>: Fine control at low speeds, aggressive at high speeds</li>
+<li><b>Sigmoid</b>: Smooth S-curve acceleration for natural feel</li>
+<li><b>Cubic</b>: Very aggressive low-speed control</li>
+<li><b>Cheesy Drive</b>: Optimized curve for Cheesy Drive mode</li>
+</ul>
+<dl class="section author"><dt>Author</dt><dd>6121D (The Pioneers) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>2.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 6121D - All rights reserved </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="driver__control_8h_source.html">driver_control.h</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

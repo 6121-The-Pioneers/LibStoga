@@ -6,6 +6,8 @@
 #include "pros/motors.hpp"
 #include "pros/llemu.hpp"
 #include "pros/rtos.hpp"
+#include "LibStoga/system_health.h"
+#include "LibStoga/data_logger.h"
 
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 
@@ -13,7 +15,7 @@ pros::Controller master(pros::E_CONTROLLER_MASTER);
 static std::shared_ptr<ls::Chassis> gChassis;
 static std::shared_ptr<ls::AbstractOdom> gOdom;
 
-static void configureSystems() {
+static void initializeSystems() {
     // Drivetrain Configuration
     ls::DrivetrainConfig drivetrain {
         .leftMotors = {-2},
@@ -63,11 +65,25 @@ static void configureSystems() {
  */
 void initialize() {
 	pros::lcd::initialize();
-	configureSystems();
+	initializeSystems();
     gChassis->setController(master);
 	if (gOdom) {
         gOdom->resetAll();
         std::cout << "Odometry initialized and reset" << std::endl;
+    }
+
+    // Initialize and start health monitoring
+    auto& healthMonitor = ls::getHealthMonitor();
+    healthMonitor.registerMotor(2, &gChassis->getLeftMotorVec()[0]);
+    healthMonitor.registerMotor(1, &gChassis->getRightMotorVec()[0]);
+    healthMonitor.startMonitoring();
+
+    // Initialize data logger
+    auto& dataLogger = ls::getDataLogger();
+    if (dataLogger.isSDAvailable()) {
+        std::cout << "SD card available. Data logging enabled." << std::endl;
+    } else {
+        std::cout << "SD card not found. Data logging disabled." << std::endl;
     }
 }
 
@@ -88,7 +104,17 @@ void disabled() {}
  * starts.
  */
 void competition_initialize() {
-
+    // Example of saving a tuning profile
+    auto& dataLogger = ls::getDataLogger();
+    if (dataLogger.isSDAvailable()) {
+        ls::DataLogger::TuningProfile profile;
+        profile.name = "default";
+        profile.driveGains = gChassis->getLateralControl()->getGains();
+        profile.turnGains = gChassis->getAngularControl()->getGains();
+        profile.timestamp = pros::millis();
+        profile.notes = "Initial tuning from competition init.";
+        dataLogger.saveTuningProfile(profile);
+    }
 }
 
 /**
@@ -111,10 +137,14 @@ void autonomous() {
 
     // Example movement with adaptive PID updates (if enabled)
     gChassis->driveRelative(24, 3000);
-    if (gChassis) gChassis->updateAdaptivePID(); // Update adaptive gains if enabled
+    if (gChassis->isAdaptivePIDEnabled()) {
+        gChassis->updateAdaptivePID();
+    }
 
     gChassis->turnToAngle(90, 2000);
-    if (gChassis) gChassis->updateAdaptivePID(); // Update adaptive gains if enabled
+    if (gChassis->isAdaptivePIDEnabled()) {
+        gChassis->updateAdaptivePID();
+    }
 
     std::cout << "Autonomous routine complete." << std::endl;
 }
@@ -143,6 +173,19 @@ void opcontrol() {
 		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_X)) {
 			ls::autoTune(gChassis);
 		}
+
+        // Health monitoring check
+        if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_UP)) {
+            auto& healthMonitor = ls::getHealthMonitor();
+            auto issues = healthMonitor.getIssues();
+            if (issues.empty()) {
+                std::cout << "System health: HEALTHY" << std::endl;
+            } else {
+                for (const auto& issue : issues) {
+                    std::cout << "Health issue: " << issue.description << std::endl;
+                }
+            }
+        }
 
 		// Test odometry sensors without moving
 		if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {

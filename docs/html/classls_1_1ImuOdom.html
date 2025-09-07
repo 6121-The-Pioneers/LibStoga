@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,7 +96,7 @@ $(function(){initNavTree('classls_1_1ImuOdom.html','','classls_1_1ImuOdom-member
 </div><!--header-->
 <div class="contents">
 
-<p>Represents all the calculations for 2 wheel and IMU odometry.  
+<p>IMU-enhanced two-wheel odometry implementation.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="odom_8h_source.html">odom.h</a>&gt;</code></p>
@@ -113,33 +114,46 @@ Collaboration diagram for ls::ImuOdom:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad5e5f982bf78a083bf106f3b5e5fff40" id="r_ad5e5f982bf78a083bf106f3b5e5fff40"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5e5f982bf78a083bf106f3b5e5fff40">ImuOdom</a> (double center_to_horiz, double center_to_vert)</td></tr>
-<tr class="memdesc:ad5e5f982bf78a083bf106f3b5e5fff40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Imu Odom object.  <br /></td></tr>
+<tr class="memdesc:ad5e5f982bf78a083bf106f3b5e5fff40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct with wheel distances only.  <br /></td></tr>
 <tr class="memitem:a0a1647ff5d1cb203b3a4061b86cbdc73" id="r_a0a1647ff5d1cb203b3a4061b86cbdc73"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a1647ff5d1cb203b3a4061b86cbdc73">ImuOdom</a> (double center_to_horiz, double center_to_vert, <a class="el" href="classls_1_1TrackingWheel.html">TrackingWheel</a> &amp;&amp;<a class="el" href="#a024178c2f6e420319a343e7ea65760d5">horiz</a>, <a class="el" href="classls_1_1TrackingWheel.html">TrackingWheel</a> &amp;&amp;<a class="el" href="#aa5b14c9e241a7a9e4594c4287d5d9fb8">vert</a>, pros::Imu &amp;<a class="el" href="#a3c20973d396ac4f6208e436fe95bbda2">IMU</a>)</td></tr>
-<tr class="memdesc:a0a1647ff5d1cb203b3a4061b86cbdc73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Imu Odom object.  <br /></td></tr>
+<tr class="memdesc:a0a1647ff5d1cb203b3a4061b86cbdc73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct with wheel distances and sensor objects.  <br /></td></tr>
 <tr class="memitem:a7095a9b4ed6cfc751ec5c5843482c606" id="r_a7095a9b4ed6cfc751ec5c5843482c606"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7095a9b4ed6cfc751ec5c5843482c606">ImuOdom</a> (<a class="el" href="structls_1_1imu__odom__parameters__t.html">imu_odom_parameters_t</a> &amp;param)</td></tr>
-<tr class="memdesc:a7095a9b4ed6cfc751ec5c5843482c606"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Imu Odom object.  <br /></td></tr>
+<tr class="memdesc:a7095a9b4ed6cfc751ec5c5843482c606"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from configuration structure.  <br /></td></tr>
 <tr class="memitem:a9c5a61ec0fe4477571519849c36c0f2b" id="r_a9c5a61ec0fe4477571519849c36c0f2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c5a61ec0fe4477571519849c36c0f2b">initialize</a> (std::initializer_list&lt; uint8_t &gt; ports) override</td></tr>
-<tr class="memdesc:a9c5a61ec0fe4477571519849c36c0f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the following object with the given ports. Constructions default pros::Rotation objects for wheels. 1st represents horiz, 2nd represents vert, 3rd represents IMU. If the list does not contain 3 valid ports, an std::invalid_argument exception will be thrown.  <br /></td></tr>
+<tr class="memdesc:a9c5a61ec0fe4477571519849c36c0f2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize sensors on specified ports.  <br /></td></tr>
 <tr class="memitem:acd770f9e625b2ab52954d55d378804ab" id="r_acd770f9e625b2ab52954d55d378804ab"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd770f9e625b2ab52954d55d378804ab">getDeltaX</a> () override</td></tr>
+<tr class="memdesc:acd770f9e625b2ab52954d55d378804ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get X position change since last <a class="el" href="#a3533540da3cb6184d261176f18465b21" title="Update position using IMU and tracking wheels.">compute()</a>  <br /></td></tr>
 <tr class="memitem:ae33642ca821a21a59aa691933182eb90" id="r_ae33642ca821a21a59aa691933182eb90"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae33642ca821a21a59aa691933182eb90">getDeltaY</a> () override</td></tr>
+<tr class="memdesc:ae33642ca821a21a59aa691933182eb90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Y position change since last <a class="el" href="#a3533540da3cb6184d261176f18465b21" title="Update position using IMU and tracking wheels.">compute()</a>  <br /></td></tr>
 <tr class="memitem:a9c8fe0f5e33bafe3aa912010e7d11ace" id="r_a9c8fe0f5e33bafe3aa912010e7d11ace"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classls_1_1Angle.html">Angle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c8fe0f5e33bafe3aa912010e7d11ace">getDeltaAngle</a> () override</td></tr>
+<tr class="memdesc:a9c8fe0f5e33bafe3aa912010e7d11ace"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get heading change since last <a class="el" href="#a3533540da3cb6184d261176f18465b21" title="Update position using IMU and tracking wheels.">compute()</a>  <br /></td></tr>
 <tr class="memitem:a3533540da3cb6184d261176f18465b21" id="r_a3533540da3cb6184d261176f18465b21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3533540da3cb6184d261176f18465b21">compute</a> () override</td></tr>
-<tr class="memdesc:a3533540da3cb6184d261176f18465b21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the new coordinations and angle of the robot since the program has started. Assumes that (0, 0) is where the robot starts at reboot. Also assumes that initial posture is 0 degrees (bearing)  <br /></td></tr>
+<tr class="memdesc:a3533540da3cb6184d261176f18465b21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update position using IMU and tracking wheels.  <br /></td></tr>
 <tr class="memitem:a0627d9fa1646703ba510e2e7b4e68dc1" id="r_a0627d9fa1646703ba510e2e7b4e68dc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0627d9fa1646703ba510e2e7b4e68dc1">resetAll</a> () override</td></tr>
+<tr class="memdesc:a0627d9fa1646703ba510e2e7b4e68dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset all position and heading to zero.  <br /></td></tr>
 <tr class="inherit_header pub_methods_classls_1_1AbstractOdom"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classls_1_1AbstractOdom')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classls_1_1AbstractOdom.html">ls::AbstractOdom</a></td></tr>
 <tr class="memitem:a1698bac3831a45aa54e62b0f275ac3f0 inherit pub_methods_classls_1_1AbstractOdom" id="r_a1698bac3831a45aa54e62b0f275ac3f0"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractOdom.html#a1698bac3831a45aa54e62b0f275ac3f0">getX</a> ()</td></tr>
+<tr class="memdesc:a1698bac3831a45aa54e62b0f275ac3f0 inherit pub_methods_classls_1_1AbstractOdom"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current X coordinate.  <br /></td></tr>
 <tr class="memitem:ace7109b90015ca4177e3b0d21d802703 inherit pub_methods_classls_1_1AbstractOdom" id="r_ace7109b90015ca4177e3b0d21d802703"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractOdom.html#ace7109b90015ca4177e3b0d21d802703">getY</a> ()</td></tr>
+<tr class="memdesc:ace7109b90015ca4177e3b0d21d802703 inherit pub_methods_classls_1_1AbstractOdom"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current Y coordinate.  <br /></td></tr>
 <tr class="memitem:ab69a7a9685d6bcac67eb3e9be5500306 inherit pub_methods_classls_1_1AbstractOdom" id="r_ab69a7a9685d6bcac67eb3e9be5500306"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractOdom.html#ab69a7a9685d6bcac67eb3e9be5500306">getAngle</a> ()</td></tr>
+<tr class="memdesc:ab69a7a9685d6bcac67eb3e9be5500306 inherit pub_methods_classls_1_1AbstractOdom"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current heading angle.  <br /></td></tr>
 <tr class="memitem:a0ec29e2db261e4d533c97ae5d7300056 inherit pub_methods_classls_1_1AbstractOdom" id="r_a0ec29e2db261e4d533c97ae5d7300056"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structls_1_1Position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractOdom.html#a0ec29e2db261e4d533c97ae5d7300056">getPosition</a> ()</td></tr>
+<tr class="memdesc:a0ec29e2db261e4d533c97ae5d7300056 inherit pub_methods_classls_1_1AbstractOdom"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get complete current position.  <br /></td></tr>
 <tr class="memitem:a7e5ba67b2f39fc45ba5ade235413c93c inherit pub_methods_classls_1_1AbstractOdom" id="r_a7e5ba67b2f39fc45ba5ade235413c93c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractOdom.html#a7e5ba67b2f39fc45ba5ade235413c93c">resetX</a> ()</td></tr>
+<tr class="memdesc:a7e5ba67b2f39fc45ba5ade235413c93c inherit pub_methods_classls_1_1AbstractOdom"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset X coordinate to zero.  <br /></td></tr>
 <tr class="memitem:a3a7cb7d8eb09eb2d09b4abd7c48e5be1 inherit pub_methods_classls_1_1AbstractOdom" id="r_a3a7cb7d8eb09eb2d09b4abd7c48e5be1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractOdom.html#a3a7cb7d8eb09eb2d09b4abd7c48e5be1">resetY</a> ()</td></tr>
+<tr class="memdesc:a3a7cb7d8eb09eb2d09b4abd7c48e5be1 inherit pub_methods_classls_1_1AbstractOdom"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset Y coordinate to zero.  <br /></td></tr>
 <tr class="memitem:a057b49b88614e9e8644e79cc6baea9e1 inherit pub_methods_classls_1_1AbstractOdom" id="r_a057b49b88614e9e8644e79cc6baea9e1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractOdom.html#a057b49b88614e9e8644e79cc6baea9e1">resetAngle</a> ()</td></tr>
+<tr class="memdesc:a057b49b88614e9e8644e79cc6baea9e1 inherit pub_methods_classls_1_1AbstractOdom"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset heading angle to zero.  <br /></td></tr>
+<tr class="memitem:a707df24ba8cd062a06d1322b9390a53d inherit pub_methods_classls_1_1AbstractOdom" id="r_a707df24ba8cd062a06d1322b9390a53d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractOdom.html#a707df24ba8cd062a06d1322b9390a53d">~AbstractOdom</a> ()=default</td></tr>
+<tr class="memdesc:a707df24ba8cd062a06d1322b9390a53d inherit pub_methods_classls_1_1AbstractOdom"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a024178c2f6e420319a343e7ea65760d5" id="r_a024178c2f6e420319a343e7ea65760d5"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classls_1_1TrackingWheel.html">TrackingWheel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a024178c2f6e420319a343e7ea65760d5">horiz</a> = nullptr</td></tr>
-<tr class="memitem:aa5b14c9e241a7a9e4594c4287d5d9fb8" id="r_aa5b14c9e241a7a9e4594c4287d5d9fb8"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classls_1_1TrackingWheel.html">TrackingWheel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5b14c9e241a7a9e4594c4287d5d9fb8">vert</a> = nullptr</td></tr>
-<tr class="memitem:a3c20973d396ac4f6208e436fe95bbda2" id="r_a3c20973d396ac4f6208e436fe95bbda2"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; pros::Imu &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c20973d396ac4f6208e436fe95bbda2">IMU</a> = nullptr</td></tr>
+<tr class="memitem:a024178c2f6e420319a343e7ea65760d5" id="r_a024178c2f6e420319a343e7ea65760d5"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classls_1_1TrackingWheel.html">TrackingWheel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a024178c2f6e420319a343e7ea65760d5">horiz</a></td></tr>
+<tr class="memitem:aa5b14c9e241a7a9e4594c4287d5d9fb8" id="r_aa5b14c9e241a7a9e4594c4287d5d9fb8"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classls_1_1TrackingWheel.html">TrackingWheel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5b14c9e241a7a9e4594c4287d5d9fb8">vert</a></td></tr>
+<tr class="memitem:a3c20973d396ac4f6208e436fe95bbda2" id="r_a3c20973d396ac4f6208e436fe95bbda2"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; pros::Imu &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c20973d396ac4f6208e436fe95bbda2">IMU</a></td></tr>
 <tr class="memitem:a33fd841f67f09b32362dbea189c74691" id="r_a33fd841f67f09b32362dbea189c74691"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33fd841f67f09b32362dbea189c74691">centerToVert</a></td></tr>
 <tr class="memitem:a9f577211ec61d6f991eb83541980e51d" id="r_a9f577211ec61d6f991eb83541980e51d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f577211ec61d6f991eb83541980e51d">centerToHoriz</a></td></tr>
 <tr class="memitem:a983dae93fd7fb940afedfd022557b43d" id="r_a983dae93fd7fb940afedfd022557b43d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a983dae93fd7fb940afedfd022557b43d">prevRotation</a></td></tr>
@@ -150,14 +164,22 @@ Private Attributes</h2></td></tr>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classls_1_1AbstractOdom"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classls_1_1AbstractOdom')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Member Functions inherited from <a class="el" href="classls_1_1AbstractOdom.html">ls::AbstractOdom</a></td></tr>
 <tr class="memitem:acca103e51d3d77f7ff12645b8127f4e5 inherit pro_methods_classls_1_1AbstractOdom" id="r_acca103e51d3d77f7ff12645b8127f4e5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractOdom.html#acca103e51d3d77f7ff12645b8127f4e5">AbstractOdom</a> ()</td></tr>
+<tr class="memdesc:acca103e51d3d77f7ff12645b8127f4e5 inherit pro_methods_classls_1_1AbstractOdom"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protected constructor for derived classes.  <br /></td></tr>
 <tr class="inherit_header pro_attribs_classls_1_1AbstractOdom"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classls_1_1AbstractOdom')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Attributes inherited from <a class="el" href="classls_1_1AbstractOdom.html">ls::AbstractOdom</a></td></tr>
 <tr class="memitem:a29a743c14c1eee3627349ad68b97e3de inherit pro_attribs_classls_1_1AbstractOdom" id="r_a29a743c14c1eee3627349ad68b97e3de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structls_1_1Position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractOdom.html#a29a743c14c1eee3627349ad68b97e3de">pos</a></td></tr>
 <tr class="memitem:aaaecffa0e13234ac4e7176a808783541 inherit pro_attribs_classls_1_1AbstractOdom" id="r_aaaecffa0e13234ac4e7176a808783541"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structls_1_1Position.html">Position</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1AbstractOdom.html#aaaecffa0e13234ac4e7176a808783541">prev_pos</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents all the calculations for 2 wheel and IMU odometry. </p>
+<div class="textblock"><p>IMU-enhanced two-wheel odometry implementation. </p>
+<p>Implements odometry using two tracking wheels plus an IMU sensor for enhanced accuracy and reliability. The IMU provides direct heading measurements while tracking wheels handle position calculations.</p>
+<p>Sensor Configuration:</p><ul>
+<li><b>Horizontal wheel</b>: Tracks lateral movement (left/right)</li>
+<li><b>Vertical wheel</b>: Tracks forward/backward movement</li>
+<li><b>IMU</b>: Provides direct heading angle measurements</li>
+</ul>
+<p>This system is more accurate than three-wheel odometry, especially during high-speed maneuvers or when wheel slippage occurs. </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00350">350</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00450">450</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad5e5f982bf78a083bf106f3b5e5fff40" name="ad5e5f982bf78a083bf106f3b5e5fff40"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad5e5f982bf78a083bf106f3b5e5fff40">&#9670;&#160;</a></span>ImuOdom() <span class="overload">[1/3]</span></h2>
@@ -186,18 +208,19 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a new Imu Odom object. </p>
+<p>Construct with wheel distances only. </p>
+<p>Creates odometry system with specified wheel distances. Sensors must be initialized separately.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">center_to_horiz</td><td>distance from horizontal tracking wheel to center in inches. </td></tr>
-    <tr><td class="paramname">center_to_vert</td><td>distance from vertical tracking wheel to center in inches. </td></tr>
+    <tr><td class="paramname">center_to_horiz</td><td>Distance to horizontal wheel in inches </td></tr>
+    <tr><td class="paramname">center_to_vert</td><td>Distance to vertical wheel in inches </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00208">208</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00357">centerToHoriz</a>, <a class="el" href="odom_8h_source.html#l00356">centerToVert</a>, and <a class="el" href="odom_8h_source.html#l00358">prevRotation</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00457">centerToHoriz</a>, <a class="el" href="odom_8h_source.html#l00456">centerToVert</a>, and <a class="el" href="odom_8h_source.html#l00458">prevRotation</a>.</p>
 
 </div>
 </div>
@@ -243,21 +266,22 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a new Imu Odom object. </p>
+<p>Construct with wheel distances and sensor objects. </p>
+<p>Creates fully configured odometry system with pre-configured sensors.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">center_to_horiz</td><td>distance from horiz tracking wheel to center in inches. (only positive number allowed) </td></tr>
-    <tr><td class="paramname">center_to_vert</td><td>distance from vert tracking wheel to center in inches. (only positive number allowed) </td></tr>
-    <tr><td class="paramname">horiz</td><td>horizontal tracking wheel as an object. </td></tr>
-    <tr><td class="paramname">vert</td><td>vertical tracking wheel as an object. </td></tr>
-    <tr><td class="paramname">IMU</td><td>Imu sensor </td></tr>
+    <tr><td class="paramname">center_to_horiz</td><td>Distance to horizontal wheel in inches </td></tr>
+    <tr><td class="paramname">center_to_vert</td><td>Distance to vertical wheel in inches </td></tr>
+    <tr><td class="paramname">horiz</td><td>Horizontal tracking wheel sensor </td></tr>
+    <tr><td class="paramname">vert</td><td>Vertical tracking wheel sensor </td></tr>
+    <tr><td class="paramname">IMU</td><td>Inertial measurement unit sensor </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00213">213</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00357">centerToHoriz</a>, <a class="el" href="odom_8h_source.html#l00356">centerToVert</a>, <a class="el" href="odom_8h_source.html#l00352">horiz</a>, <a class="el" href="odom_8h_source.html#l00354">IMU</a>, <a class="el" href="odom_8h_source.html#l00358">prevRotation</a>, and <a class="el" href="odom_8h_source.html#l00353">vert</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00457">centerToHoriz</a>, <a class="el" href="odom_8h_source.html#l00456">centerToVert</a>, <a class="el" href="odom_8h_source.html#l00452">horiz</a>, <a class="el" href="odom_8h_source.html#l00454">IMU</a>, <a class="el" href="odom_8h_source.html#l00458">prevRotation</a>, and <a class="el" href="odom_8h_source.html#l00453">vert</a>.</p>
 
 </div>
 </div>
@@ -284,18 +308,18 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Construct a new Imu Odom object. </p>
-<p>using the <a class="el" href="structls_1_1imu__odom__parameters__t.html" title="The parameters for the ImuOdom.">imu_odom_parameters_t</a> structure.</p>
+<p>Construct from configuration structure. </p>
+<p>Creates odometry system using a complete configuration structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">param</td><td>structure to use </td></tr>
+    <tr><td class="paramname">param</td><td>IMU odometry configuration </td></tr>
   </table>
   </dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00222">222</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00357">centerToHoriz</a>, <a class="el" href="odom_8h_source.html#l00356">centerToVert</a>, <a class="el" href="odom_8h_source.html#l00352">horiz</a>, <a class="el" href="odom_8h_source.html#l00354">IMU</a>, <a class="el" href="odom_8h_source.html#l00231">ls::imu_odom_parameters_t::imu_port</a>, <a class="el" href="odom_8h_source.html#l00227">ls::imu_odom_parameters_t::parallel</a>, <a class="el" href="odom_8h_source.html#l00229">ls::imu_odom_parameters_t::perpendicular</a>, <a class="el" href="odom_8h_source.html#l00215">ls::tracking_rotation_parameters_t::port</a>, <a class="el" href="odom_8h_source.html#l00358">prevRotation</a>, <a class="el" href="odom_8h_source.html#l00216">ls::tracking_rotation_parameters_t::radius</a>, <a class="el" href="odom_8h_source.html#l00217">ls::tracking_rotation_parameters_t::reversed</a>, and <a class="el" href="odom_8h_source.html#l00353">vert</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00457">centerToHoriz</a>, <a class="el" href="odom_8h_source.html#l00456">centerToVert</a>, <a class="el" href="odom_8h_source.html#l00452">horiz</a>, <a class="el" href="odom_8h_source.html#l00454">IMU</a>, <a class="el" href="odom_8h_source.html#l00306">ls::imu_odom_parameters_t::imu_port</a>, <a class="el" href="odom_8h_source.html#l00302">ls::imu_odom_parameters_t::parallel</a>, <a class="el" href="odom_8h_source.html#l00304">ls::imu_odom_parameters_t::perpendicular</a>, <a class="el" href="odom_8h_source.html#l00290">ls::tracking_rotation_parameters_t::port</a>, <a class="el" href="odom_8h_source.html#l00458">prevRotation</a>, <a class="el" href="odom_8h_source.html#l00291">ls::tracking_rotation_parameters_t::radius</a>, <a class="el" href="odom_8h_source.html#l00292">ls::tracking_rotation_parameters_t::reversed</a>, and <a class="el" href="odom_8h_source.html#l00453">vert</a>.</p>
 
 </div>
 </div>
@@ -323,20 +347,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Computes the new coordinations and angle of the robot since the program has started. Assumes that (0, 0) is where the robot starts at reboot. Also assumes that initial posture is 0 degrees (bearing) </p>
-<p>Must give X, Y, and angle new values after this call is over.</p>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">std::bad_function_call</td><td>if object has not been initialized properly. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Update position using IMU and tracking wheels. </p>
+<p>Computes new robot position using IMU heading and wheel tracking data. </p>
 
 <p>Reimplemented from <a class="el" href="classls_1_1AbstractOdom.html#a8a3c5cb591e7bb3e06b295f4e8a1a308">ls::AbstractOdom</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00273">273</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="geometry_8cpp_source.html#l00016">ls::Angle::convertToRadians()</a>, <a class="el" href="odom_8h_source.html#l00360">deltaGlobalX</a>, <a class="el" href="odom_8h_source.html#l00361">deltaGlobalY</a>, <a class="el" href="odom_8cpp_source.html#l00262">getDeltaAngle()</a>, <a class="el" href="odom_8h_source.html#l00352">horiz</a>, <a class="el" href="odom_8h_source.html#l00102">ls::AbstractOdom::pos</a>, and <a class="el" href="odom_8h_source.html#l00353">vert</a>.</p>
+<p class="reference">References <a class="el" href="geometry_8cpp_source.html#l00016">ls::Angle::convertToRadians()</a>, <a class="el" href="odom_8h_source.html#l00460">deltaGlobalX</a>, <a class="el" href="odom_8h_source.html#l00461">deltaGlobalY</a>, <a class="el" href="odom_8cpp_source.html#l00262">getDeltaAngle()</a>, <a class="el" href="odom_8h_source.html#l00452">horiz</a>, <a class="el" href="odom_8h_source.html#l00151">ls::AbstractOdom::pos</a>, and <a class="el" href="odom_8h_source.html#l00453">vert</a>.</p>
 
 </div>
 </div>
@@ -362,12 +380,12 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Gets the change in angle since the previous call of this method. Does not call <a class="el" href="classls_1_1AbstractOdom.html#a057b49b88614e9e8644e79cc6baea9e1">resetAngle()</a> or reset the angle in any way.</p>
-<p>Will return 0 on first call.</p>
-<dl class="section return"><dt>Returns</dt><dd>the delta in the angle </dd></dl>
+
+<p>Get heading change since last <a class="el" href="#a3533540da3cb6184d261176f18465b21" title="Update position using IMU and tracking wheels.">compute()</a> </p>
+<dl class="section return"><dt>Returns</dt><dd>Delta angle in degrees </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::bad_function_call</td><td>if object is not initialized properly. </td></tr>
+    <tr><td class="paramname">std::bad_function_call</td><td>if not initialized </td></tr>
   </table>
   </dd>
 </dl>
@@ -376,7 +394,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00262">262</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00354">IMU</a>, and <a class="el" href="odom_8h_source.html#l00358">prevRotation</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00454">IMU</a>, and <a class="el" href="odom_8h_source.html#l00458">prevRotation</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00273">compute()</a>.</p>
 
@@ -404,12 +422,12 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Gets the change in X since the previous call of <a class="el" href="#a3533540da3cb6184d261176f18465b21" title="Computes the new coordinations and angle of the robot since the program has started....">compute()</a>. Does not call <a class="el" href="classls_1_1AbstractOdom.html#a7e5ba67b2f39fc45ba5ade235413c93c">resetX()</a> or reset the coordinates in any way.</p>
-<p>Will return 0 on first call.</p>
-<dl class="section return"><dt>Returns</dt><dd>the delta in the x-coordinate value </dd></dl>
+
+<p>Get X position change since last <a class="el" href="#a3533540da3cb6184d261176f18465b21" title="Update position using IMU and tracking wheels.">compute()</a> </p>
+<dl class="section return"><dt>Returns</dt><dd>Delta X in inches </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::bad_function_call</td><td>if object is not initialized properly. </td></tr>
+    <tr><td class="paramname">std::bad_function_call</td><td>if not initialized </td></tr>
   </table>
   </dd>
 </dl>
@@ -418,7 +436,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00252">252</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00360">deltaGlobalX</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00460">deltaGlobalX</a>.</p>
 
 </div>
 </div>
@@ -444,12 +462,12 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Gets the change in Y since the previous call of <a class="el" href="#a3533540da3cb6184d261176f18465b21" title="Computes the new coordinations and angle of the robot since the program has started....">compute()</a>. Does not call <a class="el" href="classls_1_1AbstractOdom.html#a3a7cb7d8eb09eb2d09b4abd7c48e5be1">resetY()</a> or reset the coordinates in any way.</p>
-<p>Will return 0 on first call.</p>
-<dl class="section return"><dt>Returns</dt><dd>the delta in the y-coordinate value </dd></dl>
+
+<p>Get Y position change since last <a class="el" href="#a3533540da3cb6184d261176f18465b21" title="Update position using IMU and tracking wheels.">compute()</a> </p>
+<dl class="section return"><dt>Returns</dt><dd>Delta Y in inches </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::bad_function_call</td><td>if object is not initialized properly. </td></tr>
+    <tr><td class="paramname">std::bad_function_call</td><td>if not initialized </td></tr>
   </table>
   </dd>
 </dl>
@@ -458,7 +476,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00257">257</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00361">deltaGlobalY</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00461">deltaGlobalY</a>.</p>
 
 </div>
 </div>
@@ -485,10 +503,17 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Initializes the following object with the given ports. Constructions default pros::Rotation objects for wheels. 1st represents horiz, 2nd represents vert, 3rd represents IMU. If the list does not contain 3 valid ports, an std::invalid_argument exception will be thrown. </p>
+<p>Initialize sensors on specified ports. </p>
+<p>Sets up sensors on the specified PROS ports. Expected order: horizontal wheel, vertical wheel, IMU.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ports</td><td>list of ports in the following order: right, left, sensor. </td></tr>
+    <tr><td class="paramname">ports</td><td>List containing exactly 3 port numbers </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>if incorrect number of ports provided </td></tr>
   </table>
   </dd>
 </dl>
@@ -497,7 +522,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00231">231</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00352">horiz</a>, <a class="el" href="odom_8h_source.html#l00354">IMU</a>, and <a class="el" href="odom_8h_source.html#l00353">vert</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00452">horiz</a>, <a class="el" href="odom_8h_source.html#l00454">IMU</a>, and <a class="el" href="odom_8h_source.html#l00453">vert</a>.</p>
 
 </div>
 </div>
@@ -523,13 +548,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Reset the positioning and angles of the robot. makes the current position (0, 0) and the current angle = 0; </p>
+
+<p>Reset all position and heading to zero. </p>
+<p>Resets position to origin and calibrates IMU to 0° heading. </p>
 
 <p>Reimplemented from <a class="el" href="classls_1_1AbstractOdom.html#a77030ad73418ad9431f57b67612f0abd">ls::AbstractOdom</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00297">297</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00352">horiz</a>, <a class="el" href="odom_8h_source.html#l00354">IMU</a>, <a class="el" href="odom_8cpp_source.html#l00053">ls::AbstractOdom::resetAll()</a>, and <a class="el" href="odom_8h_source.html#l00353">vert</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00452">horiz</a>, <a class="el" href="odom_8h_source.html#l00454">IMU</a>, <a class="el" href="odom_8cpp_source.html#l00053">ls::AbstractOdom::resetAll()</a>, and <a class="el" href="odom_8h_source.html#l00453">vert</a>.</p>
 
 </div>
 </div>
@@ -553,8 +580,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Distance from center to horizontal wheel </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00357">357</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00457">457</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00208">ImuOdom()</a>, <a class="el" href="odom_8cpp_source.html#l00213">ImuOdom()</a>, and <a class="el" href="odom_8cpp_source.html#l00222">ImuOdom()</a>.</p>
 
@@ -579,8 +607,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Distance from center to vertical wheel </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00356">356</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00456">456</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00208">ImuOdom()</a>, <a class="el" href="odom_8cpp_source.html#l00213">ImuOdom()</a>, and <a class="el" href="odom_8cpp_source.html#l00222">ImuOdom()</a>.</p>
 
@@ -605,8 +634,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Global X movement delta </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00360">360</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00460">460</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00273">compute()</a>, and <a class="el" href="odom_8cpp_source.html#l00252">getDeltaX()</a>.</p>
 
@@ -631,8 +661,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Global Y movement delta </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00361">361</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00461">461</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00273">compute()</a>, and <a class="el" href="odom_8cpp_source.html#l00257">getDeltaY()</a>.</p>
 
@@ -648,7 +679,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="el" href="classls_1_1TrackingWheel.html">TrackingWheel</a>&gt; ls::ImuOdom::horiz = nullptr</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classls_1_1TrackingWheel.html">TrackingWheel</a>&gt; ls::ImuOdom::horiz</td>
         </tr>
       </table>
   </td>
@@ -657,8 +688,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Horizontal tracking wheel (left/right movement) </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00352">352</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00452">452</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00273">compute()</a>, <a class="el" href="odom_8cpp_source.html#l00213">ImuOdom()</a>, <a class="el" href="odom_8cpp_source.html#l00222">ImuOdom()</a>, <a class="el" href="odom_8cpp_source.html#l00231">initialize()</a>, and <a class="el" href="odom_8cpp_source.html#l00297">resetAll()</a>.</p>
 
@@ -674,7 +706,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;pros::Imu&gt; ls::ImuOdom::IMU = nullptr</td>
+          <td class="memname">std::unique_ptr&lt;pros::Imu&gt; ls::ImuOdom::IMU</td>
         </tr>
       </table>
   </td>
@@ -683,8 +715,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Inertial Measurement Unit for heading </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00354">354</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00454">454</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00262">getDeltaAngle()</a>, <a class="el" href="odom_8cpp_source.html#l00213">ImuOdom()</a>, <a class="el" href="odom_8cpp_source.html#l00222">ImuOdom()</a>, <a class="el" href="odom_8cpp_source.html#l00231">initialize()</a>, and <a class="el" href="odom_8cpp_source.html#l00297">resetAll()</a>.</p>
 
@@ -709,8 +742,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Previous IMU rotation reading </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00358">358</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00458">458</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00262">getDeltaAngle()</a>, <a class="el" href="odom_8cpp_source.html#l00208">ImuOdom()</a>, <a class="el" href="odom_8cpp_source.html#l00213">ImuOdom()</a>, and <a class="el" href="odom_8cpp_source.html#l00222">ImuOdom()</a>.</p>
 
@@ -726,7 +760,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="el" href="classls_1_1TrackingWheel.html">TrackingWheel</a>&gt; ls::ImuOdom::vert = nullptr</td>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classls_1_1TrackingWheel.html">TrackingWheel</a>&gt; ls::ImuOdom::vert</td>
         </tr>
       </table>
   </td>
@@ -735,8 +769,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Vertical tracking wheel (forward/backward movement) </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00353">353</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00453">453</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00273">compute()</a>, <a class="el" href="odom_8cpp_source.html#l00213">ImuOdom()</a>, <a class="el" href="odom_8cpp_source.html#l00222">ImuOdom()</a>, <a class="el" href="odom_8cpp_source.html#l00231">initialize()</a>, and <a class="el" href="odom_8cpp_source.html#l00297">resetAll()</a>.</p>
 

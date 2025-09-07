@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -91,11 +92,11 @@ $(function(){initNavTree('logging_8hpp.html','',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">logging.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">logging.hpp File Reference<div class="ingroups"><a class="el" href="group__utilities.html">Utilities</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Lightweight logging helpers and stream operators for debugging.  
+<p>Lightweight logging utilities and stream operators for LibStoga debugging.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &quot;<a class="el" href="geometry_8h_source.html">LibStoga/geometry.h</a>&quot;</code><br />
@@ -116,14 +117,64 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:af3f564118570ff5f3a118f18b533802e" id="r_af3f564118570ff5f3a118f18b533802e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3f564118570ff5f3a118f18b533802e">LS_LOG</a>(msg)</td></tr>
+<tr class="memdesc:af3f564118570ff5f3a118f18b533802e"><td class="mdescLeft">&#160;</td><td class="mdescRight">LibStoga logging macro.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a5c1b443e8eb727cb1e1c86327d009bb0" id="r_a5c1b443e8eb727cb1e1c86327d009bb0"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacels.html#a5c1b443e8eb727cb1e1c86327d009bb0">ls::operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classls_1_1Angle.html">Angle</a> &amp;a)</td></tr>
+<tr class="memdesc:a5c1b443e8eb727cb1e1c86327d009bb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream operator for <a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles in robotics applications.">Angle</a> type.  <br /></td></tr>
 <tr class="memitem:ac7bc7871bd50028568fbf8cc3ecc0acf" id="r_ac7bc7871bd50028568fbf8cc3ecc0acf"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacels.html#ac7bc7871bd50028568fbf8cc3ecc0acf">ls::operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="structls_1_1Position.html">Position</a> &amp;p)</td></tr>
+<tr class="memdesc:ac7bc7871bd50028568fbf8cc3ecc0acf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream operator for <a class="el" href="structls_1_1Position.html" title="Complete robot pose representation (position + orientation)">Position</a> type.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Lightweight logging helpers and stream operators for debugging. </p>
+<div class="textblock"><p>Lightweight logging utilities and stream operators for LibStoga debugging. </p>
+<p>This file provides debugging and logging utilities for the LibStoga framework, including stream operators for common LibStoga types and a configurable logging macro. These utilities help with debugging autonomous routines, monitoring system state, and troubleshooting robot behavior.</p>
+<p>Key Features:</p><ul>
+<li>Stream operators for Angle, Position, and other LibStoga types</li>
+<li>Configurable logging macro with compile-time enable/disable</li>
+<li>Formatted output for debugging and data analysis</li>
+<li>Lightweight design with minimal performance impact</li>
+</ul>
+<p>Stream Operators:</p><ul>
+<li><b>Angle</b>: Outputs angle in degrees with "deg" suffix</li>
+<li><b>Position</b>: Outputs X, Y coordinates and heading angle</li>
+<li><b>Custom Types</b>: Easily extensible for other LibStoga classes</li>
+</ul>
+<p>Logging Macro:</p><ul>
+<li><b>Compile-time Control</b>: Enable/disable with LS_STDLOG define</li>
+<li><b>Standard Output</b>: Uses std::cout for console output</li>
+<li><b>Timestamp Prefix</b>: Adds "[LS]" prefix for easy identification</li>
+<li><b>Zero Overhead</b>: Disabled macro compiles to no-op</li>
+</ul>
+<p>Usage Examples: </p><div class="fragment"><div class="line"><span class="comment">// Enable logging by defining LS_STDLOG before including this file</span></div>
+<div class="line"><span class="preprocessor">#define LS_STDLOG</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="logging_8hpp.html">util/logging.hpp</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Log simple messages</span></div>
+<div class="line"><a class="code hl_define" href="#af3f564118570ff5f3a118f18b533802e">LS_LOG</a>(<span class="stringliteral">&quot;Autonomous routine started&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Log with variables using stream operators</span></div>
+<div class="line">Position currentPos = odometry.getPosition();</div>
+<div class="line"><a class="code hl_define" href="#af3f564118570ff5f3a118f18b533802e">LS_LOG</a>(<span class="stringliteral">&quot;Current position: &quot;</span> &lt;&lt; currentPos);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Log angle information</span></div>
+<div class="line">Angle targetHeading(90.0);</div>
+<div class="line"><a class="code hl_define" href="#af3f564118570ff5f3a118f18b533802e">LS_LOG</a>(<span class="stringliteral">&quot;Turning to heading: &quot;</span> &lt;&lt; targetHeading);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Complex logging with multiple values</span></div>
+<div class="line"><span class="keywordtype">double</span> battery = pros::battery::get_voltage() / 1000.0;</div>
+<div class="line"><a class="code hl_define" href="#af3f564118570ff5f3a118f18b533802e">LS_LOG</a>(<span class="stringliteral">&quot;Status - Position: &quot;</span> &lt;&lt; currentPos &lt;&lt; <span class="stringliteral">&quot;, Battery: &quot;</span> &lt;&lt; battery &lt;&lt; <span class="stringliteral">&quot;V&quot;</span>);</div>
+<div class="ttc" id="alogging_8hpp_html"><div class="ttname"><a href="logging_8hpp.html">logging.hpp</a></div><div class="ttdoc">Lightweight logging utilities and stream operators for LibStoga debugging.</div></div>
+<div class="ttc" id="alogging_8hpp_html_af3f564118570ff5f3a118f18b533802e"><div class="ttname"><a href="#af3f564118570ff5f3a118f18b533802e">LS_LOG</a></div><div class="ttdeci">#define LS_LOG(msg)</div><div class="ttdoc">LibStoga logging macro.</div><div class="ttdef"><b>Definition</b> <a href="logging_8hpp_source.html#l00133">logging.hpp:133</a></div></div>
+</div><!-- fragment --><p>Compile-time Control: </p><div class="fragment"><div class="line"><span class="comment">// To enable logging, add this before including logging.hpp:</span></div>
+<div class="line"><span class="preprocessor">#define LS_STDLOG</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// To disable logging (default), simply don&#39;t define LS_STDLOG</span></div>
+<div class="line"><span class="comment">// The logging macro will compile to nothing, ensuring zero runtime overhead</span></div>
+</div><!-- fragment --><dl class="section author"><dt>Author</dt><dd>6121D (The Pioneers) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 6121D - All rights reserved </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="logging_8hpp_source.html">logging.hpp</a>.</p>
 </div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Macro Definition Documentation</h2>
@@ -143,7 +194,28 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span> {} <span class="keywordflow">while</span>(0)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="logging_8hpp_source.html#l00025">25</a> of file <a class="el" href="logging_8hpp_source.html">logging.hpp</a>.</p>
+<p>LibStoga logging macro. </p>
+<p>A configurable logging macro that outputs messages to standard output with a LibStoga prefix. The macro can be enabled or disabled at compile-time using the LS_STDLOG preprocessor definition.</p>
+<p>When enabled (LS_STDLOG defined):</p><ul>
+<li>Outputs "[LS] " prefix followed by the message</li>
+<li>Uses std::cout for output</li>
+<li>Automatically appends newline character</li>
+</ul>
+<p>When disabled (LS_STDLOG not defined):</p><ul>
+<li>Compiles to no-op with zero runtime overhead</li>
+<li>Safe to leave in production code</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>Message to log (can include stream operations)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Define LS_STDLOG before including this file to enable logging </dd>
+<dd>
+Message can include stream operations like: LS_LOG("Value: " &lt;&lt; variable) </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="logging_8hpp_source.html#l00133">133</a> of file <a class="el" href="logging_8hpp_source.html">logging.hpp</a>.</p>
 
 </div>
 </div>

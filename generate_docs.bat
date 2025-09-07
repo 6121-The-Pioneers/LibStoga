@@ -1,17 +1,15 @@
 @echo off
 REM generate_docs.bat - Generate LibStoga Doxygen documentation
 
+set "DOXYGEN_PATH=C:\Program Files\doxygen\bin\doxygen.exe"
+
 echo Generating LibStoga Documentation...
 
 REM Check if Doxygen is installed
-where doxygen >nul 2>nul
-if %errorlevel% neq 0 (
-    echo Doxygen not found. Please install Doxygen first:
-    echo    Windows (Chocolatey): choco install doxygen.install
-    echo    Windows (Scoop): scoop install doxygen
-    echo    Ubuntu/Debian: sudo apt-get install doxygen
-    echo    macOS: brew install doxygen
-    echo    Download: https://www.doxygen.nl/download.html
+if not exist "%DOXYGEN_PATH%" (
+    echo Doxygen not found at %DOXYGEN_PATH%.
+    echo Please install Doxygen or update the path in this script.
+    echo Download: https://www.doxygen.nl/download.html
     echo.
     echo Press any key to exit...
     pause >nul
@@ -23,7 +21,7 @@ if not exist docs mkdir docs
 
 REM Run Doxygen
 echo Running Doxygen...
-doxygen Doxyfile
+"%DOXYGEN_PATH%" Doxyfile
 
 if %errorlevel% equ 0 (
     echo Documentation generated successfully!

@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -91,9 +92,12 @@ $(function(){initNavTree('clamp_8hpp.html','',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">clamp.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">clamp.hpp File Reference<div class="ingroups"><a class="el" href="group__utilities.html">Utilities</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Mathematical utility functions for value clamping, scaling, and processing.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -118,13 +122,61 @@ Namespaces</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a4fc8d2ce01f64d9ab6b9978b4adf57d3" id="r_a4fc8d2ce01f64d9ab6b9978b4adf57d3"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a4fc8d2ce01f64d9ab6b9978b4adf57d3 template"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacels.html#a4fc8d2ce01f64d9ab6b9978b4adf57d3">ls::clamp</a> (const T &amp;v, const T &amp;lo, const T &amp;hi)</td></tr>
+<tr class="memdesc:a4fc8d2ce01f64d9ab6b9978b4adf57d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic value clamping function.  <br /></td></tr>
 <tr class="memitem:aeee2626deeb9daa8c939c7eaebd6a2a3" id="r_aeee2626deeb9daa8c939c7eaebd6a2a3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacels.html#aeee2626deeb9daa8c939c7eaebd6a2a3">ls::clampPower</a> (double v)</td></tr>
+<tr class="memdesc:aeee2626deeb9daa8c939c7eaebd6a2a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clamp motor power to VEX V5 range.  <br /></td></tr>
 <tr class="memitem:af980a1fc991abb5b1c99b3da64ef1c19" id="r_af980a1fc991abb5b1c99b3da64ef1c19"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacels.html#af980a1fc991abb5b1c99b3da64ef1c19">ls::deadband</a> (double v, double db)</td></tr>
+<tr class="memdesc:af980a1fc991abb5b1c99b3da64ef1c19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply deadband to reduce noise.  <br /></td></tr>
 <tr class="memitem:a7b9412f719bbac96788298da56d1bde0" id="r_a7b9412f719bbac96788298da56d1bde0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacels.html#a7b9412f719bbac96788298da56d1bde0">ls::scale</a> (double v, double inMin, double inMax, double outMin, double outMax, bool clampResult=true)</td></tr>
+<tr class="memdesc:a7b9412f719bbac96788298da56d1bde0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Linear scaling between ranges.  <br /></td></tr>
 <tr class="memitem:aac38bc1b6c1d5c8b1cd09dec26e401c3" id="r_aac38bc1b6c1d5c8b1cd09dec26e401c3"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:aac38bc1b6c1d5c8b1cd09dec26e401c3 template"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacels.html#aac38bc1b6c1d5c8b1cd09dec26e401c3">ls::sign</a> (T v)</td></tr>
+<tr class="memdesc:aac38bc1b6c1d5c8b1cd09dec26e401c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract sign of value.  <br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Mathematical utility functions for value clamping, scaling, and processing. </p>
+<p>This file provides a collection of mathematical utility functions commonly used in robotics applications, particularly for processing sensor data, motor control signals, and user inputs. These functions help ensure values stay within valid ranges and provide smooth control characteristics.</p>
+<p>Key Functions:</p><ul>
+<li>Value clamping to specified ranges</li>
+<li>Deadband processing for noise reduction</li>
+<li>Linear scaling between different ranges</li>
+<li>Sign extraction for directional logic</li>
+<li>Motor power clamping for VEX V5 compatibility</li>
+</ul>
+<p>Common Use Cases:</p><ul>
+<li><b>Motor Control</b>: Clamp power values to valid ranges (-127 to 127)</li>
+<li><b>Sensor Processing</b>: Apply deadbands to reduce noise from sensors</li>
+<li><b>User Input</b>: Scale joystick inputs to appropriate control ranges</li>
+<li><b>PID Output</b>: Limit controller outputs to safe operating ranges</li>
+<li><b>Angle Wrapping</b>: Keep angles within 0-360 degree ranges</li>
+</ul>
+<p>Usage Examples: </p><div class="fragment"><div class="line"><span class="comment">// Clamp motor power to safe range</span></div>
+<div class="line"><span class="keywordtype">double</span> motorPower = pidController.getOutput();</div>
+<div class="line"><span class="keywordtype">double</span> safePower = clampPower(motorPower);</div>
+<div class="line">leftMotor.move(safePower);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Apply deadband to joystick input</span></div>
+<div class="line"><span class="keywordtype">double</span> rawInput = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);</div>
+<div class="line"><span class="keywordtype">double</span> processedInput = deadband(rawInput, 5.0); <span class="comment">// 5-unit deadband</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Scale sensor reading to different range</span></div>
+<div class="line"><span class="keywordtype">double</span> distance = ultrasonic.get_value(); <span class="comment">// 0-100 inches</span></div>
+<div class="line"><span class="keywordtype">double</span> motorSpeed = scale(distance, 0, 100, -100, 100); <span class="comment">// Scale to motor speed</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Get direction sign for logic</span></div>
+<div class="line"><span class="keywordtype">int</span> direction = sign(error); <span class="comment">// -1, 0, or 1</span></div>
+<div class="line"><span class="keywordflow">if</span> (direction &gt; 0) {</div>
+<div class="line">    <span class="comment">// Move forward</span></div>
+<div class="line">} <span class="keywordflow">else</span> <span class="keywordflow">if</span> (direction &lt; 0) {</div>
+<div class="line">    <span class="comment">// Move backward</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><dl class="section author"><dt>Author</dt><dd>6121D (The Pioneers) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 6121D - All rights reserved </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="clamp_8hpp_source.html">clamp.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

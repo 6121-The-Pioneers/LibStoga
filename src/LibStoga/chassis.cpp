@@ -33,8 +33,8 @@ namespace {
 #endif
 
 namespace ls {
-    Chassis::Chassis(std::shared_ptr<pros::MotorGroup> _right, std::shared_ptr<pros::MotorGroup> _left, std::shared_ptr<ls::AbstractOdom> _odom, std::shared_ptr<ls::AbstractPID> _lateral_control, std::shared_ptr<ls::AbstractPID> _angular_control, const ChassisConfig& cfg) 
-    : right(_right), left(_left), odom(_odom), lateral_control(_lateral_control), angular_control(_angular_control) {
+    Chassis::Chassis(std::vector<pros::Motor> _left_motors, std::vector<pros::Motor> _right_motors, std::shared_ptr<pros::MotorGroup> _right, std::shared_ptr<pros::MotorGroup> _left, std::shared_ptr<ls::AbstractOdom> _odom, std::shared_ptr<ls::AbstractPID> _lateral_control, std::shared_ptr<ls::AbstractPID> _angular_control, const ChassisConfig& cfg) 
+    : left_motors(_left_motors), right_motors(_right_motors), right(_right), left(_left), odom(_odom), lateral_control(_lateral_control), angular_control(_angular_control) {
         turn_sensitivity = cfg.turnSensitivity;
         threshold_lateral = cfg.lateralThreshold;
         threshold_angular = cfg.angularThreshold;
@@ -87,6 +87,26 @@ namespace ls {
 
     std::shared_ptr<AbstractPID> Chassis::getAngularControl() {
         return angular_control;
+    }
+
+    std::vector<pros::Motor>& Chassis::getLeftMotorVec() {
+        return left_motors;
+    }
+
+    std::vector<pros::Motor>& Chassis::getRightMotorVec() {
+        return right_motors;
+    }
+
+    std::shared_ptr<pros::MotorGroup> Chassis::getLeftMotors() {
+        return left;
+    }
+
+    std::shared_ptr<pros::MotorGroup> Chassis::getRightMotors() {
+        return right;
+    }
+
+    bool Chassis::isAdaptivePIDEnabled() const {
+        return enable_adaptive_pid;
     }
 
     void Chassis::moveToPoint(double X, double Y, unsigned int timeout, bool reverse) {

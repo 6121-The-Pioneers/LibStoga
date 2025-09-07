@@ -25,6 +25,15 @@ namespace ls {
 
     std::shared_ptr<Chassis> ChassisBuilder::build() {
         // Motor groups
+        std::vector<pros::Motor> leftMotors;
+        for(int port : drivetrainConfig.leftMotors) {
+            leftMotors.emplace_back(port);
+        }
+        std::vector<pros::Motor> rightMotors;
+        for(int port : drivetrainConfig.rightMotors) {
+            rightMotors.emplace_back(port);
+        }
+
         auto leftGroup = std::make_shared<pros::MotorGroup>(drivetrainConfig.leftMotors);
         auto rightGroup = std::make_shared<pros::MotorGroup>(drivetrainConfig.rightMotors);
 
@@ -49,7 +58,7 @@ namespace ls {
         cc.enableAdaptivePID = controllerConfig.enableAdaptivePID;
 
         // Create Chassis
-        auto chassis = std::make_shared<Chassis>(rightGroup, leftGroup, odom, drivePID, turnPID, cc);
+        auto chassis = std::make_shared<Chassis>(leftMotors, rightMotors, rightGroup, leftGroup, odom, drivePID, turnPID, cc);
         
         // Note: PurePursuit is not part of the builder for now to keep it simple.
         // It can be constructed separately if needed.

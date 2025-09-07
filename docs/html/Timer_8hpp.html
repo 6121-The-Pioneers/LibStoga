@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -91,9 +92,12 @@ $(function(){initNavTree('Timer_8hpp.html','',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Timer.hpp File Reference</div></div>
+  <div class="headertitle"><div class="title">Timer.hpp File Reference<div class="ingroups"><a class="el" href="group__utilities.html">Utilities</a></div></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>High-precision timer utility for PROS robotics applications.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;pros/rtos.hpp&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Timer.hpp:</div>
@@ -111,13 +115,37 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:ls_3A_3ATimer" id="r_ls_3A_3ATimer"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1Timer.html">ls::Timer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">High-precision timer with pause/resume functionality.  <a href="classls_1_1Timer.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:ls" id="r_ls"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacels.html">ls</a></td></tr>
 <tr class="memdesc:namespacels"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all source code for abstract classes or composed ones Basically code that powers abstraction. <br /></td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>High-precision timer utility for PROS robotics applications. </p>
+<p>This file provides a comprehensive timer class designed specifically for VEX robotics programming with PROS. The Timer class offers precise timing control with pause/resume functionality, making it ideal for autonomous routines, driver control sequences, and general timing operations.</p>
+<p>Key Features:</p><ul>
+<li>High-precision timing using PROS system clock</li>
+<li>Pause and resume functionality for complex timing scenarios</li>
+<li>Non-blocking operation with status checking</li>
+<li>Automatic time tracking and elapsed time calculation</li>
+<li>Thread-safe operations for concurrent use</li>
+</ul>
+<p>Common Use Cases:</p><ul>
+<li>Autonomous routine timing and sequencing</li>
+<li>Driver control skill challenges with time limits</li>
+<li>Periodic task scheduling</li>
+<li>Timeout management for operations</li>
+<li>Performance benchmarking and profiling</li>
+</ul>
+<dl class="section author"><dt>Author</dt><dd>Asish Nakka </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2024-11-29</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
+
+<p class="definition">Definition in file <a class="el" href="Timer_8hpp_source.html">Timer.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,9 +96,11 @@ $(function(){initNavTree('spid_8h.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>Contains all code for the SPID (Smart PID) Algorithm.  
+<p>Smart PID (SPID) - Adaptive PID control system.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="pid_8h_source.html">pid.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="error_8h_source.html">error.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gains_8h_source.html">gains.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for spid.h:</div>
 <div class="dyncontent">
@@ -114,9 +117,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:ls_3A_3Asmart_5Fpid_5Fparameters_5Ft" id="r_ls_3A_3Asmart_5Fpid_5Fparameters_5Ft"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structls_1_1smart__pid__parameters__t.html">ls::smart_pid_parameters_t</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains all parameters of the <a class="el" href="classls_1_1SmartPID.html" title="The Smart PID class... an extension of the PID class that uses the Smart PID Algorithm....">SmartPID</a> class.  <a href="structls_1_1smart__pid__parameters__t.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration parameters for Smart <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller.  <a href="structls_1_1smart__pid__parameters__t.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ls_3A_3ASmartPID" id="r_ls_3A_3ASmartPID"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classls_1_1SmartPID.html">ls::SmartPID</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Smart <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> class... an extension of the <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> class that uses the Smart <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> Algorithm. More about SPID can be looked up in the LibStoga documentation.  <a href="classls_1_1SmartPID.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Smart <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller with adaptive learning capabilities.  <a href="classls_1_1SmartPID.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -124,12 +127,26 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespacels"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all source code for abstract classes or composed ones Basically code that powers abstraction. <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Contains all code for the SPID (Smart PID) Algorithm. </p>
-<p>✅</p>
-<dl class="section author"><dt>Author</dt><dd>Rishit Varshney </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2024-11-29</dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2024 </dd></dl>
+<div class="textblock"><p>Smart PID (SPID) - Adaptive PID control system. </p>
+<p>This file implements the Smart PID algorithm, an advanced extension of traditional PID control that adapts its parameters in real-time based on system performance. The SPID system learns from its own behavior and adjusts gains to optimize control performance dynamically.</p>
+<p>Key Features:</p><ul>
+<li>Adaptive gain tuning based on system response</li>
+<li>Learning algorithm that improves performance over time</li>
+<li>Sigmoid-based learning rate adjustment</li>
+<li>Configurable correction constants and windup protection</li>
+<li>Extension of standard PID with intelligent adaptation</li>
+</ul>
+<p>Smart PID Algorithm: The SPID algorithm extends traditional PID by adding a learning mechanism that:</p><ol type="1">
+<li>Monitors system response and error patterns</li>
+<li>Calculates expected vs actual performance</li>
+<li>Adjusts PID gains using a learning rate and correction constant</li>
+<li>Uses sigmoid function to prevent over-correction near optimal values</li>
+</ol>
+<dl class="section warning"><dt>Warning</dt><dd>This algorithm can produce rapid output changes. Use with caution and proper parameter tuning. Always test in a safe environment before field use.</dd></dl>
+<dl class="section author"><dt>Author</dt><dd>6121D (The Pioneers) </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>3.0.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2025</dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 6121D - All rights reserved </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="spid_8h_source.html">spid.h</a>.</p>
 </div></div><!-- contents -->

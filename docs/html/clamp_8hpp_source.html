@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -94,46 +95,45 @@ $(function(){initNavTree('clamp_8hpp_source.html','',''); });
   <div class="headertitle"><div class="title">clamp.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="clamp_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacels.html">ls</a> {</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    <span class="comment">// Generic clamp (C++17 already has std::clamp, but this short alias keeps our namespace consistent)</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="}">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="namespacels.html#a4fc8d2ce01f64d9ab6b9978b4adf57d3">    8</a></span>    <span class="keyword">inline</span> T <a class="code hl_function" href="namespacels.html#a4fc8d2ce01f64d9ab6b9978b4adf57d3">clamp</a>(<span class="keyword">const</span> T&amp; v, <span class="keyword">const</span> T&amp; lo, <span class="keyword">const</span> T&amp; hi) {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        <span class="keywordflow">return</span> std::clamp(v, lo, hi);</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    }</div>
+<a href="clamp_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#include &lt;cmath&gt;</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacels.html">ls</a> {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00077" data-start="{" data-end="}">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="namespacels.html#a4fc8d2ce01f64d9ab6b9978b4adf57d3">   77</a></span><span class="keyword">inline</span> T <a class="code hl_function" href="namespacels.html#a4fc8d2ce01f64d9ab6b9978b4adf57d3">clamp</a>(<span class="keyword">const</span> T&amp; v, <span class="keyword">const</span> T&amp; lo, <span class="keyword">const</span> T&amp; hi) {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordflow">return</span> std::clamp(v, lo, hi);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}</div>
 </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="comment">// Clamp motor / joystick power to V5 typical range [-127, 127]</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="namespacels.html#aeee2626deeb9daa8c939c7eaebd6a2a3">   13</a></span>    <span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code hl_function" href="namespacels.html#aeee2626deeb9daa8c939c7eaebd6a2a3">clampPower</a>(<span class="keywordtype">double</span> v) { <span class="keywordflow">return</span> <a class="code hl_function" href="namespacels.html#a4fc8d2ce01f64d9ab6b9978b4adf57d3">clamp</a>(v, -127.0, 127.0); }</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">// Deadband helper: zero out small magnitude values</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="namespacels.html#af980a1fc991abb5b1c99b3da64ef1c19">   16</a></span>    <span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code hl_function" href="namespacels.html#af980a1fc991abb5b1c99b3da64ef1c19">deadband</a>(<span class="keywordtype">double</span> v, <span class="keywordtype">double</span> db) { <span class="keywordflow">return</span> (std::fabs(v) &lt; db) ? 0.0 : v; }</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">// Scale a value from one range to another, optionally clamping result</span></div>
-<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="namespacels.html#a7b9412f719bbac96788298da56d1bde0">   19</a></span>    <span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code hl_function" href="namespacels.html#a7b9412f719bbac96788298da56d1bde0">scale</a>(<span class="keywordtype">double</span> v, <span class="keywordtype">double</span> inMin, <span class="keywordtype">double</span> inMax, <span class="keywordtype">double</span> outMin, <span class="keywordtype">double</span> outMax, <span class="keywordtype">bool</span> clampResult = <span class="keyword">true</span>) {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordflow">if</span> (inMax - inMin == 0) <span class="keywordflow">return</span> outMin; <span class="comment">// avoid div/0</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keywordtype">double</span> t = (v - inMin) / (inMax - inMin);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordtype">double</span> out = outMin + t * (outMax - outMin);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">if</span> (clampResult) <span class="keywordflow">return</span> <a class="code hl_function" href="namespacels.html#a4fc8d2ce01f64d9ab6b9978b4adf57d3">clamp</a>(out, std::min(outMin, outMax), std::max(outMin, outMax));</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordflow">return</span> out;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="namespacels.html#aeee2626deeb9daa8c939c7eaebd6a2a3">   93</a></span><span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code hl_function" href="namespacels.html#aeee2626deeb9daa8c939c7eaebd6a2a3">clampPower</a>(<span class="keywordtype">double</span> v) { <span class="keywordflow">return</span> <a class="code hl_function" href="namespacels.html#a4fc8d2ce01f64d9ab6b9978b4adf57d3">clamp</a>(v, -127.0, 127.0); }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="namespacels.html#af980a1fc991abb5b1c99b3da64ef1c19">  109</a></span><span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code hl_function" href="namespacels.html#af980a1fc991abb5b1c99b3da64ef1c19">deadband</a>(<span class="keywordtype">double</span> v, <span class="keywordtype">double</span> db) { <span class="keywordflow">return</span> (std::fabs(v) &lt; db) ? 0.0 : v; }</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span></div>
+<div class="foldopen" id="foldopen00128" data-start="{" data-end="}">
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="namespacels.html#a7b9412f719bbac96788298da56d1bde0">  128</a></span><span class="keyword">inline</span> <span class="keywordtype">double</span> <a class="code hl_function" href="namespacels.html#a7b9412f719bbac96788298da56d1bde0">scale</a>(<span class="keywordtype">double</span> v, <span class="keywordtype">double</span> inMin, <span class="keywordtype">double</span> inMax, <span class="keywordtype">double</span> outMin, <span class="keywordtype">double</span> outMax, <span class="keywordtype">bool</span> clampResult = <span class="keyword">true</span>) {</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordflow">if</span> (inMax - inMin == 0) <span class="keywordflow">return</span> outMin; <span class="comment">// avoid div/0</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordtype">double</span> t = (v - inMin) / (inMax - inMin);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordtype">double</span> out = outMin + t * (outMax - outMin);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">if</span> (clampResult) <span class="keywordflow">return</span> <a class="code hl_function" href="namespacels.html#a4fc8d2ce01f64d9ab6b9978b4adf57d3">clamp</a>(out, std::min(outMin, outMax), std::max(outMin, outMax));</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keywordflow">return</span> out;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>}</div>
 </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// Sign helper (-1, 0, 1)</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="namespacels.html#aac38bc1b6c1d5c8b1cd09dec26e401c3">   29</a></span>    <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code hl_function" href="namespacels.html#aac38bc1b6c1d5c8b1cd09dec26e401c3">sign</a>(T v) { <span class="keywordflow">return</span> (v &gt; 0) - (v &lt; 0); }</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
-<div class="ttc" id="anamespacels_html"><div class="ttname"><a href="namespacels.html">ls</a></div><div class="ttdoc">Contains all source code for abstract classes or composed ones Basically code that powers abstraction...</div><div class="ttdef"><b>Definition</b> <a href="auton__tuner_8h_source.html#l00009">auton_tuner.h:9</a></div></div>
-<div class="ttc" id="anamespacels_html_a4fc8d2ce01f64d9ab6b9978b4adf57d3"><div class="ttname"><a href="namespacels.html#a4fc8d2ce01f64d9ab6b9978b4adf57d3">ls::clamp</a></div><div class="ttdeci">T clamp(const T &amp;v, const T &amp;lo, const T &amp;hi)</div><div class="ttdef"><b>Definition</b> <a href="#l00008">clamp.hpp:8</a></div></div>
-<div class="ttc" id="anamespacels_html_a7b9412f719bbac96788298da56d1bde0"><div class="ttname"><a href="namespacels.html#a7b9412f719bbac96788298da56d1bde0">ls::scale</a></div><div class="ttdeci">double scale(double v, double inMin, double inMax, double outMin, double outMax, bool clampResult=true)</div><div class="ttdef"><b>Definition</b> <a href="#l00019">clamp.hpp:19</a></div></div>
-<div class="ttc" id="anamespacels_html_aac38bc1b6c1d5c8b1cd09dec26e401c3"><div class="ttname"><a href="namespacels.html#aac38bc1b6c1d5c8b1cd09dec26e401c3">ls::sign</a></div><div class="ttdeci">int sign(T v)</div><div class="ttdef"><b>Definition</b> <a href="#l00029">clamp.hpp:29</a></div></div>
-<div class="ttc" id="anamespacels_html_aeee2626deeb9daa8c939c7eaebd6a2a3"><div class="ttname"><a href="namespacels.html#aeee2626deeb9daa8c939c7eaebd6a2a3">ls::clampPower</a></div><div class="ttdeci">double clampPower(double v)</div><div class="ttdef"><b>Definition</b> <a href="#l00013">clamp.hpp:13</a></div></div>
-<div class="ttc" id="anamespacels_html_af980a1fc991abb5b1c99b3da64ef1c19"><div class="ttname"><a href="namespacels.html#af980a1fc991abb5b1c99b3da64ef1c19">ls::deadband</a></div><div class="ttdeci">double deadband(double v, double db)</div><div class="ttdef"><b>Definition</b> <a href="#l00016">clamp.hpp:16</a></div></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="namespacels.html#aac38bc1b6c1d5c8b1cd09dec26e401c3">  150</a></span><span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code hl_function" href="namespacels.html#aac38bc1b6c1d5c8b1cd09dec26e401c3">sign</a>(T v) { <span class="keywordflow">return</span> (v &gt; 0) - (v &lt; 0); }</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>} <span class="comment">// namespace ls</span></div>
+<div class="ttc" id="anamespacels_html"><div class="ttname"><a href="namespacels.html">ls</a></div><div class="ttdoc">Contains all source code for abstract classes or composed ones Basically code that powers abstraction...</div><div class="ttdef"><b>Definition</b> <a href="auton__tuner_8h_source.html#l00067">auton_tuner.h:67</a></div></div>
+<div class="ttc" id="anamespacels_html_a4fc8d2ce01f64d9ab6b9978b4adf57d3"><div class="ttname"><a href="namespacels.html#a4fc8d2ce01f64d9ab6b9978b4adf57d3">ls::clamp</a></div><div class="ttdeci">T clamp(const T &amp;v, const T &amp;lo, const T &amp;hi)</div><div class="ttdoc">Generic value clamping function.</div><div class="ttdef"><b>Definition</b> <a href="#l00077">clamp.hpp:77</a></div></div>
+<div class="ttc" id="anamespacels_html_a7b9412f719bbac96788298da56d1bde0"><div class="ttname"><a href="namespacels.html#a7b9412f719bbac96788298da56d1bde0">ls::scale</a></div><div class="ttdeci">double scale(double v, double inMin, double inMax, double outMin, double outMax, bool clampResult=true)</div><div class="ttdoc">Linear scaling between ranges.</div><div class="ttdef"><b>Definition</b> <a href="#l00128">clamp.hpp:128</a></div></div>
+<div class="ttc" id="anamespacels_html_aac38bc1b6c1d5c8b1cd09dec26e401c3"><div class="ttname"><a href="namespacels.html#aac38bc1b6c1d5c8b1cd09dec26e401c3">ls::sign</a></div><div class="ttdeci">int sign(T v)</div><div class="ttdoc">Extract sign of value.</div><div class="ttdef"><b>Definition</b> <a href="#l00150">clamp.hpp:150</a></div></div>
+<div class="ttc" id="anamespacels_html_aeee2626deeb9daa8c939c7eaebd6a2a3"><div class="ttname"><a href="namespacels.html#aeee2626deeb9daa8c939c7eaebd6a2a3">ls::clampPower</a></div><div class="ttdeci">double clampPower(double v)</div><div class="ttdoc">Clamp motor power to VEX V5 range.</div><div class="ttdef"><b>Definition</b> <a href="#l00093">clamp.hpp:93</a></div></div>
+<div class="ttc" id="anamespacels_html_af980a1fc991abb5b1c99b3da64ef1c19"><div class="ttname"><a href="namespacels.html#af980a1fc991abb5b1c99b3da64ef1c19">ls::deadband</a></div><div class="ttdeci">double deadband(double v, double db)</div><div class="ttdoc">Apply deadband to reduce noise.</div><div class="ttdef"><b>Definition</b> <a href="#l00109">clamp.hpp:109</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

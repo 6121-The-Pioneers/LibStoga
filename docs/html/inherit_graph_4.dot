@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="ls::Chassis",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classls_1_1Chassis.html",tooltip="Represents the chassis of the robot. Only supports tank drive configuration (TODO)"];
+  Node0 [id="Node000000",label="ls::Chassis",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classls_1_1Chassis.html",tooltip="Main chassis control class for robot movement."];
 }

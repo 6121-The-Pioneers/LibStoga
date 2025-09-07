@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,7 +96,7 @@ $(function(){initNavTree('structls_1_1Position.html','','structls_1_1Position-me
 </div><!--header-->
 <div class="contents">
 
-<p>A compact representation for x, y, and theta.  
+<p>Complete robot pose representation (position + orientation)  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="odom_8h_source.html">odom.h</a>&gt;</code></p>
@@ -108,12 +109,17 @@ Collaboration diagram for ls::Position:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac0ca451081ea856815872d5d6af7f879" id="r_ac0ca451081ea856815872d5d6af7f879"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0ca451081ea856815872d5d6af7f879">Position</a> ()</td></tr>
+<tr class="memdesc:ac0ca451081ea856815872d5d6af7f879"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor - initializes to origin with 0° heading.  <br /></td></tr>
 <tr class="memitem:a8ef37b820935ca3fad86ca486697d896" id="r_a8ef37b820935ca3fad86ca486697d896"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ef37b820935ca3fad86ca486697d896">Position</a> (double x, double y, double t)</td></tr>
+<tr class="memdesc:a8ef37b820935ca3fad86ca486697d896"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct position with specified coordinates and heading.  <br /></td></tr>
 <tr class="memitem:a0db0d9f1d2909e9be2b7fb572b9a803c" id="r_a0db0d9f1d2909e9be2b7fb572b9a803c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0db0d9f1d2909e9be2b7fb572b9a803c">distanceFromPoint</a> (const <a class="el" href="structls_1_1Position.html">Position</a> &amp;pos) const</td></tr>
+<tr class="memdesc:a0db0d9f1d2909e9be2b7fb572b9a803c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate Euclidean distance to another position.  <br /></td></tr>
 <tr class="memitem:aa1a2f3c0e9fd99d8fa02d1c934b45920" id="r_aa1a2f3c0e9fd99d8fa02d1c934b45920"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1a2f3c0e9fd99d8fa02d1c934b45920">distanceFromPointSigned</a> (const <a class="el" href="structls_1_1Position.html">Position</a> &amp;pos) const</td></tr>
+<tr class="memdesc:aa1a2f3c0e9fd99d8fa02d1c934b45920"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate signed distance to another position.  <br /></td></tr>
 <tr class="memitem:ab709c731cea2088b64df76db839a4d7e" id="r_ab709c731cea2088b64df76db839a4d7e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab709c731cea2088b64df76db839a4d7e">isBehind</a> (const <a class="el" href="structls_1_1Position.html">Position</a> &amp;pos) const</td></tr>
+<tr class="memdesc:ab709c731cea2088b64df76db839a4d7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine relative position (front/behind robot)  <br /></td></tr>
 <tr class="memitem:a884f00575ccd2eac0088ddf108c286f4" id="r_a884f00575ccd2eac0088ddf108c286f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classls_1_1Angle.html">Angle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a884f00575ccd2eac0088ddf108c286f4">angleToPosition</a> (const <a class="el" href="structls_1_1Position.html">Position</a> &amp;pos) const</td></tr>
-<tr class="memdesc:a884f00575ccd2eac0088ddf108c286f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the angle to the position provided relative to current position in the cartesian plane. Will return in terms of a bearing. Will return infinity() if the positions are way to close or equal to be calculated properly.  <br /></td></tr>
+<tr class="memdesc:a884f00575ccd2eac0088ddf108c286f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate bearing angle to target position.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -124,12 +130,18 @@ Public Attributes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
 <tr class="memitem:ab7ab267bcecdb85160da8e5a7069a98e" id="r_ab7ab267bcecdb85160da8e5a7069a98e"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7ab267bcecdb85160da8e5a7069a98e">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="structls_1_1Position.html">Position</a> &amp;pos)</td></tr>
+<tr class="memdesc:ab7ab267bcecdb85160da8e5a7069a98e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream output operator for debugging.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A compact representation for x, y, and theta. </p>
-<p>contains coordinates and helper methods accordingly. </p>
+<div class="textblock"><p>Complete robot pose representation (position + orientation) </p>
+<p>Represents the full state of a robot in 2D space including X, Y coordinates and heading angle. This structure is fundamental to odometry and navigation systems throughout the framework.</p>
+<p>The coordinate system uses:</p><ul>
+<li><b>Origin</b>: Robot's starting position (0, 0)</li>
+<li><b>Angles</b>: Bearing system where 0° = North (forward direction)</li>
+<li><b>Units</b>: All distances in inches, angles in degrees </li>
+</ul>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00029">29</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00061">61</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac0ca451081ea856815872d5d6af7f879" name="ac0ca451081ea856815872d5d6af7f879"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac0ca451081ea856815872d5d6af7f879">&#9670;&#160;</a></span>Position() <span class="overload">[1/2]</span></h2>
@@ -154,11 +166,13 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00036">36</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p>Default constructor - initializes to origin with 0° heading. </p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00032">theta</a>, <a class="el" href="odom_8h_source.html#l00030">X</a>, and <a class="el" href="odom_8h_source.html#l00031">Y</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00069">69</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00091">angleToPosition()</a>, <a class="el" href="odom_8cpp_source.html#l00060">distanceFromPoint()</a>, <a class="el" href="odom_8cpp_source.html#l00067">distanceFromPointSigned()</a>, <a class="el" href="odom_8cpp_source.html#l00072">isBehind()</a>, and <a class="el" href="odom_8h_source.html#l00089">operator&lt;&lt;</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00064">theta</a>, <a class="el" href="odom_8h_source.html#l00062">X</a>, and <a class="el" href="odom_8h_source.html#l00063">Y</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00091">angleToPosition()</a>, <a class="el" href="odom_8cpp_source.html#l00060">distanceFromPoint()</a>, <a class="el" href="odom_8cpp_source.html#l00067">distanceFromPointSigned()</a>, <a class="el" href="odom_8cpp_source.html#l00072">isBehind()</a>, and <a class="el" href="odom_8h_source.html#l00133">operator&lt;&lt;</a>.</p>
 
 </div>
 </div>
@@ -193,19 +207,20 @@ Friends</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructs a position object in terms x, y, z.</p>
+
+<p>Construct position with specified coordinates and heading. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>the x value. </td></tr>
-    <tr><td class="paramname">y</td><td>the y value. </td></tr>
-    <tr><td class="paramname">theta</td><td>the theta value (degrees &amp; bearing). </td></tr>
+    <tr><td class="paramname">x</td><td>X coordinate in inches </td></tr>
+    <tr><td class="paramname">y</td><td>Y coordinate in inches </td></tr>
+    <tr><td class="paramname">t</td><td>Heading angle in degrees (bearing system) </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00044">44</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00078">78</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00032">theta</a>, <a class="el" href="odom_8h_source.html#l00030">X</a>, and <a class="el" href="odom_8h_source.html#l00031">Y</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00064">theta</a>, <a class="el" href="odom_8h_source.html#l00062">X</a>, and <a class="el" href="odom_8h_source.html#l00063">Y</a>.</p>
 
 </div>
 </div>
@@ -225,20 +240,21 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gets the angle to the position provided relative to current position in the cartesian plane. Will return in terms of a bearing. Will return infinity() if the positions are way to close or equal to be calculated properly. </p>
+<p>Calculate bearing angle to target position. </p>
+<p>Computes the bearing angle from current position to target position. Returns angle in bearing system (0° = North).</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pos</td><td>the other position. </td></tr>
+    <tr><td class="paramname">pos</td><td>Target position </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classls_1_1Angle.html" title="A class to represent and manipulate angles.">Angle</a> in [0, 360) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Bearing angle in degrees [0, 360), or infinity if positions are too close </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00091">91</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00036">Position()</a>, <a class="el" href="odom_8h_source.html#l00030">X</a>, and <a class="el" href="odom_8h_source.html#l00031">Y</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00069">Position()</a>, <a class="el" href="odom_8h_source.html#l00062">X</a>, and <a class="el" href="odom_8h_source.html#l00063">Y</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00072">isBehind()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">ls::Chassis::moveToPoint()</a>, and <a class="el" href="chassis_8cpp_source.html#l00161">ls::Chassis::turnToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00072">isBehind()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">ls::Chassis::moveToPoint()</a>, and <a class="el" href="chassis_8cpp_source.html#l00181">ls::Chassis::turnToPoint()</a>.</p>
 
 </div>
 </div>
@@ -256,18 +272,20 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns the distance from this point to the given point. Only returns a positive value.</p>
+
+<p>Calculate Euclidean distance to another position. </p>
+<p>Computes the straight-line distance between this position and another. Always returns a positive value.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pos</td><td>second point to compare to. </td></tr>
+    <tr><td class="paramname">pos</td><td>Target position to measure distance to </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>distance from point </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Distance in inches (always positive) </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00060">60</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8h_source.html#l00036">Position()</a>, <a class="el" href="odom_8h_source.html#l00030">X</a>, and <a class="el" href="odom_8h_source.html#l00031">Y</a>.</p>
+<p class="reference">References <a class="el" href="odom_8h_source.html#l00069">Position()</a>, <a class="el" href="odom_8h_source.html#l00062">X</a>, and <a class="el" href="odom_8h_source.html#l00063">Y</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00067">distanceFromPointSigned()</a>.</p>
 
@@ -287,21 +305,22 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns a signed value from this point to the other point.</p>
-<p>will return a negative value if point is behind the robot. check isbehind() for info about 'behind'</p>
+
+<p>Calculate signed distance to another position. </p>
+<p>Returns signed distance based on robot's current heading. Positive values indicate points in front of the robot, negative values indicate points behind.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pos</td><td>second point to compare to. </td></tr>
+    <tr><td class="paramname">pos</td><td>Target position to measure distance to </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>signed distance from point. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Signed distance in inches (positive = forward, negative = backward) </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00067">67</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8cpp_source.html#l00060">distanceFromPoint()</a>, <a class="el" href="odom_8cpp_source.html#l00072">isBehind()</a>, and <a class="el" href="odom_8h_source.html#l00036">Position()</a>.</p>
+<p class="reference">References <a class="el" href="odom_8cpp_source.html#l00060">distanceFromPoint()</a>, <a class="el" href="odom_8cpp_source.html#l00072">isBehind()</a>, and <a class="el" href="odom_8h_source.html#l00069">Position()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00092">ls::Chassis::moveToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="chassis_8cpp_source.html#l00112">ls::Chassis::moveToPoint()</a>.</p>
 
 </div>
 </div>
@@ -319,19 +338,20 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>returns if a point is behind (-1), in front of (1), or niether (0) in terms of the robot. behind and front of check if a give point is in front of the robot or behind it.</p>
-<p>determined by getting angle to point and comparing. niether implies thats points are too close to eachother to determine.</p>
+
+<p>Determine relative position (front/behind robot) </p>
+<p>Analyzes whether a point is in front of, behind, or neither relative to the robot's current heading.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pos</td><td>second point to compare to. </td></tr>
+    <tr><td class="paramname">pos</td><td><a class="el" href="structls_1_1Position.html" title="Complete robot pose representation (position + orientation)">Position</a> to analyze </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>behind (-1), in front of (1), or niether (0) </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>-1 if behind, 1 if in front, 0 if indeterminate (too close) </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="odom_8cpp_source.html#l00072">72</a> of file <a class="el" href="odom_8cpp_source.html">odom.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="odom_8cpp_source.html#l00091">angleToPosition()</a>, <a class="el" href="geometry_8cpp_source.html#l00011">ls::Angle::getAngle()</a>, <a class="el" href="geometry_8cpp_source.html#l00021">ls::Angle::normalize()</a>, <a class="el" href="odom_8h_source.html#l00036">Position()</a>, and <a class="el" href="odom_8h_source.html#l00032">theta</a>.</p>
+<p class="reference">References <a class="el" href="odom_8cpp_source.html#l00091">angleToPosition()</a>, <a class="el" href="geometry_8cpp_source.html#l00011">ls::Angle::getAngle()</a>, <a class="el" href="geometry_8cpp_source.html#l00021">ls::Angle::normalize()</a>, <a class="el" href="odom_8h_source.html#l00069">Position()</a>, and <a class="el" href="odom_8h_source.html#l00064">theta</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00067">distanceFromPointSigned()</a>.</p>
 
@@ -365,9 +385,30 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00089">89</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p>Stream output operator for debugging. </p>
+<p>Formats position as "Pos(X, Y, theta)" for console output.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>Output stream </td></tr>
+    <tr><td class="paramname">pos</td><td><a class="el" href="structls_1_1Position.html" title="Complete robot pose representation (position + orientation)">Position</a> to output </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Modified output stream</dd></dl>
+<p>Outputs a <a class="el" href="structls_1_1Position.html" title="Complete robot pose representation (position + orientation)">Position</a> object to a stream showing X, Y coordinates and heading angle in a structured format.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>Output stream </td></tr>
+    <tr><td class="paramname">p</td><td><a class="el" href="structls_1_1Position.html" title="Complete robot pose representation (position + orientation)">Position</a> object to output </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the output stream</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Output format: "{X=24.5, Y=12.3, theta=45.2deg}" </dd></dl>
 
-<p class="reference">References <a class="el" href="geometry_8cpp_source.html#l00011">ls::Angle::getAngle()</a>, <a class="el" href="odom_8h_source.html#l00036">Position()</a>, <a class="el" href="odom_8h_source.html#l00032">theta</a>, <a class="el" href="odom_8h_source.html#l00030">X</a>, and <a class="el" href="odom_8h_source.html#l00031">Y</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00133">133</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+
+<p class="reference">References <a class="el" href="geometry_8cpp_source.html#l00011">ls::Angle::getAngle()</a>, <a class="el" href="odom_8h_source.html#l00069">Position()</a>, <a class="el" href="odom_8h_source.html#l00064">theta</a>, <a class="el" href="odom_8h_source.html#l00062">X</a>, and <a class="el" href="odom_8h_source.html#l00063">Y</a>.</p>
 
 </div>
 </div>
@@ -383,10 +424,11 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Heading angle in degrees (bearing: 0° = North) </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00032">32</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00064">64</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00072">isBehind()</a>, <a class="el" href="chassis_8cpp_source.html#l00092">ls::Chassis::moveToPoint()</a>, <a class="el" href="logging_8hpp_source.html#l00016">ls::operator&lt;&lt;()</a>, <a class="el" href="odom_8h_source.html#l00089">operator&lt;&lt;</a>, <a class="el" href="odom_8h_source.html#l00036">Position()</a>, <a class="el" href="odom_8h_source.html#l00044">Position()</a>, and <a class="el" href="chassis_8cpp_source.html#l00161">ls::Chassis::turnToPoint()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00072">isBehind()</a>, <a class="el" href="chassis_8cpp_source.html#l00112">ls::Chassis::moveToPoint()</a>, <a class="el" href="logging_8hpp_source.html#l00103">ls::operator&lt;&lt;()</a>, <a class="el" href="odom_8h_source.html#l00133">operator&lt;&lt;</a>, <a class="el" href="odom_8h_source.html#l00069">Position()</a>, <a class="el" href="odom_8h_source.html#l00078">Position()</a>, and <a class="el" href="chassis_8cpp_source.html#l00181">ls::Chassis::turnToPoint()</a>.</p>
 
 </div>
 </div>
@@ -401,10 +443,11 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>X coordinate in inches from origin </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00030">30</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00062">62</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00091">angleToPosition()</a>, <a class="el" href="odom_8cpp_source.html#l00060">distanceFromPoint()</a>, <a class="el" href="logging_8hpp_source.html#l00016">ls::operator&lt;&lt;()</a>, <a class="el" href="odom_8h_source.html#l00089">operator&lt;&lt;</a>, <a class="el" href="odom_8h_source.html#l00036">Position()</a>, and <a class="el" href="odom_8h_source.html#l00044">Position()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00091">angleToPosition()</a>, <a class="el" href="odom_8cpp_source.html#l00060">distanceFromPoint()</a>, <a class="el" href="logging_8hpp_source.html#l00103">ls::operator&lt;&lt;()</a>, <a class="el" href="odom_8h_source.html#l00133">operator&lt;&lt;</a>, <a class="el" href="odom_8h_source.html#l00069">Position()</a>, and <a class="el" href="odom_8h_source.html#l00078">Position()</a>.</p>
 
 </div>
 </div>
@@ -419,10 +462,11 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Y coordinate in inches from origin </p>
 
-<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00031">31</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="odom_8h_source.html#l00063">63</a> of file <a class="el" href="odom_8h_source.html">odom.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00091">angleToPosition()</a>, <a class="el" href="odom_8cpp_source.html#l00060">distanceFromPoint()</a>, <a class="el" href="logging_8hpp_source.html#l00016">ls::operator&lt;&lt;()</a>, <a class="el" href="odom_8h_source.html#l00089">operator&lt;&lt;</a>, <a class="el" href="odom_8h_source.html#l00036">Position()</a>, and <a class="el" href="odom_8h_source.html#l00044">Position()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="odom_8cpp_source.html#l00091">angleToPosition()</a>, <a class="el" href="odom_8cpp_source.html#l00060">distanceFromPoint()</a>, <a class="el" href="logging_8hpp_source.html#l00103">ls::operator&lt;&lt;()</a>, <a class="el" href="odom_8h_source.html#l00133">operator&lt;&lt;</a>, <a class="el" href="odom_8h_source.html#l00069">Position()</a>, and <a class="el" href="odom_8h_source.html#l00078">Position()</a>.</p>
 
 </div>
 </div>

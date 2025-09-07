@@ -1,6 +1,7 @@
 var classls_1_1AbstractOdom =
 [
     [ "AbstractOdom", "classls_1_1AbstractOdom.html#acca103e51d3d77f7ff12645b8127f4e5", null ],
+    [ "~AbstractOdom", "classls_1_1AbstractOdom.html#a707df24ba8cd062a06d1322b9390a53d", null ],
     [ "compute", "classls_1_1AbstractOdom.html#a8a3c5cb591e7bb3e06b295f4e8a1a308", null ],
     [ "getAngle", "classls_1_1AbstractOdom.html#ab69a7a9685d6bcac67eb3e9be5500306", null ],
     [ "getDeltaAngle", "classls_1_1AbstractOdom.html#a772aa46b4f12e12680f69a4dee79321f", null ],

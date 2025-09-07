@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,6 +96,9 @@ $(function(){initNavTree('structls_1_1DataLogger_1_1AdaptiveData.html','','struc
 </div><!--header-->
 <div class="contents">
 
+<p>Adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> performance data point.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="data__logger_8h_source.html">data_logger.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for ls::DataLogger::AdaptiveData:</div>
@@ -111,8 +115,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aeac3cfbca5bfd45c6f7384e187e2c747" id="r_aeac3cfbca5bfd45c6f7384e187e2c747"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeac3cfbca5bfd45c6f7384e187e2c747">performanceScore</a></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="data__logger_8h_source.html#l00030">30</a> of file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
+<div class="textblock"><p>Adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> performance data point. </p>
+<p>Records the state of adaptive <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> tuning at a specific point in time, including environmental conditions and performance metrics. </p>
+
+<p class="definition">Definition at line <a class="el" href="data__logger_8h_source.html#l00114">114</a> of file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="a150054c96f9061a6988b130eaecf292d" name="a150054c96f9061a6988b130eaecf292d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a150054c96f9061a6988b130eaecf292d">&#9670;&#160;</a></span>adaptedGains</h2>
@@ -125,8 +131,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Current adapted <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains </p>
 
-<p class="definition">Definition at line <a class="el" href="data__logger_8h_source.html#l00033">33</a> of file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__logger_8h_source.html#l00117">117</a> of file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
 
 </div>
 </div>
@@ -141,8 +148,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Battery voltage at time of recording </p>
 
-<p class="definition">Definition at line <a class="el" href="data__logger_8h_source.html#l00032">32</a> of file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__logger_8h_source.html#l00116">116</a> of file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
 
 </div>
 </div>
@@ -157,8 +165,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Performance metric (0-1, higher is better) </p>
 
-<p class="definition">Definition at line <a class="el" href="data__logger_8h_source.html#l00035">35</a> of file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__logger_8h_source.html#l00119">119</a> of file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
 
 </div>
 </div>
@@ -173,8 +182,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Surface condition description </p>
 
-<p class="definition">Definition at line <a class="el" href="data__logger_8h_source.html#l00034">34</a> of file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__logger_8h_source.html#l00118">118</a> of file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
 
 </div>
 </div>
@@ -189,8 +199,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>When data was recorded </p>
 
-<p class="definition">Definition at line <a class="el" href="data__logger_8h_source.html#l00031">31</a> of file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__logger_8h_source.html#l00115">115</a> of file <a class="el" href="data__logger_8h_source.html">data_logger.h</a>.</p>
 
 </div>
 </div>

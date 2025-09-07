@@ -1,12 +1,36 @@
-/** ✅
- * @file odom.h
- * @author Rishit Varshney
- * @brief Contains all code related to odometry and the different types of odometry as classes
- * @version 0.1
- * @date 2024-11-29
- * 
- * @copyright Copyright (c) 2024
- * 
+/** @file odom.h
+ * @brief Odometry system implementations for LibStoga robotics framework
+ *
+ * This file provides comprehensive odometry (position tracking) functionality
+ * essential for autonomous robot navigation. It includes multiple odometry
+ * implementations supporting different sensor configurations commonly used
+ * in VEX robotics.
+ *
+ * Supported Odometry Types:
+ * - **Three Wheel Odometry**: Uses three tracking wheels (left, right, back)
+ * - **IMU Odometry**: Uses two tracking wheels + IMU for enhanced accuracy
+ *
+ * Key Features:
+ * - Abstract base class for extensible odometry implementations
+ * - Position tracking with X, Y coordinates and heading angle
+ * - Delta calculations for incremental position updates
+ * - Bearing-based angle system (0° = North)
+ * - Comprehensive error handling and validation
+ * - Support for sensor reversal and calibration
+ *
+ * Coordinate System:
+ * - Origin (0, 0) is robot's starting position
+ * - Angles use bearing system: 0° = North, 90° = East, etc.
+ * - All distances in inches
+ * - All angles in degrees
+ *
+ * @author 6121D (The Pioneers)
+ * @version 3.0.0
+ * @date 2025
+ *
+ * @copyright Copyright (c) 2025 6121D - All rights reserved
+ *
+ * @ingroup core
  */
 
 #ifndef ODOM_ABSTRACT_LS_H
@@ -21,422 +45,506 @@
 #include <cmath>
 
 namespace ls {
-	/**
-	* @brief A compact representation for x, y, and theta.
-	* 
-	* contains coordinates and helper methods accordingly.
-	*/
-	struct Position {
-		double X;
-		double Y;
-		Angle theta; // by default in bearing mode (North is angle when robot starts).
-		/*
-		* Default constructor.
-		*/
-		Position(): X(0), Y(0), theta(Angle(0)) {}
-		/**
-		* Constructs a position object in terms x, y, z.
-		* 
-		* @param x the x value.
-		* @param y the y value.
-		* @param theta the theta value (degrees & bearing).
-		*/
-		Position(double x, double y, double t): X(x), Y(y), theta(t) {}
-		/**
-		* Returns the distance from this point to the given point.
-		* Only returns a positive value.
-		*
-		* @param pos second point to compare to.
-		* @return distance from point
-		*/
-		double distanceFromPoint(const Position& pos) const;
-		/**
-		* Returns a signed value from this point to the other point.
-		* 
-		* will return a negative value if point is behind the robot.
-		* check isbehind() for info about 'behind'
-		*
-		* @param pos second point to compare to.
-		* @return signed distance from point.
-		*/
-		double distanceFromPointSigned(const Position& pos) const;
 
+/**
+ * @brief Complete robot pose representation (position + orientation)
+ *
+ * Represents the full state of a robot in 2D space including X, Y coordinates
+ * and heading angle. This structure is fundamental to odometry and navigation
+ * systems throughout the framework.
+ *
+ * The coordinate system uses:
+ * - **Origin**: Robot's starting position (0, 0)
+ * - **Angles**: Bearing system where 0° = North (forward direction)
+ * - **Units**: All distances in inches, angles in degrees
+ */
+struct Position {
+    double X;        /**< X coordinate in inches from origin */
+    double Y;        /**< Y coordinate in inches from origin */
+    Angle theta;     /**< Heading angle in degrees (bearing: 0° = North) */
 
-		///////////////////////////////////////////////////////////////////// REDO THESE 3 FUNCTIONS
+    /**
+     * @brief Default constructor - initializes to origin with 0° heading
+     */
+    Position(): X(0), Y(0), theta(Angle(0)) {}
 
-		/**
-		* returns if a point is behind (-1), in front of (1), or niether (0) in terms of the robot.
-		* behind and front of check if a give point is in front of the robot or behind it.
-		* 
-		* determined by getting angle to point and comparing.
-		* niether implies thats points are too close to eachother to determine. 
-		* 
-		* @param pos second point to compare to.
-		* @returns behind (-1), in front of (1), or niether (0)
-		*/
-		int isBehind(const Position& pos) const;
+    /**
+     * @brief Construct position with specified coordinates and heading
+     *
+     * @param x X coordinate in inches
+     * @param y Y coordinate in inches
+     * @param t Heading angle in degrees (bearing system)
+     */
+    Position(double x, double y, double t): X(x), Y(y), theta(t) {}
 
-		/**
-		 * @brief Gets the angle to the position provided relative to current position in the cartesian plane.
-		 * Will return in terms of a bearing.
-		 * Will return infinity() if the positions are way to close or equal to be calculated properly.
-		 * 
-		 * @param pos the other position.
-		 * @return Angle in [0, 360)
-		 */
-		Angle angleToPosition(const Position& pos) const;
+    /**
+     * @brief Calculate Euclidean distance to another position
+     *
+     * Computes the straight-line distance between this position and another.
+     * Always returns a positive value.
+     *
+     * @param pos Target position to measure distance to
+     * @return Distance in inches (always positive)
+     */
+    double distanceFromPoint(const Position& pos) const;
 
-		friend std::ostream& operator<<(std::ostream& os, const Position& pos) {
-			os << "Pos(" << pos.X << ", " << pos.Y << ", " << pos.theta.getAngle() << ")";
-			return os;
-		}
-	};
+    /**
+     * @brief Calculate signed distance to another position
+     *
+     * Returns signed distance based on robot's current heading. Positive values
+     * indicate points in front of the robot, negative values indicate points behind.
+     *
+     * @param pos Target position to measure distance to
+     * @return Signed distance in inches (positive = forward, negative = backward)
+     */
+    double distanceFromPointSigned(const Position& pos) const;
 
-	/**
-	 * @brief Represents all odometry classes in one abstract term.
-	 * 
-	 * must be used as a pure abstract class
-	 */
-	class AbstractOdom {
-	protected:
-		Position pos;
-		explicit AbstractOdom(): pos(Position()) {};
-	public:
-		/**
-		* @brief Initialize this AbstractOdom with a list of pins. 
-		* Depending on the specific subclass, the meaning of this and the specific order of the pins may be different.
-		* 
-		* Ex. The 3 Wheel Odom class can have an instance where the 1st one is center, 2nd is right, 3rd is left
-		*     But for 2 Wheel Odom + IMU, it might have an instance where 1st one is IMU, 2nd is perpendicular, 3rd is parralel.
-		* 
-		* If items on ports have to be reversed, it can be given as a negative number
-		* 
-		* @param ports the ports that this Odom object uses
-		*/
-		virtual void initialize(std::initializer_list<uint8_t> ports) = 0;
-		/**
-		* @brief Computes the new coordinations and angle of the robot since the program has started.
-		* Assumes that (0, 0) is where the robot starts at reboot.
-		* Also assumes that initial posture is 0 degrees (bearing)
-		* 
-		* Must give X, Y, and angle new values after this call is over.
-		* 
-		* @throws std::bad_function_call if object has not been initialized properly.
-		*/
-		virtual void compute();
-		/**
-		* Gets the x-coordinate value of the robot since program started.
-		* Assumes (0, 0) is when the robot started.
-		* 
-		* @returns the x-coordinate value
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
-		virtual double getX();
-		/**
-		* Gets the y-coordinate value of the robot since program started.
-		* Assumes (0, 0) is when the robot started.
-		*
-		* @returns the y-coordinate value
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
-		virtual double getY();
-		/**
-		* Gets the bearing angle of the robot since program started.
-		* Assumes 0 degrees is initial orientation when program starts.
-		*
-		* @returns the x-coordinate value
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
-		virtual double getAngle();
-		/**
-		* Gets the Position of this odom object in terms of the Position object.
-		*/
-		virtual Position getPosition();
-		/**
-		* Reset the X coordinate of the robot.
-		* Make the current position X = 0
-		*/
-		virtual void resetX();
-		/**
-		* Reset the Y coordinate of the robot.
-		* Make the current position Y = 0
-		*/
-		virtual void resetY();
-		/**
-		* Reset the angle of the robot.
-		* Make the current angle = 0
-		*/
-		virtual void resetAngle();
-		/**
-		* Reset the positioning and angles of the robot.
-		* makes the current position (0, 0) and the current angle = 0;
-		*/
-		virtual void resetAll();
-		/**
-		* Gets the change in X since the previous call of this method.
-		* Does not call resetX() or reset the coordinates in any way.
-		* 
-		* Will return 0 on first call.
-		* 
-		* @returns the delta in the x-coordinate value
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
-		virtual double getDeltaX() = 0;
-		/**
-		* Gets the change in Y since the previous call of this method.
-		* Does not call resetY() or reset the coordinates in any way.
-		*
-		* Will return 0 on first call.
-		*
-		* @returns the delta in the y-coordinate value
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
-		virtual double getDeltaY() = 0;
-		/**
-		* Gets the change in angle since the previous call of this method.
-		* Does not call resetAngle() or reset the angle in any way.
-		*
-		* Will return 0 on first call.
-		*
-		* @returns the delta in the angle
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
-		virtual Angle getDeltaAngle() = 0;
-	protected:
-		Position prev_pos;
-	};
+    /**
+     * @brief Determine relative position (front/behind robot)
+     *
+     * Analyzes whether a point is in front of, behind, or neither relative
+     * to the robot's current heading.
+     *
+     * @param pos Position to analyze
+     * @return -1 if behind, 1 if in front, 0 if indeterminate (too close)
+     */
+    int isBehind(const Position& pos) const;
 
-	/**
-	 * @brief The parameters for rotational tracking wheels.
-	 * 
-	 * Order: port (1-21), radius (inches), reversed (true/false)
-	 */
-	struct tracking_rotation_parameters_t {
-		int16_t port;
-		double radius = 2.75;
-		bool reversed = false;
-	};
-	
-	/**
-	 * @brief The parameters for the ImuOdom.
-	 * 
-	 * Order: parallel (tracking_rotation_parameters_t), center_to_parallel (inches), perpendicular (tracking_rotation_parameters_t), center_to_perpendicular (inches)
-	 * note that this is only for a FULLY rotational sensor system.
-	 */
-	struct imu_odom_parameters_t {
-		tracking_rotation_parameters_t parallel;
-		double center_to_parallel;
-		tracking_rotation_parameters_t perpendicular;
-		double center_to_perpendicular;
-		int16_t imu_port;
-	};
+    /**
+     * @brief Calculate bearing angle to target position
+     *
+     * Computes the bearing angle from current position to target position.
+     * Returns angle in bearing system (0° = North).
+     *
+     * @param pos Target position
+     * @return Bearing angle in degrees [0, 360), or infinity if positions are too close
+     */
+    Angle angleToPosition(const Position& pos) const;
 
-	/**
-	 * @brief The parameters for the ThreeWheelOdom.
-	 * 
-	 * Order: right (tracking_rotation_parameters_t), center_to_right (inches), left (tracking_rotation_parameters_t), center_to_left (inches), back (tracking_rotation_parameters_t), center_to_back (inches)
-	 * note that this is only for a FULLY rotational sensor system.
-	 */
-	struct threewheel_odom_parameters_t {
-		tracking_rotation_parameters_t right;
-		double center_to_right;
-		tracking_rotation_parameters_t left;
-		double center_to_left;
-		tracking_rotation_parameters_t back;
-		double center_to_back;
-	};
-
-	/**
-	 * @brief Represents all the calculations for 3 wheel odom.
-	 * 
-	 * Note that this object does not use an IMU for its calculations.
-	 */
-	class ThreeWheelOdom: public AbstractOdom {
-	private:
-		std::unique_ptr<TrackingWheel> right = nullptr;
-		std::unique_ptr<TrackingWheel> left = nullptr;
-		std::unique_ptr<TrackingWheel> back = nullptr;
-
-		double centerToRight; // in inches
-		double centerToLeft; // in inches
-		double centerToBack; // in inches
-
-		double deltaL = 0; // in inches
-		double deltaR = 0; // in inches
-		double deltaB = 0; // in inches
-		double deltaT = 0; // in degrees
-		
-	public:
-		/**
-		 * @brief Construct a new Three Wheel Odom object
-		 * 
-		 * @param center_to_right distance from right tracking wheel to center in inches.
-		 * @param center_to_left distance from left tracking wheel to center in inches.
-		 * @param center_to_back distance from back tracking wheel to center in inches.
-		 */
-		explicit ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back);
-
-		/**
-		 * @brief Construct a new Three Wheel Odom object
-		 * 
-		 * @param center_to_right distance from right tracking wheel to center in inches.
-		 * @param center_to_left distance from left tracking wheel to center in inches.
-		 * @param center_to_back distance from back tracking wheel to center in inches.
-		 * @param right right tracking wheel as an object.
-		 * @param left left tracking wheel as an object.
-		 * @param back back tracking wheel as an object.
-		 */
-		explicit ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back, TrackingWheel&& right, TrackingWheel&& left, TrackingWheel&& back);
-
-		/**
-		 * @brief Construct a new Three Wheel Odom object
-		 * 
-		 * using the threewheel_odom_parameters_t structure.
-		 * 
-		 * @param param the threewheel_odom_parameters_t structure
-		 */
-		explicit ThreeWheelOdom(threewheel_odom_parameters_t& param);
-
-		/**
-		 * @brief Initializes the following object with the given ports.
-		 * Constructions default pros::Rotation objects on these ports.
-		 * 1st represents right, 2nd represents left, 3rd represents back.
-		 * If the list does not contain 3 valid ports, an std::invalid_argument exception will be thrown.
-		 * 
-		 * @param ports list of ports in the following order: right, left, sensor.
-		 */
-		void initialize(std::initializer_list<uint8_t> ports) override;
-
-		/**
-		* Gets the change in X since the previous call of this method.
-		* Does not call resetX() or reset the coordinates in any way.
-		* 
-		* Will return 0 on first call.
-		* 
-		* @returns the delta in the x-coordinate value
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
-		double getDeltaX() override;
-
-		/**
-		* Gets the change in Y since the previous call of this method.
-		* Does not call resetY() or reset the coordinates in any way.
-		*
-		* Will return 0 on first call.
-		*
-		* @returns the delta in the y-coordinate value
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
-		double getDeltaY() override;
-
-		/**
-		* Gets the change in angle since the previous call of this method.
-		* Does not call resetAngle() or reset the angle in any way.
-		*
-		* Will return 0 on first call.
-		*
-		* @returns the delta in the angle
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
-		Angle getDeltaAngle() override;
-
-		void compute() override;
-	};
-
-	/**
-	 * @brief Represents all the calculations for 2 wheel and IMU odometry.
-	 * 
-	 */
-	class ImuOdom: public AbstractOdom {
-	private:
-		std::unique_ptr<TrackingWheel> horiz = nullptr; // synonomous to back wheel in 3 wheel odom
-		std::unique_ptr<TrackingWheel> vert = nullptr; // synonomous to left/right wheel in 3 wheel odom
-		std::unique_ptr<pros::Imu> IMU = nullptr;
-
-		double centerToVert; // in inches
-		double centerToHoriz; // in inches
-		double prevRotation; // previous rotation
-
-		double deltaGlobalX = 0;
-		double deltaGlobalY = 0;
-		
-	public:
-		/**
-		 * @brief Construct a new Imu Odom object
-		 * 
-		 * @param center_to_horiz distance from horizontal tracking wheel to center in inches.
-		 * @param center_to_vert distance from vertical tracking wheel to center in inches.
-		 */
-		explicit ImuOdom(double center_to_horiz, double center_to_vert);
-
-		/**
-		 * @brief Construct a new Imu Odom object
-		 * 
-		 * @param center_to_horiz distance from horiz tracking wheel to center in inches. (only positive number allowed)
-		 * @param center_to_vert distance from vert tracking wheel to center in inches. (only positive number allowed)
-		 * @param horiz horizontal tracking wheel as an object.
-		 * @param vert vertical tracking wheel as an object.
-		 * @param IMU Imu sensor
-		 */
-		explicit ImuOdom(double center_to_horiz, double center_to_vert, TrackingWheel&& horiz, TrackingWheel&& vert, pros::Imu& IMU);
-
-		/**
-		 * @brief Construct a new Imu Odom object
-		 * 
-		 * using the imu_odom_parameters_t structure.
-		 * 
-		 * @param param structure to use
-		 */
-		explicit ImuOdom(imu_odom_parameters_t& param);
-
-		/**
-		 * @brief Initializes the following object with the given ports.
-		 * Constructions default pros::Rotation objects for wheels.
-		 * 1st represents horiz, 2nd represents vert, 3rd represents IMU.
-		 * If the list does not contain 3 valid ports, an std::invalid_argument exception will be thrown.
-		 * 
-		 * @param ports list of ports in the following order: right, left, sensor.
-		 */
-		void initialize(std::initializer_list<uint8_t> ports) override;
-
-		/**
-		* Gets the change in X since the previous call of compute().
-		* Does not call resetX() or reset the coordinates in any way.
-		* 
-		* Will return 0 on first call.
-		* 
-		* @returns the delta in the x-coordinate value
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
-		double getDeltaX() override;
-
-		/**
-		* Gets the change in Y since the previous call of compute().
-		* Does not call resetY() or reset the coordinates in any way.
-		*
-		* Will return 0 on first call.
-		*
-		* @returns the delta in the y-coordinate value
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
-		double getDeltaY() override;
-
-		/**
-		* Gets the change in angle since the previous call of this method.
-		* Does not call resetAngle() or reset the angle in any way.
-		*
-		* Will return 0 on first call.
-		*
-		* @returns the delta in the angle
-		* @throws std::bad_function_call if object is not initialized properly.
-		*/
-		Angle getDeltaAngle() override;
-
-		void compute() override;
-
-		void resetAll() override;
-	};
-
+    /**
+     * @brief Stream output operator for debugging
+     *
+     * Formats position as "Pos(X, Y, theta)" for console output.
+     *
+     * @param os Output stream
+     * @param pos Position to output
+     * @return Modified output stream
+     */
+    friend std::ostream& operator<<(std::ostream& os, const Position& pos) {
+        os << "Pos(" << pos.X << ", " << pos.Y << ", " << pos.theta.getAngle() << ")";
+        return os;
+    }
 };
+
+/**
+ * @brief Abstract base class for all odometry implementations
+ *
+ * Defines the common interface for all odometry systems in the framework.
+ * Concrete implementations must provide position tracking capabilities
+ * using different sensor configurations (wheels, IMU, etc.).
+ *
+ * This abstraction allows users to switch between different odometry
+ * implementations without changing their application code.
+ */
+class AbstractOdom {
+protected:
+    Position pos;      /**< Current robot position and heading */
+    Position prev_pos; /**< Previous position for delta calculations */
+
+    /**
+     * @brief Protected constructor for derived classes
+     */
+    explicit AbstractOdom(): pos(Position()) {};
+
+public:
+    /**
+     * @brief Initialize odometry system with sensor ports
+     *
+     * Sets up the odometry system with the specified sensor ports. The exact
+     * meaning and order of ports depends on the concrete implementation:
+     * - ThreeWheelOdom: right, left, back tracking wheel ports
+     * - ImuOdom: horizontal, vertical tracking wheel ports, IMU port
+     *
+     * Negative port numbers indicate reversed sensor mounting.
+     *
+     * @param ports List of sensor ports to initialize
+     */
+    virtual void initialize(std::initializer_list<uint8_t> ports) = 0;
+
+    /**
+     * @brief Update robot position based on sensor readings
+     *
+     * Computes new position and heading based on sensor data since last update.
+     * This method should be called regularly (typically in a control loop)
+     * to maintain accurate position tracking.
+     *
+     * @throws std::bad_function_call if not properly initialized
+     */
+    virtual void compute();
+
+    /**
+     * @brief Get current X coordinate
+     *
+     * @return X coordinate in inches from origin
+     * @throws std::bad_function_call if not properly initialized
+     */
+    virtual double getX();
+
+    /**
+     * @brief Get current Y coordinate
+     *
+     * @return Y coordinate in inches from origin
+     * @throws std::bad_function_call if not properly initialized
+     */
+    virtual double getY();
+
+    /**
+     * @brief Get current heading angle
+     *
+     * @return Heading angle in degrees (bearing system: 0° = North)
+     * @throws std::bad_function_call if not properly initialized
+     */
+    virtual double getAngle();
+
+    /**
+     * @brief Get complete current position
+     *
+     * @return Position structure with X, Y, and heading
+     */
+    virtual Position getPosition();
+
+    /**
+     * @brief Reset X coordinate to zero
+     *
+     * Sets current X position to 0, maintaining Y and heading.
+     */
+    virtual void resetX();
+
+    /**
+     * @brief Reset Y coordinate to zero
+     *
+     * Sets current Y position to 0, maintaining X and heading.
+     */
+    virtual void resetY();
+
+    /**
+     * @brief Reset heading angle to zero
+     *
+     * Sets current heading to 0°, maintaining X and Y position.
+     */
+    virtual void resetAngle();
+
+    /**
+     * @brief Reset all position and heading to zero
+     *
+     * Resets robot to origin (0, 0) with 0° heading.
+     */
+    virtual void resetAll();
+
+    /**
+     * @brief Get X position change since last compute() call
+     *
+     * Returns the incremental change in X position without resetting.
+     * Returns 0 on first call.
+     *
+     * @return Delta X in inches
+     * @throws std::bad_function_call if not properly initialized
+     */
+    virtual double getDeltaX() = 0;
+
+    /**
+     * @brief Get Y position change since last compute() call
+     *
+     * Returns the incremental change in Y position without resetting.
+     * Returns 0 on first call.
+     *
+     * @return Delta Y in inches
+     * @throws std::bad_function_call if not properly initialized
+     */
+    virtual double getDeltaY() = 0;
+
+    /**
+     * @brief Get heading change since last compute() call
+     *
+     * Returns the incremental change in heading without resetting.
+     * Returns 0 on first call.
+     *
+     * @return Delta angle in degrees
+     * @throws std::bad_function_call if not properly initialized
+     */
+    virtual Angle getDeltaAngle() = 0;
+
+    /**
+     * @brief Virtual destructor for proper cleanup
+     */
+    virtual ~AbstractOdom() = default;
+};
+
+/**
+ * @brief Configuration parameters for tracking wheel sensors
+ *
+ * Defines the complete setup for a single tracking wheel including
+ * sensor port, wheel radius, and mounting orientation.
+ */
+struct tracking_rotation_parameters_t {
+    int16_t port;      /**< PROS port number (1-21, negative for reversed) */
+    double radius = 2.75; /**< Wheel radius in inches (default: 2.75") */
+    bool reversed = false; /**< Whether sensor is mounted in reverse */
+};
+
+/**
+ * @brief Configuration parameters for IMU-based odometry
+ *
+ * Complete setup for 2-wheel + IMU odometry system including
+ * tracking wheel configurations and IMU sensor.
+ */
+struct imu_odom_parameters_t {
+    tracking_rotation_parameters_t parallel;     /**< Parallel tracking wheel (left/right) */
+    double center_to_parallel;                   /**< Distance from center to parallel wheel */
+    tracking_rotation_parameters_t perpendicular; /**< Perpendicular tracking wheel (front/back) */
+    double center_to_perpendicular;              /**< Distance from center to perpendicular wheel */
+    int16_t imu_port;                           /**< PROS port for IMU sensor */
+};
+
+/**
+ * @brief Configuration parameters for three-wheel odometry
+ *
+ * Complete setup for traditional three-wheel odometry system
+ * with left, right, and back tracking wheels.
+ */
+struct threewheel_odom_parameters_t {
+    tracking_rotation_parameters_t right;  /**< Right tracking wheel configuration */
+    double center_to_right;                /**< Distance from center to right wheel */
+    tracking_rotation_parameters_t left;   /**< Left tracking wheel configuration */
+    double center_to_left;                 /**< Distance from center to left wheel */
+    tracking_rotation_parameters_t back;   /**< Back tracking wheel configuration */
+    double center_to_back;                 /**< Distance from center to back wheel */
+};
+
+/**
+ * @brief Three-wheel odometry implementation
+ *
+ * Implements odometry using three tracking wheels positioned at different
+ * locations on the robot. This is the traditional odometry approach that
+ * doesn't require an IMU but provides good position accuracy.
+ *
+ * Wheel Configuration:
+ * - **Right wheel**: Tracks lateral movement
+ * - **Left wheel**: Tracks lateral movement (redundant with right)
+ * - **Back wheel**: Tracks forward/backward movement
+ *
+ * The system uses trigonometry to calculate robot movement based on
+ * the relative motion of each wheel.
+ */
+class ThreeWheelOdom: public AbstractOdom {
+private:
+    std::unique_ptr<TrackingWheel> right;   /**< Right tracking wheel sensor */
+    std::unique_ptr<TrackingWheel> left;    /**< Left tracking wheel sensor */
+    std::unique_ptr<TrackingWheel> back;    /**< Back tracking wheel sensor */
+
+    double centerToRight;   /**< Distance from robot center to right wheel */
+    double centerToLeft;    /**< Distance from robot center to left wheel */
+    double centerToBack;    /**< Distance from robot center to back wheel */
+
+    double deltaL = 0;      /**< Left wheel movement delta */
+    double deltaR = 0;      /**< Right wheel movement delta */
+    double deltaB = 0;      /**< Back wheel movement delta */
+    double deltaT = 0;      /**< Heading angle delta */
+
+public:
+    /**
+     * @brief Construct with wheel distances only
+     *
+     * Creates odometry system with specified wheel distances. Sensors
+     * must be initialized separately using initialize() or by providing
+     * TrackingWheel objects.
+     *
+     * @param center_to_right Distance to right wheel in inches
+     * @param center_to_left Distance to left wheel in inches
+     * @param center_to_back Distance to back wheel in inches
+     */
+    explicit ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back);
+
+    /**
+     * @brief Construct with wheel distances and sensor objects
+     *
+     * Creates fully configured odometry system with pre-configured sensors.
+     *
+     * @param center_to_right Distance to right wheel in inches
+     * @param center_to_left Distance to left wheel in inches
+     * @param center_to_back Distance to back wheel in inches
+     * @param right Right tracking wheel sensor
+     * @param left Left tracking wheel sensor
+     * @param back Back tracking wheel sensor
+     */
+    explicit ThreeWheelOdom(double center_to_right, double center_to_left, double center_to_back,
+                           TrackingWheel&& right, TrackingWheel&& left, TrackingWheel&& back);
+
+    /**
+     * @brief Construct from configuration structure
+     *
+     * Creates odometry system using a complete configuration structure.
+     *
+     * @param param Three-wheel odometry configuration
+     */
+    explicit ThreeWheelOdom(threewheel_odom_parameters_t& param);
+
+    /**
+     * @brief Initialize sensors on specified ports
+     *
+     * Sets up tracking wheel sensors on the specified PROS ports.
+     * Expected order: right, left, back.
+     *
+     * @param ports List containing exactly 3 port numbers
+     * @throws std::invalid_argument if incorrect number of ports provided
+     */
+    void initialize(std::initializer_list<uint8_t> ports) override;
+
+    /**
+     * @brief Get X position change since last compute()
+     *
+     * @return Delta X in inches
+     * @throws std::bad_function_call if not initialized
+     */
+    double getDeltaX() override;
+
+    /**
+     * @brief Get Y position change since last compute()
+     *
+     * @return Delta Y in inches
+     * @throws std::bad_function_call if not initialized
+     */
+    double getDeltaY() override;
+
+    /**
+     * @brief Get heading change since last compute()
+     *
+     * @return Delta angle in degrees
+     * @throws std::bad_function_call if not initialized
+     */
+    Angle getDeltaAngle() override;
+
+    /**
+     * @brief Update position based on sensor readings
+     *
+     * Computes new robot position using three-wheel odometry calculations.
+     */
+    void compute() override;
+};
+
+/**
+ * @brief IMU-enhanced two-wheel odometry implementation
+ *
+ * Implements odometry using two tracking wheels plus an IMU sensor for
+ * enhanced accuracy and reliability. The IMU provides direct heading
+ * measurements while tracking wheels handle position calculations.
+ *
+ * Sensor Configuration:
+ * - **Horizontal wheel**: Tracks lateral movement (left/right)
+ * - **Vertical wheel**: Tracks forward/backward movement
+ * - **IMU**: Provides direct heading angle measurements
+ *
+ * This system is more accurate than three-wheel odometry, especially
+ * during high-speed maneuvers or when wheel slippage occurs.
+ */
+class ImuOdom: public AbstractOdom {
+private:
+    std::unique_ptr<TrackingWheel> horiz;  /**< Horizontal tracking wheel (left/right movement) */
+    std::unique_ptr<TrackingWheel> vert;   /**< Vertical tracking wheel (forward/backward movement) */
+    std::unique_ptr<pros::Imu> IMU;        /**< Inertial Measurement Unit for heading */
+
+    double centerToVert;     /**< Distance from center to vertical wheel */
+    double centerToHoriz;    /**< Distance from center to horizontal wheel */
+    double prevRotation;     /**< Previous IMU rotation reading */
+
+    double deltaGlobalX = 0; /**< Global X movement delta */
+    double deltaGlobalY = 0; /**< Global Y movement delta */
+
+public:
+    /**
+     * @brief Construct with wheel distances only
+     *
+     * Creates odometry system with specified wheel distances. Sensors
+     * must be initialized separately.
+     *
+     * @param center_to_horiz Distance to horizontal wheel in inches
+     * @param center_to_vert Distance to vertical wheel in inches
+     */
+    explicit ImuOdom(double center_to_horiz, double center_to_vert);
+
+    /**
+     * @brief Construct with wheel distances and sensor objects
+     *
+     * Creates fully configured odometry system with pre-configured sensors.
+     *
+     * @param center_to_horiz Distance to horizontal wheel in inches
+     * @param center_to_vert Distance to vertical wheel in inches
+     * @param horiz Horizontal tracking wheel sensor
+     * @param vert Vertical tracking wheel sensor
+     * @param IMU Inertial measurement unit sensor
+     */
+    explicit ImuOdom(double center_to_horiz, double center_to_vert,
+                    TrackingWheel&& horiz, TrackingWheel&& vert, pros::Imu& IMU);
+
+    /**
+     * @brief Construct from configuration structure
+     *
+     * Creates odometry system using a complete configuration structure.
+     *
+     * @param param IMU odometry configuration
+     */
+    explicit ImuOdom(imu_odom_parameters_t& param);
+
+    /**
+     * @brief Initialize sensors on specified ports
+     *
+     * Sets up sensors on the specified PROS ports.
+     * Expected order: horizontal wheel, vertical wheel, IMU.
+     *
+     * @param ports List containing exactly 3 port numbers
+     * @throws std::invalid_argument if incorrect number of ports provided
+     */
+    void initialize(std::initializer_list<uint8_t> ports) override;
+
+    /**
+     * @brief Get X position change since last compute()
+     *
+     * @return Delta X in inches
+     * @throws std::bad_function_call if not initialized
+     */
+    double getDeltaX() override;
+
+    /**
+     * @brief Get Y position change since last compute()
+     *
+     * @return Delta Y in inches
+     * @throws std::bad_function_call if not initialized
+     */
+    double getDeltaY() override;
+
+    /**
+     * @brief Get heading change since last compute()
+     *
+     * @return Delta angle in degrees
+     * @throws std::bad_function_call if not initialized
+     */
+    Angle getDeltaAngle() override;
+
+    /**
+     * @brief Update position using IMU and tracking wheels
+     *
+     * Computes new robot position using IMU heading and wheel tracking data.
+     */
+    void compute() override;
+
+    /**
+     * @brief Reset all position and heading to zero
+     *
+     * Resets position to origin and calibrates IMU to 0° heading.
+     */
+    void resetAll() override;
+};
+
+} // namespace ls
 
 #endif // !ODOM_ABSTRACT_LS_H

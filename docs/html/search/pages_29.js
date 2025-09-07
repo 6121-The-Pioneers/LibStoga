@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['🐛_20known_20issues_20limitations_0',['&lt;b&gt;🐛 Known Issues &amp;amp; Limitations&lt;/b&gt;',['../index.html#autotoc_md117',1,'']]],
-  ['🐛_20troubleshooting_1',['🐛 Troubleshooting',['../index.html#autotoc_md59',1,'']]]
+  ['🏗️_0',['&lt;b&gt;v2.0.0 - Core Architecture Overhaul&lt;/b&gt; 🏗️',['../index.html#autotoc_md102',1,'']]],
+  ['🏗️_20core_20architecture_1',['🏗️ &lt;b&gt;Core Architecture&lt;/b&gt;',['../index.html#autotoc_md112',1,'']]],
+  ['🏗️_20local_20documentation_20generation_2',['🏗️ Local Documentation Generation',['../index.html#autotoc_md12',1,'']]]
 ];

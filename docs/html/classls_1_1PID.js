@@ -1,7 +1,7 @@
 var classls_1_1PID =
 [
     [ "PID", "classls_1_1PID.html#a3e36faf036b8177799c4dd5be92becc0", null ],
-    [ "PID", "classls_1_1PID.html#a5d120231ab4de6394a1cd066f0718674", null ],
+    [ "PID", "classls_1_1PID.html#a75eaf87a588d118c4cb2cac9ef3b8bc9", null ],
     [ "PID", "classls_1_1PID.html#aebbd6ba0c13b93c90614e463f73f5311", null ],
     [ "getGains", "classls_1_1PID.html#a968d64700d83620283c6499585e05369", null ],
     [ "reset", "classls_1_1PID.html#a29b583334653cb49e4ac9a8a1c1a040a", null ],

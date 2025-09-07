@@ -18,7 +18,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
-<link href="custom_theme.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,25 +96,181 @@ $(function(){initNavTree('structls_1_1PIDGains.html','','structls_1_1PIDGains-me
 </div><!--header-->
 <div class="contents">
 
-<p>A struct to hold <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> gains.  
+<p>Complete <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller gain configuration.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="gains_8h_source.html">gains.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:af3e2a4db33272d2fc27a3749e7ba3083" id="r_af3e2a4db33272d2fc27a3749e7ba3083"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3e2a4db33272d2fc27a3749e7ba3083">PIDGains</a> ()=default</td></tr>
+<tr class="memdesc:af3e2a4db33272d2fc27a3749e7ba3083"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor with sensible defaults.  <br /></td></tr>
+<tr class="memitem:ae8699e4531963e6f92d866da50c03fd9" id="r_ae8699e4531963e6f92d866da50c03fd9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8699e4531963e6f92d866da50c03fd9">PIDGains</a> (float p, float i, float d)</td></tr>
+<tr class="memdesc:ae8699e4531963e6f92d866da50c03fd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with basic <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains.  <br /></td></tr>
+<tr class="memitem:a74c835bb39281aa1ec8c968e3aa67411" id="r_a74c835bb39281aa1ec8c968e3aa67411"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74c835bb39281aa1ec8c968e3aa67411">PIDGains</a> (float p, float i, float d, float w, bool reset, float limit)</td></tr>
+<tr class="memdesc:a74c835bb39281aa1ec8c968e3aa67411"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor with all parameters.  <br /></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a40eb18f1e2155b1033f02c1dc0b1857b" id="r_a40eb18f1e2155b1033f02c1dc0b1857b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40eb18f1e2155b1033f02c1dc0b1857b">kP</a> {0.f}</td></tr>
-<tr class="memitem:a41ef7d85a0bfc411513f6285459c6b9e" id="r_a41ef7d85a0bfc411513f6285459c6b9e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41ef7d85a0bfc411513f6285459c6b9e">kI</a> {0.f}</td></tr>
-<tr class="memitem:ad3b6a3f19f84d27ba9d8dc58b88e2ccf" id="r_ad3b6a3f19f84d27ba9d8dc58b88e2ccf"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3b6a3f19f84d27ba9d8dc58b88e2ccf">kD</a> {0.f}</td></tr>
-<tr class="memitem:afe75c4d29972eb43a50d9a8a9904b563" id="r_afe75c4d29972eb43a50d9a8a9904b563"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe75c4d29972eb43a50d9a8a9904b563">windup</a> {10.f}</td></tr>
+<tr class="memitem:a40eb18f1e2155b1033f02c1dc0b1857b" id="r_a40eb18f1e2155b1033f02c1dc0b1857b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40eb18f1e2155b1033f02c1dc0b1857b">kP</a> {0.0f}</td></tr>
+<tr class="memitem:a41ef7d85a0bfc411513f6285459c6b9e" id="r_a41ef7d85a0bfc411513f6285459c6b9e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41ef7d85a0bfc411513f6285459c6b9e">kI</a> {0.0f}</td></tr>
+<tr class="memitem:ad3b6a3f19f84d27ba9d8dc58b88e2ccf" id="r_ad3b6a3f19f84d27ba9d8dc58b88e2ccf"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3b6a3f19f84d27ba9d8dc58b88e2ccf">kD</a> {0.0f}</td></tr>
+<tr class="memitem:afe75c4d29972eb43a50d9a8a9904b563" id="r_afe75c4d29972eb43a50d9a8a9904b563"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe75c4d29972eb43a50d9a8a9904b563">windup</a> {10.0f}</td></tr>
 <tr class="memitem:acd9ae72621c80ce926fc3ac5abc6f0eb" id="r_acd9ae72621c80ce926fc3ac5abc6f0eb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd9ae72621c80ce926fc3ac5abc6f0eb">resetOnZeroCross</a> {true}</td></tr>
-<tr class="memitem:aae27e467256340eddd7e73e01848d8dd" id="r_aae27e467256340eddd7e73e01848d8dd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae27e467256340eddd7e73e01848d8dd">integralLimit</a> {1000.f}</td></tr>
+<tr class="memitem:aae27e467256340eddd7e73e01848d8dd" id="r_aae27e467256340eddd7e73e01848d8dd"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae27e467256340eddd7e73e01848d8dd">integralLimit</a> {1000.0f}</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A struct to hold <a class="el" href="classls_1_1PID.html" title="The PID object, calculates PID outputs given an error.">PID</a> gains. </p>
+<div class="textblock"><p>Complete <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller gain configuration. </p>
+<p>This structure encapsulates all parameters needed to configure a <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> controller, including the three main gains (P, I, D) and advanced features like integral windup protection and zero-crossing reset.</p>
+<p>The structure provides sensible defaults that work for many applications, but should be tuned for specific use cases. </p>
 
-<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00008">8</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
-</div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00047">47</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="af3e2a4db33272d2fc27a3749e7ba3083" name="af3e2a4db33272d2fc27a3749e7ba3083"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3e2a4db33272d2fc27a3749e7ba3083">&#9670;&#160;</a></span>PIDGains() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ls::PIDGains::PIDGains </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default constructor with sensible defaults. </p>
+<p>Initializes gains to zero (disabled) with reasonable safety limits. These defaults prevent runaway behavior while allowing easy tuning. </p>
+
+</div>
+</div>
+<a id="ae8699e4531963e6f92d866da50c03fd9" name="ae8699e4531963e6f92d866da50c03fd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8699e4531963e6f92d866da50c03fd9">&#9670;&#160;</a></span>PIDGains() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ls::PIDGains::PIDGains </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>d</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor with basic <a class="el" href="classls_1_1PID.html" title="Standard PID controller implementation.">PID</a> gains. </p>
+<p>Creates a <a class="el" href="structls_1_1PIDGains.html" title="Complete PID controller gain configuration.">PIDGains</a> structure with the three main gains, using default values for advanced features.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>Proportional gain </td></tr>
+    <tr><td class="paramname">i</td><td>Integral gain </td></tr>
+    <tr><td class="paramname">d</td><td>Derivative gain </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00073">73</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
+
+<p class="reference">References <a class="el" href="gains_8h_source.html#l00050">kD</a>, <a class="el" href="gains_8h_source.html#l00049">kI</a>, and <a class="el" href="gains_8h_source.html#l00048">kP</a>.</p>
+
+</div>
+</div>
+<a id="a74c835bb39281aa1ec8c968e3aa67411" name="a74c835bb39281aa1ec8c968e3aa67411"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74c835bb39281aa1ec8c968e3aa67411">&#9670;&#160;</a></span>PIDGains() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ls::PIDGains::PIDGains </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>p</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>d</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>w</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>reset</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>limit</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor with all parameters. </p>
+<p>Creates a complete <a class="el" href="structls_1_1PIDGains.html" title="Complete PID controller gain configuration.">PIDGains</a> configuration with all available parameters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>Proportional gain </td></tr>
+    <tr><td class="paramname">i</td><td>Integral gain </td></tr>
+    <tr><td class="paramname">d</td><td>Derivative gain </td></tr>
+    <tr><td class="paramname">w</td><td>Windup protection range </td></tr>
+    <tr><td class="paramname">reset</td><td>Whether to reset on zero crossing </td></tr>
+    <tr><td class="paramname">limit</td><td>Integral term limit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00088">88</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
+
+<p class="reference">References <a class="el" href="gains_8h_source.html#l00053">integralLimit</a>, <a class="el" href="gains_8h_source.html#l00050">kD</a>, <a class="el" href="gains_8h_source.html#l00049">kI</a>, <a class="el" href="gains_8h_source.html#l00048">kP</a>, <a class="el" href="gains_8h_source.html#l00052">resetOnZeroCross</a>, and <a class="el" href="gains_8h_source.html#l00051">windup</a>.</p>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
 <a id="aae27e467256340eddd7e73e01848d8dd" name="aae27e467256340eddd7e73e01848d8dd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aae27e467256340eddd7e73e01848d8dd">&#9670;&#160;</a></span>integralLimit</h2>
 
@@ -121,14 +278,15 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float ls::PIDGains::integralLimit {1000.f}</td>
+          <td class="memname">float ls::PIDGains::integralLimit {1000.0f}</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Maximum absolute value for integral term </p>
 
-<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00014">14</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00053">53</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pid_8cpp_source.html#l00055">ls::PID::setGains()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="gains_8h_source.html#l00088">PIDGains()</a>, and <a class="el" href="pid_8cpp_source.html#l00055">ls::PID::setGains()</a>.</p>
 
 </div>
 </div>
@@ -139,14 +297,15 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float ls::PIDGains::kD {0.f}</td>
+          <td class="memname">float ls::PIDGains::kD {0.0f}</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Derivative gain - prediction based on error rate </p>
 
-<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00011">11</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00050">50</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00245">ls::adaptiveTune()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00142">ls::AdaptivePIDController::applyAdaptiveGains()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00432">ls::autoTune()</a>, <a class="el" href="chassis_8cpp_source.html#l00036">ls::Chassis::Chassis()</a>, <a class="el" href="data__logger_8h_source.html#l00061">ls::DataLogger::saveTuningProfile()</a>, and <a class="el" href="pid_8cpp_source.html#l00055">ls::PID::setGains()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00245">ls::adaptiveTune()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00142">ls::AdaptivePIDController::applyAdaptiveGains()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00432">ls::autoTune()</a>, <a class="el" href="chassis_8cpp_source.html#l00036">ls::Chassis::Chassis()</a>, <a class="el" href="gains_8h_source.html#l00073">PIDGains()</a>, <a class="el" href="gains_8h_source.html#l00088">PIDGains()</a>, and <a class="el" href="pid_8cpp_source.html#l00055">ls::PID::setGains()</a>.</p>
 
 </div>
 </div>
@@ -157,14 +316,15 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float ls::PIDGains::kI {0.f}</td>
+          <td class="memname">float ls::PIDGains::kI {0.0f}</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Integral gain - correction for accumulated error </p>
 
-<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00010">10</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00049">49</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00245">ls::adaptiveTune()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00142">ls::AdaptivePIDController::applyAdaptiveGains()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00432">ls::autoTune()</a>, <a class="el" href="chassis_8cpp_source.html#l00036">ls::Chassis::Chassis()</a>, <a class="el" href="data__logger_8h_source.html#l00061">ls::DataLogger::saveTuningProfile()</a>, and <a class="el" href="pid_8cpp_source.html#l00055">ls::PID::setGains()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00245">ls::adaptiveTune()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00142">ls::AdaptivePIDController::applyAdaptiveGains()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00432">ls::autoTune()</a>, <a class="el" href="chassis_8cpp_source.html#l00036">ls::Chassis::Chassis()</a>, <a class="el" href="gains_8h_source.html#l00073">PIDGains()</a>, <a class="el" href="gains_8h_source.html#l00088">PIDGains()</a>, and <a class="el" href="pid_8cpp_source.html#l00055">ls::PID::setGains()</a>.</p>
 
 </div>
 </div>
@@ -175,14 +335,15 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float ls::PIDGains::kP {0.f}</td>
+          <td class="memname">float ls::PIDGains::kP {0.0f}</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Proportional gain - response to current error </p>
 
-<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00009">9</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00048">48</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00245">ls::adaptiveTune()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00142">ls::AdaptivePIDController::applyAdaptiveGains()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00432">ls::autoTune()</a>, <a class="el" href="chassis_8cpp_source.html#l00036">ls::Chassis::Chassis()</a>, <a class="el" href="data__logger_8h_source.html#l00061">ls::DataLogger::saveTuningProfile()</a>, and <a class="el" href="pid_8cpp_source.html#l00055">ls::PID::setGains()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="auton__tuner_8cpp_source.html#l00245">ls::adaptiveTune()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00142">ls::AdaptivePIDController::applyAdaptiveGains()</a>, <a class="el" href="auton__tuner_8cpp_source.html#l00432">ls::autoTune()</a>, <a class="el" href="chassis_8cpp_source.html#l00036">ls::Chassis::Chassis()</a>, <a class="el" href="gains_8h_source.html#l00073">PIDGains()</a>, <a class="el" href="gains_8h_source.html#l00088">PIDGains()</a>, and <a class="el" href="pid_8cpp_source.html#l00055">ls::PID::setGains()</a>.</p>
 
 </div>
 </div>
@@ -197,10 +358,11 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Reset integral when error crosses zero </p>
 
-<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00013">13</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00052">52</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pid_8cpp_source.html#l00055">ls::PID::setGains()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="gains_8h_source.html#l00088">PIDGains()</a>, and <a class="el" href="pid_8cpp_source.html#l00055">ls::PID::setGains()</a>.</p>
 
 </div>
 </div>
@@ -211,14 +373,15 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float ls::PIDGains::windup {10.f}</td>
+          <td class="memname">float ls::PIDGains::windup {10.0f}</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Integral windup protection range </p>
 
-<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00012">12</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gains_8h_source.html#l00051">51</a> of file <a class="el" href="gains_8h_source.html">gains.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="pid_8cpp_source.html#l00055">ls::PID::setGains()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="gains_8h_source.html#l00088">PIDGains()</a>, and <a class="el" href="pid_8cpp_source.html#l00055">ls::PID::setGains()</a>.</p>
 
 </div>
 </div>
