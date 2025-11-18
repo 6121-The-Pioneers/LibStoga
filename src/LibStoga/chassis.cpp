@@ -29,47 +29,69 @@ namespace ls {
     }
 
     void Chassis::moveToPoint(double X, double Y, unsigned int timeout, bool reverse) {
+        
+        // --- LemLib-inspired advanced moveToPoint ---
         ls::Timer timer(timeout);
         ls::Position goal(X, Y, 0); // IGNORE THETA
         unsigned int exit_timer = 0;
+        Angle d_theta(0);
+        bool close = false;
+        double prevLateralOut = 0;
+        double prevAngularOut = 0;
+        double maxLateralSpeed = 127;
+        double minLateralSpeed = 20;
+        double maxAngularSpeed = 127;
 
         while (!timer.isDone()) {
             odom->compute();
             ls::Position current_position = odom->getPosition();
-            
-            // calculate amount of change:
-            double distance = goal.distanceFromPointSigned(current_position);
+
+            double distance = goal.distanceFromPointSigned(current_position) * move_priority(d_theta);
             Angle theta_final = current_position.angleToPosition(goal);
-            
+
             if (reverse) {
                 theta_final += Angle(180);
                 theta_final = theta_final.normalize();
-            }
-            else {
+            } else {
                 distance *= -1;
             }
 
-            Angle d_theta = current_position.theta.minimumAngleDifference(theta_final); // order might be subject to change
+            d_theta = current_position.theta.minimumAngleDifference(theta_final);
 
-            // calculate power and PID outputs:
-            double raw_power = lateral_control->update(distance);
-            double power = raw_power * move_priority(d_theta);
-            double turn = angular_control->update(d_theta.getAngle());
+            // Dynamic speed adjustment when close
+            if (!close && fabs(distance) < 7.5) {
+                close = true;
+                maxLateralSpeed = std::max(fabs(prevLateralOut), 50.0);
+                maxAngularSpeed = std::max(fabs(prevAngularOut), 50.0);
+            }
 
+
+
+            // PID outputs
+
+            double lateralOut = lateral_control->update(distance);
+            lateralOut = std::clamp(lateralOut, -maxLateralSpeed, maxLateralSpeed);
+            if (!close && reverse) lateralOut = std::clamp(lateralOut, -maxLateralSpeed, -minLateralSpeed);
+            else if (!close && !reverse) lateralOut = std::clamp(lateralOut, minLateralSpeed, maxLateralSpeed);
+            prevLateralOut = lateralOut;
+
+            double angularOut = close ? 0 : angular_control->update(d_theta.getAngle());
+            angularOut = std::clamp(angularOut, -maxAngularSpeed, maxAngularSpeed);
+            prevAngularOut = angularOut;
+
+            // Robust exit conditions
             if (fabs(distance) <= threshold_lateral) {
                 exit_timer += LOOP_DELAY;
             }
-
-            if (exit_timer > threshold_timeout) {
+            if (exit_timer > threshold_timeout && close) {
                 break;
             }
 
-            // set power:
-            right->move(power + turn); // order might be subject to change
-            left->move(power - turn); // order might be subject to change
+            // Set power
+            right->move(lateralOut + angularOut);
+            left->move(lateralOut - angularOut);
 
             pros::delay(LOOP_DELAY);
-
         }
 
         right->move(0);

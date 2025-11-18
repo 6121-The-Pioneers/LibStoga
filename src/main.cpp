@@ -29,23 +29,23 @@ ls::imu_odom_parameters_t odom_params = {
 };
 ls::ImuOdom odom(odom_params);
 
-//ls::PID lateral_control (
-//	4,
-//	0,
-//	0,
-//	10,
-//	0
-//);
-//ls::PID turn_control (
-//	1,
-//	0,
-//	0,
-//	10,
-//	0
-//);
-ls::SmartPID lateral_control(1);
-ls::SmartPID turn_control(0.5);
-ls::Chassis chassis(right, left, odom, lateral_control, turn_control, 1);
+ls::PID lateral_control (
+	4,
+	0,
+	0,
+	10,
+	0
+);
+ls::PID turn_control (
+	1,
+	0,
+	0,
+	10,
+	0
+);
+//ls::SmartPID lateral_control(1);
+//ls::SmartPID turn_control(0.5);
+ls::Chassis chassis(right, left, odom, lateral_control, turn_control, 22);  //  22
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -121,7 +121,7 @@ void opcontrol() {
 		pros::delay(10);
 	}*/
 
-	chassis.moveToPoint(0, -40, 10000, true);
+	chassis.moveToPoint(40, 0, 10000, false);
 
 	master.print(0, 0, "DONE");
 
