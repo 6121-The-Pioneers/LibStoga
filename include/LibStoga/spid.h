@@ -13,6 +13,7 @@
 #define LS_SPID_H
 
 #include "pid.h"
+#include <bits/stdc++.h>
 
 namespace ls {
     /**
@@ -21,6 +22,7 @@ namespace ls {
      * Order: correction_constant, windup, learning_constant, max_value, damp
      */
     struct smart_pid_parameters_t {
+        std::function<double()> actual_output;
         double correction_constant = 1;
         double windup = 1;
         double learning_constant = 0.001;
@@ -35,18 +37,19 @@ namespace ls {
     class SmartPID : public ls::AbstractPID {
         public:
             /**
-			 * *Attention* - This algorithm creates really fast changes in output which can be dangerous to the robot if correct parameters are not provided. change the settings with seperate warnings only if you know what you are doing.
-			 * More about SPID can be looked up in the LibStoga documentation.
+             * *Attention* - This algorithm creates really fast changes in output which can be dangerous to the robot if correct parameters are not provided. change the settings with seperate warnings only if you know what you are doing.
+             * More about SPID can be looked up in the LibStoga documentation.
              * 
              * @brief Construct a new SmartPID object
              * 
+             * @param actual the function that provides the actual control output of the system. FUNCTION MUST OUTPUT A VALID DOUBLE IN THE RANGE OF [-max, max]
              * @param cc the correction constant. determins the speed of the overall motion.
-			 * @param w windup value for integral. will also determine how much the integral will be dominant in the motion. USE ONLY IF YOU KNOW WHAT YOU ARE DOING.
-			 * @param lc the learning constant. the rate at which it should learn. CHANGE ONLY IF YOU KNOW WHAT YOU ARE DOING.
+             * @param w windup value for integral. will also determine how much the integral will be dominant in the motion. USE ONLY IF YOU KNOW WHAT YOU ARE DOING.
+             * @param lc the learning constant. the rate at which it should learn. CHANGE ONLY IF YOU KNOW WHAT YOU ARE DOING.
              * @param max the maximum value of the PID output.
              * 
              */
-            explicit SmartPID(double cc = 1, double w = 10, double lc = 0.001, double max = 127);
+            explicit SmartPID(std::function<double()> actual, double cc = 1, double w = 10, double lc = 0.001, double max = 127);
 
             /**
              * @brief Construct a new SmartPID object
@@ -70,17 +73,22 @@ namespace ls {
             void reset() override;
 
         private:
-            double kp;
-            double kd;
+            double kP;
+            double kI;
+            double kD;
             
             double P;
+            double I;
             double D;
             double prev_val;
             
-            double correction_constant;
-            double windup;
-            double learning_constant;
-            double max_value;
+            double correction_constant; // affects shape of fitting curve
+            double windup; // integral max/min value
+            double learning_constant; // affects learning rate
+            double max_value; // maximum value control_output can ever be
+
+            std::function<double()> actual_output;
+            double control_output;
 
             /**
              * @brief Updates the proportion, integral, and derivative components of normal PID.
@@ -95,6 +103,11 @@ namespace ls {
              * @param e new error
              */
             void update_constants(const double e);
+
+            /**
+             * @brief Update mu (latency constant)
+             */
+            double update_mu();
             
             /**
              * @brief Gets the expected value for comparing to current state of PID value's to update constants to better adapt. (basicaly, train the PID constants)
