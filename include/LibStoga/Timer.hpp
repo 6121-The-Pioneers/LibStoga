@@ -9,7 +9,7 @@
  * 
  */
 
-//// TODO ============================================================================================= Rishit Varshney: get comments from LemLib
+//// TODO ============================================================================================= Rishit Varshney: get comments
 #ifndef TIMER_HPP
 #define TIMER_HPP
 
