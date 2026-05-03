@@ -11,6 +11,8 @@
 ---
 </div>
 
+> Note that this vibe-coded version has NOT been tested. PLEASE USE WITH CAUTION
+
 ## 📋 Table of Contents
 
 <div align="center">
