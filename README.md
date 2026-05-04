@@ -1,10 +1,15 @@
-# LibStoga
+<div align="center">
+
+<img width="1920" height="540" alt="LibStoga" src="https://github.com/user-attachments/assets/7c30bac4-922c-4bed-9c62-17c0cee776a9" />
+<br><br>
 
 **A fast, minimalist, open-source motion control library for VEX V5RC robots.**
 
 Built on [PROS](https://pros.cs.purdue.edu/), LibStoga provides PID control, two odometry implementations (3-wheel and IMU-based), autonomous path execution, and the SPID adaptive controller — all in a clean, well-documented C++ API.
 
 > Alpha release. Core functionality is implemented and competition-tested. Some features are still in progress (see status table below).
+
+</div>
 
 ---
 
